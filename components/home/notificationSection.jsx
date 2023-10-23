@@ -33,7 +33,7 @@ const NotificationSection = () => {
                 </div>
               </div>
 
-              <CardHeaderDropdown />
+               
             </div>
           </div>
           <div ref={scrollContainerRef} className="scroll-w-3 card__scroll">

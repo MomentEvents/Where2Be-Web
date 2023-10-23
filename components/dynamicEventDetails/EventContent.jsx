@@ -117,7 +117,7 @@ const EventContent = ({schduleItem}) => {
                         Event Schdule news and updates
                       </h4>
                     </div>
-                    <CardHeaderDropdown />
+                     
                   </div>
                   <div className="review__main-wrapper pt-25">
                     <div className="review__meta mb-25">

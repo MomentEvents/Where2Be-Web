@@ -43,8 +43,8 @@ const WrapContent = () => {
                 style={{ backgroundImage: `url(${overlay_img.src})` }}
               ></div>
               <div className="expovent__count-content">
-                <h3 className="expovent__count-number">1250+</h3>
-                <span className="expovent__count-text">Total Registration</span>
+                <h3 className="expovent__count-number">1256</h3>
+                <span className="expovent__count-text">Followers</span>
               </div>
               <div className="expovent__count-icon">
                 <i className="flaticon-group"></i>
@@ -58,8 +58,8 @@ const WrapContent = () => {
                 style={{ backgroundImage: `url(${overlay_img.src})` }}
               ></div>
               <div className="expovent__count-content">
-                <h3 className="expovent__count-number">125+</h3>
-                <span className="expovent__count-text">Total Speakers</span>
+                <h3 className="expovent__count-number">XX</h3>
+                <span className="expovent__count-text">Something here</span>
               </div>
               <div className="expovent__count-icon">
                 <i className="flaticon-speaker"></i>
@@ -73,8 +73,8 @@ const WrapContent = () => {
                 style={{ backgroundImage: `url(${overlay_img.src})` }}
               ></div>
               <div className="expovent__count-content">
-                <h3 className="expovent__count-number">35</h3>
-                <span className="expovent__count-text">New Events</span>
+                <h3 className="expovent__count-number">YYY</h3>
+                <span className="expovent__count-text">Something here</span>
               </div>
               <div className="expovent__count-icon">
                 <i className="flaticon-reminder"></i>
@@ -88,8 +88,8 @@ const WrapContent = () => {
                 style={{ backgroundImage: `url(${overlay_img.src})` }}
               ></div>
               <div className="expovent__count-content">
-                <h3 className="expovent__count-number">2560+</h3>
-                <span className="expovent__count-text">Total Ticket Sold</span>
+                <h3 className="expovent__count-number">ZZZ</h3>
+                <span className="expovent__count-text">Something here</span>
               </div>
               <div className="expovent__count-icon">
                 <i className="flaticon-ticket-1"></i>
@@ -107,7 +107,7 @@ const WrapContent = () => {
                       <i className="flaticon-group"></i>
                     </div>
                     <div className="card__header-title">
-                      <h4>Web Traffic</h4>
+                      <h4>Event Signups</h4>
                     </div>
                   </div>
                   <div className="card__header-right">
@@ -148,7 +148,6 @@ const WrapContent = () => {
                         </span>
                       </form>
                     </div>
-                    <CardHeaderDropdown />
                   </div>
                 </div>
                 <div className="Card__line-chart">
@@ -169,17 +168,17 @@ const WrapContent = () => {
                       <i className="flaticon-reminder"></i>
                     </div>
                     <div className="card__header-title">
-                      <h4>Schedule Events</h4>
+                      <h4>Upcoming Events</h4>
                     </div>
                   </div>
-                  <CardHeaderDropdown />
+                   
                 </div>
               </div>
               <SmoothScrollableContent schedules={schedules} />
             </div>
           </div>
         </div>
-        <div className="row g-20">
+        {/* <div className="row g-20">
           <TicketSolds />
           <ToalSeats />
           <VisitebySorce />
@@ -188,9 +187,9 @@ const WrapContent = () => {
           <CalenderSection />
           <NotificationSection />
           <EventSpeakerList />
-        </div>
+        </div> */}
         <RegisterUserList />
-        <NoticeandUpcomingEvent />
+        {/* <NoticeandUpcomingEvent /> */}
       </div>
     </>
   );

@@ -31,7 +31,7 @@ const DynamicProfileContent = ({ speaker }) => {
                       Profile Information
                     </h4>
                   </div>
-                  <CardHeaderDropdown />
+                   
                 </div>
                 <div className="profile__main-wrapper mt-35">
                   <div className="row">
@@ -223,7 +223,7 @@ const DynamicProfileContent = ({ speaker }) => {
                                       </td>
                                       <td>
                                         <div className="attendant__action">
-                                          <CardHeaderDropdown />
+                                           
                                         </div>
                                       </td>
                                     </tr>

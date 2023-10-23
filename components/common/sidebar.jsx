@@ -7,6 +7,7 @@ import Profile from "./subcomponent/profile";
 import small_logo from "../../public/assets/img/logo/logo-small.svg";
 import logo_two from "../../public/assets/img/logo/logo.svg";
 import sidebar_img from "../../public/assets/img/sidebar/sidebar.jpg";
+import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 
 const Sidebar = ({ collapse, handleClick }) => {
   const [deviceWidth, setDeviceWidth] = useState(null);
@@ -61,6 +62,21 @@ const Sidebar = ({ collapse, handleClick }) => {
                 </Link>
               </li>
               <li>
+                <Link href="/outreach">
+                  <a>
+                    <i className="flaticon">
+                      <NotificationsActiveIcon
+                        sx={{
+                          fontSize: 20,
+                          color: "white",
+                        }}
+                      />
+                    </i>
+                    <span className="nav-text">SMS Blast</span>
+                  </a>
+                </Link>
+              </li>
+              <li>
                 <Link href="/profile">
                   <a>
                     <i className="flaticon-user-1"></i>
@@ -68,6 +84,7 @@ const Sidebar = ({ collapse, handleClick }) => {
                   </a>
                 </Link>
               </li>
+
               <li>
                 <Link href="/signin">
                   <a>

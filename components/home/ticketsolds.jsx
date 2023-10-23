@@ -94,7 +94,7 @@ const TicketSolds = () => {
                 </div>
               </div>
               {/* card header dropdown */}
-              <CardHeaderDropdown />
+               
             </div>
           </div>
         </div>

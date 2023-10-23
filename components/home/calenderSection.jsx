@@ -139,7 +139,7 @@ const CalenderSection = () => {
                 </div>
               </div>
               {/* card header dropdown */}
-              <CardHeaderDropdown />
+               
             </div>
           </div>
           <div className="calendar__wrapper">

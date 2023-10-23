@@ -86,6 +86,12 @@
 			@include dark {
 				background: var(--clr-bg-6);
 			}
+			.expovent__count-text-green {
+				color: greenyellow
+			}
+			.expovent__count-text-red {
+				color: red
+			}
 			&:hover {
 				.expovent__count-number {
 					color: var(--clr-common-white);

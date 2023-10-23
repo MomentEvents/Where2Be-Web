@@ -30,7 +30,7 @@ const ProfileContent = () => {
                       Profile Information
                     </h4>
                   </div>
-                  <CardHeaderDropdown />
+                   
                 </div>
                 <div className="profile__main-wrapper mt-35">
                   <div className="row">

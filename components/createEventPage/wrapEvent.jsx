@@ -46,7 +46,7 @@ const WrapCreateEvent = () => {
                     </h4>
                   </div>
                   {/* card header top componet  */}
-                  <CardHeaderDropdown />
+                   
                 </div>
 
                 {/* create event form  */}

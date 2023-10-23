@@ -18,34 +18,10 @@ const ProfileLinks = () => {
         </Link>
       </li>
       <li>
-        <Link href="/chat">
-          <a>
-            <Chaticon />
-            chat
-          </a>
-        </Link>
-      </li>
-      <li>
-        <Link href="/chat">
-          <a>
-            <InboxIcon />
-            inbox
-          </a>
-        </Link>
-      </li>
-      <li>
-        <Link href="/signin">
-          <a>
-            <AddAccountIcon />
-            add acount
-          </a>
-        </Link>
-      </li>
-      <li>
         <Link href="/signin">
           <a>
             <LoginIcon />
-            Log in
+            Log Out
           </a>
         </Link>
       </li>

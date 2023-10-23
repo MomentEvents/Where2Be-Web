@@ -33,7 +33,7 @@ const EventSpeakerList = () => {
                 <div className="card__btn">
                   <Link href="/speaker-list">view all Speaker</Link>
                 </div>
-                <CardHeaderDropdown />
+                 
               </div>
             </div>
           </div>

@@ -52,7 +52,7 @@ const SingleTableData = ({ envetList }) => {
             </td>
             <td>
               <div className="attendant__action">
-                <CardHeaderDropdown />
+                 
               </div>
             </td>
           </tr>

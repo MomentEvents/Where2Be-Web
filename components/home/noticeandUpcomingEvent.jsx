@@ -34,7 +34,7 @@ const NoticeandUpcomingEvent = () => {
                     <h4>Notice Board</h4>
                   </div>
                 </div>
-                <CardHeaderDropdown />
+                 
               </div>
             </div>
             <div className="notice__wrapper">
@@ -87,7 +87,7 @@ const NoticeandUpcomingEvent = () => {
                       <a>view all Event</a>
                     </Link>
                   </div>
-                  <CardHeaderDropdown />
+                   
                 </div>
               </div>
             </div>

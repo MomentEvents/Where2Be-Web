@@ -30,7 +30,7 @@ const WrapSetting = () => {
                       Account Information
                     </h4>
                   </div>
-                  <CardHeaderDropdown />
+                   
                 </div>
                 <div className="setting__main-wrapper pt-25">
                   <form action="#">

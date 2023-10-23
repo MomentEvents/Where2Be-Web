@@ -17,7 +17,7 @@ const ToalSeats = () => {
               </div>
             </div>
             <div className="card__header-right">
-              <CardHeaderDropdown />
+               
             </div>
           </div>
         </div>

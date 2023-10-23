@@ -132,7 +132,7 @@ const CalendarComponent = () => {
           <div className="card__title-inner">
             <h4 className="event__information-title">Event Calendar</h4>
           </div>
-          <CardHeaderDropdown />
+           
           <div className="calendar__wrapper">
           
           <div className="calendar__header p-relative">

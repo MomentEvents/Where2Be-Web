@@ -49,7 +49,7 @@ const AttendenceTable = ({ attendenceData }) => {
             </td>
             <td>
               <div className="attendant__action">
-                <CardHeaderDropdown />
+                 
               </div>
             </td>
           </tr>
