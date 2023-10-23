@@ -1,0 +1,84 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  NOTICE CSS START
+/*----------------------------------------*/
+
+.notice {
+  &__meta {
+    @include flexbox();
+    align-items: center;
+    gap: 10px 24px;
+    margin-bottom: 13px;
+    flex-wrap: wrap;
+  }
+  &__item {
+    padding: 20px 0 20px;
+    border-bottom: 1px solid var(--clr-border-1);
+      &:last-child {
+          border-bottom: 0;
+          padding-bottom: 0;
+      }
+  }
+  &__title {
+    p {
+      color: var(--clr-text-11);
+      margin-bottom: 0;
+      font-weight: var(--bd-fw-medium);
+      @include dark {
+        color: var(--clr-text-2);
+      }
+    }
+  }
+}
+.input__alert {
+  @include flexbox();
+  align-items: center;
+  gap: 5px;
+  padding: 13.5px 15px;
+  border-radius: 4px;
+  flex-wrap: wrap;
+
+}
+.input__alert.alert-bg-1 {
+	color: var(--clr-text-15);
+  border: 1px solid #FF7272;
+}
+.input__alert.alert-bg-1 span {
+	color: var(--clr-theme-1);
+}
+.input__alert.alert-bg-2 {
+	color: var(--clr-text-16);
+  border: 1px solid #FFA300;
+}
+.input__alert.alert-bg-2 span {
+	color: var(--clr-text-17);
+}
+.input__alert.alert-bg-3 {
+	color: var(--clr-text-18);
+  border: 1px solid #70D640;
+}
+.input__alert.alert-bg-3 span {
+	color: var(--clr-text-18);
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

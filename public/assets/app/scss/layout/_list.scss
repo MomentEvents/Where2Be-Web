@@ -1,0 +1,399 @@
+/* 2.4 - Order & Unorder List - Start
+================================================== */
+
+// List Default Style - Start
+.unordered_list,
+.unordered_list_end,
+.unordered_list_center {
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  >li {
+    float: left;
+    list-style: none;
+    display: inline-block;
+  }
+}
+
+.unordered_list {
+  justify-content: flex-start;
+  color: #BFBEBE;
+}
+
+.unordered_list_center {
+  justify-content: center;
+}
+
+.unordered_list_end {
+  justify-content: flex-end;
+}
+
+.unordered_list_block {
+  margin: 0px;
+  padding: 0px;
+  display: block;
+
+  >li {
+    display: block;
+    list-style: none;
+  }
+}
+
+// List Default Style - End
+
+// Icon List - Start
+
+.icon_list_boxed {
+  display: flex;
+  border-radius: 12px;
+  .icon_list {
+    padding: 30px;
+    flex: 0 0 50%;
+    max-width: 50%;
+
+    &:not(:last-child) {
+      border-style: solid;
+      border-color: #dee2e6;
+      border-width: 0 1px 0 0;
+    }
+  }
+}
+
+
+
+.bd-theme-dark .icon_list {
+  &.unordered_list_block {
+    >li {
+      &:not(:last-child) {
+        margin-bottom: 19px;
+      }
+    }
+  }
+
+  .list_item_icon {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    font-size: 10px;
+    margin-inline-end: 12px;
+    color: #0F0E0E;
+    border-radius: 100%;
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    background-color: #FFC961;
+transition: 0.3s cubic-bezier(0.5, 1, 0.89, 1);
+  }
+
+ 
+  .list_item_text {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22px;
+    color: var(--clr-text-secondary);
+    transition: 0.3s cubic-bezier(0.5, 1, 0.89, 1);
+  }
+
+  a {
+    &:hover {
+      .list_item_text {
+        color: var(--clr-theme-1);
+      }
+    }
+  }
+}
+.bd-theme-light .icon_list {
+  &.unordered_list_block {
+    >li {
+      &:not(:last-child) {
+        margin-bottom: 19px;
+      }
+    }
+  }
+
+  .list_item_icon {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    font-size: 10px;
+    margin-inline-end: 12px;
+    color: #0F0E0E;
+    border-radius: 100%;
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    background-color: #FFC961;
+transition: 0.3s cubic-bezier(0.5, 1, 0.89, 1);
+  }
+
+ 
+  .list_item_text {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22px;
+    color: #0F0E0E;
+    transition: 0.3s cubic-bezier(0.5, 1, 0.89, 1);
+  }
+
+  a {
+    &:hover {
+      .list_item_text {
+        color: var(--clr-theme-1);
+      }
+    }
+  }
+}
+
+// Icon List - End
+
+// Page List - Start
+.page_list {
+  >li {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+
+    &:not(:last-child) {
+      margin: 0 0 12px;
+    }
+  }
+
+  a {
+    color: #5D636A;
+    align-items: center;
+    display: inline-flex;
+
+    span {
+      display: flex;
+      align-items: center;
+    }
+
+    .list_item_icon {
+      opacity: 0;
+      font-size: 6px;
+      color: var(--clr-theme-1);
+      margin: 0 8px 0 -15px;
+      transition: 0.3s cubic-bezier(0.5, 1, 0.89, 1);
+    }
+
+    &:hover {
+      .list_item_icon {
+        opacity: 1;
+        margin: 0 8px 0 0;
+      }
+    }
+  }
+}
+
+.page_list.unordered_list {
+  >li {
+    &:not(:last-child) {
+      margin: 0 11px 0 0;
+    }
+  }
+
+  a {
+    .list_item_icon {
+      opacity: 1;
+      margin: 0 11px 0 0;
+    }
+  }
+}
+
+// Page List - End
+
+// Tags List - Start
+.tags_list {
+  margin: -4px;
+
+  >li {
+    padding: 4px;
+  }
+
+  a {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    padding: 5px 10px;
+    color: #5D636A;
+    border-radius: 50px;
+    border: 1px solid #dee2e6;
+
+    &:hover {
+      color: var(--clr-common-white);
+      border-color: var(--clr-theme-1);
+      background-color: var(--clr-theme-1);
+    }
+  }
+}
+
+// Tags List - End
+
+// Contact Info List - Start
+.bd-theme-dark .contact_info_list li strong{
+  color: #dee2e6;
+}
+.contact_info_list {
+  >li {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+
+  strong {
+    float: left;
+    margin-inline-end: 10px;
+    color: var(--clr-theme-1);
+  }
+
+  span {
+    display: table;
+  }
+}
+
+
+.bd-theme-dark .contact_info_list.style_2 {
+  >li {
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 27px;
+    color: #B4B9BF;
+
+    &:not(:last-child) {
+      margin-bottom: 30px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #4c4e4f
+    }
+  }
+
+  strong {
+    width: 100%;
+    display: block;
+    font-size: 19px;
+    font-weight: 600;
+    margin: 0 0 10px;
+    line-height: 26px;
+  }
+
+  span {
+    display: block;
+
+    a {
+      color: #5D636A;
+
+      &:hover {
+        color: var(--clr-theme-1);
+      }
+    }
+  }
+}
+.contact_info_list.style_2 {
+  >li {
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 27px;
+    color: #5D636A;
+
+    &:not(:last-child) {
+      margin-bottom: 30px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #dee2e6;
+    }
+  }
+
+  strong {
+    width: 100%;
+    display: block;
+    font-size: 19px;
+    font-weight: 600;
+    margin: 0 0 10px;
+    line-height: 26px;
+  }
+
+  span {
+    display: block;
+
+    a {
+      color: #5D636A;
+
+      &:hover {
+        color: var(--clr-theme-1);
+      }
+    }
+  }
+}
+
+
+
+// Contact Info List - End
+
+// Item Category List - Start
+.category_list {
+  margin: -2px;
+
+  >li {
+    padding: 2px;
+  }
+
+  a {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 23px;
+    padding: 2px 10px;
+    &:hover {
+      color: #fff;
+      background-color: var(--clr-theme-1);
+    }
+  }
+}
+
+// Item Category List - End
+
+// Item Info List - Start
+.meta_list {
+  >li {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 27px;
+    position: relative;
+
+    &:not(:last-child) {
+      margin-inline-end: 12px;
+      padding-inline-end: 12px;
+
+      &:after {
+        top: 12px;
+        width: 4px;
+        height: 4px;
+        right: -2px;
+        content: '';
+        position: absolute;
+        border-radius: 100%;
+        background-color: #5D636A;
+      }
+    }
+  }
+
+  a {
+    color: #5D636A;
+
+    &:hover {
+      color: var(--clr-theme-1);
+    }
+  }
+}
+.bd-theme-dark .meta_list a{
+  color: #BFBEBE;;
+}
+
+// Item Info List - End
+
+/* 2.4 - Order & Unorder List - End
+================================================== */

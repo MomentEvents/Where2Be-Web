@@ -1,0 +1,108 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  CAROUSEL CSS START
+/*----------------------------------------*/
+
+// Project style
+.swiper {
+	&.project__active {
+		border-radius: 20px;
+	}
+}
+.project__navigation {
+	@include flexbox();
+	gap: 15px;
+	button {
+		width: 50px;
+		height: 50px;
+		border: 1px solid #E2E2E2;
+		border-radius: 50%;
+		color: #727272;
+		@include flexbox();
+		align-items: center;
+		justify-content: center;
+    &:hover {
+      background-color: var(--clr-theme-1);
+      color: var(--clr-text-primary);
+      border-color:transparent;
+    }
+	}
+}
+.feedback__navigation {
+	@include flexbox();
+	gap: 15px;
+	&.s-2 {
+		button {
+			&:hover {
+				background-color: var(--clr-theme-5);
+			}
+		}
+	}
+	button {
+		width: 50px;
+		height: 50px;
+		border: 1px solid #E2E2E2;
+		border-radius: 50%;
+		color: #727272;
+		@include flexbox();
+		align-items: center;
+		justify-content: center;
+		&:hover {
+		background-color: var(--clr-theme-1);
+		color: var(--clr-text-primary);
+		border-color:transparent;
+		}
+	}
+}
+// blog
+.testimonial-slider-dot {
+	@include flexbox();
+	justify-content:flex-end;
+	gap: 5px;
+	.swiper-pagination-bullet {
+		&.swiper-pagination-bullet-active::before {
+			background: #F7426F;
+		}
+	}
+}
+.bd-swiper-dot {
+	.swiper-pagination-bullet {
+		width: 20px;
+		height: 20px;
+		background-color: #FFEEEE;
+		opacity: 1;
+		margin: 0 0px;
+		position: relative;
+		z-index: 1;
+		&:before {
+			position: absolute;
+			content: "";
+			width: 8px;
+			height: 8px;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background-color: #FFC8D5;
+			z-index: -1;
+			border-radius: 50%;
+		}
+	}
+}
+.bd-theme-dark {
+	.testimonial-slider-dot {
+		.swiper-pagination-bullet {
+			&.swiper-pagination-bullet-active::before {
+				background: #FFC8D5;
+			}
+		}
+	}
+	.bd-swiper-dot {
+		.swiper-pagination-bullet {
+			background-color: var(--clr-bg-6);
+			&:before {
+				background-color: var(--clr-bg-5);
+			}
+		}
+	}
+}

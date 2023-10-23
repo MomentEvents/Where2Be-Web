@@ -1,0 +1,153 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  CALENDER CSS START
+/*----------------------------------------*/
+.calendar {
+	ul {
+		@include flexbox();
+		flex-wrap: wrap;
+		list-style: none;
+		text-align: center;
+	}
+	li {
+		color: var(--clr-text-12);
+		width: calc(100% / 7);
+		font-size: 16px;
+		@include dark {
+			color: var(--clr-common-white);
+		}
+		@media #{$xxs}{
+			font-size: 14px;
+		}
+	}
+	.weeks {
+		li {
+			font-weight: 500;
+			cursor: default;
+		}
+	}
+	.days {
+		li {
+			z-index: 1;
+			cursor: pointer;
+			position: relative;
+			margin-top: 30px;
+		}
+	}
+	&__wrapper {
+		width: 100%;
+	}
+	&__header {
+		margin-top: 35px;
+		margin-bottom: 45px;
+	}
+	&__month {
+		@include flexbox();
+		justify-content: center;
+		p {
+			margin-bottom: 0;
+			font-size: 20px;
+			font-weight: var(--bd-fw-sbold);
+			color: var(--clr-text-secondary);
+			@media #{$xxs,$md,$xl,$xxl} {
+				font-size: 18px;
+			}
+		}
+	}
+	&__button {
+		cursor: pointer;
+		width: 50px;
+		height: 50px;
+		@include inline-flex();
+		// new  line added
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: var(--clr-text-secondary);
+		@include border-radius(50%);
+		&:hover {
+			background-color: var(--clr-bg-5);
+			color: var(--clr-common-white);
+		}
+		&.prev {
+			position: absolute;
+			top: 50%;
+			left: 30px;
+			transform: translateY(-50%);
+			@media #{$xxs,$md,$xl,$xxl} {
+				left: 0;
+			}
+		}
+		&.next {
+			position: absolute;
+			top: 50%;
+			right: 0px;
+			transform: translateY(-50%);
+			@media #{$xxs,$md,$xl,$xxl} {
+				right: 0;
+			}
+		}
+	}
+}
+.days {
+	li {
+		&:hover {
+			color: var(--clr-common-white);
+		}
+		&.inactive {
+			color: var(--clr-text-9);
+		}
+		&.active {
+			color: #926470;
+			@include dark {
+				color: var(--clr-common-white);
+			}
+			&::before {
+				background: rgba(255, 163, 0, 0.2);
+			}
+			&::after {
+				position: absolute;
+				content: "";
+				width: 12px;
+				height: 1px;
+				background: #926470;
+				bottom: 0;
+				left: 50%;
+				transform: translateX(-50%);
+				@include dark {
+					background: var(--clr-common-white);
+				}
+			} 
+		}
+		&::before {
+			position: absolute;
+			content: "";
+			left: 50%;
+			top: 50%;
+			height: 50px;
+			width: 50px;
+			z-index: -1;
+			border-radius: 50%;
+			transform: translate(-50%, -50%);
+			@include transition (.3s);
+			@media #{$xs}{
+				height: 40px;
+               width: 40px;
+			}
+		}
+		&:not(.active):hover {
+			&::before {
+				background: var(--clr-bg-5);
+			}
+		}
+	}
+}
+
+// Google map
+.map__wrapper {
+	iframe {
+		width: 100%;
+		min-height: 450px;
+	}
+}

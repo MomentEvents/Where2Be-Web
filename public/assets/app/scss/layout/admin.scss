@@ -1,0 +1,121 @@
+/* Admin Widget - Start
+================================================== */
+@use '../utils' as *;
+
+.admin_item {
+    display: flex;
+    align-items: center;
+
+    .admin_thumbnail {
+        width: 60px;
+        height: 60px;
+        flex: 0 0 60px;
+        overflow: hidden;
+        margin-inline-end: 10px;
+        border-radius: 100%;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .admin_name {
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 22px;
+        margin-bottom: 2px;
+    }
+
+    .admin_designation {
+        display: block;
+        font-size: 14px;
+        line-height: 19px;
+    }
+}
+
+
+
+.bd-theme-dark .post_admin {
+    display: flex;
+    padding: 40px;
+    margin-bottom: 50px;
+    border-radius: 12px;
+    background-color:var(--clr-bg-6);
+    gap: 30px 15px;
+
+    @media #{$xs} {
+        padding: 30px;
+    }
+
+    @media #{$xxs} {
+        flex-wrap: wrap;
+    }
+
+    .admin_image {
+        width: 80px;
+        height: 80px;
+        flex: 0 0 80px;
+        overflow: hidden;
+        border-radius: 100%;
+    }
+
+    .admin_name {
+        font-size: 21px;
+        font-weight: 700;
+        line-height: 29px;
+        margin-bottom: 8px;
+        color: var(--clr-text-secondary);
+    }
+
+    .admin_designation {
+        display: block;
+        line-height: 1;
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 20px;
+        color: var(--clr-text-secondary);
+    }
+}
+.bd-theme-light .post_admin {
+    display: flex;
+    padding: 40px;
+    margin-bottom: 50px;
+    border-radius: 12px;
+    background-color: #F1F1FC;
+    gap: 30px 15px;
+
+    @media #{$xs} {
+        padding: 30px;
+    }
+
+    @media #{$xxs} {
+        flex-wrap: wrap;
+    }
+
+    .admin_image {
+        width: 80px;
+        height: 80px;
+        flex: 0 0 80px;
+        overflow: hidden;
+        border-radius: 100%;
+    }
+
+    .admin_name {
+        font-size: 21px;
+        font-weight: 700;
+        line-height: 29px;
+        margin-bottom: 8px;
+    }
+
+    .admin_designation {
+        display: block;
+        line-height: 1;
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 20px;
+        color: var(--clr-theme-1);
+    }
+}
+
+/* Admin Widget - End
+================================================== */

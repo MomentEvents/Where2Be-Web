@@ -1,0 +1,235 @@
+/* Typography - Start
+================================================== */
+@use '../utils' as *;
+// Section Heading - Start
+.section_heading_inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 30px 60px;
+	margin-bottom: 50px;
+}
+.section_heading.is_portfolio {
+	@media #{$xs,$sm} {
+		margin-bottom: 30px;
+	}
+}
+.section_heading {
+	margin-bottom: 50px;
+	.heading_subtitle {
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 1;
+		margin-bottom: 15px;
+		color: var(--clr-text-secondary);
+	}
+	.double_icon {
+		margin-inline-end: 8px;
+		display: inline-block;
+		i {
+			z-index: 1;
+			float: left;
+			font-size: 12px;
+			position: relative;
+			display: inline-block;
+			display: inline-block;
+			transform: rotate(45deg);
+			&:not(:first-child) {
+				margin-inline-start: -7px;
+			}
+			&:nth-child(even) {
+				z-index: 0;
+			}
+		}
+	}
+	.heading_title {
+		font-size: 50px;
+		line-height: 1.36;
+		margin-bottom: 25px;
+		text-transform: capitalize;
+		color: var(--clr-text-secondary);
+		@media #{$xl} {
+			font-size: 40px;
+		}
+		@media #{$lg,$md} {
+			font-size: 40px;
+		}
+		@media #{$xs,$sm} {
+			font-size: 34px;
+		}
+		@media #{$xxs} {
+			font-size: 28px;
+		}
+	}
+	.heading_description {
+		font-size: 17px;
+		line-height: 27px;
+		margin-bottom: 25px;
+	}
+}
+
+.section_heading.text-white {
+	.heading_subtitle,
+	.heading_title,
+	.heading_description {
+		color: #fff;
+	}
+
+	.section_heading.style_3 {
+		.heading_subtitle {
+			color: #fff;
+			background-color: rgba(255, 255, 255, 0.1);
+		}
+	}
+}
+
+
+.section_heading.style_3 {
+	.heading_subtitle {
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 27px;
+		padding: 5px 15px;
+		border-radius: 50px;
+		display: inline-block;
+		background-color: rgba(83, 85, 223, 0.2);
+	}
+}
+
+.section_heading.style_4 {
+	.heading_subtitle {
+		span {
+			background-repeat: no-repeat;
+			background-position: center bottom 0;
+		}
+	}
+}
+
+.bg_primary {
+	.section_heading {
+		.double_icon {
+			i {
+				color: #fff;
+			}
+		}	
+	}
+
+	.section_heading.style_3 {
+		.heading_subtitle {
+			color: #fff;
+			background-color: rgba(255, 255, 255, 0.1);
+		}
+	}
+}
+// Section Heading - End
+
+// Blockquote - Start
+
+.bd-theme-dark blockquote {
+	padding: 40px 30px;
+	margin-bottom: 30px;
+	margin-top: 30px;
+    background-color: var(--clr-bg-6);
+	border-radius: 12px;
+	.blockquote_content {
+		font-size: 21px;
+		font-weight: 500;
+		line-height: 31px;
+		margin-bottom: 15px;
+		color: var(--clr-text-9);
+	}
+	.author_name {
+		font-size: 16px;
+		font-weight: 600;
+		line-height: 22px;
+		color: var(--clr-text-9);
+		align-items: center;
+		display: inline-flex;
+		&:before {
+			content: '';
+			width: 60px;
+			height: 1px;
+			margin-inline-end: 10px;
+			display: inline-block;
+		}
+	}
+}
+.bd-theme-light blockquote {
+	padding: 40px 30px;
+	margin-bottom: 30px;
+	margin-top: 30px;
+    background-color: #F1F1FC;
+	border-radius: 12px;
+	.blockquote_content {
+		font-size: 21px;
+		font-weight: 500;
+		line-height: 31px;
+		margin-bottom: 15px;
+	}
+	.author_name {
+		font-size: 16px;
+		font-weight: 600;
+		line-height: 22px;
+		align-items: center;
+		display: inline-flex;
+		&:before {
+			content: '';
+			width: 60px;
+			height: 1px;
+			margin-inline-end: 10px;
+			display: inline-block;
+		}
+	}
+}
+// Blockquote - End
+
+// Clip Type Animation - Start
+.cd-words-wrapper {
+	display: inline-block;
+	position: relative;
+	text-align: left;
+}
+.cd-words-wrapper b {
+	display: inline-block;
+	position: absolute;
+	white-space: nowrap;
+	inset-inline-start: 0;
+	top: 0;
+}
+.cd-words-wrapper b.is-visible {
+	position: relative;
+}
+.no-js .cd-words-wrapper b {
+	opacity: 0;
+}
+.no-js .cd-words-wrapper b.is-visible {
+	opacity: 1;
+}
+
+.cd-headline.clip span {
+	display: inline-block;
+}
+.cd-headline.clip .cd-words-wrapper {
+	overflow: hidden;
+	vertical-align: top;
+}
+.cd-headline.clip .cd-words-wrapper::after {
+	top: 0;
+	inset-inline-end: 0;
+	width: 2px;
+	content: "";
+	height: 100%;
+	position: absolute;
+	background-color: #37393d;
+}
+.cd-headline.clip b {
+	opacity: 0;
+}
+.cd-headline.clip b.is-visible {
+	opacity: 1;
+}
+// Clip Type Animation - End
+
+/* Typography - End
+================================================== */

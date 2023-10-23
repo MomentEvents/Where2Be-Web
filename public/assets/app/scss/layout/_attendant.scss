@@ -1,0 +1,200 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/* ATTENDENT CSS START
+/*----------------------------------------*/
+.attendant {
+  &__wrapper {
+    @media #{$xs,$sm,$md,$lg,$xl}{
+      overflow-x: scroll;
+    }
+  }
+  &__user {
+    &-item {
+      @include flexbox();
+      align-items: center;
+      gap: 10px;
+    }
+    &-title {
+      span {
+        font-size: 16px;
+        color: var(--clr-text-secondary);
+        font-weight: var(--bd-fw-medium);
+    }
+  }
+  }
+  &__action{
+    padding-inline-start: 15px;
+  }
+  &__serial {
+    span {
+      color: var(--clr-text-secondary);
+    }
+  }
+  &__seminer {
+    span {
+      color: var(--clr-text-20);
+      font-weight: var(--bd-fw-medium);
+      @include dark {
+        color: var(--clr-common-white);
+      }
+      a {
+        &:hover {
+          color: var(--clr-theme-1);
+        }
+      }
+    }
+  }
+  &__time {
+    color: var(--clr-text-11);
+    @include dark {
+      color: var(--clr-common-white);
+    }
+  }
+  &__date {
+    span {
+      color: var(--clr-text-11);
+      @include dark {
+        color: var(--clr-common-white);
+      }
+    }
+  }
+  &__action{
+    span {
+      color: var(--clr-text-9);
+    }
+  }
+  &__wrapper {
+    table {
+      width: 100%;
+      border-spacing: 0px 10px;
+      border-collapse: separate;
+      @media #{$xs,$sm,$md,$lg,$xl}{
+        width: 1350px;
+      }
+      thead {
+        background-color: var(--clr-bg-12);
+        @include dark {
+          background-color: var(--clr-bg-4);
+        }
+        tr {
+          th {
+            color: var(--clr-text-secondary);
+            font-weight: var(--bd-fw-sbold);
+          }
+        }
+      }
+      & > :not(caption) {
+        & > * {
+          & > * {
+            padding: 10.5px 20px;
+            border-radius: 4px;
+            background-clip: padding-box;
+          }
+        }
+      }
+    }
+    .table {
+      td {
+        padding: 0.73rem;
+      }
+    }
+    tbody {
+      tr {
+        background-color: var(--clr-bg-13);
+        border-radius: 4px;
+        @include transition(.3s);
+        @include dark {
+          background-color: var(--clr-bg-8);
+        }
+        &:hover {
+          background: var(--clr-bg-12);
+          @include dark {
+            background: var(--clr-bg-7);
+          }
+        }
+      }
+    }
+  }
+  &__dot {
+    stroke: var(--clr-text-9);
+  }
+  &__speakers {
+    &-thumb {
+      @include flexbox();
+      img {
+        margin-inline-end: -20px;
+        max-width: 38px;
+      }
+    }
+  }
+  &__meta {
+    &-count {
+      width: 40px;
+      height: 40px;
+      background: var(--clr-common-white);
+      @include flexbox();
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 12px;
+      font-weight: var(--bd-fw-sbold);
+    }
+  }
+  &__location {
+    span {
+      color: var(--clr-text-11);
+      @include dark {
+        color: var(--clr-common-white);
+      }
+    }
+  }
+}
+.registration {
+  &__user-thumb {
+    img {
+      max-width: 40px;
+    }
+  }
+}
+.event {
+  &__information {
+    &-title {
+      font-size: 18px;
+      color: var(--clr-text-secondary);
+      font-weight: var(--bd-fw-sbold);
+      text-transform: capitalize;
+    }
+  }
+}
+// status style
+.status {
+  &__tag {
+    height: 34px;
+    @include inline-flex();
+    // new line code added
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 9px;
+    border-radius: 17.5px;
+    font-size: 14px;
+    font-weight: var(--bd-fw-medium);
+    &.bg-green {
+      background: rgba(69, 167, 79, 0.1);
+      color: #36D146;
+    }
+    &.warning-bg {
+      background: rgba(255, 163, 0, 0.1);
+      color: #FFA300;
+    }
+    &.teal-bg {
+      background: rgba(3, 200, 200, 0.1);
+      color: #03C8C8;
+    }
+    &.bg-warn {
+      background: rgba(207, 28, 28, 0.1);
+      color: #CF1C1C;
+    }
+  }
+}

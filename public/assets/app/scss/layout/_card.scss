@@ -1,0 +1,242 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  CARD CSS START
+/*----------------------------------------*/
+
+//  Card style
+.body {
+  &__card {
+    &-wrapper {
+      background: var(--clr-common-white);
+      box-shadow: 0px 4px 8px rgba(247, 66, 111, 0.03);
+      @include border-radius(6px);
+      padding: 30px 30px 30px;
+      @media #{$xxs} {
+        padding: 20px 20px 20px;
+			}
+      @include dark {
+        background: var(--clr-bg-6);
+      }
+    }
+  }
+}
+.card {
+  &__inner {
+    padding-inline-end: 25px;
+    @media #{$xxs}{
+      padding-inline-end: 15px;
+    }
+  }
+  &__wrapper {
+    background: var(--clr-common-white);
+    padding: 25px 25px;
+    @include border-radius(6px);
+    margin-bottom: 20px;
+    position: relative;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.03);
+    min-height: calc(100% - 20px);
+    @include dark {
+      background: var(--clr-bg-6);
+    }
+    @media #{$xs}{
+      padding: 25px 20px;
+    }
+    &::after {
+      position: absolute;
+      content: "";
+      height: 13px;
+      width: 3px;
+      background: var(--clr-text-11);
+      inset-inline-start: 0;
+      top: 30px;
+      @include dark {
+        background: var(--clr-theme-3);
+      }
+    }
+  }
+  &__header {
+    &-top {
+      @include flexbox();
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--clr-border-1);
+      padding-bottom: 19px;
+      flex-wrap: wrap;
+      column-gap: 10px;
+      row-gap: 20px;
+    }
+    &-icon {
+      font-size: 20px;
+      color: var(--clr-text-13);
+      @include dark {
+        color: var(--clr-text-8);
+      }
+      svg {
+        * {
+          fill: #F87A58;
+          @include dark {
+            fill: var(--clr-text-8);
+          }
+        }
+      }
+      &i {
+        top: 4px;
+        position: relative;
+      }
+    }
+    &-title {
+      h4 {
+        font-size: 20px;
+        color: var(--clr-text-secondary);
+        @media #{$xs}{
+          font-size: 18px;
+        }
+      }
+    }
+    &-right {
+      @include flexbox();
+      align-items: center;
+      gap: 45px;
+      @media #{$xs}{
+        justify-content: space-between;
+      }
+  }
+  }
+  &__title {
+    &-inner {
+      @include flexbox();
+      gap: 10px;
+      align-items: center;
+    }
+  }
+}
+
+.card__header {
+  &-calendar {
+    span {
+      select {
+        border: 1px solid var(--clr-border-1);
+        padding: 0px 26px 0 9px;
+        font-size: 14px;
+        height: 30px;
+        border-radius: 4px;
+        background: var(--clr-common-white);
+        color: var(--clr-text-10);
+        display: inline-block;
+        @media #{$xxs} {
+          margin-bottom: 10px;
+        }
+        @include dark {
+          background: var(--clr-bg-6);
+          color: var(--clr-text-6);
+        }
+      }
+    }
+  }
+}
+
+// Tricket Sold 
+.tricket__sold-item {
+	display: grid;
+	grid-template-columns: 1fr 130px;
+	align-items: center;
+	padding: 20px 0px;
+	border-bottom: 1px solid var(--clr-border-1);
+  &:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+  @media #{$xs}{
+    grid-template-columns: 1fr;
+  }
+}
+// Card progress
+.sold {
+  &__progress {
+    &-item {
+      margin-top: 20px;
+    }
+    .progress {
+      height: 6px;
+      border-radius: 4.5px;
+      background-color: var(--clr-bg-5);
+      .progress-bar {
+        background: var(--clr-gradient-5);
+        border-radius: 4.5px;
+      }
+    }
+  }
+  &__bar-top {
+    @include flexbox();
+    align-items: center;
+    gap: 7px;
+    justify-content:flex-end;
+    margin-bottom: 15px;
+    span {
+      font-size: 14px;
+      color: rgb(157, 157, 157);
+      font-weight: var(--bd-fw-sbold);
+    }
+    .active {
+      color: var(--clr-text-secondary);
+    }
+  }
+}
+
+// Traffic Tab style
+.traffic {
+  &__tab {
+    .nav-tabs {
+      @include flexbox();
+      gap: 10px;
+      border: 0;
+      .nav-link {
+        border: 1px solid var(--clr-border-1);
+        color: var(--clr-text-9);
+        border-radius: 4px;
+        &.active {
+          background: var(--clr-bg-5);
+          border-color: transparent;
+          color: var(--clr-common-white);
+        }
+      }
+    }
+    .nav-link {
+      font-size: 14px;
+      padding: 2px 10px;
+    }  
+  }
+}
+
+// Scroll
+.ps__thumb-y {
+	background-color: #DAE2F3;
+	width: 4px;
+}
+.height-318 {
+	height: 318px;
+}
+.widget-timeline {
+	position: relative;
+}
+#scroll-w-1 {
+  height: 298px;
+}
+#scroll-w-2 {
+	height: 281px;
+}
+
+#scroll-w-3 {
+	height: 382px;
+}
+
+#scroll-w-4 {
+	height: 375px;
+}
+.bb-0 {
+  border-bottom: 0 !important;
+}
+.pb-0 {
+  padding-bottom: 0;
+}

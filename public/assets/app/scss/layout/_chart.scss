@@ -1,0 +1,69 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  CHART CSS START
+/*----------------------------------------*/
+
+// line  chart
+#lineChart {
+    background: linear-gradient(180deg, rgba(247, 66, 111, 0.13) 0%, rgba(247, 66, 111, 0) 100%);
+    margin-top: 30px;
+    display: block;
+    width: 100%;
+    .apexcharts-canvas{
+      width: 100% !important;
+    }
+}
+
+// Pie chart
+#pieChart {
+	@include flexbox();
+	justify-content: center;
+	padding-bottom: 25px;
+	overflow-x: clip;
+}
+
+// Readial Chart
+.redialchart__content {
+	@include flexbox();
+	justify-content: space-between;
+	margin-top: 29px;
+}
+.redialchart__info {
+	span {
+		color: var(--clr-text-10);
+		font-size: 14px;
+		display: block;
+		margin-bottom: 5px;
+	}
+	h4 {
+		font-size: 15px;
+		font-weight: var(--bd-fw-medium);
+		color: var(--clr-text-secondary);
+	}
+}
+#radialChart {
+	position: relative;
+	z-index: 5;
+	@include rtl {
+		display: inline-block;
+	}
+	&::before {
+		position: absolute;
+		content: "";
+		height: 180px;
+		width: 180px;
+		background: var(--clr-bg-5);
+		left: 50%;
+		top: 50%;
+		z-index: -1;
+		border-radius: 50%;
+		transform: translate(-50%, -50%);
+	}
+}
+
+.apexcharts-legend {
+	@include flexbox();
+	overflow: hidden !important;
+	padding: 0 10px;
+}

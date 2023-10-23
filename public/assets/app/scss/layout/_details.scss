@@ -1,0 +1,164 @@
+/* Details Pages - Start
+================================================== */
+@use '../utils' as *;
+
+.details_item_image {
+	overflow: hidden;
+	border-radius: 12px;
+}
+
+.details_content_wrap {
+	p {
+		font-size: 17px;
+		line-height: 27px;
+		margin-bottom: 35px;
+	}
+}
+
+
+
+.details_item_info_title {
+	font-size: 38px;
+	line-height: 52px;
+	margin-bottom: 30px;
+	color: var(--clr-text-secondary);
+
+	@media #{$md} {
+		font-size: 34px;
+	}
+
+	@media #{$sm} {
+		font-size: 30px;
+	}
+
+	@media #{$xs} {
+		font-size: 26px;
+	}
+}
+
+.details_info_box {
+	padding: 60px 70px;
+	margin-bottom: 50px;
+	border-radius: 12px;
+	@media #{$xs,$sm,} {
+		padding: 50px 30px;
+	}
+
+	span {
+		display: block;
+		font-size: 16px;
+		font-weight: 500;
+		line-height: 27px;
+		margin-bottom: 5px;
+		text-transform: uppercase;
+	}
+
+	strong {
+		font-size: 21px;
+		font-weight: 600;
+		line-height: 29px;
+	}
+}
+
+.blog_details {
+	.details_image {
+		padding: 20px;
+		margin-bottom: 45px;
+		border-radius: 12px;
+		background-color: #F1F1FC;
+
+		img {
+			border-radius: 12px;
+			width: 100%;
+		}
+	}
+
+
+
+	.blog_post_meta {
+		display: flex;
+		align-items: center;
+		margin-bottom: 20px;
+
+		.post_date {
+			font-size: 16px;
+			font-weight: 600;
+			line-height: 22px;
+			margin-inline-start: 20px;
+			color: #5D636A;
+		}
+	}
+}
+.bd-theme-dark .blog_details {
+	.details_image {
+		padding: 20px;
+		margin-bottom: 45px;
+		border-radius: 12px;
+		background-color: var(--clr-bg-6);
+
+		img {
+			border-radius: 12px;
+			width: 100%;
+		}
+	}
+
+
+
+	.blog_post_meta {
+		display: flex;
+		align-items: center;
+		margin-bottom: 20px;
+
+		.post_date {
+			font-size: 16px;
+			font-weight: 600;
+			line-height: 22px;
+			margin-inline-start: 20px;
+			color: #BFBEBE;
+		}
+	}
+}
+
+.bd-theme-dark.list_item_icon{
+	color:var(--clr-text-secondary);
+}
+
+.bd-theme-dark .details_item_title {
+	font-size: 28px;
+	line-height: 38px;
+	margin-bottom: 30px;
+	color:var(--clr-text-secondary);
+}
+.bd-theme-light .details_item_title {
+	font-size: 28px;
+	line-height: 38px;
+	margin-bottom: 30px;
+}
+
+.details_item_info_title {
+	font-size: 21px;
+	font-weight: 700;
+	line-height: 29px;
+	margin-bottom: 20px;
+	margin-top: 30px;
+}
+.icon_list {
+	margin-bottom: 30px;
+}
+
+
+.social_actions {
+	display: flex;
+	padding: 20px 0;
+	margin-bottom: 30px;
+	border-style: solid;
+	align-items: center;
+	border-width: 1px 0 1px;
+	border-color: rgba(15, 14, 14, 0.1);
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 20px 30px;
+}
+
+/* Details Pages - End
+================================================== */

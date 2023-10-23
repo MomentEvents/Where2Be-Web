@@ -1,0 +1,43 @@
+/* Social Media - Start
+================================================== */
+.social_wrap {
+    display: flex;
+    align-items: center;
+
+    .social_title {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 27px;
+        margin: 0 10px 0 0;
+    }
+}
+
+.social_icon {
+    margin: -6px;
+
+    >li {
+        padding: 6px;
+    }
+
+    a {
+        z-index: 1;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        color: #ffffff;
+        position: relative;
+        border-radius: 100%;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(15, 14, 14, 0.1);
+
+        &:hover {
+            color: #ffffff;
+            border-color: var(--clr-theme-1);
+            background-color: var(--clr-theme-1);
+        }
+    }
+}
+
+/* Social Media - End
+================================================== */

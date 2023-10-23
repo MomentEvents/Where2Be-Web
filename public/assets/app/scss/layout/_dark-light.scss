@@ -1,0 +1,22 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  DARK LIGHT CSS START
+/*----------------------------------------*/
+
+:root {
+	.bd-theme-dark {
+	--clr-text-primary: #111111;
+	--clr-text-secondary: #FFFFFF;
+	--clr-text-10: var(--clr-text-9);
+	--clr-border-1:#404040;
+	
+	}
+}
+
+[bd-theme="bd-theme-light"]{
+	.expovent__sidebar {
+		background-image:none !important;
+	}
+}
+

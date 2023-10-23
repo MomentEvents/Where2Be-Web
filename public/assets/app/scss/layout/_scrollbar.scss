@@ -1,0 +1,39 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  SCROLLBAR CSS START
+/*----------------------------------------*/
+
+// Scroll
+.scrollbar-track-y {
+	width: 7px !important;
+	@include rtl {
+		left: 0;
+		right: auto;
+	}
+}
+.scrollbar-thumb {
+	width: 7px !important;
+}
+.scrollbar-track {
+	@include border-radius(6px);
+}
+.height-318 {
+	height: 318px;
+}
+.widget-timeline {
+	position: relative;
+}
+.scroll-w-1 {
+	height: 299px;
+}
+.scroll-w-2 {
+	height: 295px;
+}
+.scroll-w-3 {
+	height: 382px;
+}
+.scroll-w-4 {
+	height: 375px;
+}
+

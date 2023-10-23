@@ -1,0 +1,204 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  BREAADCRUMB CSS START
+/*----------------------------------------*/
+
+// Breadcrumb style
+.breadcrumb {
+	&__main {
+		@include flexbox();
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 25px;
+	}
+	&__wrapper {
+		padding: 35px 0 15px;
+		border-bottom: 1px solid var(--clr-border-1);
+	}
+	&__menu {
+		ul {
+			@include inline-flex();
+			gap: 30px;
+			justify-content: center;
+			// add new line 
+			display: flex;
+			li {
+				list-style: none;
+				position: relative;
+				line-height: 1;
+				&:not(:last-child) {
+					&:after {
+						display: inline-block;
+						content: "/";
+						position: absolute;
+						inset-inline-end: -18px;
+						top: 50%;
+						font-family: var(--bd-ff-fontawesome);
+						font-size: 14px;
+						transform: translateY(-50%) rotateY(40deg);
+						color: var(--clr-text-secondary);
+					}
+				}
+				&.active {
+					span {
+						color: var(--clr-theme-1);
+						@include dark {
+							color: var(--clr-common-white);
+						}
+					}
+				}
+				span {
+					font-size: 16px;
+					text-transform: capitalize;
+					font-weight: var(--bd-fw-medium);
+					color: var(--clr-text-secondary);
+					a {
+						font-weight: var(--bd-fw-regular);
+						&:hover {
+							color: var(--clr-theme-1);
+						}
+					}
+				}
+			  }
+		}
+	}
+	&__inner {
+		@include flexbox();
+		align-items: center;
+		gap: 10px;
+	}
+	&__icon {
+		i {
+			color: var(--clr-text-8);
+		}
+	}
+}
+
+.bd-theme-dark .page_banner {
+	background: linear-gradient(0deg, rgba(125, 125, 147, 0.2) 0%, rgba(83, 85, 223, 0) 100%);
+}
+
+// Breadcrumb tab 
+.breadcrumb__tab {
+    .nav-link {
+        font-size: 14px;
+        padding: 6px 16px;
+    }
+    .nav-tabs {
+        @include flexbox();
+        gap: 10px;
+        border: 0;
+        .nav-link {
+			border: 1px solid var(--clr-border-1);
+			color: var(--clr-text-20);
+			font-weight: var(--bd-fw-medium);
+			text-transform: capitalize;
+			@include border-radius(6px);
+			@include dark {
+				color: var(--clr-common-white);
+			}
+            &.active {
+                color: var(--clr-common-white);
+                position: relative;
+                z-index: 5;
+                border: transparent;
+            &::after {
+                position: absolute;
+                content: "";
+                height: 100%;
+                width: 100%;
+                top: 0;
+                inset-inline-start: 0;
+                background: var(--clr-gradient-7);
+                z-index: -1;
+                @include border-radius(6px);
+            }
+            }
+        }
+    }
+}
+
+// new style added 6/11/23
+
+/* Breadcrumb Section - Start
+================================================== */
+.page_banner {
+	overflow: hidden;
+	position: relative;
+	background: linear-gradient(0deg, rgba(83, 85, 223, 0.2) 0%, rgba(83, 85, 223, 0) 100%);
+	@media #{$md,$lg,$xl,$xxl} {
+		padding: 220px 0 150px;
+	}
+	@media #{$sm,$xs} {
+		padding: 210px 0 150px
+	}
+	.shape_1 {
+		bottom: 0;
+		inset-inline-start: -85px;
+		max-width: 16px;
+	}
+	.shape_2 {
+		top: -130px;
+		inset-inline-end: -305px;
+		max-width: 139px;
+	}
+	.shape_3 {
+		top: -90px;
+		inset-inline-end: 236px;
+	}
+}
+
+.page_title {
+	font-size: 62px;
+	line-height: 1.2;
+	color: var(--clr-text-secondary);
+	@media #{$md} {
+		font-size: 50px;
+	}
+	@media #{$sm} {
+		font-size: 45px;
+	}
+	@media #{$xs} {
+		font-size: 38px;
+	}
+	@media #{$xxs} {
+		font-size: 32px;
+	}
+}
+
+.breadcrumb_nav {
+	>li {
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 22px;
+		position: relative;
+		color: var(--clr-text-secondary);
+		&:not(:last-child) {
+			margin-inline-end: 17px;
+			padding-inline-end: 17px;
+			&:after {
+				top: 1px;
+				inset-inline-end: -7px;
+				font-weight: 400;
+				content: '\f061';
+				position: absolute;
+				font-family: 'Font Awesome 5 Pro';
+			}
+		}
+		&:last-child {
+			>a {
+				pointer-events: none;
+			}
+		}
+		>a {
+			display: block;
+			font-size: 16px;
+			font-weight: 600;
+			line-height: 22px;
+		}
+	}
+}
+/* Breadcrumb Section - End
+================================================== */

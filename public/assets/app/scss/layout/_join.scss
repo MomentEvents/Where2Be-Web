@@ -1,0 +1,199 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  JOIN CSS START
+/*----------------------------------------*/
+.join {
+	&__main {
+		&-wrapper {
+			border-bottom: 1px solid #333;
+		}
+	}
+
+	&__shape {
+		&-1 {
+			position: absolute;
+			top: 67px;
+			inset-inline-start: 50px;
+			z-index: -1;
+			-moz-animation: bdtranslateX2 3s ease-in-out 1s forwards infinite alternate;
+			-webkit-animation: bdtranslateX2 3s ease-in-out 1s forwards infinite alternate;
+			animation: bdtranslateX2 3s ease-in-out 1s forwards infinite alternate;
+		}
+
+		&-2 {
+			position: absolute;
+			inset-inline-end: 0px;
+			bottom: 50px;
+			z-index: -1;
+			-moz-animation: bdtranslateX2 3s ease-in-out 1s forwards infinite alternate;
+			-webkit-animation: bdtranslateX2 3s ease-in-out 1s forwards infinite alternate;
+			animation: bdtranslateX2 3s ease-in-out 1s forwards infinite alternate;
+
+			@media #{$xs} {
+				display: none;
+			}
+		}
+	}
+
+	&__features {
+		&-grid {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			row-gap: 80px;
+			column-gap: 30px;
+
+			@media #{$xxs} {
+				grid-template-columns: repeat(1, 1fr);
+			}
+		}
+
+		&-wrapper {
+			padding-inline-end: 95px;
+			position: relative;
+			margin-inline-end: 50px;
+
+			@media #{$xl} {
+				padding-inline-end: 30px;
+				margin-inline-end: 0px;
+			}
+
+			@media #{$xs,$sm,$md,$lg} {
+				padding-inline-end: 0px;
+				margin-inline-end: 0px;
+			}
+
+			&::after {
+				position: absolute;
+				content: "";
+				height: 535px;
+				width: 1px;
+				background-color: #333333;
+				inset-inline-end: 0;
+				top: 0;
+
+				@media #{$xs,$sm,$md,$lg} {
+					display: none;
+				}
+			}
+		}
+
+		&-icon {
+			margin-bottom: 35px;
+
+			span {
+				width: 114px;
+				height: 114px;
+				border-radius: 50%;
+				@include inline-flex();
+				align-items: center;
+				justify-content: center;
+				z-index: 5;
+				position: relative;
+				display: inline-flex;
+
+				&::after {
+					position: absolute;
+					content: "";
+					height: 114px;
+					width: 114px;
+					background: var(--clr-common-white);
+					border: 1px solid var(--clr-common-white);
+					z-index: -1;
+					border-radius: 50%;
+					background-color: transparent;
+					@include transition(.3s);
+				}
+
+				&:hover {
+					&::after {
+						width: 110px;
+						height: 110px;
+					}
+
+					&:before {
+						opacity: 1;
+					}
+
+					i {
+						color: var(--clr-theme-1);
+					}
+				}
+
+				&:before {
+					position: absolute;
+					content: "";
+					width: 90px;
+					height: 90px;
+					background: var(--clr-common-white);
+					border-radius: 50%;
+					z-index: -1;
+					opacity: 0;
+					@include transition(.3s);
+				}
+
+				i {
+					font-size: 61px;
+					color: var(--clr-common-white);
+				}
+			}
+		}
+
+		&-title {
+			color: var(--clr-common-white);
+
+			@media #{$lg,$xs} {
+				font-size: 20px
+			}
+		}
+	}
+
+	&__content {
+		p {
+			font-size: 16px;
+			color: var(--clr-common-white);
+			margin-bottom: 0;
+		}
+
+		&-wrapper {
+			padding-inline-start: 90px;
+
+			@media #{$xl} {
+				padding-inline-start: 20px;
+			}
+
+			@media #{$xs,$sm,$md,$lg} {
+				padding-inline-start: 0px;
+			}
+		}
+	}
+}
+
+.speaker {
+	&__slider-area {
+		.speaker__slider-item {
+			&:nth-child(2n) {
+				margin-top: 68px;
+			}
+		}
+	}
+
+	&__activation {
+		.slick-list {
+			overflow: visible;
+		}
+
+		.slick-track {
+			@include flexbox();
+			gap: 75px;
+
+			@media #{$xs,$sm} {
+				gap: 30px;
+			}
+		}
+	}
+}
+
+.ep-slick-01 .slick-track .slick-slide:nth-child(2n) .speaker__slider-item {
+	margin-top: 68px;
+}

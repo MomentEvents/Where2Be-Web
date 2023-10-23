@@ -1,0 +1,299 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/* OFFCANVAS CSS START
+/*----------------------------------------*/
+
+// Offcanvas style
+.offcanvas{
+    &__close {
+        button {
+            height: 45px;
+            width: 45px;
+            @include flexbox();
+            align-items: center;
+            justify-content: center;
+            color: var(--clr-common-white);
+            font-size: 18px;
+            background-color: var(--clr-theme-1);
+            @include border-radius(50%);
+            overflow: hidden;
+            position: relative;
+            i {
+                color: var(--clr-common-white);
+            }
+        }
+    }
+    &__info {
+        background: #191919 none repeat scroll 0 0;
+        border-left: 2px solid var(--clr-theme-1);
+        position: fixed;
+        right: 0;
+        top: 0;
+        width: 400px;
+        height: 100%;
+        -webkit-transform: translateX(calc(100% + 80px));
+        -moz-transform: translateX(calc(100% + 80px));
+        -ms-transform: translateX(calc(100% + 80px));
+        -o-transform: translateX(calc(100% + 80px));
+        transform: translateX(calc(100% + 80px));
+        -webkit-transition: transform 0.45s ease-in-out, opacity 0.45s ease-in-out;
+        -moz-transition: transform 0.45s ease-in-out, opacity 0.45s ease-in-out;
+        transition: transform 0.45s ease-in-out, opacity 0.45s ease-in-out;
+        z-index: 999;
+        overflow-y: scroll;
+        overscroll-behavior-y: contain;
+        scrollbar-width: none;
+        ::-webkit-scrollbar {
+            display: none;
+        };
+        @media #{$xs}{
+            width: 300px;
+        }
+        &.info-open {
+            opacity: 1;
+            @include transform(translateX(0));
+        }
+    }
+    &__logo {
+        a {
+            img {
+                width: 180px;
+            }
+        }
+    }
+    &__wrapper{
+        position: relative;
+        height: 100%;
+        padding: 30px 30px;
+        @media #{$xs}{
+           padding: 20px;
+        }
+    }
+    &__top{
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--clr-border-2)
+    }
+    &__color{
+        margin-bottom: 40px;
+        & h5{
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        & input{
+            display: none;
+        }
+        & label{
+            width: 100%;
+            height: 60px;
+            background-color: var(--clr-theme-1);
+            &:hover{
+                cursor: pointer;
+            }
+        }
+
+        &-2{
+            label{
+                background-color: var(--bd-theme-2);
+            }
+        }
+    }
+    &__search{
+        position: relative;
+        & input{
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            padding-right: 20px;
+            background: transparent;
+            border: none;
+            outline: none;
+            border-bottom: 1px solid var(--clr-border-2);
+            font-size: 16px; 
+            color: var(--clr-common-white);
+            &::placeholder{
+                color: var(--clr-common-white);
+            }
+            &:focus{
+                border-color: var(--clr-common-white);
+            }
+        }
+        & button{
+            position: absolute;
+            top: 50%;
+            right: 0;
+            @include transform(translateY(-50%));
+            font-size: 16px;
+            color: var(--clr-common-white);
+            &:hover {
+                color: var(--clr-theme-1);
+            }
+        }
+    }
+    &__text{
+        & p{
+            margin-bottom: 25px;
+        }
+    }
+    &__contact{
+        & h4{
+            font-size: 22px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: var(--bd-fw-bold);
+            color: var(--clr-common-white);
+        }
+        & ul{
+            & li{
+                &:not(:last-child){
+                    margin-bottom: 20px;
+                }
+                &:hover{
+                    & i{
+                        color: var(--clr-common-white);
+                        border-color: var(--clr-theme-1);
+                        background-color: var(--clr-theme-1);
+                    }
+                }
+            }
+        }
+        &-icon{
+            & i{
+                width: 40px;
+                height: 40px;
+                @include flexbox();
+                align-items: center;
+                justify-content: space-evenly;
+                text-align: center;
+                border: 1px solid var(--clr-border-1);
+                @include border-radius(50%);
+                @include border-radius(50%);
+                @include transition(.3s);
+                overflow: hidden;
+                color: var(--clr-common-white);
+                position: relative;
+                z-index: 5;
+            }
+        }
+        &-text{
+            & a{
+                font-size: 16px;
+                font-weight: 500;
+                color: var(--clr-common-white);
+                &:hover {
+                    color: var(--clr-theme-1);
+                }
+            }
+        }
+    }
+    &__social{
+        margin-bottom: 30px;
+        & ul{
+            & li{
+                display: inline-block;
+                &:not(:last-child){
+                    margin-right: 5px;
+                }
+                & a{
+                    display: inline-block;
+                    width: 40px;
+                    height: 40px;
+                    @include flexbox();
+                    align-items: center;
+                    justify-content: center;
+                    border: 1px solid var(--clr-border-1);
+                    color: var(--clr-theme-1);
+                    @include border-radius(50%);
+                    overflow: hidden;
+                    position: relative;
+                    z-index: 5;
+                    background-color: transparent;
+                    &:hover{
+                        color: var(--clr-common-white);
+                        border: 1px solid var(--clr-theme-1);
+                        background-color: var(--clr-theme-1);
+                    }
+                }
+            }
+        }
+    }
+    &__notification{
+        &-icon{
+            & a{
+                font-size: 14px;
+                color: var(--clr-common-white);
+                position: relative;
+
+                & .notification-count{
+                    position: absolute;
+                    top: -4px;
+                    right: -13px;
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+                    line-height: 22px;
+                    font-size: 12px;
+                    font-weight: 600;
+                    background-color: var(--clr-theme-1);
+                    @include border-radius(50%);
+                    color: var(--clr-common-white);
+                    text-align: center;
+                }
+            }
+        }
+        &-text{
+            & p{
+                margin-bottom: 0;
+                font-weight: 500;
+                color: var(--clr-common-white);
+                font-size: 14px;
+                
+                & .notification-number{
+                    color: var(--clr-theme-1);
+                }
+                & a{
+                    color: var(--clr-theme-1);
+                }
+            }
+        }
+    }
+    &__overlay {
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        background:var(--clr-common-black);
+        z-index: 900;
+        top: 0;
+        opacity: 0;
+        visibility: hidden;
+        right: 0;
+        @include transition(.3s);
+        &.overlay-open {
+            opacity: 0.8;
+            visibility: visible;
+        }
+    }
+    .signin-area.open {
+        opacity: 0.6;
+        visibility: visible;
+        @include transition(.3s);
+    }
+}
+.sidebar__toggle {
+	cursor: pointer;
+}
+.app__offcanvas-overlay.overlay-open {
+    @media (max-width: 992px) {
+        background: rgba(0, 0, 0, 0.6);
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        z-index: 10;
+    }
+}
+.offcanvas__contact-icon {
+    margin-inline-end: 15px;
+}
+  

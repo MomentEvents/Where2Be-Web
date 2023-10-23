@@ -1,0 +1,49 @@
+
+// font url
+
+$font-url: 'https://fonts.google.com/specimen/Inter' ;
+
+
+
+// font family
+$font-family: (
+    ff: (
+        "body": "'Inter', sans-serif",
+        "heading": "'Inter', sans-serif",
+        "fontawesome": '"Font Awesome 6 Pro"',
+    )
+);
+
+// font weight
+$font-scale: (
+    fw: (
+        "normal": normal,
+        "thin": 100,
+        "elight": 200,
+        "light": 300,
+        "regular": 400,
+        "medium": 500,
+        "sbold": 600,
+        "bold": 700,
+        "ebold": 800,
+        "black": 900,
+    )
+);
+
+// font size
+$font-size: (
+    fs: (
+        "body": 16px,
+        "p": 16px,
+        "h1": 80px,
+        "h2": 50px,
+        "h3": 24px,
+        "h4": 20px,
+        "h5": 16px,
+        "h6": 14px,
+    )
+);
+
+
+
+

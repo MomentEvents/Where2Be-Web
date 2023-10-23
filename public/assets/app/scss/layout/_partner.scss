@@ -1,0 +1,33 @@
+
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  PARTNER CSS START
+/*----------------------------------------*/
+// Partner css
+.partner {
+	&__grid {
+		&-wrapper {
+			display: grid;
+			grid-template-columns: repeat(5, 120px);;
+			row-gap: 70px;
+			justify-content: space-between;
+			@media #{$md}{
+				grid-template-columns: repeat(4, 120px);
+			}
+			@media #{$sm}{
+				grid-template-columns: repeat(3, 120px);
+			}
+			@media #{$xs}{
+				grid-template-columns: repeat(3, 120px);
+			}
+			@media #{$xxs}{
+				grid-template-columns: repeat(2, 120px);
+			}
+		}
+	}
+	&__thumb {
+		text-align: center;
+	}
+}
+

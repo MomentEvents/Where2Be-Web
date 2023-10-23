@@ -1,0 +1,204 @@
+/*----------------------------------------*/
+/*  FOOTER CSS START
+/*----------------------------------------*/
+@use '../utils' as *;
+
+// Footer style css
+.footer {
+	&__shape {
+		&-1 {
+			position: absolute;
+			inset-inline-start: 0;
+			top: 76px;
+			-moz-animation: bdtranslateX 3s ease-in-out 1s forwards infinite alternate;
+			-webkit-animation: bdtranslateX 3s ease-in-out 1s forwards infinite alternate;
+			animation: bdtranslateX 3s ease-in-out 1s forwards infinite alternate;
+		}
+		&-2 {
+			position: absolute;
+			inset-inline-start: 40px;
+			bottom: 86px;
+			-moz-animation: bdrotate 6s ease-in-out 3s forwards infinite alternate;
+			-webkit-animation: bdrotate 6s ease-in-out 3s forwards infinite alternate;
+			animation: bdrotate 6s ease-in-out 3s forwards infinite alternate;
+			@media #{$xs,$sm,$md}{
+				display: none;
+			}
+		}
+		&-3 {
+			position: absolute;
+			inset-inline-end: 48px;
+			top: 86px;
+			@media #{$md}{
+				inset-inline-end: 0;
+			}
+			@media #{$xs,$sm}{
+				display: none;
+			}
+		}
+		&-4 {
+			inset-inline-end: 34px;
+			position: absolute;
+			bottom: 45px;
+			-moz-animation: bdtranslateX2 3s ease-in-out 1s forwards infinite alternate;
+			-webkit-animation: bdtranslateX2 3s ease-in-out 1s forwards infinite alternate;
+			animation: bdtranslateX2 3s ease-in-out 1s forwards infinite alternate;
+			@media #{$xs,$sm,$md}{
+				display: none;
+			}
+		}
+	}
+}
+// Footer Widger
+.footer {
+	&__widget {
+		&-2 {
+			padding-inline-start: 30px;
+			@media #{$xs,$sm,$md}{
+				padding-inline-start: 0;
+			}
+		}
+	}
+	&__grid {
+		&-wrapper {
+		display: grid;
+		grid-template-columns: repeat(12, 1fr);
+		column-gap: 30px;
+		row-gap: 60px;
+	}
+	}
+	&__content {
+		& > P {
+			color: var(--clr-text-21);
+			margin-bottom: 45px;
+		}
+	}
+	&__social {
+		@include flexbox();
+		gap: 18px;
+		a {
+			color: var(--clr-text-21);
+			@include flexbox();
+			align-items: center;
+			justify-content: center;
+			width: 36px;
+			height: 36px;
+			background: #18274F;
+			font-size: 16px;
+			&:hover {
+				background-color: var(--clr-theme-1);
+			}
+			i {
+				line-height: 1;
+			}
+		}
+	}
+	&__widget {
+		&-title {
+			h4 {
+				margin-bottom: 25px;
+				font-size: 20px;
+				position: relative;
+				z-index: 10;
+				padding-bottom: 10px;
+				color: var(--clr-common-white);
+				&::after {
+					position: absolute;
+					content: "";
+					width: 5px;
+					border: 2px solid var(--clr-bg-footer);
+					height: 0px;
+					background-color: transparent;
+					bottom: -1px;
+					inset-inline-start: 40px;
+					-webkit-animation: footerLine 5s linear infinite;
+					animation: footerLine 5s linear infinite;
+				}
+				&:before {
+					content: '';
+					position: absolute;
+					inset-inline-start: 0;
+					bottom: 0;
+					width: 74px;
+					height: 2px;
+					background-color: #fff;
+				}
+			}
+		}
+	}
+	&-title {
+		h4 {
+			font-size: 20px;
+			color: var(--clr-common-white);
+		}
+	}
+	&__link {
+		ul {
+			display: grid;
+			grid-template-columns: 1fr;
+			grid-gap: 16px;
+			li {
+				list-style: none;
+				a {
+					color: var(--clr-text-21);
+					font-size: 16px;
+					position: relative;
+					padding-inline-start: 15px;
+					&:hover {
+						color: var(--clr-theme-1);
+						margin-inline-start: 5px;
+					}
+					&::after {
+						position: absolute;
+						content: "\f105";
+						font-family: var(--bd-ff-fontawesome);
+						inset-inline-start: 0;
+						top: 50%;
+						transform: translateY(-50%)
+					}
+				}
+			}
+		}
+	}
+	&__contact {
+		p {
+			color: var(--clr-text-21);
+		}
+		button {
+			color: var(--clr-text-21);
+		}
+	}
+	&__input {
+		position: relative;
+		input {
+			height: 60px;
+			width: 100%;
+			outline: none;
+			border: 0;
+			padding-inline-start: 20px;
+			padding-inline-end: 52px;
+			@include border-radius(6px);
+			margin-bottom: 16px;
+		}
+		span {
+			position: absolute;
+			inset-inline-end: 25px;
+			top: 17px;
+			color: #8E8E8E;
+		}
+	}
+	&__copyright {
+		border-top: 1px dashed #647AB5;
+		p {
+			margin-bottom: 0;
+			padding: 30px 0;
+			color: var(--clr-text-21);
+			letter-spacing: 4px;
+			a {
+				&:hover {
+					color: var(--clr-theme-1);
+				}
+			}
+		}
+	}
+}

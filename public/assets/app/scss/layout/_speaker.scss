@@ -1,0 +1,71 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  SPEAKER CSS START
+/*----------------------------------------*/
+.speaker {
+	&__wrapper {
+		@include flexbox();
+		flex-direction: column;
+		row-gap: 27px;
+		justify-content: center;
+	}
+	&__inner {
+		@include flexbox();
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 20px;
+	}
+	&__info {
+		@include flexbox();
+		align-items: center;
+		gap: 20px;
+	}
+	&__title {
+		font-weight: var(--bd-fw-sbold);
+		color: var(--clr-text-secondary);
+		margin-bottom: 5px;
+		a {
+			&:hover {
+				color: var(--clr-theme-1);
+			}
+		}
+	}
+	&__status {
+		color: var(--clr-text-10);
+		font-size: 14px;
+	}
+	&__button {
+		a {
+			@include inline-flex();
+			align-items: center;
+			// new line code 
+			display: flex;
+			width: 50px;
+			height: 50px;
+			border: 1px solid var(--clr-border-1);
+			justify-content: center;
+			border-radius: 50px;
+			font-size: 18px;
+			color: var(--clr-text-10);
+			&:hover {
+				background-color: var(--clr-theme-1);
+				color: var(--clr-common-white);
+				border-color: transparent;
+			}
+		}
+	}
+	&__slider-item {
+		position: relative;
+		&::before {
+			position: absolute;
+			content: "";
+			height: 100%;
+			left: 0;
+			width: 100%;
+			cursor: url("../../../img/shape/darg-icon.png") 32 32,auto;
+			top: 0;
+		}
+	}
+}

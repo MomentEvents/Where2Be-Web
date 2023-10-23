@@ -1,0 +1,104 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  PROFILE CSS START
+/*----------------------------------------*/
+.profile__title {
+	font-weight: var(--bd-fw-medium);
+	margin-bottom: 20px;
+	display: inline-block;
+	color: var(--clr-text-secondary)
+}
+.profile__left {
+	border-inline-end: 1px solid var(--clr-border-3);
+	min-height: 100%;
+	@include dark {
+		border-color: var(--clr-border-1);
+	}
+	@media #{$xs,$sm}{
+		margin-bottom: 60px;
+	}
+	@media #{$xs}{
+		border-inline-end: 0;
+	}
+}
+.padding__left-inner {
+	margin-inline-end: 30px;
+	@media #{$xs}{
+		margin-inline-end: 0px;
+	}
+}
+.profile__user {
+	ul {
+		li {
+			list-style: none;
+			padding-bottom: 10px;
+			border-bottom: 1px solid var(--clr-border-1);
+			margin-bottom: 15px;
+			
+			&:last-child {
+				margin-bottom: 0;
+				padding-bottom: 0;
+				border-bottom: 0;
+			}
+		}
+	}
+}
+.profile__user-item {
+	display: grid;
+	grid-template-columns: 40% 60%;
+	column-gap: 15px;
+	@media #{$xxs}{
+		grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+	}
+}
+.profile__user-info {
+	span {
+		font-weight: var(--bd-fw-medium);
+		color: var(--clr-text-secondary);
+	}
+}
+.profile__edit {
+	position: absolute;
+	inset-inline-end: 0px;
+	top: 0px;
+	i {
+		font-size: 20px;
+		color: var(--clr-text-9);
+		cursor: pointer;
+	}
+	&:hover {
+		i {
+			color: var(--clr-theme-1);
+		}
+	}
+}
+.profile__right{
+	padding-inline-end: 10px;
+}
+.profile__text {
+	padding-inline-end: 150px;
+	p {
+		@include dark {
+			color: var(--clr-common-white);
+		}
+	}
+	@media #{$xs,$sm,$md,$lg,$xl}{
+		padding-inline-end: 0;
+	}
+}
+.profile__user-tiitle {
+	span {
+		color: var(--clr-text-11);
+		@include dark {
+			color: var(--clr-text-6);
+		}
+	}
+}
+
+.profile__thumb {
+	img {
+		width: 100%;
+		@include border-radius(6px);
+	}
+}

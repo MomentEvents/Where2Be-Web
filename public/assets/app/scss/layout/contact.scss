@@ -1,0 +1,30 @@
+/* Contact Template - Start
+================================================== */
+@use '../utils' as *;
+
+.bd-theme-dark .contact_form {
+	padding: 40px;
+	border-radius: 12px;
+	background-color: var(--clr-bg-6);
+	@media #{$xxs} {
+		padding: 30px;
+	}
+}
+
+
+.bd-theme-light .contact_form {
+	padding: 40px;
+	border-radius: 12px;
+	background-color: #F1F1FC;
+	@media #{$xxs} {
+		padding: 30px;
+	}
+}
+
+
+
+@media #{$sm, $xs} {
+	.blog_grouped .contact_div{
+		flex: unset;
+	}
+}

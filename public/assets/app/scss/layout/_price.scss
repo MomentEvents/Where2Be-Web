@@ -1,0 +1,218 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  PRICING CSS START
+/*----------------------------------------*/
+
+.price__short-details {
+    p {
+        margin-bottom: 0;
+        @media #{$xl,$lg,$md,$sm,$xs}{
+           br {
+            display: none;
+           }
+        }
+    }
+}
+.pricing {
+    &-wrap {
+        padding: 150px 0px;
+        .section-title {
+            padding-inline-start: 90px;
+            .section-carecter {
+                inset-inline-start: 0px;
+            }
+            & span .title-underline {
+                position: absolute;
+                inset-inline-start: 10px;
+                bottom: -36px;
+                max-width: 100%;
+            }
+        }
+        .pricing-short-details {
+            margin-top: 54px;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+    }
+
+}
+
+
+.pricing {
+    &__item {
+        background-color: var(--clr-bg-pink);
+        padding: 50px 40px 40px;
+        border: 1px solid transparent;
+        @include transition(0.3s);
+        @media #{$xl,$xxs,$md}{
+            padding: 50px 25px 40px;
+        };
+        &:hover {
+            border: 1px solid #f7426f;
+            @include transition(0.3s);
+
+            & .pricing__btn {
+                color: var(--clr-common-white);
+                background: var(--clr-common-white);
+                &::before {
+                    visibility: visible;
+                    opacity: 1;
+                }
+                &::after {
+                    opacity: 1;
+                }
+            }
+        }
+        &-header {
+            position: relative;
+        }
+        &-lable {
+            top: -10px;
+            inset-inline-end: -25px;
+            position: absolute;
+            z-index: 2;
+            @media #{$xl}{
+                inset-inline-end: -25px;
+            };
+            .lable-border {
+                position: absolute;
+                inset-inline-end: 0px;
+                top: 4px;
+                z-index: -1;
+                width: 120%;
+                height: 104%;
+            }
+        }
+        &-label {
+            clip-path: polygon(61% 0, 100% 0, 100% 100%, 75% 100%, 0 100%, 16% 50%, 0 0);
+            padding: 12px 17px 12px 34px;
+            background: linear-gradient(90.69deg, #9747ff 8.33%, #15b0f8 99.6%);
+            font-weight: var(--bd-fw-bold);
+            font-size: 24px;
+            color: var(--clr-common-white);
+            display: inline-block;
+            &-color1 {
+                background: linear-gradient(90.69deg, #ff2259 8.33%, #f200f7 99.6%);
+            }
+            &-color2 {
+                background: linear-gradient(90.69deg, #f7426f 8.33%, #f87a58 99.6%);
+            }
+        }
+        &-title {
+            font-weight: var(--bd-fw-bold);
+            font-size: 45px;
+            color: var(--clr-common-black);
+            line-height: 1;
+            margin-bottom: 50px;
+            display: inline-block;
+        }
+        &-content ul {
+            margin-bottom: 45px;
+            li {
+                margin-bottom: 30px;
+                @include flexbox();
+                color: #333333;
+                font-size: 16px;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                i {
+                    margin-inline-end: 20px;
+                    color: var(--clr-theme-1);
+                }
+            }
+        }
+    }
+}
+
+
+.bd-theme-dark .pricing {
+    &__item {
+        background-color:var(--clr-bg-6);
+        padding: 50px 40px 40px;
+        border: 1px solid transparent;
+        @include transition(0.3s);
+        @media #{$xl,$xxs,$md}{
+            padding: 50px 25px 40px;
+        };
+        &:hover {
+            border: 1px solid #f7426f;
+            @include transition(0.3s);
+
+            & .pricing__btn {
+                color: var(--clr-common-white);
+                background: var(--clr-common-white);
+                &::before {
+                    visibility: visible;
+                    opacity: 1;
+                }
+                &::after {
+                    opacity: 1;
+                }
+            }
+        }
+        &-header {
+            position: relative;
+        }
+        &-lable {
+            top: -10px;
+            inset-inline-end: -25px;
+            position: absolute;
+            z-index: 2;
+            @media #{$xl}{
+                inset-inline-end: -25px;
+            };
+            .lable-border {
+                position: absolute;
+                inset-inline-end: 0px;
+                top: 4px;
+                z-index: -1;
+                width: 120%;
+                height: 104%;
+            }
+        }
+        &-label {
+            clip-path: polygon(61% 0, 100% 0, 100% 100%, 75% 100%, 0 100%, 16% 50%, 0 0);
+            padding: 12px 17px 12px 34px;
+            background: linear-gradient(90.69deg, #9747ff 8.33%, #15b0f8 99.6%);
+            font-weight: var(--bd-fw-bold);
+            font-size: 24px;
+            color: var(--clr-common-white);
+            display: inline-block;
+            &-color1 {
+                background: linear-gradient(90.69deg, #ff2259 8.33%, #f200f7 99.6%);
+            }
+            &-color2 {
+                background: linear-gradient(90.69deg, #f7426f 8.33%, #f87a58 99.6%);
+            }
+        }
+        &-title {
+            font-weight: var(--bd-fw-bold);
+            font-size: 45px;
+            color: var(--clr-text-secondary);
+            line-height: 1;
+            margin-bottom: 50px;
+            display: inline-block;
+        }
+        &-content ul {
+            margin-bottom: 45px;
+            li {
+                margin-bottom: 30px;
+                @include flexbox();
+                color: var(--clr-text-secondary);
+                font-size: 16px;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                i {
+                    margin-inline-end: 20px;
+                    color: var(--clr-text-secondary);
+                }
+            }
+        }
+    }
+}
+
+

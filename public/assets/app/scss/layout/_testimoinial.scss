@@ -1,0 +1,179 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  Testimonial CSS START
+/*----------------------------------------*/
+
+.testimonial {
+	&__navigation {
+		@media #{$xs}{
+			display: none !important;
+		}
+		button {
+			font-size: 35px;
+			color: #c2c3c3;
+			&:hover {
+				color: var(--clr-theme-1);
+			}
+		}
+		.slick-prev {
+			&.slick-arrow {
+				position: absolute;
+				top: 25%;
+				inset-inline-start: 0%;
+				transform: translateY(-50%);
+			}
+		}
+		.slick-next {
+			&.slick-arrow {
+				position: absolute;
+				inset-inline-end: 0;
+				top: 25%;
+				transform: translateY(-50%);
+			}
+		}
+	}
+	&__item {
+		margin-top: 13px;
+		&.slick-slide img {
+			display: inline-block;
+		}
+	}
+	&__thumb {
+		margin-bottom: 11px;
+		img {
+			width: 292px;
+			display: inline-block;
+		}
+	}
+	&__content {
+		p {
+			font-weight: 500;
+			font-size: 22px;
+			color: var(--clr-text-3);
+			line-height: 1.7;
+			margin-bottom: 36px;
+			@media #{$xs}{
+				font-size: 18px;
+			}
+		}
+	}
+	&__quote {
+		margin-top: -55px;
+		i {
+			font-size: 100px;
+		}
+	}
+	&__content {
+		&-name {
+			font-weight: 500;
+			font-size: 16px;
+			color: #525252;
+			span {
+				font-size: 22px;
+				@media #{$xs}{
+					font-size: 20px;
+				}
+				color: var(--clr-theme-1);
+				margin-inline-end: 48px;
+				position: relative;
+				display: inline-block;
+				&::before {
+					content: "";
+					position: absolute;
+					width: 20px;
+					top: 50%;
+					height: 1px;
+					inset-inline-end: -34px;
+					display: inline-block;
+					background: #525252;
+				}
+			}
+		}
+	}
+}
+.bd-theme-dark .testimonial__content p{
+	color: var(--clr-text-secondary);
+}
+.bd-theme-dark .flaticon-quotation-1:before{
+	color: var(--clr-text-secondary);
+}
+.author {
+	&__user {
+		&-1 {
+			position: absolute;
+			top: -65px;
+			inset-inline-start: 0;
+			@media #{$xs}{
+				display: none;
+			}
+		}
+		&-2 {
+			position: absolute;
+			top: 115px;
+			inset-inline-start: 115px;
+			@media #{$md}{
+				inset-inline-start: 35px;
+			}
+			@media #{$xs,$sm,$md}{
+				display: none;
+			}
+		}
+		&-3 {
+			position: absolute;
+			bottom: 30px;
+			inset-inline-start: 35px;
+			@media #{$xs,$sm,$md}{
+				display: none;
+			}
+		}
+		&-4 {
+			position: absolute;
+			top: 115px;
+			inset-inline-end: 155px;
+			@media #{$md}{
+				inset-inline-end: 45px;
+			}
+			@media #{$xs,$sm,$md}{
+				display: none;
+			}
+		}
+		&-5 {
+			position: absolute;
+			top: -65px;
+			inset-inline-end: 0;
+			@media #{$xs}{
+				display: none;
+			}
+		}
+		&-6 {
+			position: absolute;
+			inset-inline-end: 30px;
+			bottom: 30px;
+			@media #{$xs,$sm,$md}{
+				display: none;
+			}
+		}
+	}
+}
+.user__shadow {
+	filter: drop-shadow(0px 4px 100px rgba(248, 122, 88, 0.25));
+	transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+.testimonial__navigation .slick-prev::before, .testimonial__navigation .slick-next::before {
+	display: none;
+}
+
+.testimonial__navigation {
+	.slick-prev {
+		@media #{$xs,$sm,$md,$lg}{
+			left: 0px;
+		}
+	}
+	.slick-next {
+		@media #{$xs,$sm,$md,$lg}{
+			right: 0px;
+		}
+	}
+}
