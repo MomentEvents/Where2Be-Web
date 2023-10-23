@@ -36,63 +36,48 @@ const WrapContent = () => {
         </div>
 
         <div className="row g-20">
-          <div className="col-xxl-3 col-xl-6 col-lg-6 col-md-6">
+          <div className="col-xxl-4 col-xl-6 col-lg-6 col-md-6">
             <div className="expovent__count-item mb-20">
               <div
                 className="expovent__count-thumb include__bg transition-3"
                 style={{ backgroundImage: `url(${overlay_img.src})` }}
               ></div>
               <div className="expovent__count-content">
-                <h3 className="expovent__count-number">1256</h3>
-                <span className="expovent__count-text">Followers</span>
+                <h3 className="expovent__count-number">143.2</h3>
+                <span className="expovent__count-text">Average Attendees</span>
               </div>
               <div className="expovent__count-icon">
                 <i className="flaticon-group"></i>
               </div>
             </div>
           </div>
-          <div className="col-xxl-3 col-xl-6 col-lg-6 col-md-6">
+          <div className="col-xxl-4 col-xl-6 col-lg-6 col-md-6">
             <div className="expovent__count-item mb-20">
               <div
                 className="expovent__count-thumb include__bg transition-3"
                 style={{ backgroundImage: `url(${overlay_img.src})` }}
               ></div>
               <div className="expovent__count-content">
-                <h3 className="expovent__count-number">XX</h3>
-                <span className="expovent__count-text">Something here</span>
+                <h3 className="expovent__count-number">1562</h3>
+                <span className="expovent__count-text">Peak Attendees on HKN Resume Workshop with Google</span>
               </div>
               <div className="expovent__count-icon">
                 <i className="flaticon-speaker"></i>
               </div>
             </div>
           </div>
-          <div className="col-xxl-3 col-xl-6 col-lg-6 col-md-6">
+          <div className="col-xxl-4 col-xl-6 col-lg-6 col-md-6">
             <div className="expovent__count-item mb-20">
               <div
                 className="expovent__count-thumb include__bg transition-3"
                 style={{ backgroundImage: `url(${overlay_img.src})` }}
               ></div>
               <div className="expovent__count-content">
-                <h3 className="expovent__count-number">YYY</h3>
-                <span className="expovent__count-text">Something here</span>
+                <h3 className="expovent__count-number">+23.4%</h3>
+                <span className="expovent__count-text">Attendee growth since 30 days ago</span>
               </div>
               <div className="expovent__count-icon">
                 <i className="flaticon-reminder"></i>
-              </div>
-            </div>
-          </div>
-          <div className="col-xxl-3 col-xl-6 col-lg-6 col-md-6">
-            <div className="expovent__count-item mb-20">
-              <div
-                className="expovent__count-thumb include__bg transition-3"
-                style={{ backgroundImage: `url(${overlay_img.src})` }}
-              ></div>
-              <div className="expovent__count-content">
-                <h3 className="expovent__count-number">ZZZ</h3>
-                <span className="expovent__count-text">Something here</span>
-              </div>
-              <div className="expovent__count-icon">
-                <i className="flaticon-ticket-1"></i>
               </div>
             </div>
           </div>

@@ -92,6 +92,9 @@
 			.expovent__count-text-red {
 				color: red
 			}
+			.expovent__count-icon {
+				flex-shrink: 0;
+			}
 			&:hover {
 				.expovent__count-number {
 					color: var(--clr-common-white);
