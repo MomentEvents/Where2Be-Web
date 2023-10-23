@@ -16,7 +16,7 @@ const ContactMain = () => {
           <LandingHeader breadcrumb_shadow="breadcrumb-shadow" />
            <Breadcrumb title='Contact Us' subTitle='Contact Us'/>
            <ContactArea/>
-           <DarkMode/>
+           
           <BackToTopCom />
           <Footer/>
         </main>

@@ -113,7 +113,7 @@ const SignInPage = () => {
           </div>
         </div>
       </section>
-      <DarkMode/>
+      
       <BackToTopCom />
     </main>
   );

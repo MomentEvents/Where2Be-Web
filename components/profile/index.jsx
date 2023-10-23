@@ -23,7 +23,7 @@ const ProfileMain = () => {
           <ProfileContent />
         </div>
       </div>
-      <DarkMode/>
+      
       <BackToTopCom />
     </main>
   );

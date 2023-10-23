@@ -71,7 +71,7 @@
   &__inner {
     height: 100%;
   }
-  .log__smnall {
+  .log__small {
 		position: absolute;
 		left: 44%;
 		top: 50%;
@@ -168,7 +168,7 @@
         visibility: hidden;
       }
 		}
-    .log__smnall {
+    .log__small {
 			opacity: 0;
 			visibility: hidden;
       @media #{$xs,$sm,$md}{

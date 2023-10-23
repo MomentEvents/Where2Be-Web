@@ -25,7 +25,7 @@ const ChatMain = () => {
           <ChatWrapper />
         </div>
       </div>
-      <DarkMode/>
+      
     </main>
   );
 };

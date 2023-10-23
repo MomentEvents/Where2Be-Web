@@ -23,7 +23,7 @@ const UiElementMain = () => {
           <WrapElementContent />
         </div>
       </div>
-      <DarkMode/>
+      
       <BackToTopCom />
     </main>
   );

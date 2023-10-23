@@ -33,7 +33,7 @@ const SpeakerMain = () => {
             <WrapSpeakerContent handleopenModal={handleopenModal}/>
          </div>
       </div>
-      <DarkMode/>
+      
       <BackToTopCom/>
     </main>
   );

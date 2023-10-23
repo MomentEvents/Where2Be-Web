@@ -26,7 +26,7 @@ const CreateEventMain = () => {
           <WrapCreateEvent/>
          </div>
       </div>
-      <DarkMode/>
+      
       <BackToTopCom/>
       
     </main>

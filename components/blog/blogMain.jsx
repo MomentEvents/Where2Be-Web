@@ -17,7 +17,6 @@ const BlogMain = () => {
             <LandingHeader breadcrumb_shadow="breadcrumb-shadow" />
             <Breadcrumb title='Blog Grid with Sidebar' subTitle='Expovents Bolgs' />
             <Blogsection/>
-            <DarkMode/>
             <BackToTopCom />
             <Footer/>
         </main>

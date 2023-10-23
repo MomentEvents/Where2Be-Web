@@ -6,7 +6,7 @@ import SchduleListMain from '../components/schduleList';
 const index = () => {
     return (
         <Wrapper>
-            <SEO pageTitle={'Schedule List'} />
+            <SEO pageTitle={'Events'} />
              <SchduleListMain/>
         </Wrapper>
     );

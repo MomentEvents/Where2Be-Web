@@ -25,7 +25,7 @@ const Index = () => {
           <WrapContent />
         </div>
       </div>
-      <DarkMode />
+      
       <BackToTopCom />
     </main>
   );

@@ -22,7 +22,7 @@ const SettingMain = () => {
           <WrapSetting />
         </div>
       </div>
-      <DarkMode />
+      
       <BackToTopCom />
     </main>
   );

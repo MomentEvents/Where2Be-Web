@@ -23,7 +23,7 @@ const SchduleDetailsMain = ({schduleItem}) => {
               <SchduleDetailsContent schduleItem={schduleItem}/>
                </div>
             </div>
-            <DarkMode/>
+            
             <BackToTopCom/>
           </main>
     );

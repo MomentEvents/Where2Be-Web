@@ -17,7 +17,6 @@ const BlogDetalsArea = ({ blog }) => {
       <LandingHeader breadcrumb_shadow="breadcrumb-shadow" />
       <Breadcrumb title="Blog Details" subTitle="Blog Details" />
       <BlogDetailsContent blog={blog} />
-      <DarkMode />
       <BackToTopCom />
       <Footer />
     </main>

@@ -26,7 +26,7 @@ const SchduleListMain = () => {
           <WrapSchduleContent />
         </div>
       </div>
-      <DarkMode />
+      
       <BackToTopCom />
     </main>
   );

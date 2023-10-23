@@ -26,7 +26,7 @@ const EvenDetailsMain = () => {
           <WrapEvenDetailsContent />
         </div>
       </div>
-      <DarkMode />
+      
       <BackToTopCom />
     </main>
   );

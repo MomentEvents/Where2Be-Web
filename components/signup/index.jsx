@@ -105,7 +105,7 @@ const SingUpMain = () => {
           </div>
         </div>
       </section>
-      <DarkMode />
+      
       <BackToTopCom />
     </main>
   );

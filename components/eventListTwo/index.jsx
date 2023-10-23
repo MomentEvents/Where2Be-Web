@@ -21,7 +21,7 @@ const Index = () => {
         <LandingHeader breadcrumb_shadow="breadcrumb-shadow" />
         <Breadcrumb title="Event List" subTitle="Event List" />
         <EventSchdule />
-        <DarkMode />
+        
         <BackToTopCom />
         <Footer />
       </main>

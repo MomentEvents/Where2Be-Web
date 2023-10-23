@@ -35,7 +35,6 @@ const AttendenceMain = () => {
           <WrapAttendence handleopenModal={handleopenModal} />
         </div>
       </div>
-      <DarkMode />
       <BackToTopCom />
     </main>
   );

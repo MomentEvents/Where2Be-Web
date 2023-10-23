@@ -35,7 +35,7 @@ const EventListMain = () => {
           <WrapperEventList handleopenModal={handleopenModal} />
         </div>
       </div>
-      <DarkMode />
+      
       <BackToTopCom />
     </main>
   );

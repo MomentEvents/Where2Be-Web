@@ -19,7 +19,7 @@ const Index = () => {
         <LandingHeader breadcrumb_shadow="breadcrumb-shadow" />
         <Breadcrumb title="Speaker List" subTitle="Speaker List" />
         <SpeakerBox speakerData={speakerData} />
-        <DarkMode />
+        
         <BackToTopCom />
         <Footer />
       </main>

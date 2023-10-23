@@ -133,108 +133,8 @@ const DashboardHeader = ({ handleClick }) => {
               <span></span>
             </div>
           </button>
-
-          <div className="app__herader-input p-relative">
-            <input type="search" placeholder="Search Here . . ." />
-            <button>
-              <i className="flaticon-loupe"></i>
-            </button>
-          </div>
         </div>
         <div className="app__header-right">
-          <div className="app__header-action">
-            <ul>
-              <li>
-                <div className="nav-item p-relative">
-                  <button
-                    onClick={handleShowLanguage}
-                    id="langdropdown"
-                    className="langdropdown"
-                  >
-                    <span>
-                      <English />
-                    </span>
-                    <span className="language-text">English</span>
-                  </button>
-                  {/* dropdown content */}
-                  <div
-                    className={`lang__dropdown ${
-                      collapse ? "lang-enable" : " "
-                    }`}
-                  >
-                    <ul onClick={handleShowLanguage}>
-                      <Languages />
-                    </ul>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <button onClick={handleToggleFullScreen}>
-                  <div className="nav-item">
-                    <div className="notification__icon">
-                      <Zoomscreen />
-                    </div>
-                  </div>
-                </button>
-              </li>
-              <li>
-                <div className="nav-item p-relative">
-                  <button id="emaildropdown" onClick={handleShowEmail}>
-                    <div className="notification__icon">
-                      <EmailIcon />
-                    </div>
-                  </button>
-                  <div
-                    className={`email__dropdown ${
-                      emailactive ? "email-enable" : " "
-                    }`}
-                  >
-                    <div
-                      ref={scrollContainerRef}
-                      className="notification__card card__scroll"
-                    >
-                      <div className="notification__header">
-                        <div className="notification__inner">
-                          <h5>Email Notifications</h5>
-                          <span>(14)</span>
-                        </div>
-                      </div>
-
-                      <Notifications />
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div className="nav-item p-relative">
-                  <button id="notifydropdown" onClick={handleShowNotification}>
-                    <div className="notification__icon">
-                      <Notificationicon />
-                    </div>
-                  </button>
-                  {/* notifydropdown-enable */}
-                  <div
-                    className={`notification__dropdown ${
-                      notificationActive ? "notifydropdown-enable" : " "
-                    }`}
-                  >
-                    <div
-                      ref={scrollContainerRef2}
-                      className="notification__card card__scroll"
-                    >
-                      <div className="notification__header">
-                        <div className="notification__inner">
-                          <h5>Notifications</h5>
-                          <span>(10)</span>
-                        </div>
-                      </div>
-                      <Notifications />
-                    </div>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
           <div className="nav-item p-relative">
             <button id="userportfolio" onClick={handleShowuserDrowdown}>
               <div className="user__portfolio">
@@ -242,7 +142,7 @@ const DashboardHeader = ({ handleClick }) => {
                   <img src={profile_pic.src} alt="imge not found" />
                 </div>
                 <div className="user__content">
-                  <span>Jhon Smith</span>
+                  <span>SuperFX</span>
                 </div>
               </div>
             </button>

@@ -17,7 +17,7 @@ const WrapSchduleContent = () => {
                 <div className="breadcrumb__icon">
                   <i className="flaticon-home"></i>
                 </div>
-                <BreadcamMenu title="Schedule List"/> 
+                <BreadcamMenu title="Events"/> 
               </div>
               <div className="breadcrumb__tab">
                 <ul className="nav nav-tabs" id="myTab" role="tablist">

@@ -26,7 +26,7 @@ const EventDetailsMian = ({schduleItem}) => {
               <EventContent schduleItem={schduleItem}/>
                </div>
             </div>
-            <DarkMode/>
+            
             <BackToTopCom/>
           </main>
     );

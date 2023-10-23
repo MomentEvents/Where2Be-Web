@@ -18,7 +18,7 @@ const Index = ({speaker}) => {
         <LandingHeader breadcrumb_shadow="breadcrumb-shadow" />
         <Breadcrumb title="Speaker Details" subTitle="Speaker Details" />
         <DynamicProfileContentTwo speaker={speaker} />
-        <DarkMode />
+        
         <BackToTopCom />
         <Footer />
       </main>

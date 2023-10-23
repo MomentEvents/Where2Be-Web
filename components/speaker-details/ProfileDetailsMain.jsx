@@ -23,7 +23,7 @@ const ProfileDetailsMain = ({speaker}) => {
             <DynamicProfileContent speaker={speaker}/>
           </div>
         </div>
-        <DarkMode/>
+        
         <BackToTopCom />
       </main>
       );

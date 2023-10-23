@@ -27,7 +27,7 @@ const VenuMain = () => {
           <WrapVenuContent />
         </div>
       </div>
-      <DarkMode />
+      
       <BackToTopCom />
     </main>
   );

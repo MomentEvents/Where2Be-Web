@@ -18,7 +18,7 @@ const Index = () => {
         <LandingHeader breadcrumb_shadow="breadcrumb-shadow" />
         <Breadcrumb title="Pricing" subTitle="Pricing" />
         <PricingSection />
-        <DarkMode />
+        
         <BackToTopCom />
         <Footer />
       </main>

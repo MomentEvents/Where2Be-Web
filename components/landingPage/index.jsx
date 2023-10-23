@@ -14,7 +14,7 @@ const LandingPageMain = () => {
         <LandingSidemenu/>
         <LandingHeader />
         <MainAria />
-        <DarkMode/>
+        
         <BackToTopCom />
       </main>
     </>

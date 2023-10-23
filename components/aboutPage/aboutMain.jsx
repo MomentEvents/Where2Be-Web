@@ -13,7 +13,6 @@ const {dark} = useContext(DarkModeContext)
         <LandingSidemenu/>
         <LandingHeader breadcrumb_shadow="breadcrumb-shadow" />
         <AboutMainArea />
-        <DarkMode/>
         <BackToTopCom />
       </main>
     </>
