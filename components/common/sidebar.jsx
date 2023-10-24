@@ -61,7 +61,7 @@ const Sidebar = ({ collapse, handleClick }) => {
                   </a>
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/outreach">
                   <a>
                     <i className="flaticon">
@@ -75,7 +75,7 @@ const Sidebar = ({ collapse, handleClick }) => {
                     <span className="nav-text">SMS Blast</span>
                   </a>
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link href="/profile">
                   <a>
