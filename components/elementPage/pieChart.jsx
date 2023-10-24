@@ -19,7 +19,7 @@ const PieChart = () => {
         style: {
             colors: ["#fff"],
             fontSize: '12px',
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Poppins, sans-serif',
             fontWeight: 600,
         },
     },

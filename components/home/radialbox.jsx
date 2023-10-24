@@ -32,7 +32,7 @@ const RadialBarChart = () => {
             show: true,
             color: '#7C7C7C',
             fontSize: '14px',
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Poppins, sans-serif',
             fontWeight: 'regular',
           },
           value: {
@@ -40,7 +40,7 @@ const RadialBarChart = () => {
             color: '#fff',
             fontSize: '18px',
             show: true,
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Poppins, sans-serif',
             fontWeight: 'bold',
           }
         },

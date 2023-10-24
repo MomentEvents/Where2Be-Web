@@ -1,7 +1,30 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import CardHeaderDropdown from "../../components/home/cardheaderdropdown";
 import Link from "next/link";
 const WrapCreateEvent = () => {
+  const [image, setImage] = useState(null);
+  const fileInputRef = useRef(null);  // Step 1: Create a ref
+
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      setImage(reader.result);
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+    fileInputRef.current.value = null;  // Step 2: Reset file input after image upload
+  };
+
+  const handleDeleteImage = () => {
+    setImage(null);
+    fileInputRef.current.value = null;  // Step 2: Reset file input after clicking "x"
+  };
+
   return (
     <>
       <div className="body__overlay"></div>
@@ -46,7 +69,6 @@ const WrapCreateEvent = () => {
                     </h4>
                   </div>
                   {/* card header top componet  */}
-                   
                 </div>
 
                 {/* create event form  */}
@@ -70,35 +92,28 @@ const WrapCreateEvent = () => {
                       </form>
                     </div>
                     <div className="event__update-wrapper">
-                      <span>Add Image</span>
+                      <span>Add Image (select 1)</span>
                       <div className="event__update-file">
-                        <div className="event__update-thumb">
-                          <img
-                            src="/assets/img/event/update/update-thumb-01.png"
-                            alt="image not found"
-                          />
-                          <span className="update__thumb-close">
-                            <i className="fa-regular fa-xmark"></i>
-                          </span>
-                        </div>
-                        <div className="event__update-thumb">
-                          <img
-                            src="/assets/img/event/update/update-thumb-02.png"
-                            alt="image not found"
-                          />
-                          <span className="update__thumb-close">
-                            <i className="fa-regular fa-xmark"></i>
-                          </span>
-                        </div>
+                        {image && (
+                          <div className="event__update-thumb">
+                            <img src={image} alt="Uploaded preview" />
+                            <span
+                              className="update__thumb-close"
+                              onClick={handleDeleteImage}
+                            >
+                              <i className="fa-regular fa-xmark"></i>
+                            </span>
+                          </div>
+                        )}
                         <div className="event__update-thumb">
                           <div className="box__input">
                             <input
+                              ref={fileInputRef}
                               type="file"
-                              name="files[]"
+                              name="file"
                               id="file"
                               className="box__file"
-                              data-multiple-caption="{count} files selected"
-                              multiple
+                              onChange={handleImageUpload}
                             />
                             <label className="input__field-text" htmlFor="file">
                               <span>
@@ -106,6 +121,7 @@ const WrapCreateEvent = () => {
                               </span>
                               <span>Add Image</span>
                             </label>
+                            {/* If you wish to upload the image immediately after selecting, you can add that functionality in the handleImageUpload function */}
                             <button
                               type="submit"
                               className="box__button"

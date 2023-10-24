@@ -44,7 +44,7 @@ const WrapContent = () => {
               ></div>
               <div className="expovent__count-content">
                 <h3 className="expovent__count-number">143.2</h3>
-                <span className="expovent__count-text">Average Attendees</span>
+                <span className="expovent__count-text">Average attendees</span>
               </div>
               <div className="expovent__count-icon">
                 <i className="flaticon-group"></i>
@@ -59,7 +59,7 @@ const WrapContent = () => {
               ></div>
               <div className="expovent__count-content">
                 <h3 className="expovent__count-number">1562</h3>
-                <span className="expovent__count-text">Peak Attendees on HKN Resume Workshop with Google</span>
+                <span className="expovent__count-text">Peak attendees on "HKN Resume Workshop with Google"</span>
               </div>
               <div className="expovent__count-icon">
                 <i className="flaticon-speaker"></i>
