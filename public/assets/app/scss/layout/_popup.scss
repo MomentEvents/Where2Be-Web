@@ -159,6 +159,7 @@
 .event__input label {
 	margin-bottom: 10px;
 }
+
 .input__number-lang {
 	display: grid;
 	grid-template-columns: 280px auto;
@@ -210,6 +211,11 @@
   font-size: 16px;
   color: var(--clr-text-secondary);
   margin-bottom: 10px;
+  // Styles when the following input or select is disabled
+  ~ input:disabled, 
+  ~ .contact__select select:disabled {
+    color: gray; // or any style you want for the label when the input/select is disabled
+  }
 }
 .input__number {
   position: relative;

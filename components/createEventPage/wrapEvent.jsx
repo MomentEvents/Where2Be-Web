@@ -3,8 +3,9 @@ import CardHeaderDropdown from "../../components/home/cardheaderdropdown";
 import Link from "next/link";
 const WrapCreateEvent = () => {
   const [image, setImage] = useState(null);
-  const fileInputRef = useRef(null);  // Step 1: Create a ref
+  const [smsEnabled, setSmsEnabled] = useState(false);
 
+  const fileInputRef = useRef(null);
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -17,12 +18,14 @@ const WrapCreateEvent = () => {
     if (file) {
       reader.readAsDataURL(file);
     }
-    fileInputRef.current.value = null;  // Step 2: Reset file input after image upload
+    fileInputRef.current.value = null; // Step 2: Reset file input after image upload
   };
 
   const handleDeleteImage = () => {
     setImage(null);
-    fileInputRef.current.value = null;  // Step 2: Reset file input after clicking "x"
+    if (fileInputRef.current) {
+      fileInputRef.current.value = null;
+    }
   };
 
   return (
@@ -105,29 +108,34 @@ const WrapCreateEvent = () => {
                             </span>
                           </div>
                         )}
-                        <div className="event__update-thumb">
-                          <div className="box__input">
-                            <input
-                              ref={fileInputRef}
-                              type="file"
-                              name="file"
-                              id="file"
-                              className="box__file"
-                              onChange={handleImageUpload}
-                            />
-                            <label className="input__field-text" htmlFor="file">
-                              <span>
-                                <i className="fa-regular fa-plus"></i>
-                              </span>
-                              <span>Add Image</span>
-                            </label>
-                            {/* If you wish to upload the image immediately after selecting, you can add that functionality in the handleImageUpload function */}
-                            <button
-                              type="submit"
-                              className="box__button"
-                            ></button>
+                        {!image && (
+                          <div className="event__update-thumb">
+                            <div className="box__input">
+                              <input
+                                ref={fileInputRef}
+                                type="file"
+                                name="file"
+                                id="file"
+                                className="box__file"
+                                onChange={handleImageUpload}
+                              />
+                              <label
+                                className="input__field-text"
+                                htmlFor="file"
+                              >
+                                <span>
+                                  <i className="fa-regular fa-plus"></i>
+                                </span>
+                                <span>Add Image</span>
+                              </label>
+                              {/* If you wish to upload the image immediately after selecting, you can add that functionality in the handleImageUpload function */}
+                              <button
+                                type="submit"
+                                className="box__button"
+                              ></button>
+                            </div>
                           </div>
-                        </div>
+                        )}
                       </div>
                     </div>
                     <form action="#">
@@ -147,53 +155,9 @@ const WrapCreateEvent = () => {
                         <div className="col-xxl-12 col-xl-12 col-lg-12">
                           <div className="singel__input-field mb-15">
                             <label className="input__field-text">
-                              Venue / Address
+                              Location
                             </label>
                             <input type="text" placeholder="" />
-                          </div>
-                        </div>
-                        <div className="col-xxl-6 col-xl-6 col-lg-6">
-                          <label className="input__field-text">
-                            Event Type
-                          </label>
-                          <div className="contact__select">
-                            <select>
-                              <option defaultValue="0">
-                                Select the services
-                              </option>
-                              <option defaultValue="1">Free</option>
-                              <option defaultValue="1">Paid</option>
-                              <option defaultValue="3">Option</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div className="col-xxl-6 col-xl-6 col-lg-6">
-                          <div className="singel__input-field mb-15">
-                            <label className="input__field-text">
-                              Total Seat
-                            </label>
-                            <input type="number" defaultValue="1250" />
-                          </div>
-                        </div>
-                        <div className="col-xxl-6 col-xl-6 col-lg-6">
-                          <div className="singel__input-field">
-                            <label className="input__field-text">
-                              Ticket Price
-                            </label>
-                            <input type="text" defaultValue="$25.00" />
-                          </div>
-                        </div>
-                        <div className="col-xxl-6 col-xl-6 col-lg-6">
-                          <label className="input__field-text">
-                            Event Status
-                          </label>
-                          <div className="contact__select">
-                            <select>
-                              <option defaultValue="0">Confirmed</option>
-                              <option defaultValue="1">waiting</option>
-                              <option defaultValue="1">confused</option>
-                              <option defaultValue="3">Option</option>
-                            </select>
                           </div>
                         </div>
                       </div>
@@ -202,41 +166,78 @@ const WrapCreateEvent = () => {
                   <div className="event__right-box">
                     <div className="create__input-wrapper">
                       <form action="#">
-                        <div className="singel__input-field mb-15">
-                          <label className="input__field-text">
-                            Speaker Name
-                          </label>
-                          <input type="text" />
+                        <div className="row g-20">
+                          <div className="col-xxl-6 col-xl-6 col-lg-6 mb-15">
+                            <div className="singel__input-field">
+                              <label className="input__field-text">
+                                Tickets (coming soon!)
+                              </label>
+                              <input
+                                type="text"
+                                defaultValue="$0.00"
+                                disabled
+                                title="Coming soon!"
+                              />
+                            </div>
+                          </div>
+                          <div className="col-xxl-6 col-xl-6 col-lg-6">
+                            <label className="input__field-text">
+                              Event Status
+                            </label>
+                            <div className="contact__select">
+                              <select>
+                                <option defaultValue="0">Open</option>
+                                <option defaultValue="1">Closed</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div className="col-xxl-6 col-xl-6 col-lg-6 mb-15">
+                            <label className="input__field-text">
+                              Enable SMS Reminders?
+                            </label>
+                            <div className="contact__select">
+                              <select
+                                onChange={(e) =>
+                                  setSmsEnabled(e.target.value === "Yes")
+                                }
+                              >
+                                <option defaultValue="No">No</option>
+                                <option defaultValue="Yes">Yes</option>
+                              </select>
+                            </div>
+                          </div>
+
+                          <div className="col-xxl-6 col-xl-6 col-lg-6 mb-15">
+                            <label className="input__field-text">
+                              SMS Time
+                            </label>
+                            <div className="contact__select">
+                              <select disabled={!smsEnabled}>
+                                <option defaultValue="0">
+                                  30 minutes before
+                                </option>
+                                <option defaultValue="1">1 hour before</option>
+                                <option defaultValue="2">2 hours before</option>
+                                <option defaultValue="3">3 hours before</option>
+                                <option defaultValue="3">4 hours before</option>
+                                <option defaultValue="3">
+                                  12 hours before
+                                </option>
+                                <option defaultValue="3">1 day before</option>
+                              </select>
+                            </div>
+                          </div>
+
+                          <div className="event__input mb-80">
+                            <label className="input__field-text">
+                              SMS Message
+                            </label>
+                            <textarea disabled={!smsEnabled} maxLength={160}></textarea>
+                          </div>
+                          <button className="input__btn w-100" type="submit">
+                            Create Event
+                          </button>
                         </div>
-                        <div className="singel__input-field mb-15">
-                          <label className="input__field-text">Email</label>
-                          <input type="text" />
-                        </div>
-                        <div className="singel__input-field mb-15">
-                          <label className="input__field-text">
-                            Phone Number
-                          </label>
-                          <input type="text" />
-                        </div>
-                        <div className="singel__input-field mb-15">
-                          <label className="input__field-text">
-                            Designation
-                          </label>
-                          <input type="text" />
-                        </div>
-                        <div className="popup__update">
-                          <label>Upload Image ( 200x200px )</label>
-                          <input type="file" accept="image/*" />
-                        </div>
-                        <button
-                          type="button"
-                          className="unfield__input-btn w-100 mb-20"
-                        >
-                          <i className="fa-regular fa-plus"></i>Add More Speaker
-                        </button>
-                        <button className="input__btn w-100" type="submit">
-                          Create Event
-                        </button>
                       </form>
                     </div>
                   </div>
