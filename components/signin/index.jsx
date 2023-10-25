@@ -4,7 +4,7 @@ import DarkMode from "../common/dark-mode";
 import OffCanvasArea from "../common/off-canvas";
 import GoogleIcon from "../../utils/SVG/googleIcon";
 import BackToTopCom from "../common/scroll-to-top";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { DarkModeContext } from "../darkmode-provider/DarkModeProvider";
 import logo_dark from "../../public/assets/img/logo/color-logo.svg"
 import logo_white from "../../public/assets/img/logo/color-logo-white.svg"
@@ -13,8 +13,12 @@ import { useRouter } from "next/router";
 const SignInPage = () => {
   const { dark } = useContext(DarkModeContext);
   const router = useRouter()
+  const usernameRef = useRef();
+  const passwordRef = useRef();
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(usernameRef.current)
+    console.log(passwordRef.current)
   };
 
   return (
@@ -57,13 +61,13 @@ const SignInPage = () => {
               <div className="sign__input-form text-center">
                 <form onSubmit={handleSubmit}>
                   <div className="sign__input">
-                    <input type="text" placeholder="Username" />
+                    <input ref={usernameRef} type="text" placeholder="Username" />
                     <span>
                       <i className="flaticon-user-2"></i>
                     </span>
                   </div>
                   <div className="sign__input">
-                    <input type="password" placeholder="Password"/>
+                    <input type="password" ref={passwordRef} placeholder="Password"/>
                     <span>
                       <i className="flaticon-password"></i>
                     </span>
@@ -86,7 +90,7 @@ const SignInPage = () => {
                     </div>
                   </div>
                   <div className="sing__button mb-20">
-                    <button className="input__btn w-100 mb-20" onClick={() => router.push('/dashboard')} type="submit">
+                    <button className="input__btn w-100 mb-20" onClick={handleSubmit} type="submit">
                       Sign in
                     </button>
                     <button className="gamil__sign-btn w-100" type="submit">

@@ -168,32 +168,8 @@ const WrapCreateEvent = () => {
                       <form action="#">
                         <div className="row g-20">
                           <div className="col-xxl-6 col-xl-6 col-lg-6 mb-15">
-                            <div className="singel__input-field">
-                              <label className="input__field-text">
-                                Tickets (coming soon!)
-                              </label>
-                              <input
-                                type="text"
-                                defaultValue="$0.00"
-                                disabled
-                                title="Coming soon!"
-                              />
-                            </div>
-                          </div>
-                          <div className="col-xxl-6 col-xl-6 col-lg-6">
                             <label className="input__field-text">
                               Event Status
-                            </label>
-                            <div className="contact__select">
-                              <select>
-                                <option defaultValue="0">Open</option>
-                                <option defaultValue="1">Closed</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div className="col-xxl-6 col-xl-6 col-lg-6 mb-15">
-                            <label className="input__field-text">
-                              Enable SMS Reminders?
                             </label>
                             <div className="contact__select">
                               <select
@@ -201,18 +177,23 @@ const WrapCreateEvent = () => {
                                   setSmsEnabled(e.target.value === "Yes")
                                 }
                               >
-                                <option defaultValue="No">No</option>
-                                <option defaultValue="Yes">Yes</option>
+                                <option defaultValue="0">Open</option>
+                                <option defaultValue="1">Closed</option>
                               </select>
                             </div>
                           </div>
 
                           <div className="col-xxl-6 col-xl-6 col-lg-6 mb-15">
                             <label className="input__field-text">
-                              SMS Time
+                              SMS Reminder?
                             </label>
                             <div className="contact__select">
-                              <select disabled={!smsEnabled}>
+                              <select
+                                onChange={(e) =>
+                                  setSmsEnabled(e.target.value !== "No")
+                                }
+                              >
+                                <option defaultValue="No">No</option>
                                 <option defaultValue="0">
                                   30 minutes before
                                 </option>
@@ -228,12 +209,18 @@ const WrapCreateEvent = () => {
                             </div>
                           </div>
 
-                          <div className="event__input mb-80">
-                            <label className="input__field-text">
-                              SMS Message
-                            </label>
-                            <textarea disabled={!smsEnabled} maxLength={160}></textarea>
-                          </div>
+                          {smsEnabled && (
+                            <div className="event__input">
+                              <label className="input__field-text">
+                                SMS Message
+                              </label>
+                              <textarea
+                                disabled={!smsEnabled}
+                                maxLength={160}
+                              ></textarea>
+                            </div>
+                          )}
+                          <div className="mb-80"></div>
                           <button className="input__btn w-100" type="submit">
                             Create Event
                           </button>
