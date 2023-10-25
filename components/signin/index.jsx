@@ -57,13 +57,13 @@ const SignInPage = () => {
               <div className="sign__input-form text-center">
                 <form onSubmit={handleSubmit}>
                   <div className="sign__input">
-                    <input type="text" placeholder="Username" defaultValue="admin@expovent.com" />
+                    <input type="text" placeholder="Username" />
                     <span>
                       <i className="flaticon-user-2"></i>
                     </span>
                   </div>
                   <div className="sign__input">
-                    <input type="password" placeholder="Password" defaultValue="123456" />
+                    <input type="password" placeholder="Password"/>
                     <span>
                       <i className="flaticon-password"></i>
                     </span>
@@ -81,7 +81,7 @@ const SignInPage = () => {
                     </div>
                     <div className="sign__forget">
                       <span>
-                        <Link href="#">Forget Password?</Link>
+                        <Link href="#">Forgot Password?</Link>
                       </span>
                     </div>
                   </div>
