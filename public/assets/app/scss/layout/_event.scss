@@ -491,4 +491,12 @@
 	flex-wrap: wrap;
 }
 
- 
+.is-color-change input[type="date"], 
+.is-color-change input[type="time"] {
+  color: gray;
+}
+
+.is-color-change input[type="date"].has-value, 
+.is-color-change input[type="time"].has-value {
+  color: white;
+}

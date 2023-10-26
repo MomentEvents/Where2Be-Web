@@ -4,6 +4,8 @@ import Link from "next/link";
 const WrapCreateEvent = () => {
   const [image, setImage] = useState(null);
   const [smsEnabled, setSmsEnabled] = useState(false);
+  const [dateValue, setDateValue] = useState("");
+  const [timeValue, setTimeValue] = useState("");
 
   const fileInputRef = useRef(null);
 
@@ -84,13 +86,13 @@ const WrapCreateEvent = () => {
                           <label className="input__field-text">
                             Event Title
                           </label>
-                          <input type="text" />
+                          <input type="text" placeholder="My event" />
                         </div>
                         <div className="event__input mb-15">
                           <label className="input__field-text">
                             Event Details
                           </label>
-                          <textarea placeholder=""></textarea>
+                          <textarea placeholder="Come join my fun event!"></textarea>
                         </div>
                       </form>
                     </div>
@@ -140,24 +142,25 @@ const WrapCreateEvent = () => {
                     </div>
                     <form action="#">
                       <div className="row g-20">
-                        <div className="col-xxl-6 col-xl-6 col-lg-6">
+                        <div className="col-xxl-12 col-xl-12 col-lg-12">
                           <div className="singel__input-field is-color-change mb-15">
                             <label className="input__field-text">Date</label>
-                            <input type="date" />
+                            <input
+                              type="date"
+                              value={dateValue}
+                              onChange={(e) => setDateValue(e.target.value)}
+                              className={dateValue ? "has-value" : ""}
+                            />
                           </div>
-                        </div>
-                        <div className="col-xxl-6 col-xl-6 col-lg-6">
-                          <div className="singel__input-field is-color-change  mb-15">
+
+                          <div className="singel__input-field is-color-change mb-15">
                             <label className="input__field-text">Time</label>
-                            <input type="time" defaultValue="13:30" />
-                          </div>
-                        </div>
-                        <div className="col-xxl-12 col-xl-12 col-lg-12">
-                          <div className="singel__input-field mb-15">
-                            <label className="input__field-text">
-                              Location
-                            </label>
-                            <input type="text" placeholder="" />
+                            <input
+                              type="time"
+                              value={timeValue}
+                              onChange={(e) => setTimeValue(e.target.value)}
+                              className={timeValue ? "has-value" : ""}
+                            />
                           </div>
                         </div>
                       </div>
@@ -172,11 +175,7 @@ const WrapCreateEvent = () => {
                               Event Status
                             </label>
                             <div className="contact__select">
-                              <select
-                                onChange={(e) =>
-                                  setSmsEnabled(e.target.value === "Yes")
-                                }
-                              >
+                              <select>
                                 <option defaultValue="0">Open</option>
                                 <option defaultValue="1">Closed</option>
                               </select>
@@ -185,7 +184,7 @@ const WrapCreateEvent = () => {
 
                           <div className="col-xxl-6 col-xl-6 col-lg-6 mb-15">
                             <label className="input__field-text">
-                              SMS Reminder?
+                              SMS Reminder
                             </label>
                             <div className="contact__select">
                               <select
@@ -217,6 +216,7 @@ const WrapCreateEvent = () => {
                               <textarea
                                 disabled={!smsEnabled}
                                 maxLength={160}
+                                placeholder="Come to my event!"
                               ></textarea>
                             </div>
                           )}
