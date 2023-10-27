@@ -1,16 +1,47 @@
 import Link from "next/link";
-import React from "react";
+import React, { useRef } from "react";
 import overlay_img from "../../public/assets/img/sign/signup.jpg";
 import OffCanvasArea from "../common/off-canvas";
 import DarkMode from "../common/dark-mode";
-import black_logo from "../../public/assets/img/logo/color-logo.svg"
-import white_logo from "../../public/assets/img/logo/color-logo-white.svg"
+import black_logo from "../../public/assets/img/logo/color-logo.svg";
+import white_logo from "../../public/assets/img/logo/color-logo-white.svg";
 import GoogleIcon from "../../utils/SVG/googleIcon";
 import BackToTopCom from "../common/scroll-to-top";
 import { useContext } from "react";
 import { DarkModeContext } from "../darkmode-provider/DarkModeProvider";
+import supabase from "../../lib/supabase";
 const SingUpMain = () => {
   const { dark } = useContext(DarkModeContext);
+
+  const nameRef = useRef("");
+  const emailRef = useRef("");
+  const passwordRef = useRef("");
+  const confirmPasswordRef = useRef("");
+
+  const handleSubmit = async () => {
+    console.log(nameRef.current)
+    console.log(emailRef.current)
+    console.log(passwordRef.current)
+    console.log(confirmPasswordRef.current)
+    const { user, error } = await supabase.auth.signInWithPassword({
+      email: emailRef.current,
+      password: passwordRef.current
+    });
+    console.log("USER:" + JSON.stringify(user))
+    console.log("ERROR" + JSON.stringify(error))
+
+  }
+  supabase.auth.onAuthStateChange((event, session) => {
+    console.log("EVENT:"+JSON.stringify(event))
+    console.log("SESSION:"+JSON.stringify(session))
+
+  });
+
+  const handleGoogleAuth = (e) => {
+    e.preventDefault(); // This will prevent the form submission
+
+  }
+
   return (
     <main className={`body-area ${dark ? "bd-theme-dark" : "bd-theme-light"}`}>
       <OffCanvasArea />
@@ -46,30 +77,46 @@ const SingUpMain = () => {
             <div className="sign__center-wrapper text-center mt-80">
               <div className="sign__title-wrapper mb-40">
                 <h3 className="sign__title">Create An Account</h3>
-                <p>The faster you fill up. the faster you get a ticket</p>
+                <p>Host your events with anaylitics and SMS reminders</p>
               </div>
               <div className="sign__input-form text-center">
-                <form action="#">
+                <form action="#" onSubmit={handleSubmit}>
                   <div className="sign__input">
-                    <input type="text" placeholder="User Name" />
+                    <input
+                      type="text"
+                      placeholder="Name"
+                      onChange={(e) => {nameRef.current = e.target.value}}
+                    />
                     <span>
                       <i className="flaticon-user-2"></i>
                     </span>
                   </div>
                   <div className="sign__input">
-                    <input type="email" placeholder="Email Address" />
+                    <input
+                      type="email"
+                      placeholder="Email Address"
+                      onChange={(e) => {emailRef.current = e.target.value}}
+                    />
                     <span>
-                      <i className="flaticon-user-2"></i>
+                      <i className="flaticon-email"></i>
                     </span>
                   </div>
                   <div className="sign__input">
-                    <input type="password" placeholder="Enter Password" />
+                    <input
+                      type="password"
+                      placeholder="Enter Password"
+                      onChange={(e) => {passwordRef.current = e.target.value}}
+                    />
                     <span>
                       <i className="flaticon-password"></i>
                     </span>
                   </div>
                   <div className="sign__input">
-                    <input type="password" placeholder="Confirm Password" />
+                    <input
+                      type="password"
+                      placeholder="Confirm Password"
+                      onChange={(e) => {confirmPasswordRef.current = e.target.value}}
+                    />
                     <span>
                       <i className="flaticon-password"></i>
                     </span>
@@ -78,7 +125,7 @@ const SingUpMain = () => {
                     <button className="input__btn w-100 mb-20" type="submit">
                       Sign Up
                     </button>
-                    <button className="gamil__sign-btn w-100" type="submit">
+                    <button className="gamil__sign-btn w-100" onClick={handleGoogleAuth}>
                       <span>
                         <GoogleIcon />
                       </span>
@@ -105,7 +152,7 @@ const SingUpMain = () => {
           </div>
         </div>
       </section>
-      
+
       <BackToTopCom />
     </main>
   );
