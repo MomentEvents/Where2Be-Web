@@ -6,6 +6,8 @@ import Message from './ErrorMessage';
 let activeMessages = 0;
 
 const showMessage = (message, isError) => {
+  if (typeof window === 'undefined') return;
+
   const el = document.createElement('div');
   document.body.appendChild(el);
 
