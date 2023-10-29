@@ -83,7 +83,7 @@ const NoticeandUpcomingEvent = () => {
                 </div>
                 <div className="card__header-right">
                   <div className="card__btn">
-                    <Link href="/event-details">
+                    <Link legacyBehavior href="/event-details">
                       <a>view all Event</a>
                     </Link>
                   </div>
@@ -99,7 +99,7 @@ const NoticeandUpcomingEvent = () => {
                       <div key={index} className="news__item">
                         <div className="news__item-inner">
                           <div className="news__thumb">
-                            <Link href={`/event-details/${event.id}`}>
+                            <Link legacyBehavior href={`/event-details/${event.id}`}>
                               <a>
                                 <img
                                   src={event.userImg.src}
@@ -110,7 +110,7 @@ const NoticeandUpcomingEvent = () => {
                           </div>
                           <div className="news__content">
                             <h4 className="news__title">
-                              <Link href={`/event-details/${event.id}`}>
+                              <Link legacyBehavior href={`/event-details/${event.id}`}>
                                 <a> {event.title} </a>
                               </Link>
                             </h4>

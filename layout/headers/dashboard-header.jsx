@@ -8,7 +8,9 @@ import profile_pic from "../../public/assets/img/speaker/list/04.jpg"
 import Languages from "./languages";
 import Notifications from "./notifications";
 import ProfileLinks from "./profileLinks";
-const DashboardHeader = ({ handleClick }) => {
+import supabase from "../../lib/supabase";
+
+export default function DashboardHeader ({ handleClick }) {
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [collapse, setCollapse] = useState(false);
   const [emailactive, setemailactive] = useState(false);
@@ -142,7 +144,7 @@ const DashboardHeader = ({ handleClick }) => {
                   <img src={profile_pic.src} alt="imge not found" />
                 </div>
                 <div className="user__content">
-                  <span>SuperFX</span>
+                  {/* <span>{user.email}</span> */}
                 </div>
               </div>
             </button>
@@ -160,5 +162,3 @@ const DashboardHeader = ({ handleClick }) => {
     </div>
   );
 };
-
-export default DashboardHeader;

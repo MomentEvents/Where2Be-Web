@@ -9,7 +9,7 @@ const Notifications = () => {
         notifications.map((notify) => (
           <div key={notify.id} className="notification__item">
             <div className="notification__thumb">
-              <Link href="/profile">
+              <Link legacyBehavior href="/profile">
                 <a>
                   <img src={notify.thumbnail.src} alt="Notification img not found" />
                 </a>
@@ -17,7 +17,7 @@ const Notifications = () => {
             </div>
             <div className="notification__content">
               <p>
-                <Link href="/chat"> consectetur adipisci elit, sed eiusmod  </Link>
+                <Link legacyBehavior href="/chat"> consectetur adipisci elit, sed eiusmod  </Link>
               </p>
               <div className="notification__time">
                 <span> {notify.time} </span>

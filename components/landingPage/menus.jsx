@@ -7,12 +7,12 @@ const Menus = () => {
     <ul>
       {menuItems.map((menuItem, index) => (
         <li key={index} className={menuItem.dropdown ? 'has-dropdown has-mega-menu' : ''}>
-          <Link href={menuItem.link}>{menuItem.text}</Link>
+          <Link legacyBehavior href={menuItem.link}>{menuItem.text}</Link>
           {menuItem.megaMenu && (
             <ul className="mega-menu">
               {menuItem.megaMenuItems.map((megaMenuItem, index) => (
                 <li key={index}>
-                  <Link href={megaMenuItem.link}>
+                  <Link legacyBehavior href={megaMenuItem.link}>
                     <a
                       style={megaMenuItem.style}
                     ></a>

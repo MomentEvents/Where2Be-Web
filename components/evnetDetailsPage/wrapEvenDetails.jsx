@@ -311,7 +311,7 @@ const WrapEvenDetailsContent = () => {
                       </li>
                     </ul>
                     <div className="ticket__purchase-btn mt-30 text-center">
-                      <Link href="/pricing">
+                      <Link legacyBehavior href="/pricing">
                         <a className="fill__btn">
                           BUY TICKETS{" "}
                           <i className="fa-regular fa-angle-right"></i>

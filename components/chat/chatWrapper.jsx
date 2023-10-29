@@ -38,7 +38,7 @@ const ChatWrapper = () => {
                     <ul>
                       <li>
                         <span>
-                          <Link href="/">
+                          <Link legacyBehavior href="/">
                             <a> Home </a>
                           </Link>
                         </span>

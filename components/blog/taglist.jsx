@@ -8,12 +8,12 @@ const TagList = () => {
                 Tags List
             </h3>
             <ul className="tags_list unordered_list">
-                <li><Link href="/blog">Business</Link></li>
-                <li><Link href="/blog">UI/UX</Link></li>
-                <li><Link href="/blog">Development</Link></li>
-                <li><Link href="/blog">Design</Link></li>
-                <li><Link href="/blog">Programing</Link></li>
-                <li><Link href="/blog">Social</Link></li>
+                <li><Link legacyBehavior href="/blog">Business</Link></li>
+                <li><Link legacyBehavior href="/blog">UI/UX</Link></li>
+                <li><Link legacyBehavior href="/blog">Development</Link></li>
+                <li><Link legacyBehavior href="/blog">Design</Link></li>
+                <li><Link legacyBehavior href="/blog">Programing</Link></li>
+                <li><Link legacyBehavior href="/blog">Social</Link></li>
             </ul>
         </div>
     );

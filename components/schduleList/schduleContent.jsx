@@ -66,7 +66,7 @@ const WrapSchduleContent = () => {
                 </ul>
               </div>
               <div className="breadcrum__button">
-                <Link href="/create-event">
+                <Link legacyBehavior href="/create-event">
                   <a className="breadcrum__btn">
                     Create Event
                     <i className="fa-regular fa-plus"></i>

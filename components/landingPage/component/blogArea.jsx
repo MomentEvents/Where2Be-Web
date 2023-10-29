@@ -73,7 +73,7 @@ const BlogArea = ({ about_blog_space }) => {
                       <div className="blog__item-wrapper">
                         <div className="blog__item mb-30">
                           <div className="blog__thumb w-img">
-                            <Link href={`/blog-details/${item.id}`}>
+                            <Link legacyBehavior href={`/blog-details/${item.id}`}>
                               <a>
                                 <img
                                   src={item.thumbnail.src}
@@ -84,7 +84,7 @@ const BlogArea = ({ about_blog_space }) => {
                           </div>
                           <div className="blog__content">
                             <h3>
-                              <Link href={`/blog-details/${item.id}`}>
+                              <Link legacyBehavior href={`/blog-details/${item.id}`}>
                                 {item.title}
                               </Link>
                             </h3>
@@ -96,11 +96,11 @@ const BlogArea = ({ about_blog_space }) => {
                             </span>
                             <span>
                               <CommentIcon />
-                              <Link href="#">{item.comment}</Link>
+                              <Link legacyBehavior href="#">{item.comment}</Link>
                             </span>
                           </div>
                           <div className="header__btn">
-                            <Link href={`/blog-details/${item.id}`}>
+                            <Link legacyBehavior href={`/blog-details/${item.id}`}>
                               <a className="blog_custome_btn">
                                 View Details
                                 <i className="fa-regular fa-angle-right"></i>

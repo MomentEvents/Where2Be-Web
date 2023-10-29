@@ -29,7 +29,7 @@ const SignInPage = () => {
           <div className="sign__left">
             <div className="sign__header">
               <div className="sign__logo">
-                <Link href="/">
+                <Link legacyBehavior href="/">
                   <a>
                     <img
                       className="logo-black"
@@ -45,10 +45,10 @@ const SignInPage = () => {
                 </Link>
               </div>
               <div className="sign__link custome_link">
-                <Link className="sign__link-active" href="/signin">
+                <Link legacyBehavior className="sign__link-active" href="/signin">
                   Sign in
                 </Link>
-                <Link className="sign__link-text" href="/signup">
+                <Link legacyBehavior className="sign__link-text" href="/signup">
                   Sign Up
                 </Link>
               </div>
@@ -85,7 +85,7 @@ const SignInPage = () => {
                     </div>
                     <div className="sign__forget">
                       <span>
-                        <Link href="#">Forgot Password?</Link>
+                        <Link legacyBehavior href="#">Forgot Password?</Link>
                       </span>
                     </div>
                   </div>
@@ -103,7 +103,7 @@ const SignInPage = () => {
                 </form>
                 <div className="if__account mt-85">
                   <p>
-                    Don’t Have An Account?<Link href="/signup"> Sign up</Link>
+                    Don’t Have An Account?<Link legacyBehavior href="/signup"> Sign up</Link>
                   </p>
                 </div>
               </div>

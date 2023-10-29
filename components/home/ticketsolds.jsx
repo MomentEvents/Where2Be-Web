@@ -109,7 +109,7 @@ const TicketSolds = () => {
                   {/* ... */}
                   <div className="news__item-inner bb-0">
                     <div className="news__thumb">
-                      <Link href="/event-list">
+                      <Link legacyBehavior href="/event-list">
                         <a>
                           <img src={ticket.userImg.src} alt="image not found" />
                         </a>
@@ -117,7 +117,7 @@ const TicketSolds = () => {
                     </div>
                     <div className="news__content">
                       <h4 className="news__title">
-                        <Link href="/schedule-list">
+                        <Link legacyBehavior href="/schedule-list">
                           <a>{ticket.title}</a>
                         </Link>
                       </h4>

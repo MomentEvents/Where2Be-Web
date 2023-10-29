@@ -47,22 +47,22 @@ const Footer = () => {
                       Enim praesent elementum facilisis.
                     </p>
                     <div className="footer__social">
-                      <Link href="https://www.facebook.com/" target="_blank">
+                      <Link legacyBehavior href="https://www.facebook.com/" target="_blank">
                         <a>
                           <i className="fa-brands fa-facebook"></i>
                         </a>
                       </Link>
-                      <Link href="https://twitter.com/" target="_blank">
+                      <Link legacyBehavior href="https://twitter.com/" target="_blank">
                         <a>
                           <i className="fa-brands fa-twitter"></i>
                         </a>
                       </Link>
-                      <Link href="https://bd.linkedin.com/" target="_blank">
+                      <Link legacyBehavior href="https://bd.linkedin.com/" target="_blank">
                         <a>
                           <i className="fa-brands fa-linkedin"></i>
                         </a>
                       </Link>
-                      <Link href="https://www.youtube.com/" target="_blank">
+                      <Link legacyBehavior href="https://www.youtube.com/" target="_blank">
                         <a>
                           <i className="fa-brands fa-youtube"></i>
                         </a>
@@ -79,16 +79,16 @@ const Footer = () => {
                   <div className="footer__link">
                     <ul>
                       <li>
-                        <Link href="/speaker-list-two"><a>Speakers</a></Link>
+                        <Link legacyBehavior href="/speaker-list-two"><a>Speakers</a></Link>
                       </li>
                       <li>
-                        <Link href="/pricing"><a>Pricing Info</a></Link>
+                        <Link legacyBehavior href="/pricing"><a>Pricing Info</a></Link>
                       </li>
                       <li>
-                        <Link href="#"><a>Our Partners</a></Link>
+                        <Link legacyBehavior href="#"><a>Our Partners</a></Link>
                       </li>
                       <li>
-                        <Link href="/contact"><a>Contact Support</a></Link>
+                        <Link legacyBehavior href="/contact"><a>Contact Support</a></Link>
                       </li>
                     </ul>
                   </div>
@@ -102,16 +102,16 @@ const Footer = () => {
                   <div className="footer__link">
                     <ul>
                       <li>
-                        <Link href="/event-list-two"><a>Business Conference</a></Link>
+                        <Link legacyBehavior href="/event-list-two"><a>Business Conference</a></Link>
                       </li>
                       <li>
-                        <Link href="/event-list-two"><a>Design Conference</a></Link>
+                        <Link legacyBehavior href="/event-list-two"><a>Design Conference</a></Link>
                       </li>
                       <li>
-                        <Link href="/event-list-two"><a>Web Design Seminar</a></Link>
+                        <Link legacyBehavior href="/event-list-two"><a>Web Design Seminar</a></Link>
                       </li>
                       <li>
-                        <Link href="/event-list-two"><a>Global Conference</a></Link>
+                        <Link legacyBehavior href="/event-list-two"><a>Global Conference</a></Link>
                       </li>
                     </ul>
                   </div>
@@ -148,7 +148,7 @@ const Footer = () => {
                 >
                   <p>
                     Copyright & design by
-                    <Link
+                    <Link legacyBehavior
                       target="_blank"
                       href="https://themeforest.net/user/bdevs"
                     >

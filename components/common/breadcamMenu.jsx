@@ -8,7 +8,7 @@ const BreadcamMenu = ({title}) => {
         <ul>
           <li>
             <span>
-              <Link href="/dashboard">
+              <Link legacyBehavior href="/dashboard">
                 <a> Home </a>
               </Link>
             </span>

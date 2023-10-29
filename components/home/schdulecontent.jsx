@@ -25,7 +25,7 @@ const SmoothScrollableContent = ({ schedules }) => {
               <div key={index} className="news__item">
                 <div className="news__item-inner">
                   <div className="news__thumb">
-                    <Link href={`/schdule-details/${schedule.id}`}>
+                    <Link legacyBehavior href={`/schdule-details/${schedule.id}`}>
                       <a>
                         <img src={schedule.userImg.src} alt="image not found" />
                       </a>
@@ -33,7 +33,7 @@ const SmoothScrollableContent = ({ schedules }) => {
                   </div>
                   <div className="news__content">
                     <h4 className="news__title">
-                      <Link href={`/schdule-details/${schedule.id}`}>
+                      <Link legacyBehavior href={`/schdule-details/${schedule.id}`}>
                         <a>{schedule.title}</a>
                       </Link>
                     </h4>

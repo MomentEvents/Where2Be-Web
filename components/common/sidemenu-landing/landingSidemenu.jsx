@@ -36,7 +36,7 @@ const LandingSidemenu = () => {
               <div className="offcanvas__content">
                 <div className="offcanvas__top mb-40 d-flex justify-content-between align-items-center">
                   <div className="offcanvas__logo">
-                    <Link href="/">
+                    <Link legacyBehavior href="/">
                      <a>
                      <img
                         src={logo_dark.src}
@@ -77,7 +77,7 @@ const LandingSidemenu = () => {
                         <i className="fal fa-map-marker-alt"></i>
                       </div>
                       <div className="offcanvas__contact-text">
-                        <Link
+                        <Link legacyBehavior
                           target="_blank"
                           href="https://www.google.com/maps/place/Dhaka/@23.7806207,90.3492859,12z/data=!3m1!4b1!4m5!3m4!1s0x3755b8b087026b81:0x8fa563bbdd5904c2!8m2!3d23.8104753!4d90.4119873"
                         >
@@ -110,28 +110,28 @@ const LandingSidemenu = () => {
                 <div className="offcanvas__social">
                   <ul>
                     <li>
-                    <Link href="https://www.facebook.com/" target="_blank">
+                    <Link legacyBehavior href="https://www.facebook.com/" target="_blank">
                         <a>
                           <i className="fa-brands fa-facebook"></i>
                         </a>
                       </Link>
                     </li>
                     <li>
-                    <Link href="https://twitter.com/" target="_blank">
+                    <Link legacyBehavior href="https://twitter.com/" target="_blank">
                         <a>
                           <i className="fa-brands fa-twitter"></i>
                         </a>
                       </Link>
                     </li>
                     <li>
-                    <Link href="https://bd.linkedin.com/" target="_blank">
+                    <Link legacyBehavior href="https://bd.linkedin.com/" target="_blank">
                         <a>
                           <i className="fa-brands fa-linkedin"></i>
                         </a>
                       </Link>
                     </li>
                     <li>
-                    <Link href="https://www.youtube.com/" target="_blank">
+                    <Link legacyBehavior href="https://www.youtube.com/" target="_blank">
                         <a>
                           <i className="fa-brands fa-youtube"></i>
                         </a>

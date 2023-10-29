@@ -31,7 +31,7 @@ const EventSpeakerList = () => {
               </div>
               <div className="card__header-right">
                 <div className="card__btn">
-                  <Link href="/speaker-list">view all Speaker</Link>
+                  <Link legacyBehavior href="/speaker-list">view all Speaker</Link>
                 </div>
                  
               </div>
@@ -47,7 +47,7 @@ const EventSpeakerList = () => {
                       <div className="speaker__inner">
                         <div className="speaker__info">
                           <div className="speaker__thumb">
-                            <Link href="/event-details">
+                            <Link legacyBehavior href="/event-details">
                               <a>
                                 <img
                                   src={speaker.thumbnail.src}
@@ -59,7 +59,7 @@ const EventSpeakerList = () => {
                           </div>
                           <div className="speaker__content">
                             <h5 className="speaker__title">
-                              <Link href="/event-details">
+                              <Link legacyBehavior href="/event-details">
                                 <a>{speaker.speakerName}</a>
                               </Link>
                             </h5>
@@ -69,7 +69,7 @@ const EventSpeakerList = () => {
                           </div>
                         </div>
                         <div className="speaker__button">
-                          <Link href="/event-details">
+                          <Link legacyBehavior href="/event-details">
                             <a>
                               <i className="fa-regular fa-angle-right"></i>
                             </a>

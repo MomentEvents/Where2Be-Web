@@ -91,7 +91,7 @@ const JoinArea = () => {
                         tincidunt.
                       </p>
                     </div>
-                    <Link href="/event-list-two">
+                    <Link legacyBehavior href="/event-list-two">
                       <a className="fill__btn fill_btn_new">
                         Join Now<i className="fa-regular fa-angle-right"></i>
                       </a>

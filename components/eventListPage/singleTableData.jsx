@@ -16,7 +16,7 @@ const SingleTableData = ({ envetList }) => {
             <td>
               <div className="attendant__seminer">
                 <span>
-                  <Link href="/event-details">
+                  <Link legacyBehavior href="/event-details">
                     <a>{data.envetName}</a>
                   </Link>
                 </span>

@@ -78,7 +78,7 @@ const SingUpMain = () => {
           <div className="sign__left">
             <div className="sign__header">
               <div className="sign__logo">
-                <Link href="/">
+                <Link legacyBehavior href="/">
                   <a>
                     <img
                       className="logo-black"
@@ -94,10 +94,10 @@ const SingUpMain = () => {
                 </Link>
               </div>
               <div className="sign__link custome_link">
-                <Link className="sign__link-text" href="/signin">
+                <Link legacyBehavior className="sign__link-text" href="/signin">
                   <a>Sign in</a>
                 </Link>
-                <Link className="sign__link-active" href="/signup">
+                <Link legacyBehavior className="sign__link-active" href="/signup">
                   <a>Sign Up</a>
                 </Link>
               </div>
@@ -175,7 +175,7 @@ const SingUpMain = () => {
                 <div className="if__account mt-90">
                   <p>
                     Already have an account?
-                    <Link href="/signin">
+                    <Link legacyBehavior href="/signin">
                       <a>Sign in</a>
                     </Link>
                   </p>

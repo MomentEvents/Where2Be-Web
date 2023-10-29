@@ -27,7 +27,7 @@ const SchduleCard = ({ pageOne }) => {
                   </div>
                 </div>
                 <h5 className="schedule__blog-title">
-                  <Link href={`/schdule-details/${data.id}`}>
+                  <Link legacyBehavior href={`/schdule-details/${data.id}`}>
                     <a>{data.title}</a>
                   </Link>
                 </h5>
@@ -44,14 +44,14 @@ const SchduleCard = ({ pageOne }) => {
                 <div className="schedule__tag-post">
                   <div className="event__tag-item">
                     <span>
-                      <Link href={`/schdule-details/${data.id}`}>
+                      <Link legacyBehavior href={`/schdule-details/${data.id}`}>
                         <a>{data.imgLink1}</a>
                       </Link>
                     </span>
                   </div>
                   <div className="event__tag-item">
                     <span>
-                      <Link href={`/schdule-details/${data.id}`}>
+                      <Link legacyBehavior href={`/schdule-details/${data.id}`}>
                         <a>{data.imgLink2}</a>
                       </Link>
                     </span>
@@ -66,7 +66,7 @@ const SchduleCard = ({ pageOne }) => {
                     <span className="schedule__meta-count">02+</span>
                   </div>
                 </div>
-                <Link href={`/schdule-details/${data.id}`}>
+                <Link legacyBehavior href={`/schdule-details/${data.id}`}>
                   <a>
                     <img src={data.thumbnail.src} alt="image not found" />
                   </a>

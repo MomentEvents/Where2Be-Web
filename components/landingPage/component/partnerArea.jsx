@@ -27,7 +27,7 @@ const PartnerArea = () => {
                   partners.map((item, index) => (
                     <div key={index} className="partner__item">
                       <div className="partner__thumb">
-                        <Link href="#">
+                        <Link legacyBehavior href="#">
                           <img src={item.thubmnail.src} alt="image not found" />
                         </Link>
                       </div>

@@ -8,7 +8,7 @@ const Breadcrumb = ({ title, subTitle }) => {
         <h1 className="page_title mb-15">{title}</h1>
         <ul className="breadcrumb_nav unordered_list_center">
           <li>
-            <Link href="/">Home</Link>
+            <Link legacyBehavior href="/">Home</Link>
           </li>
           <li>{subTitle}</li>
         </ul>

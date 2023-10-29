@@ -41,7 +41,7 @@ const LandingHeader = ({breadcrumb_shadow}) => {
                 <div className="mega__menu-wrapper p-relative">
                   <div className="header__navigation d-flex align-items-center justify-content-between">
                     <div className="header__logo">
-                      <Link href="/">
+                      <Link legacyBehavior href="/">
                         <a>
                           <img
                             className="logo__white"
@@ -64,7 +64,7 @@ const LandingHeader = ({breadcrumb_shadow}) => {
                       </div>
                       <div className="header__action-inner">
                         <div className="header__btn d-none d-xl-block">
-                          <Link href="/signin">
+                          <Link legacyBehavior href="/signin">
                             <a className="fill__btn">
                               SignIn
                               <i className="fa-regular fa-angle-right"></i>

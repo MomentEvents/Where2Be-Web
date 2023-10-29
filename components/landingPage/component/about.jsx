@@ -64,7 +64,7 @@ const About = ({pb}) => {
                     </div>
                   </div>
                 </div>
-                <Link href="/event-list-two">
+                <Link legacyBehavior href="/event-list-two">
                   <a className="fill__btn">
                     Join Now<i className="fa-regular fa-angle-right"></i>
                   </a>

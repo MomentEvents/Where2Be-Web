@@ -17,7 +17,7 @@ const Sidebar = ({ collapse, handleClick }) => {
       <>
         <div className="logo-details">
           <span>
-            <Link href="/dashboard">
+            <Link legacyBehavior href="/dashboard">
               <a>
                 <img
                   className="logo__white"
@@ -28,7 +28,7 @@ const Sidebar = ({ collapse, handleClick }) => {
             </Link>
           </span>
           <span>
-            <Link href="/dashboard">
+            <Link legacyBehavior href="/dashboard">
               <a>
                 <img
                   className="log__small"
@@ -46,7 +46,7 @@ const Sidebar = ({ collapse, handleClick }) => {
 
               {/* dashboard li  */}
               <li>
-                <Link href="/dashboard">
+                <Link legacyBehavior href="/dashboard">
                   <a>
                     <i className="flaticon-home"></i>
                     <span className="nav-text">Dashboard</span>
@@ -54,7 +54,7 @@ const Sidebar = ({ collapse, handleClick }) => {
                 </Link>
               </li>
               <li>
-                <Link href="/events">
+                <Link legacyBehavior href="/events">
                   <a>
                     <i className="flaticon-calendar-1"></i>
                     <span className="nav-text">Events</span>
@@ -62,7 +62,7 @@ const Sidebar = ({ collapse, handleClick }) => {
                 </Link>
               </li>
               {/* <li>
-                <Link href="/outreach">
+                <Link legacyBehavior href="/outreach">
                   <a>
                     <i className="flaticon">
                       <NotificationsActiveIcon
@@ -77,7 +77,7 @@ const Sidebar = ({ collapse, handleClick }) => {
                 </Link>
               </li> */}
               <li>
-                <Link href="/profile">
+                <Link legacyBehavior href="/profile">
                   <a>
                     <i className="flaticon-user-1"></i>
                     <span className="nav-text">Profile</span>
@@ -86,7 +86,7 @@ const Sidebar = ({ collapse, handleClick }) => {
               </li>
 
               <li>
-                <Link href="/signin">
+                <Link legacyBehavior href="/signin">
                   <a>
                     <i className="flaticon-log-out-3"></i>
                     <span className="nav-text">Log out</span>

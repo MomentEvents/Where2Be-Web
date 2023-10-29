@@ -14,7 +14,7 @@ const DashboardCollapseMenu = () => {
 
   return (
     <li className={liClassName}>
-      <Link href="#">
+      <Link legacyBehavior href="#">
         <a className="has-arrow" {...getToggleProps({ onClick: handleClick })}>
           <i className="flaticon-home"></i>
           <span className="nav-text">Dashboard</span>
@@ -23,17 +23,17 @@ const DashboardCollapseMenu = () => {
 
       <ul {...getCollapseProps()} className="metismenu">
         <li>
-          <Link href="/dashboard">
+          <Link legacyBehavior href="/dashboard">
             <a>Dashboard</a>
           </Link>
         </li>
         <li>
-          <Link href="/">
+          <Link legacyBehavior href="/">
             <a>Landing Page</a>
           </Link>
         </li>
         <li>
-          <Link href="/element">
+          <Link legacyBehavior href="/element">
             <a>UI Elements</a>
           </Link>
         </li>

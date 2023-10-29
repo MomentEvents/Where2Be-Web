@@ -44,7 +44,7 @@ const BlogDetailsContent = ({blog}) => {
                 <div className="blog_post_meta">
                   <ul className="category_list unordered_list">
                     <li>
-                      <Link href="/blog">{blog.blogCat}</Link>
+                      <Link legacyBehavior href="/blog">{blog.blogCat}</Link>
                     </li>
                   </ul>
                   <span className="post_date">{blog.date}</span>
@@ -180,33 +180,33 @@ const BlogDetailsContent = ({blog}) => {
                 <div className="social_actions">
                   <ul className="tags_list unordered_list">
                     <li>
-                      <Link href="/blog">UI/UX</Link>
+                      <Link legacyBehavior href="/blog">UI/UX</Link>
                     </li>
                     <li>
-                      <Link href="/blog">Development</Link>
+                      <Link legacyBehavior href="/blog">Development</Link>
                     </li>
                     <li>
-                      <Link href="/blog">Design</Link>
+                      <Link legacyBehavior href="/blog">Design</Link>
                     </li>
                   </ul>
 
                   <div className="footer__social">
-                    <Link href="https://www.facebook.com/" target="_blank">
+                    <Link legacyBehavior href="https://www.facebook.com/" target="_blank">
                       <a>
                         <i className="fa-brands fa-facebook"></i>
                       </a>
                     </Link>
-                    <Link href="https://twitter.com/" target="_blank">
+                    <Link legacyBehavior href="https://twitter.com/" target="_blank">
                       <a>
                         <i className="fa-brands fa-twitter"></i>
                       </a>
                     </Link>
-                    <Link href="https://bd.linkedin.com/" target="_blank">
+                    <Link legacyBehavior href="https://bd.linkedin.com/" target="_blank">
                       <a>
                         <i className="fa-brands fa-linkedin"></i>
                       </a>
                     </Link>
-                    <Link href="https://www.youtube.com/" target="_blank">
+                    <Link legacyBehavior href="https://www.youtube.com/" target="_blank">
                       <a>
                         <i className="fa-brands fa-youtube"></i>
                       </a>
@@ -268,7 +268,7 @@ const BlogDetailsContent = ({blog}) => {
                       </div>
 
                       <div className="header__btn d-xl-block">
-                        <Link href="/">
+                        <Link legacyBehavior href="/">
                           <a className="fill__btn blog_custome_btn">
                             Leave comment
                             <i className="fa-regular fa-angle-right"></i>

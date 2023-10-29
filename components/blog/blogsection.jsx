@@ -14,7 +14,7 @@ const Blogsection = () => {
                 {blog_data.map((item) => (
                   <div className="col-md-6" key={item.id}>
                     <div className="blog_item">
-                      <Link
+                      <Link legacyBehavior
                         href={`/blog-details/${item.id}`}
                         data-cursor-text="VIEW"
                       >
@@ -30,7 +30,7 @@ const Blogsection = () => {
                         <div className="flex_wrap">
                           <ul className="category_list unordered_list">
                             <li>
-                              <Link href={`/blog-details/${item.id}`}>
+                              <Link legacyBehavior href={`/blog-details/${item.id}`}>
                                 {item.blogCat}
                               </Link>
                             </li>
@@ -43,7 +43,7 @@ const Blogsection = () => {
                           </span>
                         </div>
                         <h3 className="item_title">
-                          <Link href={`/blog-details/${item.id}`}>
+                          <Link legacyBehavior href={`/blog-details/${item.id}`}>
                             {item.title.length >= 50
                               ? `${item.title.slice(0, 50)} ...`
                               : item.title}
@@ -51,7 +51,7 @@ const Blogsection = () => {
                         </h3>
 
                         <div className="header__btn">
-                          <Link href={`/blog-details/${item.id}`}>
+                          <Link legacyBehavior href={`/blog-details/${item.id}`}>
                             <a className="blog_custome_btn">
                               Read More
                               <i className="fa-regular fa-angle-right"></i>

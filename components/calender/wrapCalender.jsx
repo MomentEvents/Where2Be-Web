@@ -20,7 +20,7 @@ const WrapCalender = () => {
                     <ul>
                       <li>
                         <span>
-                          <Link href="/dashboard"><a>Home</a></Link>
+                          <Link legacyBehavior href="/dashboard"><a>Home</a></Link>
                         </span>
                       </li>
                       <li className="active">

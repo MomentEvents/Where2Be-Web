@@ -43,7 +43,7 @@ const NotificationSection = () => {
                   notificationList.map((item,index) => (
                     <div key={index} className="notification__item">
                       <div className="notification__thumb">
-                        <Link href="/profile">
+                        <Link legacyBehavior href="/profile">
                           <a>
                             <img
                               src={item.thumbnail.src}

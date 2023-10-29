@@ -113,7 +113,7 @@ const DynamicProfileContent = ({ speaker }) => {
                     </div>
                     <div className="col-xxl-8 col-xl-7 col-lg-6 col-md-6">
                       <div className="profile__right p-relative">
-                        <Link href="/setting">
+                        <Link legacyBehavior href="/setting">
                           <div className="profile__edit">
                             <i className="flaticon-edit"></i>
                           </div>
@@ -173,7 +173,7 @@ const DynamicProfileContent = ({ speaker }) => {
                                       <td>
                                         <div className="attendant__seminer">
                                           <span>
-                                            <Link href="/event-details">
+                                            <Link legacyBehavior href="/event-details">
                                               <a>{data.envetName}</a>
                                             </Link>
                                           </span>

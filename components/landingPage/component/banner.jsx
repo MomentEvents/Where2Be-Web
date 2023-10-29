@@ -94,14 +94,14 @@ const Banner = () => {
                     <span className="text__highlight"> Conference </span>
                   </h2>
                   <div className="slider__btdn">
-                    {/* <Link href="/signup">
+                    {/* <Link legacyBehavior href="/signup">
                       <a>
                         Register Now
                         <RegisterNow />
                       </a>
                     </Link> */}
 
-                    <Link href="/signup">
+                    <Link legacyBehavior href="/signup">
                       <a className="fill__btn">
                         Register Now<i className="fa-regular fa-angle-right"></i>
                       </a>

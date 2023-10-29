@@ -37,7 +37,7 @@ const SpeakerSliderCards = ({ speakerData }) => {
           <SwiperSlide key={index}>
             <div className="speaker__list-item p-0 mb-30">
               <div className="speaker__list-thumb">
-                <Link href={`/speaker-details-two/${speaker.id}`}>
+                <Link legacyBehavior href={`/speaker-details-two/${speaker.id}`}>
                   <a>
                     <img src={speaker.thubnail.src} alt="image not found" />
                   </a>
@@ -46,7 +46,7 @@ const SpeakerSliderCards = ({ speakerData }) => {
               <div className="speaker__list-content-inner">
                 <div className="speaker__list-content">
                   <h5 className="speaker__author-title">
-                    <Link href={`/speaker-details-two/${speaker.id}`}>
+                    <Link legacyBehavior href={`/speaker-details-two/${speaker.id}`}>
                       <a>{speaker.title}</a>
                     </Link>
                   </h5>
@@ -55,22 +55,22 @@ const SpeakerSliderCards = ({ speakerData }) => {
                   </span>
                 </div>
                 <div className="speaker__list-social">
-                  <Link href="https://www.facebook.com/" target="_blank">
+                  <Link legacyBehavior href="https://www.facebook.com/" target="_blank">
                     <a>
                       <i className="fa-brands fa-facebook"></i>
                     </a>
                   </Link>
-                  <Link href="https://twitter.com/" target="_blank">
+                  <Link legacyBehavior href="https://twitter.com/" target="_blank">
                     <a>
                       <i className="fa-brands fa-twitter"></i>
                     </a>
                   </Link>
-                  <Link href="https://bd.linkedin.com/" target="_blank">
+                  <Link legacyBehavior href="https://bd.linkedin.com/" target="_blank">
                     <a>
                       <i className="fa-brands fa-linkedin"></i>
                     </a>
                   </Link>
-                  <Link href="https://www.youtube.com/" target="_blank">
+                  <Link legacyBehavior href="https://www.youtube.com/" target="_blank">
                     <a>
                       <i className="fa-brands fa-youtube"></i>
                     </a>

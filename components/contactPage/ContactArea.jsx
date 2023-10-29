@@ -114,16 +114,16 @@ const ContactArea = () => {
                 <strong>Follow Us:</strong>
                 <div className="social_icon unordered_list">
                   <div className="footer__social">
-                    <Link href="https://www.facebook.com/" target="_blank">
+                    <Link legacyBehavior href="https://www.facebook.com/" target="_blank">
                       <a><i className="fa-brands fa-facebook"></i></a>
                     </Link>
-                    <Link href="https://twitter.com/" target="_blank">
+                    <Link legacyBehavior href="https://twitter.com/" target="_blank">
                     <a><i className="fa-brands fa-twitter"></i></a>
                     </Link>
-                    <Link href="https://bd.linkedin.com/" target="_blank">
+                    <Link legacyBehavior href="https://bd.linkedin.com/" target="_blank">
                     <a><i className="fa-brands fa-linkedin"></i></a>
                     </Link>
-                    <Link href="https://www.youtube.com/" target="_blank">
+                    <Link legacyBehavior href="https://www.youtube.com/" target="_blank">
                     <a><i className="fa-brands fa-youtube"></i></a>
                     </Link>
                   </div>

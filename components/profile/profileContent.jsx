@@ -113,7 +113,7 @@ const ProfileContent = () => {
                     </div>
                     <div className="col-xxl-8 col-xl-7 col-lg-6 col-md-6">
                       <div className="profile__right p-relative">
-                        <Link href="/setting">
+                        <Link legacyBehavior href="/setting">
                           <div className="profile__edit">
                             <i className="flaticon-edit"></i>
                           </div>

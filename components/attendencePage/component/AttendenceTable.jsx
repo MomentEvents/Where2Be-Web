@@ -26,7 +26,7 @@ const AttendenceTable = ({ attendenceData }) => {
             <td>
               <div className="attendant__seminer">
                 <span>
-                  <Link href="/event-details">
+                  <Link legacyBehavior href="/event-details">
                     <a> {item.eventDetails} </a>
                   </Link>
                 </span>
