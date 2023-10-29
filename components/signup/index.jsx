@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import overlay_img from "../../public/assets/img/sign/signup.jpg";
 import OffCanvasArea from "../common/off-canvas";
 import DarkMode from "../common/dark-mode";
@@ -11,6 +11,8 @@ import { useContext } from "react";
 import { DarkModeContext } from "../darkmode-provider/DarkModeProvider";
 import supabase from "../../lib/supabase";
 import showMessage from "../errorMessage/showMessage";
+import { useRouter } from "next/router";
+
 const SingUpMain = () => {
   const { dark } = useContext(DarkModeContext);
 
@@ -20,53 +22,53 @@ const SingUpMain = () => {
   const confirmPasswordRef = useRef("");
 
   const handleSubmit = async () => {
-    console.log(nameRef.current)
-    console.log(emailRef.current)
-    console.log(passwordRef.current)
-    console.log(confirmPasswordRef.current)
-    const { user, error } = await supabase.auth.signUp({
-      email: emailRef.current,
-      password: passwordRef.current
-    });
-    console.log("USER:" + JSON.stringify(user))
-    console.log("ERROR" + JSON.stringify(error))
+    console.log(nameRef.current);
+    console.log(emailRef.current);
+    console.log(passwordRef.current);
+    console.log(confirmPasswordRef.current);
 
-    if(!nameRef.current || !emailRef.current || !passwordRef.current){
-      showMessage("Please fill in all fields", true)
-      return
+    if (!nameRef.current || !emailRef.current || !passwordRef.current) {
+      showMessage("Please fill in all fields", true);
+      return;
     }
-    if(passwordRef.current !== confirmPasswordRef.current){
-      showMessage("Passwords do not match", true)
-      return
-    }
-    // if error is undefined
-    if(error){
-      showMessage(error.message, true)
-      return
+    if (passwordRef.current !== confirmPasswordRef.current) {
+      showMessage("Passwords do not match", true);
+      return;
     }
 
-    if(user){
-      showMessage(user)
+    try {
+      const response = await supabase.auth.signUp({
+        email: emailRef.current,
+        password: passwordRef.current,
+      });
+
+      if (response.error) {
+        showMessage(response.error.message, true);
+        return
+      }
+      console.log(response)
+    } catch (e) {
+      showMessage("An error occurred when signing up", true)
+      console.warn(e)
     }
+  };
 
-    const text = "user:" + JSON.stringify(user) + "error:" +JSON.stringify(error)
-
-    showMessage(text)
-
-
-  }
-  
   supabase.auth.onAuthStateChange((event, session) => {
-    const text = "EVENT:"+JSON.stringify(event) + "SESSION:"+JSON.stringify(session)
+    const text =
+      "EVENT:" + JSON.stringify(event) + "SESSION:" + JSON.stringify(session);
 
-    showMessage(text)
-
+    console.warn(text);
   });
+
+  useEffect(() => {
+    supabase.auth.getUser().then((response) => {
+      showMessage(JSON.stringify(response));
+    })
+  }, []);
 
   const handleGoogleAuth = (e) => {
     e.preventDefault(); // This will prevent the form submission
-
-  }
+  };
 
   return (
     <main className={`body-area ${dark ? "bd-theme-dark" : "bd-theme-light"}`}>
@@ -111,7 +113,9 @@ const SingUpMain = () => {
                     <input
                       type="text"
                       placeholder="Name"
-                      onChange={(e) => {nameRef.current = e.target.value}}
+                      onChange={(e) => {
+                        nameRef.current = e.target.value;
+                      }}
                     />
                     <span>
                       <i className="flaticon-user-2"></i>
@@ -121,7 +125,9 @@ const SingUpMain = () => {
                     <input
                       type="email"
                       placeholder="Email Address"
-                      onChange={(e) => {emailRef.current = e.target.value}}
+                      onChange={(e) => {
+                        emailRef.current = e.target.value;
+                      }}
                     />
                     <span>
                       <i className="flaticon-email"></i>
@@ -131,7 +137,9 @@ const SingUpMain = () => {
                     <input
                       type="password"
                       placeholder="Enter Password"
-                      onChange={(e) => {passwordRef.current = e.target.value}}
+                      onChange={(e) => {
+                        passwordRef.current = e.target.value;
+                      }}
                     />
                     <span>
                       <i className="flaticon-password"></i>
@@ -141,7 +149,9 @@ const SingUpMain = () => {
                     <input
                       type="password"
                       placeholder="Confirm Password"
-                      onChange={(e) => {confirmPasswordRef.current = e.target.value}}
+                      onChange={(e) => {
+                        confirmPasswordRef.current = e.target.value;
+                      }}
                     />
                     <span>
                       <i className="flaticon-password"></i>
@@ -151,7 +161,10 @@ const SingUpMain = () => {
                     <button className="input__btn w-100 mb-20" type="submit">
                       Sign Up
                     </button>
-                    <button className="gamil__sign-btn w-100" onClick={handleGoogleAuth}>
+                    <button
+                      className="gamil__sign-btn w-100"
+                      onClick={handleGoogleAuth}
+                    >
                       <span>
                         <GoogleIcon />
                       </span>

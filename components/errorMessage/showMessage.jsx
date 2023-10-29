@@ -8,6 +8,11 @@ let activeMessages = 0;
 const showMessage = (message, isError) => {
   if (typeof window === 'undefined') return;
 
+  if(!document){
+    console.log("showMessage: " + message)
+    return
+  }
+
   const el = document.createElement('div');
   document.body.appendChild(el);
 
