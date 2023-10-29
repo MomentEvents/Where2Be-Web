@@ -14,7 +14,26 @@
 
 
 
-
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #e74c3c; /* Red */
+    color: white;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(100%);
+    transition: all 0.3s ease;
+  }
+  
+  .toast.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
 
 
 

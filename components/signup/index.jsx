@@ -10,6 +10,7 @@ import BackToTopCom from "../common/scroll-to-top";
 import { useContext } from "react";
 import { DarkModeContext } from "../darkmode-provider/DarkModeProvider";
 import supabase from "../../lib/supabase";
+import showErrorMessage from "../errorMessage/showErrorMessage";
 const SingUpMain = () => {
   const { dark } = useContext(DarkModeContext);
 
@@ -19,19 +20,24 @@ const SingUpMain = () => {
   const confirmPasswordRef = useRef("");
 
   const handleSubmit = async () => {
-    console.log(nameRef.current)
-    console.log(emailRef.current)
-    console.log(passwordRef.current)
-    console.log(confirmPasswordRef.current)
-    const { user, error } = await supabase.auth.signInWithPassword({
-      email: emailRef.current,
-      password: passwordRef.current
-    });
-    console.log("USER:" + JSON.stringify(user))
-    console.log("ERROR" + JSON.stringify(error))
+    // console.log(nameRef.current)
+    // console.log(emailRef.current)
+    // console.log(passwordRef.current)
+    // console.log(confirmPasswordRef.current)
+    // const { user, error } = await supabase.auth.signInWithPassword({
+    //   email: emailRef.current,
+    //   password: passwordRef.current
+    // });
+    // console.log("USER:" + JSON.stringify(user))
+    // console.log("ERROR" + JSON.stringify(error))
+
+    // if error is undefined
+
+    showErrorMessage("A fatal error occurred at login, please try again later! Thanks, this is a very long message just to see what it's like")
 
   }
   supabase.auth.onAuthStateChange((event, session) => {
+    // TODO redirect 
     console.log("EVENT:"+JSON.stringify(event))
     console.log("SESSION:"+JSON.stringify(session))
 
@@ -77,7 +83,7 @@ const SingUpMain = () => {
             <div className="sign__center-wrapper text-center mt-80">
               <div className="sign__title-wrapper mb-40">
                 <h3 className="sign__title">Create An Account</h3>
-                <p>Host your events with anaylitics and SMS reminders</p>
+                <p>Host your events with free analytics and SMS reminders</p>
               </div>
               <div className="sign__input-form text-center">
                 <form action="#" onSubmit={handleSubmit}>
