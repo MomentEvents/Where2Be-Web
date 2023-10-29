@@ -10,7 +10,7 @@ import BackToTopCom from "../common/scroll-to-top";
 import { useContext } from "react";
 import { DarkModeContext } from "../darkmode-provider/DarkModeProvider";
 import supabase from "../../lib/supabase";
-import showErrorMessage from "../errorMessage/showErrorMessage";
+import showMessage from "../errorMessage/showMessage";
 const SingUpMain = () => {
   const { dark } = useContext(DarkModeContext);
 
@@ -20,26 +20,46 @@ const SingUpMain = () => {
   const confirmPasswordRef = useRef("");
 
   const handleSubmit = async () => {
-    // console.log(nameRef.current)
-    // console.log(emailRef.current)
-    // console.log(passwordRef.current)
-    // console.log(confirmPasswordRef.current)
-    // const { user, error } = await supabase.auth.signInWithPassword({
-    //   email: emailRef.current,
-    //   password: passwordRef.current
-    // });
-    // console.log("USER:" + JSON.stringify(user))
-    // console.log("ERROR" + JSON.stringify(error))
+    console.log(nameRef.current)
+    console.log(emailRef.current)
+    console.log(passwordRef.current)
+    console.log(confirmPasswordRef.current)
+    const { user, error } = await supabase.auth.signUp({
+      email: emailRef.current,
+      password: passwordRef.current
+    });
+    console.log("USER:" + JSON.stringify(user))
+    console.log("ERROR" + JSON.stringify(error))
 
+    if(!nameRef.current || !emailRef.current || !passwordRef.current){
+      showMessage("Please fill in all fields", true)
+      return
+    }
+    if(passwordRef.current !== confirmPasswordRef.current){
+      showMessage("Passwords do not match", true)
+      return
+    }
     // if error is undefined
+    if(error){
+      showMessage(error.message, true)
+      return
+    }
 
-    showErrorMessage("A fatal error occurred at login, please try again later! Thanks, this is a very long message just to see what it's like")
+    if(user){
+      showMessage(user)
+    }
+
+    const text = "user:" + JSON.stringify(user) + "error:" +JSON.stringify(error)
+
+    showMessage(text)
+
 
   }
+  
   supabase.auth.onAuthStateChange((event, session) => {
-    // TODO redirect 
-    console.log("EVENT:"+JSON.stringify(event))
-    console.log("SESSION:"+JSON.stringify(session))
+    const text = "EVENT:"+JSON.stringify(event) + "SESSION:"+JSON.stringify(session)
+
+    showMessage(text)
 
   });
 

@@ -1,48 +1,54 @@
-// components/ErrorMessage.js
-import { useState, useEffect } from 'react';
-import styled from '@emotion/styled';
-import { keyframes } from '@emotion/react';
+import { useState, useEffect } from "react";
+import styled from "@emotion/styled";
+import { keyframes } from "@emotion/react";
 
-const fadeInOut = keyframes`
-  0% { opacity: 0; }
-  8% { opacity: 1; }
-  92% { opacity: 1; }
-  100% { opacity: 0; }
-`;
+const Message = ({ message, isError, bottomOffset }) => {
+  const fadeInOut = keyframes`
+    0% { opacity: 0; }
+    8% { opacity: 1; }
+    92% { opacity: 1; }
+    100% { opacity: 0; }
+  `;
 
-const progressAnimation = keyframes`
-  from { width: 100%; }
-  to { width: 0%; }
-`;
+  const progressAnimation = keyframes`
+    from { width: 100%; }
+    to { width: 0%; }
+  `;
 
-const ErrorContainer = styled.div`
-  position: fixed;
-  bottom: 40px;
-  right: 40px;
-  width: 35%;
-  padding: 20px 20px;
-  background-color: #262626;
-  color: white;
-  border-radius: 5px;
-  animation: ${fadeInOut} 4s forwards;
-  z-index: 999;
-`;
+  const ErrorContainer = styled.div`
+    position: fixed;
+    bottom: ${(props) => 40 + props.bottomOffset}px; // added the offset here
+    right: 40px;
+    width: 35%;
+    padding: 20px 20px 20px 35px;
+    background-color: #262626;
+    color: white;
+    border-radius: 5px;
+    animation: ${fadeInOut} 4s forwards;
+    z-index: 999;
+  `;
 
-const ProgressMeter = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 10px;
-  width: 100%;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  background: #c93e3e;
-  animation: ${progressAnimation} 4s linear forwards;
-`;
+  const ProgressMeter = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 10px;
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background: ${isError ? "#c93e3e" : "#a245ff"};
+    animation: ${progressAnimation} 4s linear forwards;
+  `;
 
-const ErrorMessage = ({ message }) => {
+  const CloseButton = styled.span`
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    cursor: pointer;
+    font-weight: bold;
+  `;
+
   const [isVisible, setIsVisible] = useState(true);
-
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(false);
@@ -54,11 +60,12 @@ const ErrorMessage = ({ message }) => {
   if (!isVisible) return null;
 
   return (
-    <ErrorContainer>
+    <ErrorContainer bottomOffset={bottomOffset}>
       <ProgressMeter />
+      <CloseButton onClick={() => setIsVisible(false)}>X</CloseButton>
       {message}
     </ErrorContainer>
   );
 };
 
-export default ErrorMessage;
+export default Message;
