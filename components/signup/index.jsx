@@ -12,16 +12,19 @@ import { DarkModeContext } from "../darkmode-provider/DarkModeProvider";
 import supabase from "../../lib/supabase";
 import showMessage from "../errorMessage/showMessage";
 import { useRouter } from "next/router";
+import { mustNotBeLoggedIn } from "../../lib/authorization";
 
 const SingUpMain = () => {
   const { dark } = useContext(DarkModeContext);
+  const router = useRouter()
 
   const nameRef = useRef("");
   const emailRef = useRef("");
   const passwordRef = useRef("");
   const confirmPasswordRef = useRef("");
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault(); 
     console.log(nameRef.current);
     console.log(emailRef.current);
     console.log(passwordRef.current);
@@ -47,18 +50,20 @@ const SingUpMain = () => {
         return
       }
       console.log(response)
+
+      router.push("/dashboard")
     } catch (e) {
       showMessage("An error occurred when signing up", true)
       console.warn(e)
     }
   };
 
-  supabase.auth.onAuthStateChange((event, session) => {
-    const text =
-      "EVENT:" + JSON.stringify(event) + "SESSION:" + JSON.stringify(session);
+  // supabase.auth.onAuthStateChange((event, session) => {
+  //   const text =
+  //     "EVENT:" + JSON.stringify(event) + "SESSION:" + JSON.stringify(session);
 
-    console.warn(text);
-  });
+  //   console.warn(text);
+  // });
 
   useEffect(() => {
     supabase.auth.getUser().then((response) => {
@@ -108,7 +113,7 @@ const SingUpMain = () => {
                 <p>Host your events with free analytics and SMS reminders</p>
               </div>
               <div className="sign__input-form text-center">
-                <form action="#" onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
                   <div className="sign__input">
                     <input
                       type="text"
@@ -174,7 +179,7 @@ const SingUpMain = () => {
                 </form>
                 <div className="if__account mt-90">
                   <p>
-                    Already have an account?
+                    Already have an account?{" "}
                     <Link legacyBehavior href="/signin">
                       <a>Sign in</a>
                     </Link>
@@ -196,5 +201,10 @@ const SingUpMain = () => {
     </main>
   );
 };
+
+// Server side checks
+export async function getServerSideProps(context) {
+  return mustNotBeLoggedIn(context)
+}
 
 export default SingUpMain;

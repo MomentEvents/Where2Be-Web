@@ -4,18 +4,19 @@ import Zoomscreen from "../../utils/SVG/zoomscreen";
 import English from "../../utils/SVG/language-icons/english";
 import EmailIcon from "../../utils/SVG/emailIcon";
 import Notificationicon from "../../utils/SVG/notificationicon";
-import profile_pic from "../../public/assets/img/speaker/list/04.jpg"
+import profile_pic from "../../public/assets/img/speaker/list/04.jpg";
 import Languages from "./languages";
 import Notifications from "./notifications";
 import ProfileLinks from "./profileLinks";
 import supabase from "../../lib/supabase";
 
-export default function DashboardHeader ({ handleClick }) {
+export default function DashboardHeader({ handleClick }) {
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [collapse, setCollapse] = useState(false);
   const [emailactive, setemailactive] = useState(false);
   const [notificationActive, setnotificationActive] = useState(false);
   const [userDropdown, setuserDropdown] = useState(false);
+  const [user, setUser] = useState();
   const handleShowLanguage = () => {
     setCollapse(!collapse);
     setemailactive(false);
@@ -110,7 +111,10 @@ export default function DashboardHeader ({ handleClick }) {
     document.addEventListener("fullscreenchange", handleFullScreenChange);
     document.addEventListener("mozfullscreenchange", handleFullScreenChange);
     document.addEventListener("webkitfullscreenchange", handleFullScreenChange);
-
+    supabase.auth.getUser().then((user) => {
+      console.log(user)
+      setUser(user);
+    });
     return () => {
       document.removeEventListener("fullscreenchange", handleFullScreenChange);
       document.removeEventListener(
@@ -144,7 +148,7 @@ export default function DashboardHeader ({ handleClick }) {
                   <img src={profile_pic.src} alt="imge not found" />
                 </div>
                 <div className="user__content">
-                  {/* <span>{user.email}</span> */}
+                  <span>{user?.data?.user?.email}</span>
                 </div>
               </div>
             </button>
@@ -161,4 +165,4 @@ export default function DashboardHeader ({ handleClick }) {
       </div>
     </div>
   );
-};
+}

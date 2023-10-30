@@ -13,6 +13,10 @@ const showMessage = (message, isError) => {
     return
   }
 
+  if (typeof message === "object" && message !== null) {
+    message = JSON.stringify(message)
+  }
+
   const el = document.createElement('div');
   document.body.appendChild(el);
 
