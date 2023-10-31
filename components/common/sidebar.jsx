@@ -10,11 +10,21 @@ import sidebar_img from "../../public/assets/img/sidebar/sidebar.jpg";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import supabase from "../../lib/supabase";
 import { useRouter } from "next/router";
-import { handleSignOut } from "../../lib/helpers";
 
 const Sidebar = ({ collapse, handleClick }) => {
   const [deviceWidth, setDeviceWidth] = useState(null);
   const router = useRouter()
+
+  const handleSignOut = async (e) => {
+    e.preventDefault(); // Prevent default action
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      showMessage(error);
+      return;
+    }
+
+    router.push("/");
+  };
 
   const SidebarButtons = () => {
     return (
