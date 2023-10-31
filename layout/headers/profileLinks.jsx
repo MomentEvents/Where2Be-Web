@@ -8,20 +8,10 @@ import LoginIcon from "../../utils/SVG/profile/loginIcon";
 import supabase from "../../lib/supabase";
 import showMessage from "../../components/errorMessage/showMessage";
 import { useRouter } from "next/router";
+import { handleSignOut } from "../../lib/helpers";
 
 const ProfileLinks = () => {
   const router = useRouter();
-
-  const handleSignOut = async (e) => {
-    e.preventDefault(); // Prevent default action
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-      showMessage(error);
-      return;
-    }
-
-    router.push("/");
-  };
 
   return (
     <>
