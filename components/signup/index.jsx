@@ -12,7 +12,7 @@ import { DarkModeContext } from "../darkmode-provider/DarkModeProvider";
 import supabase from "../../lib/supabase";
 import showMessage from "../errorMessage/showMessage";
 import { useRouter } from "next/router";
-import { mustNotBeLoggedIn } from "../../lib/authorization";
+import { mustNotBeLoggedInServer } from "../../lib/authorization";
 
 const SingUpMain = () => {
   const { dark } = useContext(DarkModeContext);
@@ -65,11 +65,11 @@ const SingUpMain = () => {
   //   console.warn(text);
   // });
 
-  useEffect(() => {
-    supabase.auth.getUser().then((response) => {
-      showMessage(JSON.stringify(response));
-    })
-  }, []);
+  // useEffect(() => {
+  //   supabase.auth.getUser().then((response) => {
+  //     showMessage(JSON.stringify(response));
+  //   })
+  // }, []);
 
   const handleGoogleAuth = (e) => {
     e.preventDefault(); // This will prevent the form submission
@@ -166,7 +166,7 @@ const SingUpMain = () => {
                     <button className="input__btn w-100 mb-20" type="submit">
                       Sign Up
                     </button>
-                    <button
+                    {/* <button
                       className="gamil__sign-btn w-100"
                       onClick={handleGoogleAuth}
                     >
@@ -174,7 +174,7 @@ const SingUpMain = () => {
                         <GoogleIcon />
                       </span>
                       Sign Up With Google
-                    </button>
+                    </button> */}
                   </div>
                 </form>
                 <div className="if__account mt-90">
@@ -201,10 +201,5 @@ const SingUpMain = () => {
     </main>
   );
 };
-
-// Server side checks
-export async function getServerSideProps(context) {
-  return mustNotBeLoggedIn(context)
-}
 
 export default SingUpMain;

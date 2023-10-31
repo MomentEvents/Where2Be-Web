@@ -8,9 +8,23 @@ import small_logo from "../../public/assets/img/logo/logo-small.svg";
 import logo_two from "../../public/assets/img/logo/logo.svg";
 import sidebar_img from "../../public/assets/img/sidebar/sidebar.jpg";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
+import supabase from "../../lib/supabase";
+import { useRouter } from "next/router";
 
 const Sidebar = ({ collapse, handleClick }) => {
   const [deviceWidth, setDeviceWidth] = useState(null);
+  const router = useRouter()
+
+  const handleSignOut = async (e) => {
+    e.preventDefault(); // Prevent default action
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      showMessage(error);
+      return;
+    }
+
+    router.push("/");
+  };
 
   const SidebarButtons = () => {
     return (
@@ -86,8 +100,8 @@ const Sidebar = ({ collapse, handleClick }) => {
               </li>
 
               <li>
-                <Link legacyBehavior href="/signin">
-                  <a>
+                <Link legacyBehavior href="">
+                  <a onClick={handleSignOut}>
                     <i className="flaticon-log-out-3"></i>
                     <span className="nav-text">Log out</span>
                   </a>

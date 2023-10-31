@@ -11,7 +11,7 @@ import logo_white from "../../public/assets/img/logo/color-logo-white.svg";
 import { useRouter } from "next/router";
 import supabase from "../../lib/supabase";
 import showMessage from "../errorMessage/showMessage";
-import { mustNotBeLoggedIn } from "../../lib/authorization";
+import { mustNotBeLoggedInServer } from "../../lib/authorization";
 
 const SignInPage = () => {
   const { dark } = useContext(DarkModeContext);
@@ -87,8 +87,8 @@ const SignInPage = () => {
             </div>
             <div className="sign__center-wrapper text-center mt-90">
               <div className="sign__title-wrapper mb-40">
-                <h3 className="sign__title">Welcome To Where2Be</h3>
-                <p>Connect with your campus through events</p>
+                <h3 className="sign__title">Sign In To Your Account</h3>
+                <p>Connect with your campus through event experiences</p>
               </div>
               <div className="sign__input-form text-center">
                 <form onSubmit={handleSubmit}>
@@ -143,12 +143,12 @@ const SignInPage = () => {
                     >
                       Sign in
                     </button>
-                    <button className="gamil__sign-btn w-100" type="submit">
+                    {/* <button className="gamil__sign-btn w-100" type="submit">
                       <span>
                         <GoogleIcon />
                       </span>
                       Sign in With Google
-                    </button>
+                    </button> */}
                   </div>
                 </form>
                 <div className="if__account mt-85">
@@ -178,7 +178,7 @@ const SignInPage = () => {
 
 // Server side checks
 export async function getServerSideProps(context) {
-  return mustNotBeLoggedIn(context)
+  return mustNotBeLoggedInServer(context)
 }
 
 export default SignInPage;
