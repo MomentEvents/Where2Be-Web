@@ -31,6 +31,7 @@ const Banner = () => {
   Name
   Email
   PhoneNumber
+  Picture
 
   */
 
