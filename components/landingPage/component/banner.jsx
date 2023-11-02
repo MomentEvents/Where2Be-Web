@@ -11,6 +11,29 @@ import shape_five from "../../../public/assets/img/shape/slider/shape-5.png"
 import shape_six from "../../../public/assets/img/shape/slider/shape-6.png"
 
 const Banner = () => {
+
+  /*
+  Event:
+
+  Title
+  Description
+  StartDate
+  Image
+  Status
+  Location
+  DoSMSReminder
+  SMSMessage
+  */
+
+  /*
+  User:
+
+  Name
+  Email
+  PhoneNumber
+
+  */
+
   const [remainingTime, setRemainingTime] = useState(null);
   const calculateRemainingTime = () => {
     const currentDate = new Date();

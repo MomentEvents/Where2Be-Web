@@ -130,7 +130,6 @@ const WrapCreateEvent = () => {
                                 </span>
                                 <span>Add Image</span>
                               </label>
-                              {/* If you wish to upload the image immediately after selecting, you can add that functionality in the handleImageUpload function */}
                               <button
                                 type="submit"
                                 className="box__button"
@@ -170,6 +169,12 @@ const WrapCreateEvent = () => {
                     <div className="create__input-wrapper">
                       <form action="#">
                         <div className="row g-20">
+                        <div className="singel__input-field mb-15">
+                            <label className="input__field-text">
+                              Location
+                            </label>
+                            <input type="text" placeholder="9500 Gilman Dr, La Jolla, CA 92093" />
+                          </div>
                           <div className="col-xxl-6 col-xl-6 col-lg-6 mb-15">
                             <label className="input__field-text">
                               Event Status
