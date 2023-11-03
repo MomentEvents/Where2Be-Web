@@ -2,15 +2,15 @@
 
 We use supabase with postgreSQL as the database. To develop locally, follow these steps (taken from https://supabase.com/docs/guides/cli/local-development)
 
-### Start local development
+### Set up for initialization & syncing
 
 `supabase login`
-
-`supabase init`
 
 `supabase link --project-ref wxpeyxiragxbvfqtqybw`
 
 `supabase db pull`
+
+### Start local development
 
 `supabase start`
 
