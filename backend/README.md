@@ -30,6 +30,10 @@ Copy the API URL and anon key. Then, put them in the `.env` file in the `fronten
 
 You can access your dashboard using http://localhost:54323/
 
+### If something goes wrong
+
+`supabase db reset` to reset the database
+
 ### Stop local development
 
 `supabase stop`
