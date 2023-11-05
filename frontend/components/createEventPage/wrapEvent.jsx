@@ -48,7 +48,7 @@ const WrapCreateEvent = () => {
       !location ||
       !eventStatus
     ) {
-      showMessage("All fields must be filled out.");
+      showMessage("All fields must be filled out.", true);
       return;
     }
 
@@ -57,12 +57,12 @@ const WrapCreateEvent = () => {
       const fileType = image.split(";")[0].split("/")[1];
       if (!["jpeg", "jpg", "png", "gif"].includes(fileType)) {
         showMessage(
-          "Please select a valid image format (JPEG, JPG, PNG, GIF)."
+          "Please select a valid image format (JPEG, JPG, PNG, GIF).", true
         );
         return;
       }
     } else {
-      showMessage("An image must be selected.");
+      showMessage("An image must be selected.", true);
       return;
     }
 
