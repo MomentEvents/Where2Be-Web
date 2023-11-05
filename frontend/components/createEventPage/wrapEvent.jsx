@@ -1,11 +1,17 @@
 import React, { useState, useRef } from "react";
 import CardHeaderDropdown from "../../components/home/cardheaderdropdown";
 import Link from "next/link";
+import showMessage from "../errorMessage/showMessage";
 const WrapCreateEvent = () => {
   const [image, setImage] = useState(null);
   const [smsEnabled, setSmsEnabled] = useState(false);
   const [dateValue, setDateValue] = useState("");
   const [timeValue, setTimeValue] = useState("");
+  const [eventTitle, setEventTitle] = useState("");
+  const [eventDetails, setEventDetails] = useState("");
+  const [location, setLocation] = useState("");
+  const [eventStatus, setEventStatus] = useState("Open");
+  const [smsMessage, setSmsMessage] = useState("");
 
   const fileInputRef = useRef(null);
 
@@ -28,6 +34,55 @@ const WrapCreateEvent = () => {
     if (fileInputRef.current) {
       fileInputRef.current.value = null;
     }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // prevent default form behavior
+
+    // 1. Check for empty fields
+    if (
+      !eventTitle ||
+      !eventDetails ||
+      !dateValue ||
+      !timeValue ||
+      !location ||
+      !eventStatus
+    ) {
+      showMessage("All fields must be filled out.");
+      return;
+    }
+
+    // 2. Validate image type
+    if (image) {
+      const fileType = image.split(";")[0].split("/")[1];
+      if (!["jpeg", "jpg", "png", "gif"].includes(fileType)) {
+        showMessage(
+          "Please select a valid image format (JPEG, JPG, PNG, GIF)."
+        );
+        return;
+      }
+    } else {
+      showMessage("An image must be selected.");
+      return;
+    }
+
+    // If all validations pass, create event and reroute
+    const eventData = {
+      title: eventTitle,
+      details: eventDetails,
+      image: image,
+      date: dateValue,
+      time: timeValue,
+      location: location,
+      status: eventStatus,
+      smsEnabled: smsEnabled,
+      smsMessage: smsMessage,
+    };
+
+    // For demonstration purposes, I'm just logging the data. In a real scenario, you'd send this to your backend.
+    console.log(eventData);
+
+    // Reroute here
   };
 
   return (
@@ -66,80 +121,88 @@ const WrapCreateEvent = () => {
         <div className="row">
           <div className="col-xxl-12">
             <div className="create__event-area">
-              <div className="body__card-wrapper">
-                <div className="card__header-top">
-                  <div className="card__title-inner">
-                    <h4 className="event__information-title">
-                      Event Information
-                    </h4>
+              <form onSubmit={handleSubmit}>
+                <div className="body__card-wrapper">
+                  <div className="card__header-top">
+                    <div className="card__title-inner">
+                      <h4 className="event__information-title">
+                        Event Information
+                      </h4>
+                    </div>
+                    {/* card header top componet  */}
                   </div>
-                  {/* card header top componet  */}
-                </div>
 
-                {/* create event form  */}
+                  {/* create event form  */}
 
-                <div className="create__event-main pt-25">
-                  <div className="event__left-box">
-                    <div className="create__input-wrapper">
-                      <form action="#">
+                  <div className="create__event-main pt-25">
+                    <div className="event__left-box">
+                      <div className="create__input-wrapper">
                         <div className="singel__input-field mb-15">
                           <label className="input__field-text">
                             Event Title
                           </label>
-                          <input type="text" placeholder="My event" />
+                          <input
+                            type="text"
+                            placeholder="My event"
+                            value={eventTitle}
+                            onChange={(e) => setEventTitle(e.target.value)}
+                          />
                         </div>
                         <div className="event__input mb-15">
                           <label className="input__field-text">
                             Event Details
                           </label>
-                          <textarea placeholder="Come join my fun event!"></textarea>
+                          <textarea
+                            placeholder="Come join my fun event!"
+                            value={eventDetails}
+                            onChange={(e) => setEventDetails(e.target.value)}
+                          ></textarea>
                         </div>
-                      </form>
-                    </div>
-                    <div className="event__update-wrapper">
-                      <span>Add Image (select 1)</span>
-                      <div className="event__update-file">
-                        {image && (
-                          <div className="event__update-thumb">
-                            <img src={image} alt="Uploaded preview" />
-                            <span
-                              className="update__thumb-close"
-                              onClick={handleDeleteImage}
-                            >
-                              <i className="fa-regular fa-xmark"></i>
-                            </span>
-                          </div>
-                        )}
-                        {!image && (
-                          <div className="event__update-thumb">
-                            <div className="box__input">
-                              <input
-                                ref={fileInputRef}
-                                type="file"
-                                name="file"
-                                id="file"
-                                className="box__file"
-                                onChange={handleImageUpload}
-                              />
-                              <label
-                                className="input__field-text"
-                                htmlFor="file"
-                              >
-                                <span>
-                                  <i className="fa-regular fa-plus"></i>
-                                </span>
-                                <span>Add Image</span>
-                              </label>
-                              <button
-                                type="submit"
-                                className="box__button"
-                              ></button>
-                            </div>
-                          </div>
-                        )}
                       </div>
-                    </div>
-                    <form action="#">
+                      <div className="event__update-wrapper">
+                        <span>Add Image (select 1)</span>
+                        <div className="event__update-file">
+                          {image && (
+                            <div className="event__update-thumb">
+                              <img src={image} alt="Uploaded preview" />
+                              <span
+                                className="update__thumb-close"
+                                onClick={handleDeleteImage}
+                              >
+                                <i className="fa-regular fa-xmark"></i>
+                              </span>
+                            </div>
+                          )}
+                          {!image && (
+                            <div className="event__update-thumb">
+                              <div className="box__input">
+                                <input
+                                  ref={fileInputRef}
+                                  type="file"
+                                  name="file"
+                                  id="file"
+                                  className="box__file"
+                                  onChange={handleImageUpload}
+                                  accept=".jpg, .jpeg, .png, .gif"
+                                />
+                                <label
+                                  className="input__field-text"
+                                  htmlFor="file"
+                                >
+                                  <span>
+                                    <i className="fa-regular fa-plus"></i>
+                                  </span>
+                                  <span>Add Image</span>
+                                </label>
+                                <button
+                                  type="submit"
+                                  className="box__button"
+                                ></button>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      </div>
                       <div className="row g-20">
                         <div className="col-xxl-12 col-xl-12 col-lg-12">
                           <div className="singel__input-field is-color-change mb-15">
@@ -163,24 +226,30 @@ const WrapCreateEvent = () => {
                           </div>
                         </div>
                       </div>
-                    </form>
-                  </div>
-                  <div className="event__right-box">
-                    <div className="create__input-wrapper">
-                      <form action="#">
+                    </div>
+                    <div className="event__right-box">
+                      <div className="create__input-wrapper">
                         <div className="row g-20">
-                        <div className="singel__input-field mb-15">
+                          <div className="singel__input-field mb-15">
                             <label className="input__field-text">
                               Location
                             </label>
-                            <input type="text" placeholder="9500 Gilman Dr, La Jolla, CA 92093" />
+                            <input
+                              type="text"
+                              placeholder="9500 Gilman Dr, La Jolla, CA 92093"
+                              value={location}
+                              onChange={(e) => setLocation(e.target.value)}
+                            />
                           </div>
                           <div className="col-xxl-6 col-xl-6 col-lg-6 mb-15">
                             <label className="input__field-text">
                               Event Status
                             </label>
                             <div className="contact__select">
-                              <select>
+                              <select
+                                value={eventStatus}
+                                onChange={(e) => setEventStatus(e.target.value)}
+                              >
                                 <option defaultValue="0">Open</option>
                                 <option defaultValue="1">Closed</option>
                               </select>
@@ -222,6 +291,8 @@ const WrapCreateEvent = () => {
                                 disabled={!smsEnabled}
                                 maxLength={160}
                                 placeholder="Come to my event!"
+                                value={smsMessage}
+                                onChange={(e) => setSmsMessage(e.target.value)}
                               ></textarea>
                             </div>
                           )}
@@ -230,11 +301,11 @@ const WrapCreateEvent = () => {
                             Create Event
                           </button>
                         </div>
-                      </form>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>
