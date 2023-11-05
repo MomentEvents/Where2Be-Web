@@ -19,12 +19,12 @@ const Features = () => {
               Get involved with your campus community. By students. For students.
           </div>
           <div className="features__left_btn_container">
-            <Link legacyBehavior href="/explore">
+            <Link legacyBehavior href="/events">
               <a className="explore__btn">
                 Explore Events
               </a>
             </Link>
-            <Link legacyBehavior href="/create">
+            <Link legacyBehavior href="/create-event">
               <a className="create__btn">
                 Create An Event
               </a>
