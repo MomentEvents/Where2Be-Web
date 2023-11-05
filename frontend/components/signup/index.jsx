@@ -43,6 +43,11 @@ const SingUpMain = () => {
       const response = await supabase.auth.signUp({
         email: emailRef.current,
         password: passwordRef.current,
+        options: {
+          data: {
+            name: nameRef.current
+          }
+        }
       });
 
       if (response.error) {
