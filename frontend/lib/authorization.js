@@ -50,7 +50,7 @@ export async function mustBeLoggedInClient() {
     const user = await supabase.auth.getUser()
 
     if(!user?.data?.user || user?.error){
-        router.push("/signin")
+        router.replace("/signin")
     }
     return user
 }
@@ -60,7 +60,7 @@ export async function mustNotBeLoggedInClient() {
     const user = await supabase.auth.getUser()
 
     if(user?.data?.user){
-        router.push("/dashboard")
+        router.replace("/dashboard")
     }
     return user
 }

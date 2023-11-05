@@ -39,7 +39,7 @@ const SignInPage = () => {
         return;
       }
 
-      router.push("/dashboard");
+      router.replace("/dashboard");
     } catch (e) {
       showMessage(
         "An error occurred when signing in. Check the console for details.",

@@ -56,7 +56,7 @@ const SingUpMain = () => {
       }
       console.log(response)
 
-      router.push("/dashboard")
+      router.replace("/dashboard")
     } catch (e) {
       showMessage("An error occurred when signing up", true)
       console.warn(e)
