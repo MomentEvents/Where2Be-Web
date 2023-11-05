@@ -5,6 +5,7 @@ $colors: (
         "placeholder":#676767,
         "heading":#333333,
         "body-text":#111111,
+        "button-gray": #474747,
     ),
     theme: (
         "1":#8c00ff,
@@ -87,5 +88,6 @@ $colors: (
         "13":linear-gradient(90deg,#25F721,#099E33,#099E33,#25F721),
         "14":linear-gradient(90deg,#6d2cc9,#7833b9,#9e5bd5,#aa71e7),
         "15":linear-gradient(180deg, #F87A58 0%, #F7426F 100%),
+        "purple":linear-gradient(90deg, #AE92FF 0%, #5A21FA 100%),
     )
 );

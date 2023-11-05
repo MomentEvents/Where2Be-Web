@@ -75,21 +75,19 @@
 	}
 	&__social {
 		@include flexbox();
-		gap: 18px;
-		a {
+		gap: 30px;
+		img {
 			color: var(--clr-text-21);
 			@include flexbox();
 			align-items: center;
 			justify-content: center;
 			width: 36px;
 			height: 36px;
-			background: #18274F;
 			font-size: 16px;
-			&:hover {
-				background-color: var(--clr-theme-1);
-			}
-			i {
-				line-height: 1;
+			&:hover{
+				cursor: pointer;
+				width: 40px;
+				height: 40px;
 			}
 		}
 	}
@@ -187,11 +185,9 @@
 			color: #8E8E8E;
 		}
 	}
-	&__copyright {
-		border-top: 1px dashed #647AB5;
+	&__text {
 		p {
 			margin-bottom: 0;
-			padding: 30px 0;
 			color: var(--clr-text-21);
 			letter-spacing: 4px;
 			a {
@@ -200,5 +196,14 @@
 				}
 			}
 		}
+	}
+	&__container {
+		@include flexbox();
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 60px 50px 80px;
+		position: absolute;
+		bottom: 0;
+		width: 100%;
 	}
 }

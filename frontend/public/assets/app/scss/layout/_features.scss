@@ -1,0 +1,103 @@
+/*----------------------------------------*/
+/*  Features CSS START
+/*----------------------------------------*/
+@use '../utils' as *;
+
+// Feature style css
+.features {
+    &__container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 10rem;
+	}
+    &__left_container {
+        flex: 1;
+    }
+    &__right_container {
+        flex: 1;
+        max-width: 50%;
+        img {
+            position: relative;
+            z-index: 100;
+        }
+    }
+    &__left_btn_container {
+        @include flexbox();
+        flex: 1;
+        padding: 50px 20px 0px 60px;
+    }
+    &__title1 {
+        color: var(--clr-common-white);
+        font-family: var(--bd-ff-heading);
+        font-weight: var(--bd-fw-bold);
+        font-size: 60px;
+        padding: 0px 20px 0px 60px;
+        line-height: 80px;
+    }
+    &__title2 {
+        color: var(--clr-gradient-purple);
+        font-family: var(--bd-ff-heading);
+        font-weight: var(--bd-fw-bold);
+        font-size: 60px;
+        padding: 0px 20px 0px 60px;
+        line-height: 80px;
+    }
+    &__subtitle {
+        color: var(--clr-common-white);
+        font-family: var(--bd-ff-body);
+        font-weight: var(--bd-fw-regular);
+        font-size: var(--bd-fs-h3);
+        padding: 50px 20px 0px 60px;
+        line-height: 40px;
+    }
+}
+
+.explore__btn, .create__btn {
+    font-size: 16px;
+    color: var(--clr-common-white);
+    font-weight: var(--bd-fw-medium);
+    background: var(--clr-common-button-gray);
+    padding: 0px 40px;
+    @include inline-flex();
+    align-items: center;
+    height: 60px;
+    @include border-radius(6px);
+    @include transition (.3s);
+    position: relative;
+    z-index: 5;
+    &::before {
+        position: absolute;
+        content: "";
+        height: 100%;
+        width: 100%;
+        background: var(--clr-gradient-purple);
+        top: 0;
+        left: 0;
+        z-index: -1;
+        opacity: 0;
+        visibility: hidden;
+        @include transition (.5s);
+        @include border-radius(6px);
+    }
+    i {
+        opacity: 0;
+        margin-inline-start: 10px;
+        @include transition (.3s);
+    }
+    &:hover {
+        color: var(--clr-common-white);
+        &::before {
+            opacity: 1;
+            visibility: visible;
+        }
+        i {
+            opacity: 1;
+        }
+    }
+}
+
+.explore__btn {
+    background: var(--clr-gradient-purple);
+    margin-right: 20px;
+}

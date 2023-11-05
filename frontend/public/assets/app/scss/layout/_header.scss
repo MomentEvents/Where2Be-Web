@@ -20,7 +20,7 @@
 .sticky {
 	position: fixed !important;
 	top: 0;
-	background: var(--clr-common-white);
+	background: var(--clr-common-black);
     z-index: 111;
 	inset-inline-end: 0;
 	inset-inline-start: 0;
@@ -81,6 +81,7 @@
 }
 .header__logo img {
 	width: 200px;
+    margin-left: 40px;
 }
 .header-1 {
     @media #{$xs,$sm,$md,$lg}{
@@ -438,6 +439,7 @@
     @include flexbox();
     align-items:center;
     gap: 70px;
+    padding: 46px 60px;
     @media #{$xl}{
         gap: 40px;
     }
@@ -540,3 +542,47 @@
     display: block;
   }
   
+.dashboard__btn {
+    font-size: 16px;
+    color: var(--clr-common-white);
+    font-weight: var(--bd-fw-medium);
+    background: var(--clr-common-button-gray);
+    padding: 0px 20px 0px 40px;
+    @include inline-flex();
+    align-items: center;
+    height: 60px;
+    @include border-radius(6px);
+    @include transition (.3s);
+    position: relative;
+    z-index: 5;
+    &::before {
+        position: absolute;
+        content: "";
+        height: 100%;
+        width: 100%;
+        background: var(--clr-gradient-purple);
+        top: 0;
+        left: 0;
+        z-index: -1;
+        opacity: 0;
+        visibility: hidden;
+        @include transition (.5s);
+        @include border-radius(6px);
+    }
+    i {
+        opacity: 0;
+        margin-inline-start: 10px;
+        @include transition (.3s);
+    }
+    &:hover {
+        color: var(--clr-common-white);
+        padding: 0 30px;
+        &::before {
+            opacity: 1;
+            visibility: visible;
+        }
+        i {
+            opacity: 1;
+        }
+    }
+}
