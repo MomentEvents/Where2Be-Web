@@ -73,5 +73,3 @@ alter table "public"."profiles" add constraint "Users_phone_number_key" UNIQUE u
 alter table "public"."events" add constraint "events_host_id_fkey" FOREIGN KEY (host_id) REFERENCES profiles(user_id) ON UPDATE CASCADE ON DELETE CASCADE not valid;
 
 alter table "public"."events" validate constraint "events_host_id_fkey";
-
-

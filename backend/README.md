@@ -16,7 +16,8 @@ We use supabase with postgreSQL as the database. To develop locally, follow thes
 
 When you see...
 
-```      API URL: http://localhost:54321
+``` 
+         API URL: http://localhost:54321
      GraphQL URL: http://localhost:54321/graphql/v1
           DB URL: postgresql://postgres:postgres@localhost:54322/postgres
       Studio URL: http://localhost:54323
@@ -29,6 +30,8 @@ service_role key: ***************************
 Copy the API URL and anon key. Then, put them in the `.env` file in the `frontend` folder
 
 You can access your dashboard using http://localhost:54323/
+
+Now, read `storage.md` to set up storage buckets if you haven't already
 
 ### Stop local development
 
