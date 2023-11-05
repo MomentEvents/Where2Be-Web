@@ -35,7 +35,6 @@ const Features = () => {
           <img
             src={demo.src}
             alt="image not found"
-            width={'600px'}
           />
         </div>
       </section>

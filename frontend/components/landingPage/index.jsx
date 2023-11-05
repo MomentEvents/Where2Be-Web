@@ -15,6 +15,7 @@ const LandingPageMain = () => {
   return (
     <> 
       <main className={`body-area ${dark ? "bd-theme-dark" : "bd-theme-light"}`} style={{ backgroundImage: `url(${background.src})` }}>
+        <LandingSidemenu />
         <LandingHeader />
         <Features />
         <LandingFooter />

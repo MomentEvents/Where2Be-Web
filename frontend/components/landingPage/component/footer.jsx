@@ -15,80 +15,40 @@ const Footer = () => {
   return (
     <>
       <footer>
-        {/* <section className="footer__area footer-bg fix p-relative pt-145">
-          <div className="container">
-            <div className="row">
-              <div className="col-12">
-                <div
-                  className="footer__text"
-                >
-                  <p>
-                    {"Made with "}
-                    <img
-                      src={heart.src}
-                      alt="image not found"
-                    />
-                    {" by students"}
-                  </p>
-                </div>
-              </div>
-              <div className="footer__social">
-                <Link legacyBehavior href={LINKS.Email} target="_blank">
-                  <img
-                    src={email.src}
-                    alt="image not found"
-                  />
-                </Link>
-                <Link legacyBehavior href={LINKS.Instagram} target="_blank">
-                  <img
-                    src={instagram.src}
-                    alt="image not found"
-                  />
-                </Link>
-                <Link legacyBehavior href={LINKS.Discord} target="_blank">
-                  <img
-                    src={discord.src}
-                    alt="image not found"
-                  />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section> */}
         <div className="footer__container">
-              <div
-                className="footer__text"
-              >
-                <p>
-                  {"Made with "}
-                  <img
-                    src={heart.src}
-                    alt="image not found"
-                  />
-                  {" by students"}
-                </p>
-              </div>
-              <div className="footer__social">
-                <Link legacyBehavior href={LINKS.Email} target="_blank">
-                  <img
-                    src={email.src}
-                    alt="image not found"
-                  />
-                </Link>
-                <Link legacyBehavior href={LINKS.Instagram} target="_blank">
-                  <img
-                    src={instagram.src}
-                    alt="image not found"
-                  />
-                </Link>
-                <Link legacyBehavior href={LINKS.Discord} target="_blank">
-                  <img
-                    src={discord.src}
-                    alt="image not found"
-                  />
-                </Link>
-              </div>
-            </div>
+          <div
+            className="footer__text"
+          >
+            <p>
+              {"Made with "}
+              <img
+                src={heart.src}
+                alt="image not found"
+              />
+              {" by students"}
+            </p>
+          </div>
+          <div className="footer__social">
+            <Link legacyBehavior href={LINKS.Email} target="_blank">
+              <img
+                src={email.src}
+                alt="image not found"
+              />
+            </Link>
+            <Link legacyBehavior href={LINKS.Instagram} target="_blank">
+              <img
+                src={instagram.src}
+                alt="image not found"
+              />
+            </Link>
+            <Link legacyBehavior href={LINKS.Discord} target="_blank">
+              <img
+                src={discord.src}
+                alt="image not found"
+              />
+            </Link>
+          </div>
+        </div>
       </footer>
     </>
   );

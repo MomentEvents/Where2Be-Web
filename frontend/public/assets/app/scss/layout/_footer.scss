@@ -88,6 +88,14 @@
 				cursor: pointer;
 				width: 40px;
 				height: 40px;
+				@media #{$xs, $sm}{
+					width: 36px;
+					height: 36px;
+				}
+			}
+			@media #{$xs, $sm}{
+				width: 30px;
+				height: 30px;
 			}
 		}
 	}
@@ -190,10 +198,18 @@
 			margin-bottom: 0;
 			color: var(--clr-text-21);
 			letter-spacing: 4px;
+			@media #{$xs, $sm}{
+				font-size: 10px;
+			}
 			a {
 				&:hover {
 					color: var(--clr-theme-1);
 				}
+			}
+		}
+		img {
+			@media #{$xs, $sm}{
+				width: 10px;
 			}
 		}
 	}
@@ -205,5 +221,8 @@
 		position: absolute;
 		bottom: 0;
 		width: 100%;
+		@media #{$xs, $sm}{
+			padding: 0 30px 50px 20px;
+		}
 	}
 }

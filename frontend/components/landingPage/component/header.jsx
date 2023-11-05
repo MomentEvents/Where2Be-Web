@@ -39,14 +39,12 @@ const LandingHeader = ({breadcrumb_shadow}) => {
                     </div>
                     <div className="header__right">
                       <div className="header__action-inner">
-                        <div className="header__btn d-none d-xl-block">
                           <Link legacyBehavior href="/dashboard">
                             <a className="dashboard__btn">
                               Dashboard
                               <i className="fa-regular fa-angle-right"></i>
                             </a>
                           </Link>
-                        </div>
                       </div>
                     </div>
                   </div>
