@@ -1,0 +1,44 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Directory used by npm
+node_modules/
+jspm_packages/
+
+# Next.js build output
+.next/
+out/
+
+# dotenv environment variables file
+.env
+.env-prod
+.env-dev
+.env.local
+.env.*.local
+.env.*.test
+
+# vercel env file
+.vercel
+
+# OS generated files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# IDE generated files
+.vscode/
+.idea/
+*.iml
+
+# Yarn
+.yarn/
+.pnp*
