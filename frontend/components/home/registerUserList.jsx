@@ -16,7 +16,7 @@ const RegisterUserList = () => {
                               <i className="flaticon-ticket-1"></i>
                            </div>
                            <div className="card__header-title">
-                              <h4>Recent Signups</h4>
+                              <h4>Latest Event Registrations</h4>
                            </div>
                         </div>
                      </div>

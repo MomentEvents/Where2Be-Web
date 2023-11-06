@@ -92,7 +92,7 @@ const WrapContent = () => {
                       <i className="flaticon-group"></i>
                     </div>
                     <div className="card__header-title">
-                      <h4>New Event Signups</h4>
+                      <h4>Signup Activity</h4>
                     </div>
                   </div>
                   {/* <div className="card__header-right">

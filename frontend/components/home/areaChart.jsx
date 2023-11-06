@@ -52,7 +52,7 @@ const options = {
     },
   },
   xaxis: {
-    categories: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    categories: ["", "", "", "", "", "", ""],
     offsetY: 0,
     offsetX: 5,
     labels: {
@@ -87,6 +87,16 @@ const options = {
   tooltip: {
     x: {
       format: "dd/MM/yy HH:mm",
+    },
+    y: {
+      title: {
+        formatter: function (seriesName) {
+          return `${seriesName}:`;
+        },
+      },
+      formatter: function (value) {
+        return `${value} signups`;
+      },
     },
   },
   legend: {
