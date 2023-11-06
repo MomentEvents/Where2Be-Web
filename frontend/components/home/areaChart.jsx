@@ -52,7 +52,7 @@ const options = {
     },
   },
   xaxis: {
-    categories: ["", "", "", "", "", "", ""],
+    categories: ["", "", "", "", "", "", "Today"],
     offsetY: 0,
     offsetX: 5,
     labels: {
