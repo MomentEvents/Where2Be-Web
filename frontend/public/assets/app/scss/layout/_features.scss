@@ -11,9 +11,6 @@
         justify-content: space-between;
         padding-top: 10rem;
         overflow: hidden;
-        @media #{$xs}{
-            padding-top: 15rem;
-        }
 	}
     &__left_container {
         flex: 1;
@@ -48,7 +45,7 @@
     &__left_btn_container {
         @include flexbox();
         flex: 1;
-        padding: 50px 0px 0px 60px;
+        padding: 50px 0px 0px 50px;
         @media #{$xs,$sm,$md}{
             flex-direction: column;
             justify-content: center;
@@ -61,23 +58,23 @@
         font-family: var(--bd-ff-heading);
         font-weight: var(--bd-fw-bold);
         font-size: 60px;
-        padding: 0px 20px 0px 60px;
+        padding: 0px 0px 0px 50px;
         line-height: 80px;
 
         @media #{$md}{
-            font-size: 50px;
-            padding: 30px 10px 10px 50px;
+            font-size: 48px;
+            padding: 70px 00px 10px 50px;
             line-height: 70px;
         }
         @media #{$xs, $sm}{
-            font-size: 50px;
+            font-size: 48px;
             padding: 80px 10px 10px 30px;
             line-height: 70px;
         }
-        @media #{$xxs}{
-            font-size: 45px;
-            padding: 20px 10px 10px 30px;
-            line-height: 60px;
+        @media #{$xxs, $xxxs}{
+            font-size: 40px;
+            padding: 50px 10px 10px 30px;
+            line-height: 50px;
         }
     }
     &__title2 {
@@ -87,20 +84,20 @@
         font-family: var(--bd-ff-heading);
         font-weight: var(--bd-fw-bold);
         font-size: 60px;
-        padding: 0px 20px 0px 60px;
+        padding: 0px 0px 0px 50px;
         line-height: 80px;
         @media #{$md}{
-            font-size: 50px;
-            padding: 0px 10px 0px 50px;
+            font-size: 48px;
+            padding: 0px 0px 0px 50px;
             line-height: 70px;
         }
         @media #{$xs, $sm}{
-            font-size: 50px;
+            font-size: 48px;
             padding: 0px 10px 0px 30px;
             line-height: 70px;
         }
-        @media #{$xxs}{
-            font-size: 45px;
+        @media #{$xxs, $xxxs}{
+            font-size: 40px;
             padding: 0px 10px 0px 30px;
             line-height: 50px;
         }
@@ -110,7 +107,7 @@
         font-family: var(--bd-ff-body);
         font-weight: var(--bd-fw-regular);
         font-size: var(--bd-fs-h3);
-        padding: 50px 20px 0px 60px;
+        padding: 50px 20px 0px 50px;
         line-height: 40px;
         @media #{$md}{
             font-size: var(--bd-fs-h4);
