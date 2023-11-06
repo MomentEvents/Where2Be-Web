@@ -14,12 +14,13 @@ export default async function handler(
   if (!user) {
     return res.status(401).json({ error: "User not found" });
   }
-  const { data, error } = await supabaseAdmin
+  let response = await supabaseAdmin
     .from("profiles")
     .select("*")
     .eq("user_id", user.data.user.id);
-  if (error) {
-    return res.status(400).json({ error: error });
+  if (response.error) {
+    return res.status(400).json({ error: response.error });
   }
-  return res.status(200).json(data);
+
+  return res.status(200).json(response.data)
 }
