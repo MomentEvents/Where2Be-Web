@@ -20,7 +20,7 @@
 .sticky {
 	position: fixed !important;
 	top: 0;
-	background: var(--clr-common-white);
+	background: var(--clr-common-black);
     z-index: 111;
 	inset-inline-end: 0;
 	inset-inline-start: 0;
@@ -81,10 +81,17 @@
 }
 .header__logo img {
 	width: 200px;
+    margin-left: 40px;
+    @media #{$xs,$sm}{
+        margin-left: 20px;
+    }
 }
 .header-1 {
-    @media #{$xs,$sm,$md,$lg}{
+    @media #{$md,$lg}{
         padding: 20px 0;
+    }
+    @media #{$xs,$sm}{
+        padding: 0;
     }
 	.container {
 		max-width: 1570px;
@@ -424,22 +431,26 @@
 }
 .user__content {
     span {
-    font-size: 16px;
-    color: var(--clr-text-secondary);
-    font-weight: var(--bd-fw-medium);
-    position: relative;
-    padding-inline-end: 23px;
-    @media #{$xs,$lg}{
-        display: none;
-    }
+        font-size: 16px;
+        color: var(--clr-text-secondary);
+        font-weight: var(--bd-fw-medium);
+        position: relative;
+        padding-inline-end: 23px;
+        @media #{$xs,$lg}{
+            display: none;
+        }
     }
 }
 .header__action-inner {
     @include flexbox();
     align-items:center;
     gap: 70px;
+    padding: 26px 30px;
     @media #{$xl}{
         gap: 40px;
+    }
+    @media #{$xs,$sm}{
+        padding: 26px 30px;
     }
 }
 .user__portfolio-thumb {
@@ -508,7 +519,7 @@
         }
     }
 }
-.humbager__icon {
+.humberger__icon {
 	width: 60px;
 	height: 60px;
 	border-radius: 10px;
@@ -540,3 +551,99 @@
     display: block;
   }
   
+.dashboard__btn {
+    font-size: 16px;
+    color: var(--clr-common-white);
+    font-weight: var(--bd-fw-medium);
+    background: var(--clr-common-button-gray);
+    padding: 0px 20px 0px 40px;
+    @include inline-flex();
+    align-items: center;
+    height: 60px;
+    @include border-radius(22px);
+    @include transition (.3s);
+    position: relative;
+    z-index: 5;
+    &::before {
+        position: absolute;
+        content: "";
+        height: 100%;
+        width: 100%;
+        background: var(--clr-gradient-dark-purple);
+        top: 0;
+        left: 0;
+        z-index: -1;
+        opacity: 0;
+        visibility: hidden;
+        @include transition (.5s);
+        @include border-radius(22px);
+    }
+    i {
+        opacity: 0;
+        margin-inline-start: 10px;
+        @include transition (.3s);
+    }
+    &:hover {
+        color: var(--clr-common-white);
+        padding: 0 30px;
+        &::before {
+            opacity: 1;
+            visibility: visible;
+        }
+        i {
+            opacity: 1;
+        }
+    }
+}
+
+.hamburger__btn {
+    background: var(--clr-common-button-gray);
+    @include inline-flex();
+    align-items: center;
+    justify-content: center;
+    width: 65px;
+    height: 65px;
+    @include border-radius(22px);
+    @include transition (.3s);
+    position: relative;
+    z-index: 5;
+    &::before {
+        position: absolute;
+        content: "";
+        height: 100%;
+        width: 100%;
+        background: var(--clr-gradient-dark-purple);
+        top: 0;
+        left: 0;
+        z-index: -1;
+        opacity: 0;
+        visibility: hidden;
+        @include transition (.5s);
+        @include border-radius(22px);
+    }
+    &:hover {
+        color: var(--clr-common-white);
+        padding: 0 30px;
+        &::before {
+            opacity: 1;
+            visibility: visible;
+        }
+        i {
+            opacity: 1;
+        }
+    }
+}
+
+.header__dashboard {
+    display: block;
+    @media #{$xs,$sm}{
+        display: none;
+    }
+}
+
+.header__hamburger {
+    display: none;
+    @media #{$xs,$sm}{
+        display: block;
+    }
+}

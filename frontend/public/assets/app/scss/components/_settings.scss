@@ -313,6 +313,7 @@
 .body-area {
     background: var(--clr-bg-10);
     min-height: 100vh;
+    position: relative;
 }
 .bd-theme-dark.body-area {
     background: var(--clr-bg-5);

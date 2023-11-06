@@ -5,35 +5,22 @@ import logo_dark from "../../../public/assets/img/logo/logo-dark.svg"
 import { useContext } from "react";
 import { AppContext } from "../../../context/AppContext";
 import Menus from "../menus";
+import logo from "../../../public/assets/img/index/logo.png";
+
 const LandingHeader = ({breadcrumb_shadow}) => {
   const {toggleSideMenu} = useContext(AppContext)
-  const [scrollDirection, setScrollDirection] = useState("down");
 
-  // Sticky Menu Area start
-  useEffect(() => {
-    let prevScrollY = window.scrollY;
+  const handleHamburgerClick = (e) => {
+    e.preventDefault();
+    toggleSideMenu();
+  };
 
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      if (scrollTop > prevScrollY) {
-        setScrollDirection("down");
-      } else {
-        setScrollDirection("up");
-      }
-      prevScrollY = scrollTop;
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
   return (
     <>
       <header>
         <div
           id="header-sticky"
-          className={`header__area header-1 header__transparent menu-sticky dark_light_class ${scrollDirection === "up" ? "sticky" : ""} ${breadcrumb_shadow ? breadcrumb_shadow : ""} `}
+          className={`header__area header-1 header__transparent ${breadcrumb_shadow ? breadcrumb_shadow : ""} `}
         >
           <div className="container">
             <div className="row align-items-center">
@@ -45,41 +32,34 @@ const LandingHeader = ({breadcrumb_shadow}) => {
                         <a>
                           <img
                             className="logo__white"
-                            src={logo_white.src}
+                            src={logo.src}
                             alt="logo not found"
                           />
                           <img
                             className="logo__dark"
-                            src={logo_dark.src}
+                            src={logo.src}
                             alt="logo not found"
                           />
                         </a>
                       </Link>
                     </div>
                     <div className="header__right">
-                      <div className="main-menu smooth d-none d-none d-xl-block">
-                        <nav id="mobile-menu">
-                         <Menus/>
-                        </nav>
-                      </div>
                       <div className="header__action-inner">
-                        <div className="header__btn d-none d-xl-block">
-                          <Link legacyBehavior href="/signin">
-                            <a className="fill__btn">
-                              SignIn
-                              <i className="fa-regular fa-angle-right"></i>
-                            </a>
-                          </Link>
-                        </div>
-                        <div className="header__hamburger">
-                          <div className="sidebar__toggle">
-                              <button type="button" onClick={toggleSideMenu} className="bar-icon">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                              </button>
+                          <div className="header__dashboard">
+                            <Link legacyBehavior href="/dashboard">
+                              <a className="dashboard__btn">
+                                Dashboard
+                                <i className="fa-regular fa-angle-right"></i>
+                              </a>
+                            </Link>
                           </div>
-                        </div>
+                          <div className="header__hamburger">
+                            <div className="sidebar__toggle">
+                                <a className="hamburger__btn" onClick={handleHamburgerClick}>
+                                  <i className="fa-solid fa-bars" style={{ color: "#CDCDCD", fontSize: '26px' }}></i>
+                                </a>
+                            </div>
+                          </div>
                       </div>
                     </div>
                   </div>

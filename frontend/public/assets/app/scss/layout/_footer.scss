@@ -75,22 +75,31 @@
 	}
 	&__social {
 		@include flexbox();
-		gap: 18px;
-		a {
+		gap: 30px;
+		img {
 			color: var(--clr-text-21);
 			@include flexbox();
 			align-items: center;
 			justify-content: center;
 			width: 36px;
 			height: 36px;
-			background: #18274F;
 			font-size: 16px;
-			&:hover {
-				background-color: var(--clr-theme-1);
+			&:hover{
+				cursor: pointer;
+				width: 40px;
+				height: 40px;
+				@media #{$xs, $sm}{
+					width: 36px;
+					height: 36px;
+				}
 			}
-			i {
-				line-height: 1;
+			@media #{$xs, $sm}{
+				width: 30px;
+				height: 30px;
 			}
+		}
+		@media #{$xs, $sm}{
+			margin-top: 30px;
 		}
 	}
 	&__widget {
@@ -187,18 +196,36 @@
 			color: #8E8E8E;
 		}
 	}
-	&__copyright {
-		border-top: 1px dashed #647AB5;
+	&__text {
 		p {
 			margin-bottom: 0;
-			padding: 30px 0;
 			color: var(--clr-text-21);
 			letter-spacing: 4px;
+			@media #{$xs, $sm}{
+				font-size: 10px;
+			}
 			a {
 				&:hover {
 					color: var(--clr-theme-1);
 				}
 			}
+		}
+		img {
+			@media #{$xs, $sm}{
+				width: 10px;
+			}
+		}
+	}
+	&__container {
+		@include flexbox();
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 60px 50px 80px;
+		bottom: 0;
+		width: 100%;
+		@media #{$xs, $sm}{
+			flex-direction: column;
+			padding: 0 30px 50px;
 		}
 	}
 }

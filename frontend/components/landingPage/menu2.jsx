@@ -12,7 +12,7 @@ const Menu2 = () => {
           {mobileMenu.length > 0 &&
             mobileMenu.map((menuItem, index) => (
               <li onClick={toggleSideMenu} key={index}>
-                <Link legacyBehavior href={menuItem.link}>{menuItem.text}</Link>
+                <Link legacyBehavior href={menuItem.link} >{menuItem.text}</Link>
               </li>
             ))}
         </ul>
