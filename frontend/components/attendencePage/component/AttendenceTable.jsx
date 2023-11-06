@@ -86,11 +86,6 @@ const AttendenceTable = ({ attendenceData }) => {
                 </span>
               </div>
             </td>
-            <td>
-              <div className="attendant__status">
-                <span className="status__tag bg-green">Signed up</span>
-              </div>
-            </td>
             {/* <td>
               <div className="attendant__action">
                  

@@ -69,9 +69,6 @@
       width: 100%;
       border-spacing: 0px 10px;
       border-collapse: separate;
-      @media #{$xs,$sm,$md,$lg,$xl}{
-        width: 1350px;
-      }
       thead {
         background-color: var(--clr-bg-12);
         @include dark {

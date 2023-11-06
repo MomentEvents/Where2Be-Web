@@ -17,6 +17,20 @@ const attendenceData = [
         },
         event: {
             event_id: "def",
+            title: "HKN Google Tech Talk blash blah blah blahhhhh",
+            start_date: "2023-11-08 02:50:36.173178+00",
+            image: "default/EventImage.png"
+        }
+    },
+    {
+        user: {
+            user_id: "abc",
+            picture: "default/ProfilePic.png",
+            name: "David Lin",
+            signed_up: "2023-11-06 02:50:36.173178+00",
+        },
+        event: {
+            event_id: "def",
             title: "HKN Google Tech Talk",
             start_date: "2023-11-08 02:50:36.173178+00",
             image: "default/EventImage.png"

@@ -28,7 +28,6 @@ const RegisterUserList = () => {
                               <th>Name</th>
                               <th>Event</th>
                               <th>Signup Date</th>
-                              <th>Status</th>
                            </tr>
                         </thead>
                         <tbody>
