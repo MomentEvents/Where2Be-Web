@@ -6,7 +6,6 @@ import { mustBeLoggedInClient, mustBeLoggedInServer } from '../lib/authorization
 
 const index = () => {
 
-  mustBeLoggedInClient()
 
   return (
     <Wrapper>
@@ -15,6 +14,10 @@ const index = () => {
     </Wrapper>
   );
 };
+
+export const getServerSideProps = (async (context) => {
+  return mustBeLoggedInServer(context)
+}) 
 
 
 export default index;

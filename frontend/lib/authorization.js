@@ -3,16 +3,19 @@
 import { ContactPageOutlined } from "@mui/icons-material";
 import supabase from "./supabase";
 import { useRouter } from "next/router";
+import { getCookie } from "cookies-next";
+import { COOKIES, getSupabaseUser } from "./cookies";
 
 export async function mustBeLoggedInServer(context) {
-  // Prevent caching by setting headers
-  if (context.res) {
-    context.res.setHeader("Cache-Control", "no-store, max-age=0");
-  }
+  const refreshToken = context.req.cookies[COOKIES.refresh_token];
+  const accessToken = context.req.cookies[COOKIES.access_token];
 
-  const session = await supabase.auth.getSession()
+  const user = await getSupabaseUser(accessToken, refreshToken)
 
-  if (session?.error) {
+  console.log(user);
+
+  if (!user?.data?.user || user?.error) {
+    console.warn("CASE 2 MUSTBELOGGEDIN")
     return {
       redirect: {
         destination: "/signin",
@@ -25,15 +28,14 @@ export async function mustBeLoggedInServer(context) {
 }
 
 export async function mustNotBeLoggedInServer(context) {
-  //   Prevent caching by setting headers
-  if (context.res) {
-    context.res.setHeader("Cache-Control", "no-store, max-age=0");
-  }
+  const refreshToken = context.req.cookies[COOKIES.refresh_token];
+  const accessToken = context.req.cookies[COOKIES.access_token];
 
-  const session = await supabase.auth.getSession()
-  console.log(session);
+  const user = await getSupabaseUser(accessToken, refreshToken)
 
-  if (session?.data?.session) {
+  if (user?.data?.user) {
+    console.warn("CASE 2 MUSTNOTBELOGGEDIN")
+
     return {
       redirect: {
         destination: "/dashboard",
@@ -46,21 +48,21 @@ export async function mustNotBeLoggedInServer(context) {
 }
 
 export async function mustBeLoggedInClient() {
-    const router = useRouter()
-    const user = await supabase.auth.getUser()
+  const router = useRouter();
+  const user = await supabase.auth.getUser();
 
-    if(!user?.data?.user || user?.error){
-        router.replace("/signin")
-    }
-    return user
+  if (!user?.data?.user || user?.error) {
+    router.replace("/signin");
+  }
+  return user;
 }
 
 export async function mustNotBeLoggedInClient() {
-    const router = useRouter()
-    const user = await supabase.auth.getUser()
+  const router = useRouter();
+  const user = await supabase.auth.getUser();
 
-    if(user?.data?.user){
-        router.replace("/dashboard")
-    }
-    return user
+  if (user?.data?.user) {
+    router.replace("/dashboard");
+  }
+  return user;
 }

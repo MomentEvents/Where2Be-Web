@@ -12,6 +12,7 @@ import { useRouter } from "next/router";
 import supabase from "../../lib/supabase";
 import showMessage from "../errorMessage/showMessage";
 import { mustNotBeLoggedInServer } from "../../lib/authorization";
+import { setSupabaseCookies } from "../../lib/cookies";
 
 const SignInPage = () => {
   const { dark } = useContext(DarkModeContext);
@@ -38,6 +39,10 @@ const SignInPage = () => {
         showMessage(response.error.message, true);
         return;
       }
+
+      const access_token = response.data.session.access_token
+      const refresh_token = response.data.session.refresh_token
+      setSupabaseCookies(access_token, refresh_token)
 
       router.replace("/dashboard");
     } catch (e) {

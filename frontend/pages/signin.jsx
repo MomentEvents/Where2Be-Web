@@ -8,13 +8,17 @@ import {
 } from "../lib/authorization";
 
 const index = () => {
-  mustNotBeLoggedInClient();
   return (
     <Wrapper>
-      <SEO pageTitle={"Singin"} />
+      <SEO pageTitle={"Sign In"} />
       <SignInPage />
     </Wrapper>
   );
 };
+
+export const getServerSideProps = (async (context) => {
+  return mustNotBeLoggedInServer(context)
+}) 
+ 
 
 export default index;

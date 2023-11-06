@@ -11,6 +11,7 @@ import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import supabase from "../../lib/supabase";
 import { useRouter } from "next/router";
 import showMessage from "../errorMessage/showMessage";
+import { deleteSupabaseCookies } from "../../lib/cookies";
 
 const Sidebar = ({ collapse, handleClick }) => {
   const [deviceWidth, setDeviceWidth] = useState(null);
@@ -23,6 +24,8 @@ const Sidebar = ({ collapse, handleClick }) => {
       showMessage(error);
       return;
     }
+
+    deleteSupabaseCookies()
 
     router.push("/");
   };

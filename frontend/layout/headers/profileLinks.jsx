@@ -8,6 +8,7 @@ import LoginIcon from "../../utils/SVG/profile/loginIcon";
 import supabase from "../../lib/supabase";
 import showMessage from "../../components/errorMessage/showMessage";
 import { useRouter } from "next/router";
+import { deleteSupabaseCookies } from "../../lib/cookies";
 
 const ProfileLinks = () => {
   const router = useRouter();
@@ -20,6 +21,7 @@ const ProfileLinks = () => {
       return;
     }
 
+    deleteSupabaseCookies();
     router.push("/");
   };
 
