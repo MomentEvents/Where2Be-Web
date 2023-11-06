@@ -1,3 +1,12 @@
+/*
+We can either use cookies to access the user server side via api routes or we 
+can just use supabase's client to access data using the supabase object.
+By calling setSupabaseCookies and deleteSupabaseCookies, we can sync the two
+such that we can get the best of both worlds.
+
+tldr cookies are used for server side processes, not for client side processes
+*/
+
 import { deleteCookie, getCookie, setCookie } from "cookies-next";
 import supabase from "./supabase";
 

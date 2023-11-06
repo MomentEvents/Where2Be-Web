@@ -3,11 +3,10 @@ import Wrapper from "../layout/wrapper";
 import SEO from "../components/seo";
 import SingUpMain from "../components/signup";
 import {
-  mustNotBeLoggedInClient,
+  mustNotBeLoggedInClient, mustNotBeLoggedInServer,
 } from "../lib/authorization";
 
 const index = () => {
-  mustNotBeLoggedInClient();
   return (
     <Wrapper>
       <SEO pageTitle={"Signup"} />
@@ -15,5 +14,10 @@ const index = () => {
     </Wrapper>
   );
 };
+
+export const getServerSideProps = (async (context) => {
+  return mustNotBeLoggedInServer(context)
+}) 
+ 
 
 export default index;

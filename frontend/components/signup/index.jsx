@@ -13,6 +13,7 @@ import supabase from "../../lib/supabase";
 import showMessage from "../errorMessage/showMessage";
 import { useRouter } from "next/router";
 import { mustNotBeLoggedInServer } from "../../lib/authorization";
+import { setSupabaseCookies } from "../../lib/cookies";
 
 const SingUpMain = () => {
   const { dark } = useContext(DarkModeContext);
@@ -54,7 +55,7 @@ const SingUpMain = () => {
         showMessage(response.error.message, true);
         return
       }
-      console.log(response)
+      setSupabaseCookies(response.data.session.access_token, response.data.session.refresh_token)
 
       router.replace("/dashboard")
     } catch (e) {
