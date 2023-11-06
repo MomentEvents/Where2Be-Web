@@ -26,8 +26,11 @@
         position: relative; 
         left: -18%;
         z-index: 1;
-        @media #{$xs}{
+        @media #{$md}{
             left: -10%;
+        }
+        @media #{$xs,$sm}{
+            display: none;
         }
         img {
             width: 950px;
@@ -39,18 +42,16 @@
             @media #{$md}{
                 width: 650px;
             }
-            @media #{$sm}{
-                width: 500px;
-            }
-            @media #{$xs}{
-                width: 300px;
-            }
         }
     }
     &__left_btn_container {
         @include flexbox();
         flex: 1;
         padding: 50px 20px 0px 60px;
+        @media #{$xs,$sm}{
+            flex-direction: column;
+            justify-content: center;
+        }
     }
     &__title1 {
         color: var(--clr-common-white);
@@ -59,18 +60,11 @@
         font-size: 60px;
         padding: 0px 20px 0px 60px;
         line-height: 80px;
-        @media #{$lg}{
+
+        @media #{$xs, $sm, $md}{
             font-size: 50px;
-        }
-        @media #{$md}{
-            font-size: 40px;
-            padding: 0px 10px 0px 40px;
-            line-height: 60px;
-        }
-        @media #{$xs, $sm}{
-            font-size: 30px;
-            padding: 0px 10px 0px 40px;
-            line-height: 40px;
+            padding: 30px 10px 10px 40px;
+            line-height: 70px;
         }
     }
     &__title2 {
@@ -82,18 +76,10 @@
         font-size: 60px;
         padding: 0px 20px 0px 60px;
         line-height: 80px;
-        @media #{$lg}{
+        @media #{$xs, $sm, $md}{
             font-size: 50px;
-        }
-        @media #{$md}{
-            font-size: 40px;
             padding: 0px 10px 0px 40px;
-            line-height: 60px;
-        }
-        @media #{$xs, $sm}{
-            font-size: 30px;
-            padding: 0px 10px 0px 40px;
-            line-height: 40px;
+            line-height: 70px;
         }
     }
     &__subtitle {
@@ -103,15 +89,10 @@
         font-size: var(--bd-fs-h3);
         padding: 50px 20px 0px 60px;
         line-height: 40px;
-        @media #{$md}{
+        @media #{$xs, $sm, $md}{
             font-size: var(--bd-fs-h4);
-            padding: 40px 20px 0px 40px;
+            padding: 40px 30px 0px 40px;
             line-height: 30px;
-        }
-        @media #{$xs,$sm}{
-            font-size: var(--bd-fs-h5);
-            padding: 40px 20px 0px 40px;
-            line-height: 20px;
         }
     }
 }
@@ -125,19 +106,15 @@
     padding: 0px 40px;
     @include inline-flex();
     align-items: center;
+    justify-content: center;
     height: 60px;
     @include border-radius(22px);
     @include transition (.3s);
     position: relative;
     z-index: 5;
-    @media #{$sm,$md}{
-        font-size: 12px;
-        padding: 0px 15px;
-    }
-    @media #{$xs}{
-        font-size: 10px;
-        padding: 0px 10px;
-        line-height: 15px;
+    @media #{$xs,$sm}{
+        width: 60vw;
+        justify-content: center;
     }
     &::before {
         position: absolute;
@@ -173,4 +150,7 @@
 .explore__btn {
     background: var(--clr-gradient-purple);
     margin-right: 20px;
+    @media #{$xs,$sm,$md}{
+        margin-bottom: 20px;
+    }
 }

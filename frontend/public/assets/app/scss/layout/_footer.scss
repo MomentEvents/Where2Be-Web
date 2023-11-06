@@ -98,6 +98,9 @@
 				height: 30px;
 			}
 		}
+		@media #{$xs, $sm}{
+			margin-top: 30px;
+		}
 	}
 	&__widget {
 		&-title {
@@ -218,11 +221,11 @@
 		justify-content: space-between;
 		align-items: center;
 		padding: 0 60px 50px 80px;
-		position: absolute;
 		bottom: 0;
 		width: 100%;
 		@media #{$xs, $sm}{
-			padding: 0 30px 50px 20px;
+			flex-direction: column;
+			padding: 0 30px 50px;
 		}
 	}
 }

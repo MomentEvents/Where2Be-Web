@@ -82,10 +82,16 @@
 .header__logo img {
 	width: 200px;
     margin-left: 40px;
+    @media #{$xs,$sm}{
+        margin-left: 20px;
+    }
 }
 .header-1 {
-    @media #{$xs,$sm,$md,$lg}{
+    @media #{$md,$lg}{
         padding: 20px 0;
+    }
+    @media #{$xs,$sm}{
+        padding: 0;
     }
 	.container {
 		max-width: 1570px;
@@ -551,7 +557,7 @@
     @include inline-flex();
     align-items: center;
     height: 60px;
-    @include border-radius(6px);
+    @include border-radius(22px);
     @include transition (.3s);
     position: relative;
     z-index: 5;
@@ -567,7 +573,7 @@
         opacity: 0;
         visibility: hidden;
         @include transition (.5s);
-        @include border-radius(6px);
+        @include border-radius(22px);
     }
     i {
         opacity: 0;
