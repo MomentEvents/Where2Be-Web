@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Scrollbar from "smooth-scrollbar";
 import Zoomscreen from "../../utils/SVG/zoomscreen";
 import English from "../../utils/SVG/language-icons/english";
@@ -9,14 +9,18 @@ import Languages from "./languages";
 import Notifications from "./notifications";
 import ProfileLinks from "./profileLinks";
 import supabase from "../../lib/supabase";
+import { AppContext } from "../../context/AppContext";
+import showMessage from "../../components/errorMessage/showMessage";
 
 export default function DashboardHeader({ handleClick }) {
+  const { currentUser } = useContext(AppContext);
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [collapse, setCollapse] = useState(false);
   const [emailactive, setemailactive] = useState(false);
   const [notificationActive, setnotificationActive] = useState(false);
   const [userDropdown, setuserDropdown] = useState(false);
-  const [user, setUser] = useState();
+  const [currentUserPicture, setCurrentUserPicture] = useState()
+
   const handleShowLanguage = () => {
     setCollapse(!collapse);
     setemailactive(false);
@@ -111,10 +115,6 @@ export default function DashboardHeader({ handleClick }) {
     document.addEventListener("fullscreenchange", handleFullScreenChange);
     document.addEventListener("mozfullscreenchange", handleFullScreenChange);
     document.addEventListener("webkitfullscreenchange", handleFullScreenChange);
-    supabase.auth.getUser().then((user) => {
-      console.log(user)
-      setUser(user);
-    });
     return () => {
       document.removeEventListener("fullscreenchange", handleFullScreenChange);
       document.removeEventListener(
@@ -127,6 +127,16 @@ export default function DashboardHeader({ handleClick }) {
       );
     };
   }, []);
+
+  useEffect(() => {
+    if(currentUser){
+      const { data } = supabase.storage
+      .from("user-pictures")
+      .getPublicUrl(currentUser.picture);
+      console.log(data.publicUrl)
+      setCurrentUserPicture(data.publicUrl)
+    }
+  }, [currentUser]);
 
   return (
     <div className="app__header__area">
@@ -145,10 +155,10 @@ export default function DashboardHeader({ handleClick }) {
             <button id="userportfolio" onClick={handleShowuserDrowdown}>
               <div className="user__portfolio">
                 <div className="user__portfolio-thumb">
-                  <img src={profile_pic.src} alt="imge not found" />
+                  <img src={currentUserPicture} alt="imge not found" />
                 </div>
                 <div className="user__content">
-                  <span>{user?.data?.user?.email}</span>
+                  <span>{currentUser?.name}</span>
                 </div>
               </div>
             </button>

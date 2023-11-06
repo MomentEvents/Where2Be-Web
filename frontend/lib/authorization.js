@@ -2,6 +2,7 @@
 
 import { ContactPageOutlined } from "@mui/icons-material";
 import supabase from "./supabase";
+import supabaseAdmin from "./supabaseAdmin";
 import { useRouter } from "next/router";
 import { getCookie } from "cookies-next";
 import { COOKIES, getSupabaseUser } from "./cookies";
@@ -10,12 +11,9 @@ export async function mustBeLoggedInServer(context) {
   const refreshToken = context.req.cookies[COOKIES.refresh_token];
   const accessToken = context.req.cookies[COOKIES.access_token];
 
-  const user = await getSupabaseUser(accessToken, refreshToken)
-
-  console.log(user);
+  const user = await getSupabaseUser(accessToken, refreshToken);
 
   if (!user?.data?.user || user?.error) {
-    console.warn("CASE 2 MUSTBELOGGEDIN")
     return {
       redirect: {
         destination: "/signin",
@@ -24,17 +22,37 @@ export async function mustBeLoggedInServer(context) {
     };
   }
 
-  return { props: {} };
+  let response = await supabaseAdmin
+    .from("profiles")
+    .select("*")
+    .eq("user_id", user.data.user.id);
+  if (response.error) {
+    console.warn(
+      "ERROR GETTING USER DATA: user does not exist in profiles table"
+    );
+    return {
+      redirect: {
+        destination: "/signin",
+        permanent: false,
+      },
+    };
+  }
+
+  const userData = {...response.data[0], email: user.data.user.email}
+
+  return {
+    props: { userData },
+  };
 }
 
 export async function mustNotBeLoggedInServer(context) {
   const refreshToken = context.req.cookies[COOKIES.refresh_token];
   const accessToken = context.req.cookies[COOKIES.access_token];
 
-  const user = await getSupabaseUser(accessToken, refreshToken)
+  const user = await getSupabaseUser(accessToken, refreshToken);
 
   if (user?.data?.user) {
-    console.warn("CASE 2 MUSTNOTBELOGGEDIN")
+    console.warn("CASE 2 MUSTNOTBELOGGEDIN");
 
     return {
       redirect: {

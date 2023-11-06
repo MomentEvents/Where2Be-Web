@@ -32,7 +32,7 @@ const WrapSchduleContent = () => {
                       aria-controls="day-tab-1-pane"
                       aria-selected="true"
                     >
-                      day one
+                      Upcoming
                     </button>
                   </li>
                   <li className="nav-item" role="presentation">
@@ -46,21 +46,7 @@ const WrapSchduleContent = () => {
                       aria-controls="day-tab-2-pane"
                       aria-selected="false"
                     >
-                      day two
-                    </button>
-                  </li>
-                  <li className="nav-item" role="presentation">
-                    <button
-                      className="nav-link"
-                      id="day-tab-3"
-                      data-bs-toggle="tab"
-                      data-bs-target="#day-tab-3-pane"
-                      type="button"
-                      role="tab"
-                      aria-controls="day-tab-3-pane"
-                      aria-selected="false"
-                    >
-                      day three
+                      Previous
                     </button>
                   </li>
                 </ul>

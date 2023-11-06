@@ -1,23 +1,29 @@
-import SEO from '../components/seo';
-import Wrapper from '../layout/wrapper';
-import HomeMain from '../components/home';
-import supabase from '../lib/supabase';
-import { mustBeLoggedInClient, mustBeLoggedInServer } from '../lib/authorization';
+import SEO from "../components/seo";
+import Wrapper from "../layout/wrapper";
+import HomeMain from "../components/home";
+import supabase from "../lib/supabase";
+import {
+  mustBeLoggedInClient,
+  mustBeLoggedInServer,
+} from "../lib/authorization";
+import { useContext } from "react";
+import { AppContext } from "../context/AppContext";
+import showMessage from "../components/errorMessage/showMessage";
 
-const index = () => {
-
+const index = (props) => {
+  const { setCurrentUser } = useContext(AppContext);
+  setCurrentUser(props.userData)
 
   return (
     <Wrapper>
-      <SEO pageTitle={'Dashboard'} />
-      <HomeMain/>
+      <SEO pageTitle={"Dashboard"} />
+      <HomeMain />
     </Wrapper>
   );
 };
 
-export const getServerSideProps = (async (context) => {
-  return mustBeLoggedInServer(context)
-}) 
-
+export const getServerSideProps = async (context) => {
+  return mustBeLoggedInServer(context);
+};
 
 export default index;

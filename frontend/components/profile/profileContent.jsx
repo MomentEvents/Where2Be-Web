@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CardHeaderDropdown from "../home/cardheaderdropdown";
-import profileThumb from "../../public/assets/img/speaker/list/04.jpg"
+import profileThumb from "../../public/assets/img/speaker/list/04.jpg";
 import Link from "next/link";
 import BreadcamMenu from "../common/breadcamMenu";
+import supabase from "../../lib/supabase";
+import { AppContext } from "../../context/AppContext";
 const ProfileContent = () => {
+  const { currentUser } = useContext(AppContext);
+  const [currentUserPicture, setCurrentUserPicture] = useState();
+
+  useEffect(() => {
+    if (currentUser) {
+      const { data } = supabase.storage
+        .from("user-pictures")
+        .getPublicUrl(currentUser.picture);
+      console.log(data.publicUrl);
+      setCurrentUserPicture(data.publicUrl);
+    }
+  }, [currentUser]);
   return (
     <>
       <div className="body__overlay"></div>
@@ -15,7 +29,7 @@ const ProfileContent = () => {
                 <div className="breadcrumb__icon">
                   <i className="flaticon-home"></i>
                 </div>
-                <BreadcamMenu title="Profile"/>
+                <BreadcamMenu title="Profile" />
               </div>
             </div>
           </div>
@@ -30,17 +44,15 @@ const ProfileContent = () => {
                       Profile Information
                     </h4>
                   </div>
-                   
                 </div>
                 <div className="profile__main-wrapper mt-35">
                   <div className="row">
                     <div className="col-xxl-4 col-xl-5 col-lg-6 col-md-6">
                       <div className="profile__left">
                         <div className="padding__left-inner p-relative">
-                       
                           <div className="profile__thumb mb-45">
                             <img
-                              src={profileThumb.src}
+                              src={currentUserPicture}
                               alt="image not found"
                             />
                           </div>
@@ -49,10 +61,10 @@ const ProfileContent = () => {
                               <li>
                                 <div className="profile__user-item">
                                   <div className="profile__user-tiitle">
-                                    <span>First Name:</span>
+                                    <span>Name:</span>
                                   </div>
                                   <div className="profile__user-info">
-                                    <span>Jhon Smith</span>
+                                    <span>{currentUser?.name}</span>
                                   </div>
                                 </div>
                               </li>
@@ -62,47 +74,27 @@ const ProfileContent = () => {
                                     <span>Email Address:</span>
                                   </div>
                                   <div className="profile__user-info">
-                                    <span>info@email.com</span>
+                                    <span>{currentUser?.email}</span>
                                   </div>
                                 </div>
                               </li>
                               <li>
                                 <div className="profile__user-item">
                                   <div className="profile__user-tiitle">
-                                    <span>Phone Number:</span>
+                                    <span>Joined:</span>
                                   </div>
                                   <div className="profile__user-info">
-                                    <span>+91 0365 2369 02</span>
-                                  </div>
-                                </div>
-                              </li>
-                              <li>
-                                <div className="profile__user-item">
-                                  <div className="profile__user-tiitle">
-                                    <span>Gendar:</span>
-                                  </div>
-                                  <div className="profile__user-info">
-                                    <span>Male</span>
-                                  </div>
-                                </div>
-                              </li>
-                              <li>
-                                <div className="profile__user-item">
-                                  <div className="profile__user-tiitle">
-                                    <span>Language:</span>
-                                  </div>
-                                  <div className="profile__user-info">
-                                    <span>English</span>
-                                  </div>
-                                </div>
-                              </li>
-                              <li>
-                                <div className="profile__user-item">
-                                  <div className="profile__user-tiitle">
-                                    <span>Address:</span>
-                                  </div>
-                                  <div className="profile__user-info">
-                                    <span>Srednja ulica 54, Čabar 83565</span>
+                                    <span>
+                                      {currentUser?.created_at
+                                        ? new Date(
+                                            currentUser.created_at
+                                          ).toLocaleDateString("en-US", {
+                                            year: "numeric",
+                                            month: "long",
+                                            day: "numeric",
+                                          })
+                                        : ""}
+                                    </span>
                                   </div>
                                 </div>
                               </li>
@@ -121,26 +113,7 @@ const ProfileContent = () => {
                         <div className="profile__about-info">
                           <span className="profile__title">About Me</span>
                           <div className="profile__text">
-                            <p className="mb-25">
-                              When referring to Lorem ipsum, different
-                              expressions are used, namely fill text ,
-                              fictitious text , blind text or placeholder text :
-                              in short, its meaning can also be zero, but its
-                              usefulness is so clear as to go through the
-                              centuries and resist the ironic and modern
-                              versions that came with the arrival of the web.
-                            </p>
-                            <p>
-                              consectetur adipisci elit, sed eiusmod tempor
-                              incidunt ut labore et dolore magna aliqua. Ut enim
-                              ad minim veniam, quis nostrum exercitationem ullam
-                              corporis suscipit laboriosam, nisi ut aliquid ex
-                              ea commodi consequatur. Quis aute iure
-                              reprehenderit in voluptate velit esse cillum
-                              dolore eu fugiat nulla pariatur. Excepteur sint
-                              obcaecat cupiditat non proident, sunt in culpa qui
-                              officia deserunt mollit anim id est laborum.
-                            </p>
+                            <p className="mb-25">{currentUser?.about_me}</p>
                           </div>
                         </div>
                       </div>

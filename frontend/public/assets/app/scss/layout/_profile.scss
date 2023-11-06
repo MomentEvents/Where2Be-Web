@@ -52,12 +52,14 @@
 		grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
 	}
 }
-.profile__user-info {
-	span {
-		font-weight: var(--bd-fw-medium);
-		color: var(--clr-text-secondary);
-	}
+
+.profile__user-info span {
+    font-weight: var(--bd-fw-medium);
+    color: var(--clr-text-secondary);
+    display: block;
+    word-break: break-all; 
 }
+
 .profile__edit {
 	position: absolute;
 	inset-inline-end: 0px;

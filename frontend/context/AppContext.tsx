@@ -7,6 +7,8 @@ type user = {
   created_at: string;
   name: string;
   picture: string;
+  email: string;
+  about_me: string;
 }
 
 const AppProvider = ({ children }) => {
