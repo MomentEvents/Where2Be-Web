@@ -9,4 +9,4 @@ Make a `.env` based on `.env-example`
 
 `yarn dev`
 
-Check http://localhost:3000
+Check http://localhost:3000 
