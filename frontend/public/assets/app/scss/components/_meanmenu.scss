@@ -28,10 +28,12 @@
 	display: none !important;
 }
 .mean-container .mean-nav ul li a {
+	text-align: end;
 	width: 100%;
 	padding: 10px 0;
 	color: var(--clr-common-white);
-	font-size: 16px;
+	font-size: 35px !important;
+	text-decoration: underline;
     line-height: 1.5;
     font-weight: 500;
 	text-transform: capitalize;
@@ -40,7 +42,9 @@
 		border-bottom: 0;
 	}
     &:hover{
-        color: var(--clr-theme-1);
+    	background: -webkit-linear-gradient(0deg, #AE92FF 0%, #5A21FA 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 }
 .mean-container .mean-nav ul li a.mean-expand {

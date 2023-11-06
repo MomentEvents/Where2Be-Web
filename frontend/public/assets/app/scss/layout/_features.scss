@@ -24,9 +24,9 @@
         flex: 1;
         max-width: 50%;
         position: relative; 
-        left: -18%;
+        left: -15%;
         z-index: 1;
-        @media #{$md}{
+        @media #{$md,$lg}{
             left: -10%;
         }
         @media #{$xs,$sm}{
@@ -36,8 +36,9 @@
             width: 950px;
             height: auto;
             transform: translateY(-10%);
+            animation: hoverAnimation 4s infinite ease-in-out;
             @media #{$lg}{
-                width: 750px;
+                width: 700px;
             }
             @media #{$md}{
                 width: 650px;
@@ -47,10 +48,12 @@
     &__left_btn_container {
         @include flexbox();
         flex: 1;
-        padding: 50px 20px 0px 60px;
-        @media #{$xs,$sm}{
+        padding: 50px 0px 0px 60px;
+        @media #{$xs,$sm,$md}{
             flex-direction: column;
             justify-content: center;
+            align-items: center;
+            padding: 50px 0 0;
         }
     }
     &__title1 {
@@ -63,7 +66,7 @@
 
         @media #{$xs, $sm, $md}{
             font-size: 50px;
-            padding: 30px 10px 10px 40px;
+            padding: 30px 10px 10px 20px;
             line-height: 70px;
         }
     }
@@ -78,7 +81,7 @@
         line-height: 80px;
         @media #{$xs, $sm, $md}{
             font-size: 50px;
-            padding: 0px 10px 0px 40px;
+            padding: 0px 10px 0px 20px;
             line-height: 70px;
         }
     }
@@ -91,7 +94,7 @@
         line-height: 40px;
         @media #{$xs, $sm, $md}{
             font-size: var(--bd-fs-h4);
-            padding: 40px 30px 0px 40px;
+            padding: 40px 30px 0px 20px;
             line-height: 30px;
         }
     }
@@ -112,8 +115,8 @@
     @include transition (.3s);
     position: relative;
     z-index: 5;
-    @media #{$xs,$sm}{
-        width: 60vw;
+    @media #{$xs,$sm,$md}{
+        width: 300px;
         justify-content: center;
     }
     &::before {
@@ -151,6 +154,16 @@
     background: var(--clr-gradient-purple);
     margin-right: 20px;
     @media #{$xs,$sm,$md}{
-        margin-bottom: 20px;
+        margin-bottom: 25px;
+        margin-right: 0;
     }
 }
+
+@keyframes hoverAnimation {
+    0%, 100% {
+      transform: translateY(-80px);
+    }
+    50% {
+      transform: translateY(-50px);
+    }
+  }

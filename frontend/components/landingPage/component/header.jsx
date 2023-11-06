@@ -8,7 +8,13 @@ import Menus from "../menus";
 import logo from "../../../public/assets/img/index/logo.png";
 
 const LandingHeader = ({breadcrumb_shadow}) => {
-  
+  const {toggleSideMenu} = useContext(AppContext)
+
+  const handleHamburgerClick = (e) => {
+    e.preventDefault();
+    toggleSideMenu();
+  };
+
   return (
     <>
       <header>
@@ -39,12 +45,21 @@ const LandingHeader = ({breadcrumb_shadow}) => {
                     </div>
                     <div className="header__right">
                       <div className="header__action-inner">
-                          <Link legacyBehavior href="/dashboard">
-                            <a className="dashboard__btn">
-                              Dashboard
-                              <i className="fa-regular fa-angle-right"></i>
-                            </a>
-                          </Link>
+                          <div className="header__dashboard">
+                            <Link legacyBehavior href="/dashboard">
+                              <a className="dashboard__btn">
+                                Dashboard
+                                <i className="fa-regular fa-angle-right"></i>
+                              </a>
+                            </Link>
+                          </div>
+                          <div className="header__hamburger">
+                            <div className="sidebar__toggle">
+                                <a className="hamburger__btn" onClick={handleHamburgerClick}>
+                                  <i className="fa-solid fa-bars" style={{ color: "#CDCDCD", fontSize: '26px' }}></i>
+                                </a>
+                            </div>
+                          </div>
                       </div>
                     </div>
                   </div>
