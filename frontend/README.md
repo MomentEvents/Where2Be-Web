@@ -8,3 +8,5 @@ A rework of Where2Be's platform to be an entire scalable web app
 Make a `.env` based on `.env-example`
 
 `yarn dev`
+
+Check http://localhost:3000
