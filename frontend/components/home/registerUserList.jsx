@@ -16,23 +16,19 @@ const RegisterUserList = () => {
                               <i className="flaticon-ticket-1"></i>
                            </div>
                            <div className="card__header-title">
-                              <h4>Recent Attendees</h4>
+                              <h4>Recent Signups</h4>
                            </div>
                         </div>
-                        <CardHeaderDropdown/>
                      </div>
                   </div>
                   <div className="attendant__wrapper mb-20">
                         <table>
                         <thead>
                            <tr>
-                              <th>ID No</th>
                               <th>Name</th>
-                              <th>Seminar</th>
-                              <th>Time</th>
-                              <th>Date</th>
+                              <th>Event</th>
+                              <th>Signup Date</th>
                               <th>Status</th>
-                              <th>Action</th>
                            </tr>
                         </thead>
                         <tbody>
@@ -41,7 +37,7 @@ const RegisterUserList = () => {
                         </tbody>
                         </table>
                   </div>
-                  <div className="pagination__wrapper">
+                  {/* <div className="pagination__wrapper">
                      <div className="basic__pagination d-flex align-items-center justify-content-end">
                         <nav>
                            <ul>
@@ -65,7 +61,7 @@ const RegisterUserList = () => {
                            </ul>
                         </nav>
                      </div>
-                  </div>
+                  </div> */}
                    </div>
                 </div>
             </div>

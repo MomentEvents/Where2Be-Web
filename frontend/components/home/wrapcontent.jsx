@@ -36,37 +36,37 @@ const WrapContent = () => {
         </div>
 
         <div className="row g-20">
-          <div className="col-xxl-4 col-xl-6 col-lg-6 col-md-6">
+          <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
             <div className="expovent__count-item mb-20">
               <div
                 className="expovent__count-thumb include__bg transition-3"
                 style={{ backgroundImage: `url(${overlay_img.src})` }}
               ></div>
               <div className="expovent__count-content">
-                <h3 className="expovent__count-number">143.2</h3>
-                <span className="expovent__count-text">Average attendees</span>
+                <h3 className="expovent__count-number">42</h3>
+                <span className="expovent__count-text">Total Events</span>
               </div>
               <div className="expovent__count-icon">
                 <i className="flaticon-group"></i>
               </div>
             </div>
           </div>
-          <div className="col-xxl-4 col-xl-6 col-lg-6 col-md-6">
+          <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
             <div className="expovent__count-item mb-20">
               <div
                 className="expovent__count-thumb include__bg transition-3"
                 style={{ backgroundImage: `url(${overlay_img.src})` }}
               ></div>
               <div className="expovent__count-content">
-                <h3 className="expovent__count-number">1562</h3>
-                <span className="expovent__count-text">Peak attendees on "HKN Resume Workshop with Google"</span>
+                <h3 className="expovent__count-number">2</h3>
+                <span className="expovent__count-text">Upcoming Events</span>
               </div>
               <div className="expovent__count-icon">
-                <i className="flaticon-speaker"></i>
+                <i className="flaticon-reminder"></i>
               </div>
             </div>
           </div>
-          <div className="col-xxl-4 col-xl-6 col-lg-6 col-md-6">
+          {/* <div className="col-xxl-4 col-xl-6 col-lg-6 col-md-6">
             <div className="expovent__count-item mb-20">
               <div
                 className="expovent__count-thumb include__bg transition-3"
@@ -80,7 +80,7 @@ const WrapContent = () => {
                 <i className="flaticon-reminder"></i>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="row g-20">
           <div className="col-xxl-6 col-xl-6">
@@ -95,7 +95,7 @@ const WrapContent = () => {
                       <h4>New Event Signups</h4>
                     </div>
                   </div>
-                  <div className="card__header-right">
+                  {/* <div className="card__header-right">
                     <div className="card__header-calendar">
                       <form action="#">
                         <span>
@@ -133,7 +133,7 @@ const WrapContent = () => {
                         </span>
                       </form>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="Card__line-chart">
                   <div id="lineChart">

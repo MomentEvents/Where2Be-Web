@@ -12,7 +12,7 @@ import thubmailFive from "../../public/assets/img/blog/schedule/05.jpg";
 import thubmailSix from "../../public/assets/img/blog/schedule/06.jpg";
 const schedules = [
     {
-        id:1,
+        id:"def",
         title:"Google Resume Breakdown",
         usericon : "flaticon-user",
         name : "38",
