@@ -15,7 +15,7 @@ const SEO = ({ pageTitle,font }) => (
       />
       
       {font && <link href={font} rel="stylesheet" />}
-      <link rel="icon" href="/favicon.png" />
+      <link rel="icon" href="/w2b-favicon.png" />
     </Head>
   </>
 );
