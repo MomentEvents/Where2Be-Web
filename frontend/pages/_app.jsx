@@ -10,6 +10,18 @@ import { DarkModeProvider } from "../components/darkmode-provider/DarkModeProvid
 import supabase from "../lib/supabase";
 import { deleteSupabaseCookies, setSupabaseCookies } from "../lib/cookies";
 
+import NProgress from 'nprogress';
+import Router from 'next/router';
+
+// Optional: import nprogress.css and customize it as needed
+import 'nprogress/nprogress.css';
+
+NProgress.configure({ showSpinner: false });
+
+Router.events.on('routeChangeStart', () => NProgress.start());
+Router.events.on('routeChangeComplete', () => NProgress.done());
+Router.events.on('routeChangeError', () => NProgress.done());
+
 function MyApp({ Component, pageProps }) {
   supabase.auth.onAuthStateChange((event, session) => {
     if (event === "SIGNED_OUT" || event === "USER_DELETED") {

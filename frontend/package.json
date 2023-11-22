@@ -23,6 +23,7 @@
     "formik": "^2.2.9",
     "framer-motion": "^7.3.6",
     "next": "^14.0.0",
+    "nprogress": "^0.2.0",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.0",
     "react-calendar": "^4.2.1",
