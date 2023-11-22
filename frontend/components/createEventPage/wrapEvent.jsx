@@ -2,16 +2,24 @@ import React, { useState, useRef } from "react";
 import CardHeaderDropdown from "../../components/home/cardheaderdropdown";
 import Link from "next/link";
 import showMessage from "../errorMessage/showMessage";
+import NProgress from "nprogress";
+import { useRouter } from "next/router";
+
 const WrapCreateEvent = () => {
+  const debug = true; // Debug to prefill fields if needed for easier event creation
+
   const [image, setImage] = useState(null);
-  const [smsEnabled, setSmsEnabled] = useState(false);
-  const [dateValue, setDateValue] = useState("");
-  const [timeValue, setTimeValue] = useState("");
-  const [eventTitle, setEventTitle] = useState("");
-  const [eventDetails, setEventDetails] = useState("");
-  const [location, setLocation] = useState("");
+  const [smsEnabled, setSmsEnabled] = useState(debug ? true : false);
+  const [dateValue, setDateValue] = useState(debug ? "2021-05-01" : "");
+  const [timeValue, setTimeValue] = useState(debug ? "12:00" : "");
+  const [eventTitle, setEventTitle] = useState(debug ? "My event" : "");
+  const [eventDetails, setEventDetails] = useState(debug ? "Come join my fun event!" : "");
+  const [location, setLocation] = useState(debug ? "9500 Gilman Dr, La Jolla, CA 92093" : "");
   const [eventStatus, setEventStatus] = useState("Open");
-  const [smsMessage, setSmsMessage] = useState("");
+  const [smsMessage, setSmsMessage] = useState(debug ? "Come to my event!" : "");
+  const [smsMinutesBefore, setSmsMinutesBefore] = useState(debug ? "30" : "0");  
+
+  const Router = useRouter();
 
   const fileInputRef = useRef(null);
 
@@ -52,12 +60,18 @@ const WrapCreateEvent = () => {
       return;
     }
 
+    if(smsEnabled && !smsMessage) {
+      showMessage("SMS Message must be filled out.", true);
+      return;
+    }
+
     // 2. Validate image type
     if (image) {
       const fileType = image.split(";")[0].split("/")[1];
       if (!["jpeg", "jpg", "png", "gif"].includes(fileType)) {
         showMessage(
-          "Please select a valid image format (JPEG, JPG, PNG, GIF).", true
+          "Please select a valid image format (JPEG, JPG, PNG, GIF).",
+          true
         );
         return;
       }
@@ -69,20 +83,46 @@ const WrapCreateEvent = () => {
     // If all validations pass, create event and reroute
     const eventData = {
       title: eventTitle,
-      details: eventDetails,
+      description: eventDetails,
+      start_date: dateValue,
       image: image,
-      date: dateValue,
-      time: timeValue,
       location: location,
-      status: eventStatus,
-      smsEnabled: smsEnabled,
-      smsMessage: smsMessage,
+      is_open: eventStatus === "Open",
+      do_sms_reminder: smsEnabled,
+      sms_reminder_minutes_before: parseInt(smsMinutesBefore),
+      sms_reminder_message: smsMessage,
     };
 
-    // For demonstration purposes, I'm just logging the data. In a real scenario, you'd send this to your backend.
-    console.log(eventData);
+    console.log(eventData)
 
-    // Reroute here
+    NProgress.start();
+
+    fetch("/api/event/create", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(eventData),
+    })
+    .then((response) => {
+      return response.json(); // Parse the JSON of the response
+    })
+    .then((data) => {
+      NProgress.done();
+      if (data.error) {
+        showMessage(data.error, true);
+      } else {
+        showMessage("Event created successfully!", false);
+        console.log(data)
+        Router.push(`/event/${data.event_data.event_id}`)
+      }
+    })
+    .catch((error) => {
+      // Handle network error, json parsing error, or manual error thrown from response status
+      console.error(error);
+      showMessage("Failed to create event. Error: " + error.message, true);
+      NProgress.done();
+    });
   };
 
   return (
@@ -262,22 +302,23 @@ const WrapCreateEvent = () => {
                             </label>
                             <div className="contact__select">
                               <select
-                                onChange={(e) =>
-                                  setSmsEnabled(e.target.value !== "No")
-                                }
+                                onChange={(e) => {
+                                  setSmsEnabled(e.target.value !== "0");
+                                  setSmsMinutesBefore(e.target.value);
+                                }}
                               >
-                                <option defaultValue="No">No</option>
-                                <option defaultValue="0">
+                                <option defaultValue="0">No</option>
+                                <option defaultValue="30">
                                   30 minutes before
                                 </option>
-                                <option defaultValue="1">1 hour before</option>
-                                <option defaultValue="2">2 hours before</option>
-                                <option defaultValue="3">3 hours before</option>
-                                <option defaultValue="3">4 hours before</option>
-                                <option defaultValue="3">
+                                <option defaultValue="60">1 hour before</option>
+                                <option defaultValue="120">2 hours before</option>
+                                <option defaultValue="180">3 hours before</option>
+                                <option defaultValue="240">4 hours before</option>
+                                <option defaultValue="720">
                                   12 hours before
                                 </option>
-                                <option defaultValue="3">1 day before</option>
+                                <option defaultValue="1440">1 day before</option>
                               </select>
                             </div>
                           </div>
