@@ -9,7 +9,7 @@ const AboutMain = () => {
 const {dark} = useContext(DarkModeContext)
   return (
     <>
-      <main className={`body-area ${dark ? "bd-theme-dark" : "bd-theme-light"}`}>
+      <main className={`body-area ${"bd-theme-dark"}`}>
         <LandingSidemenu/>
         <LandingHeader breadcrumb_shadow="breadcrumb-shadow" />
         <AboutMainArea />
