@@ -6,21 +6,31 @@ import supabaseAdmin from "./supabaseAdmin";
 import { useRouter } from "next/router";
 import { getCookie } from "cookies-next";
 import { COOKIES, getSupabaseUser } from "./cookies";
+import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
 
-export async function mustBeLoggedInServer(context) {
-  const refreshToken = context.req.cookies[COOKIES.refresh_token];
-  const accessToken = context.req.cookies[COOKIES.access_token];
+export async function mustBeLoggedInServer(ctx) {
+  const supabaseClient = createPagesServerClient(ctx, {
+    supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL,
+    supabaseKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    options: {},
+    cookieOptions: { name: "SupabaseCookie" },
+  });
+  // Check if we have a session
+  const {
+    data: { session },
+  } = await supabaseClient.auth.getSession();
 
-  const user = await getSupabaseUser(accessToken, refreshToken);
+  console.log("Session is" + session)
 
-  if (!user?.data?.user || user?.error) {
+  if (!session)
     return {
       redirect: {
         destination: "/signin",
         permanent: false,
       },
     };
-  }
+
+  const user = await supabaseClient.auth.getUser();
 
   let response = await supabaseAdmin
     .from("profiles")
@@ -38,49 +48,30 @@ export async function mustBeLoggedInServer(context) {
     };
   }
 
-  const userData = {...response.data[0], email: user.data.user.email}
+  const userData = { ...response.data[0], email: user.data.user.email };
 
   return {
     props: { userData },
   };
 }
 
-export async function mustNotBeLoggedInServer(context) {
-  const refreshToken = context.req.cookies[COOKIES.refresh_token];
-  const accessToken = context.req.cookies[COOKIES.access_token];
+export async function mustNotBeLoggedInServer(ctx) {
+  const supabaseServerClient = createPagesServerClient(ctx, {
+    supabaseUrl: process.env.NEXT_PUBLIC__SUPABASE_URL,
+    supabaseKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+  });
+  // Check if we have a session
+  const {
+    data: { session },
+  } = await supabaseServerClient.auth.getSession();
 
-  const user = await getSupabaseUser(accessToken, refreshToken);
-
-  if (user?.data?.user) {
-    console.warn("CASE 2 MUSTNOTBELOGGEDIN");
-
+  if (session)
     return {
       redirect: {
         destination: "/dashboard",
         permanent: false,
       },
     };
-  }
 
   return { props: {} };
-}
-
-export async function mustBeLoggedInClient() {
-  const router = useRouter();
-  const user = await supabase.auth.getUser();
-
-  if (!user?.data?.user || user?.error) {
-    router.replace("/signin");
-  }
-  return user;
-}
-
-export async function mustNotBeLoggedInClient() {
-  const router = useRouter();
-  const user = await supabase.auth.getUser();
-
-  if (user?.data?.user) {
-    router.replace("/dashboard");
-  }
-  return user;
 }

@@ -16,8 +16,8 @@ export const COOKIES = {
 };
 
 export const setSupabaseCookies = (access_token, refresh_token) => {
-  setCookie(COOKIES.access_token, access_token);
-  setCookie(COOKIES.refresh_token, refresh_token);
+  setCookie(COOKIES.access_token, access_token)
+  setCookie(COOKIES.refresh_token, refresh_token)
 };
 
 export const deleteSupabaseCookies = () => {
@@ -26,9 +26,9 @@ export const deleteSupabaseCookies = () => {
 };
 
 export const getSupabaseUser = async (access_token, refresh_token) => {
-  if(!access_token || !refresh_token){
-    deleteSupabaseCookies()
-    return undefined
+  if (!access_token || !refresh_token) {
+    deleteSupabaseCookies();
+    return undefined;
   }
 
   await supabase.auth.setSession({
@@ -36,11 +36,12 @@ export const getSupabaseUser = async (access_token, refresh_token) => {
     refresh_token: refresh_token,
   });
 
-  const user = await supabase.auth.getUser()
+  const user = await supabase.auth.getUser();
 
-  if(!user?.data?.user || user?.error){
-    return undefined
+  if (!user?.data?.user || user?.error) {
+    console.log("USER ERROR IS " + user?.error.message)
+    return undefined;
   }
 
-  return user
+  return user;
 };

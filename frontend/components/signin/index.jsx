@@ -40,9 +40,7 @@ const SignInPage = () => {
         return;
       }
 
-      const access_token = response.data.session.access_token
-      const refresh_token = response.data.session.refresh_token
-      setSupabaseCookies(access_token, refresh_token)
+      console.log("Rerouting to dashboard...");
 
       router.replace("/dashboard");
     } catch (e) {
