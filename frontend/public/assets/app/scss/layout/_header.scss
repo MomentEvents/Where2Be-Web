@@ -300,7 +300,8 @@
     width: calc(100% - 260px);
     transition: 0.5s;
     top: 0;
-    z-index: 10;
+    transform: translate3d(0, 0, 0);
+    z-index: 100;
     @include dark {
         background-color: var(--clr-bg-4);
     }
