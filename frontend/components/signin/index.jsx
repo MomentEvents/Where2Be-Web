@@ -13,6 +13,8 @@ import supabase from "../../lib/supabase";
 import showMessage from "../errorMessage/showMessage";
 import { mustNotBeLoggedInServer } from "../../lib/authorization";
 import { setSupabaseCookies } from "../../lib/cookies";
+import Image from "next/image"
+import Where2BeLogo from "../../public/assets/img/logo/where2be.svg"
 
 const SignInPage = () => {
   const { dark } = useContext(DarkModeContext);
@@ -64,16 +66,8 @@ const SignInPage = () => {
               <div className="sign__logo">
                 <Link legacyBehavior href="/">
                   <a>
-                    <img
-                      className="logo-black"
-                      src={logo_dark.src}
-                      alt="image not found"
-                    />
-                    <img
-                      className="logo-white"
-                      src={logo_white.src}
-                      alt="image not found"
-                    />
+                  <Image src={Where2BeLogo} alt="Where2Be" width={170} />
+
                   </a>
                 </Link>
               </div>

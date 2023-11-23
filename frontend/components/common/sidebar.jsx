@@ -11,11 +11,15 @@ import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import supabase from "../../lib/supabase";
 import { useRouter } from "next/router";
 import showMessage from "../errorMessage/showMessage";
+import Image from "next/image";
+import Where2BeLogo from "../../public/assets/img/logo/where2be.svg";
+import w2bLogo from "../../public/assets/img/logo/w2b.svg";
+
 import { deleteSupabaseCookies } from "../../lib/cookies";
 
 const Sidebar = ({ collapse, handleClick }) => {
   const [deviceWidth, setDeviceWidth] = useState(null);
-  const router = useRouter()
+  const router = useRouter();
 
   const handleSignOut = async (e) => {
     e.preventDefault(); // Prevent default action
@@ -25,7 +29,7 @@ const Sidebar = ({ collapse, handleClick }) => {
       return;
     }
 
-    deleteSupabaseCookies()
+    deleteSupabaseCookies();
 
     router.push("/");
   };
@@ -37,22 +41,19 @@ const Sidebar = ({ collapse, handleClick }) => {
           <span>
             <Link legacyBehavior href="/dashboard">
               <a>
-                <img
-                  className="logo__white"
-                  src={small_logo.src}
-                  alt="logo not found"
-                />
-              </a>
-            </Link>
-          </span>
-          <span>
-            <Link legacyBehavior href="/dashboard">
-              <a>
-                <img
-                  className="log__small"
-                  src={logo_two.src}
-                  alt="logo not found"
-                />
+                {collapse ? (
+                  <Image
+                    src={w2bLogo}
+                    alt="Where2Be"
+                    width={50}
+                  />
+                ) : (
+                  <Image
+                    src={Where2BeLogo}
+                    alt="Where2Be"
+                    width={200}
+                  />
+                )}
               </a>
             </Link>
           </span>
@@ -63,16 +64,16 @@ const Sidebar = ({ collapse, handleClick }) => {
               {/* modify code  */}
 
               {/* dashboard li  */}
-              <li>
+              {/* <li>
                 <Link legacyBehavior href="/dashboard">
                   <a>
                     <i className="flaticon-home"></i>
                     <span className="nav-text">Dashboard</span>
                   </a>
                 </Link>
-              </li>
+              </li> */}
               <li>
-                <Link legacyBehavior href="/events">
+                <Link legacyBehavior href="/dashboard">
                   <a>
                     <i className="flaticon-calendar-1"></i>
                     <span className="nav-text">Events</span>
