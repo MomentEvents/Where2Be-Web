@@ -1,14 +1,14 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import logo_white from "../../../public/assets/img/logo/logo.svg"
-import logo_dark from "../../../public/assets/img/logo/logo-dark.svg"
+import logo_white from "../../../public/assets/img/logo/logo.svg";
+import logo_dark from "../../../public/assets/img/logo/logo-dark.svg";
 import { useContext } from "react";
 import { AppContext } from "../../../context/AppContext";
 import Menus from "../menus";
 import logo from "../../../public/assets/img/index/logo.png";
 
-const LandingHeader = ({breadcrumb_shadow}) => {
-  const {toggleSideMenu} = useContext(AppContext)
+const LandingHeader = ({ breadcrumb_shadow }) => {
+  const { toggleSideMenu } = useContext(AppContext);
 
   const handleHamburgerClick = (e) => {
     e.preventDefault();
@@ -20,7 +20,9 @@ const LandingHeader = ({breadcrumb_shadow}) => {
       <header>
         <div
           id="header-sticky"
-          className={`header__area header-1 header__transparent ${breadcrumb_shadow ? breadcrumb_shadow : ""} `}
+          className={`header__area header-1 header__transparent ${
+            breadcrumb_shadow ? breadcrumb_shadow : ""
+          } `}
         >
           <div className="container">
             <div className="row align-items-center">
@@ -45,21 +47,27 @@ const LandingHeader = ({breadcrumb_shadow}) => {
                     </div>
                     <div className="header__right">
                       <div className="header__action-inner">
-                          <div className="header__dashboard">
-                            <Link legacyBehavior href="/dashboard">
-                              <a className="dashboard__btn">
-                                Dashboard
-                                <i className="fa-regular fa-angle-right"></i>
-                              </a>
-                            </Link>
+                        <div className="header__dashboard">
+                          <Link legacyBehavior href="/dashboard">
+                            <a className="dashboard__btn">
+                              Dashboard
+                              <i className="fa-regular fa-angle-right"></i>
+                            </a>
+                          </Link>
+                        </div>
+                        <div className="header__hamburger">
+                          <div className="sidebar__toggle">
+                            <a
+                              className="hamburger__btn"
+                              onClick={handleHamburgerClick}
+                            >
+                              <i
+                                className="fa-solid fa-bars"
+                                style={{ color: "#CDCDCD", fontSize: "26px" }}
+                              ></i>
+                            </a>
                           </div>
-                          <div className="header__hamburger">
-                            <div className="sidebar__toggle">
-                                <a className="hamburger__btn" onClick={handleHamburgerClick}>
-                                  <i className="fa-solid fa-bars" style={{ color: "#CDCDCD", fontSize: '26px' }}></i>
-                                </a>
-                            </div>
-                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>

@@ -10,22 +10,7 @@ import { useEffect } from 'react';
 const LandingSidemenu = () => {
     const {sideMenuOpen,toggleSideMenu} = useContext(AppContext)
 
-    const [isSmallDevice, setIsSmallDevice] = useState(false);
-
-    useEffect(() => {
-      const handleResize = () => {
-        setIsSmallDevice(window.innerWidth <= 1199); // Set the threshold width for small devices
-      };
-  
-      // Add event listener for window resize
-      window.addEventListener('resize', handleResize);
-      handleResize(); // Initial check
-  
-      // Clean up the event listener on component unmount
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
-    }, []);
+    const {isDesktop} = useContext(AppContext)
 
     return (
         <>
@@ -53,9 +38,9 @@ const LandingSidemenu = () => {
                   </div>
                 </div>
       
-                <div className={`mobile-menu fix mb-40 ${isSmallDevice ? 'mean-container' : ''}`}>
+                <div className={`mobile-menu fix mb-40 ${isDesktop ? 'mean-container' : ''}`}>
                   {
-                    isSmallDevice && <Menu2/>
+                    isDesktop && <Menu2/>
                   }
                 </div>
               </div>

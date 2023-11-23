@@ -10,14 +10,20 @@ const WrapCreateEvent = () => {
 
   const [image, setImage] = useState(null);
   const [smsEnabled, setSmsEnabled] = useState(debug ? true : false);
-  const [dateValue, setDateValue] = useState(debug ? "2021-05-01" : "");
+  const [dateValue, setDateValue] = useState(debug ? "2024-05-01" : "");
   const [timeValue, setTimeValue] = useState(debug ? "12:00" : "");
   const [eventTitle, setEventTitle] = useState(debug ? "My event" : "");
-  const [eventDetails, setEventDetails] = useState(debug ? "Come join my fun event!" : "");
-  const [location, setLocation] = useState(debug ? "9500 Gilman Dr, La Jolla, CA 92093" : "");
+  const [eventDetails, setEventDetails] = useState(
+    debug ? "Come join my fun event!" : ""
+  );
+  const [location, setLocation] = useState(
+    debug ? "9500 Gilman Dr, La Jolla, CA 92093" : ""
+  );
   const [eventStatus, setEventStatus] = useState("Open");
-  const [smsMessage, setSmsMessage] = useState(debug ? "Come to my event!" : "");
-  const [smsMinutesBefore, setSmsMinutesBefore] = useState(debug ? "30" : "0");  
+  const [smsMessage, setSmsMessage] = useState(
+    debug ? "Come to my event!" : ""
+  );
+  const [smsMinutesBefore, setSmsMinutesBefore] = useState(debug ? "30" : "0");
 
   const Router = useRouter();
 
@@ -45,6 +51,7 @@ const WrapCreateEvent = () => {
   };
 
   const handleSubmit = (e) => {
+    console.log("CLICKED SUBMIT")
     e.preventDefault(); // prevent default form behavior
 
     // 1. Check for empty fields
@@ -60,7 +67,7 @@ const WrapCreateEvent = () => {
       return;
     }
 
-    if(smsEnabled && !smsMessage) {
+    if (smsEnabled && !smsMessage) {
       showMessage("SMS Message must be filled out.", true);
       return;
     }
@@ -80,11 +87,20 @@ const WrapCreateEvent = () => {
       return;
     }
 
+    // Combine date and time into a single datetime string
+    const eventDateTime = new Date(`${dateValue}T${timeValue}`);
+
+    // Check if the event date is in the past
+    if (eventDateTime < new Date()) {
+      showMessage("The event cannot be in the past", true);
+      return;
+    }
+
     // If all validations pass, create event and reroute
     const eventData = {
       title: eventTitle,
       description: eventDetails,
-      start_date: dateValue,
+      start_date: eventDateTime.toISOString(),
       image: image,
       location: location,
       is_open: eventStatus === "Open",
@@ -93,36 +109,39 @@ const WrapCreateEvent = () => {
       sms_reminder_message: smsMessage,
     };
 
-    console.log(eventData)
+    console.log("STARTING SUBMISSION")
+
+    console.log(eventData);
 
     NProgress.start();
 
-    fetch("/api/event/create", {
+    fetch("http://localhost:3000/api/event/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(eventData),
     })
-    .then((response) => {
-      return response.json(); // Parse the JSON of the response
-    })
-    .then((data) => {
-      NProgress.done();
-      if (data.error) {
-        showMessage(data.error, true);
-      } else {
-        showMessage("Event created successfully!", false);
-        console.log(data)
-        Router.push(`/event/${data.event_data.event_id}`)
-      }
-    })
-    .catch((error) => {
-      // Handle network error, json parsing error, or manual error thrown from response status
-      console.error(error);
-      showMessage("Failed to create event. Error: " + error.message, true);
-      NProgress.done();
-    });
+      .then((response) => {
+        console.log(response + " HAS BEEN RETURNED")
+        return response.json(); // Parse the JSON of the response
+      })
+      .then((data) => {
+        NProgress.done();
+        if (data.error) {
+          showMessage(data.error, true);
+        } else {
+          showMessage("Event created successfully!", false);
+          console.log(data);
+          Router.push(`/event/${data.event_data.event_id}`);
+        }
+      })
+      .catch((error) => {
+        // Handle network error, json parsing error, or manual error thrown from response status
+        console.error(error);
+        showMessage("Failed to create event. Error: " + error.message, true);
+        NProgress.done();
+      });
   };
 
   return (
@@ -312,13 +331,21 @@ const WrapCreateEvent = () => {
                                   30 minutes before
                                 </option>
                                 <option defaultValue="60">1 hour before</option>
-                                <option defaultValue="120">2 hours before</option>
-                                <option defaultValue="180">3 hours before</option>
-                                <option defaultValue="240">4 hours before</option>
+                                <option defaultValue="120">
+                                  2 hours before
+                                </option>
+                                <option defaultValue="180">
+                                  3 hours before
+                                </option>
+                                <option defaultValue="240">
+                                  4 hours before
+                                </option>
                                 <option defaultValue="720">
                                   12 hours before
                                 </option>
-                                <option defaultValue="1440">1 day before</option>
+                                <option defaultValue="1440">
+                                  1 day before
+                                </option>
                               </select>
                             </div>
                           </div>

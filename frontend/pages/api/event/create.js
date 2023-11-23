@@ -6,6 +6,7 @@ export default async function handler(
   req,
   res,
 ) {
+  console.log("CREATING EVENT IN API")
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -18,6 +19,8 @@ export default async function handler(
   if (!user) {
     return res.status(401).json({ error: "User not found" });
   }
+
+  console.log("CHECKING REQUEST BODY")
 
   const { title, description, start_date, image, location, is_open, do_sms_reminder, sms_reminder_minutes_before, sms_reminder_message } = req.body;
 

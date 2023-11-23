@@ -13,6 +13,8 @@ import { deleteSupabaseCookies, setSupabaseCookies } from "../lib/cookies";
 import NProgress from 'nprogress';
 import Router from 'next/router';
 
+import "../public/assets/app/css/globals.css"; 
+
 // Optional: import nprogress.css and customize it as needed
 import 'nprogress/nprogress.css';
 
@@ -36,7 +38,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <SEO
         font={
-          "https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+          "https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
         }
       />
       <Provider store={store}>

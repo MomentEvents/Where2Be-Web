@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-const SEO = ({ pageTitle, font }) => (
+const SEO = ({ pageTitle, font, pageImage }) => (
   <>
     <Head>
       <title>{pageTitle && `${pageTitle} - Where2Be`}</title>
@@ -15,6 +15,9 @@ const SEO = ({ pageTitle, font }) => (
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
       <meta name="theme-color" content="#212121" />
+
+      {pageImage && <meta property="og:image" content={pageImage} />}
+      {pageImage && <meta name="twitter:image" content="<generated>" />}
 
       {font && <link href={font} rel="stylesheet" />}
       <link rel="icon" href="/w2b-favicon.png" />

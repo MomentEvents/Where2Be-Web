@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 
 export const AppContext: any = createContext(undefined);
 
@@ -17,14 +17,34 @@ const AppProvider = ({ children }) => {
     seTsideMenuOpen(!sideMenuOpen);
   };
 
+  const [isDesktop, setIsDesktop] = useState(false);
+
   const [currentUser, setCurrentUser] = useState<user>()
+
+
+  useEffect(() => {
+    // Update the state based on the window width
+    const handleResize = () => {
+      setIsDesktop(window.outerWidth >= 800);
+    };
+
+    // Set the initial value
+    handleResize();
+
+    // Add event listener
+    window.addEventListener("resize", handleResize);
+
+    // Clean up event listener
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // all values
   const value = {
     toggleSideMenu,
     sideMenuOpen,
     currentUser, 
-    setCurrentUser
+    setCurrentUser,
+    isDesktop
   }
   return (
     <AppContext.Provider value={value}>
