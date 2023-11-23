@@ -555,13 +555,13 @@
 .dashboard__btn {
     font-size: 16px;
     color: var(--clr-common-white);
-    font-weight: var(--bd-fw-medium);
+    font-weight: 600;
     background: var(--clr-common-button-gray);
     padding: 0px 20px 0px 40px;
     @include inline-flex();
     align-items: center;
     height: 60px;
-    @include border-radius(22px);
+    @include border-radius(10px);
     @include transition (.3s);
     position: relative;
     z-index: 5;
@@ -577,7 +577,7 @@
         opacity: 0;
         visibility: hidden;
         @include transition (.5s);
-        @include border-radius(22px);
+        @include border-radius(10px);
     }
     i {
         opacity: 0;
