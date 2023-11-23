@@ -4,6 +4,7 @@ import Link from "next/link";
 import showMessage from "../errorMessage/showMessage";
 import NProgress from "nprogress";
 import { useRouter } from "next/router";
+import imageCompression from "browser-image-compression";
 
 const WrapCreateEvent = () => {
   const debug = false; // Debug to prefill fields if needed for easier event creation
@@ -184,13 +185,6 @@ const WrapCreateEvent = () => {
                 <div className="breadcrumb__menu">
                   <nav>
                     <ul>
-                      <li>
-                        <span>
-                          <Link legacyBehavior href="/">
-                            <a>Home</a>
-                          </Link>
-                        </span>
-                      </li>
                       <li className="active">
                         <span>Create Event</span>
                       </li>
