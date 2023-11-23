@@ -142,6 +142,7 @@
     @include transition (.3s);
     position: relative;
     z-index: 5;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     @media #{$xs,$sm,$md}{
         width: 300px;
         justify-content: center;

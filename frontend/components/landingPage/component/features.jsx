@@ -5,6 +5,7 @@ import demo from "../../../public/assets/img/index/demo.png";
 import Image from "next/image";
 import showMessage from "../../errorMessage/showMessage";
 
+
 const Features = () => {
   return (
     <>
@@ -19,7 +20,7 @@ const Features = () => {
             <button
               className="explore__btn"
               onClick={() => {
-                showMessage("Coming Soon!", false)
+                showMessage("Coming Soon!", false);
               }}
             >
               Explore Events

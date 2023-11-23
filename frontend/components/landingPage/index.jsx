@@ -9,18 +9,22 @@ import DarkMode from "../common/dark-mode";
 import { useContext } from "react";
 import { DarkModeContext } from "../darkmode-provider/DarkModeProvider";
 import background from "../../public/assets/img/index/background.png";
+import CirclingLightsBackground from "../Styles/CirclingLightsBackground";
 
-const LandingPageMain = () => { 
-  const {dark} =  useContext(DarkModeContext)
+const LandingPageMain = () => {
+  const { dark } = useContext(DarkModeContext);
   return (
-    <> 
-      <main className={`body-area ${dark ? "bd-theme-dark" : "bd-theme-light"}`} style={{ backgroundImage: `url(${background.src})` }}>
+    <main
+      // className={`body-area ${dark ? "bd-theme-dark" : "bd-theme-light"}`}
+      // style={{ backgroundImage: `url(${background.src})` }}
+    >
+      <CirclingLightsBackground>
         <LandingSidemenu />
         <LandingHeader />
         <Features />
         <LandingFooter />
-      </main>
-    </>
+      </CirclingLightsBackground>
+    </main>
   );
 };
 

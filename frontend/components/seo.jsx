@@ -14,7 +14,7 @@ const SEO = ({ pageTitle, font, pageImage }) => (
         name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
-      <meta name="theme-color" content="#212121" />
+      <meta name="theme-color" content="#000000" />
 
       {pageImage && <meta property="og:image" content={pageImage} />}
       {pageImage && <meta name="twitter:image" content="<generated>" />}

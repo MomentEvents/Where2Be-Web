@@ -63,7 +63,7 @@ const LandingHeader = ({ breadcrumb_shadow }) => {
                             >
                               <i
                                 className="fa-solid fa-bars"
-                                style={{ color: "#CDCDCD", fontSize: "26px" }}
+                                style={{ color: "#CDCDCD", fontSize: "23px" }}
                               ></i>
                             </a>
                           </div>

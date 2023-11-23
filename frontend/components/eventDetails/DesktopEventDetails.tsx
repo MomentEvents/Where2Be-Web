@@ -4,7 +4,7 @@ import { COLORS } from "../../constants/colors";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { LocationOnOutlined, AccessTimeOutlined } from "@mui/icons-material";
 import Footer from "../landingPage/component/footer";
-import styles from "./styles.module.scss";
+import CirclingLightsBackground from "../Styles/CirclingLightsBackground";
 
 const DesktopEventDetails = ({ event, host }) => {
   function formatDateString(dateString) {
@@ -55,7 +55,8 @@ const DesktopEventDetails = ({ event, host }) => {
   }
 
   return (
-      <div style={{ paddingLeft: 60, paddingRight: 60, paddingTop: 150, position: 'relative' }}>
+    <CirclingLightsBackground>
+      <div style={{ paddingLeft: 60, paddingRight: 60, paddingTop: 150 }}>
         <div style={{ width: "100%", display: "flex", flexDirection: "row" }}>
           {/* Event information on the left */}
           <div style={{ width: "50%", paddingRight: "20px" }}>
@@ -204,8 +205,8 @@ const DesktopEventDetails = ({ event, host }) => {
         />
 
         <Footer />
-        <div className={styles.eventDetailsBackground}/>
       </div>
+    </CirclingLightsBackground>
   );
 };
 

@@ -560,7 +560,7 @@
     padding: 0px 20px 0px 40px;
     @include inline-flex();
     align-items: center;
-    height: 60px;
+    height: 55px;
     @include border-radius(10px);
     @include transition (.3s);
     position: relative;
@@ -602,12 +602,14 @@
     @include inline-flex();
     align-items: center;
     justify-content: center;
-    width: 65px;
-    height: 65px;
-    @include border-radius(22px);
+    width: 55px;
+    height: 55px;
+    @include border-radius(15px);
     @include transition (.3s);
     position: relative;
     z-index: 5;
+    margin-right: -15px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     &::before {
         position: absolute;
         content: "";
