@@ -5,7 +5,6 @@ import demo from "../../../public/assets/img/index/demo.png";
 import Image from "next/image";
 import showMessage from "../../errorMessage/showMessage";
 
-
 const Features = () => {
   return (
     <>
@@ -32,7 +31,15 @@ const Features = () => {
           </div>
         </div>
         <div className="features__right_container">
-          <img src={demo.src} alt="image not found" />
+          <img
+            src={demo.src}
+            alt="image not found"
+            style={{
+              maxHeight: "72vh",
+              width: "auto" /* Maintain aspect ratio */,
+              objectFit: "contain" /* Ensures the image is fully visible */,
+            }}
+          />
         </div>
       </section>
     </>
