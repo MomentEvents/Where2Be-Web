@@ -6,7 +6,7 @@ import NProgress from "nprogress";
 import { useRouter } from "next/router";
 
 const WrapCreateEvent = () => {
-  const debug = true; // Debug to prefill fields if needed for easier event creation
+  const debug = false; // Debug to prefill fields if needed for easier event creation
 
   const [image, setImage] = useState(null);
   const [dateValue, setDateValue] = useState(debug ? "2024-05-01" : "");
