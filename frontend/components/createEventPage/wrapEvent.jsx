@@ -9,7 +9,6 @@ const WrapCreateEvent = () => {
   const debug = true; // Debug to prefill fields if needed for easier event creation
 
   const [image, setImage] = useState(null);
-  const [smsEnabled, setSmsEnabled] = useState(debug ? true : false);
   const [dateValue, setDateValue] = useState(debug ? "2024-05-01" : "");
   const [timeValue, setTimeValue] = useState(debug ? "12:00" : "");
   const [eventTitle, setEventTitle] = useState(debug ? "My event" : "");
@@ -24,23 +23,43 @@ const WrapCreateEvent = () => {
     debug ? "Come to my event!" : ""
   );
   const [smsMinutesBefore, setSmsMinutesBefore] = useState(debug ? "30" : "0");
+  const [smsEnabled, setSmsEnabled] = useState(smsMinutesBefore !== "0");
 
   const Router = useRouter();
 
   const fileInputRef = useRef(null);
 
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
+  const isSubmittingRef = useRef(false);
 
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    // Check if the image is larger than 4 MB
+    if (file.size > 4 * 1024 * 1024) {
+      try {
+        const options = {
+          maxSizeMB: 4,
+          maxWidthOrHeight: 1920,
+          useWebWorker: true,
+        };
+        const compressedFile = await imageCompression(file, options);
+        processFile(compressedFile);
+      } catch (error) {
+        showMessage("Error compressing the image: " + error.message, true);
+      }
+    } else {
+      processFile(file);
+    }
+  };
+
+  const processFile = (file) => {
+    const reader = new FileReader();
     reader.onloadend = () => {
       setImage(reader.result);
     };
-
-    if (file) {
-      reader.readAsDataURL(file);
-    }
-    fileInputRef.current.value = null; // Step 2: Reset file input after image upload
+    reader.readAsDataURL(file);
+    fileInputRef.current.value = null;
   };
 
   const handleDeleteImage = () => {
@@ -50,8 +69,8 @@ const WrapCreateEvent = () => {
     }
   };
 
-  const handleSubmit = (e) => {
-    console.log("CLICKED SUBMIT")
+  const handleSubmit = async (e) => {
+    console.log("CLICKED SUBMIT");
     e.preventDefault(); // prevent default form behavior
 
     // 1. Check for empty fields
@@ -109,39 +128,46 @@ const WrapCreateEvent = () => {
       sms_reminder_message: smsMessage,
     };
 
-    console.log("STARTING SUBMISSION")
+    console.log("STARTING SUBMISSION");
 
     console.log(eventData);
 
+    if (isSubmittingRef.current) {
+      return;
+    }
+    isSubmittingRef.current = true;
+
     NProgress.start();
 
-    fetch("http://localhost:3000/api/event/create", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(eventData),
-    })
-      .then((response) => {
-        console.log(response + " HAS BEEN RETURNED")
-        return response.json(); // Parse the JSON of the response
-      })
-      .then((data) => {
-        NProgress.done();
-        if (data.error) {
-          showMessage(data.error, true);
-        } else {
-          showMessage("Event created successfully!", false);
-          console.log(data);
-          Router.push(`/event/${data.event_data.event_id}`);
-        }
-      })
-      .catch((error) => {
-        // Handle network error, json parsing error, or manual error thrown from response status
-        console.error(error);
-        showMessage("Failed to create event. Error: " + error.message, true);
-        NProgress.done();
+    try {
+      const response = await fetch("api/event/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(eventData),
       });
+
+      console.log(response + " HAS BEEN RETURNED");
+      const responseJSON = await response.json();
+      console.log(responseJSON);
+      if (responseJSON.error) {
+        showMessage(responseJSON.error, true);
+        isSubmittingRef.current = false;
+        NProgress.done();
+      } else {
+        showMessage("Event created successfully!", false);
+        console.log(responseJSON);
+        isSubmittingRef.current = false;
+        NProgress.done();
+        Router.push(`/event/${responseJSON.event_data.event_id}`);
+      }
+    } catch (error) {
+      console.error(error);
+      showMessage("Failed to create event. Error: " + error.message, true);
+      isSubmittingRef.current = false;
+      NProgress.done();
+    }
   };
 
   return (
@@ -309,8 +335,8 @@ const WrapCreateEvent = () => {
                                 value={eventStatus}
                                 onChange={(e) => setEventStatus(e.target.value)}
                               >
-                                <option defaultValue="0">Open</option>
-                                <option defaultValue="1">Closed</option>
+                                <option value="Open">Open</option>
+                                <option value="Closed">Closed</option>
                               </select>
                             </div>
                           </div>
@@ -321,31 +347,20 @@ const WrapCreateEvent = () => {
                             </label>
                             <div className="contact__select">
                               <select
+                                value={smsMinutesBefore}
                                 onChange={(e) => {
                                   setSmsEnabled(e.target.value !== "0");
                                   setSmsMinutesBefore(e.target.value);
                                 }}
                               >
-                                <option defaultValue="0">No</option>
-                                <option defaultValue="30">
-                                  30 minutes before
-                                </option>
-                                <option defaultValue="60">1 hour before</option>
-                                <option defaultValue="120">
-                                  2 hours before
-                                </option>
-                                <option defaultValue="180">
-                                  3 hours before
-                                </option>
-                                <option defaultValue="240">
-                                  4 hours before
-                                </option>
-                                <option defaultValue="720">
-                                  12 hours before
-                                </option>
-                                <option defaultValue="1440">
-                                  1 day before
-                                </option>
+                                <option value="0">No</option>
+                                <option value="30">30 minutes before</option>
+                                <option value="60">1 hour before</option>
+                                <option value="120">2 hours before</option>
+                                <option value="180">3 hours before</option>
+                                <option value="240">4 hours before</option>
+                                <option value="720">12 hours before</option>
+                                <option value="1440">1 day before</option>
                               </select>
                             </div>
                           </div>

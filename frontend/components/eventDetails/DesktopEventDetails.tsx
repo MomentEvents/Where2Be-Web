@@ -113,6 +113,7 @@ const DesktopEventDetails = ({ event, host }) => {
           style={{
             width: "50%",
             flexDirection: "column",
+            display: "flex",
             alignItems: "center",
             justifyContent: "center",
           }}
@@ -120,10 +121,10 @@ const DesktopEventDetails = ({ event, host }) => {
           <img
             src={event.image}
             style={{
-              width: "100%",
-              maxHeight: "70vh",
-              height: "auto",
-              objectFit: "cover",
+              maxWidth: "100%",    // Limits the width to the parent container's width
+              height: "auto",      // Maintains the aspect ratio
+              maxHeight: "60vh",
+              objectFit: "contain", // Ensures the entire image is visible
               borderRadius: "10px",
             }}
             alt={event.title}

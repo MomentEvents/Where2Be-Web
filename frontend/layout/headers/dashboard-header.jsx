@@ -155,7 +155,7 @@ export default function DashboardHeader({ handleClick }) {
             <button id="userportfolio" onClick={handleShowuserDrowdown}>
               <div className="user__portfolio">
                 <div className="user__portfolio-thumb">
-                  <img src={currentUserPicture} alt="imge not found" />
+                  {currentUserPicture && <img src={currentUserPicture} alt="imge not found" />}
                 </div>
                 <div className="user__content">
                   <span>{currentUser?.name}</span>

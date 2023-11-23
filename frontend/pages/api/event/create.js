@@ -17,7 +17,7 @@ export default async function handler(
   );
 
   if (!user) {
-    return res.status(401).json({ error: "User not found" });
+    return res.status(401).json({ error: "Unauthenticated. Please log in again" });
   }
 
   console.log("CHECKING REQUEST BODY")
@@ -83,5 +83,14 @@ export default async function handler(
 
   } catch (error) {
     return res.status(500).json({ error: error.message });
+  }
+}
+
+
+export const config = {
+  api: {
+      bodyParser: {
+          sizeLimit: '5mb' // Set desired value here
+      }
   }
 }
