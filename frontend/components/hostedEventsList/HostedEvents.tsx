@@ -216,9 +216,9 @@ const HostedEvents = ({ user }) => {
             );
           })}
         </div>
-        <div ref={ref}>
+        {/* <div ref={ref}>
           <div style={{ height: "40px" }}></div>
-        </div>
+        </div> */}
       </div>
     </>
   );
