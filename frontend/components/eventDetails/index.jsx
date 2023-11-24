@@ -26,7 +26,8 @@ const EventDetailsMain = ({ event, host }) => {
     height: 100%;
     background-image: url(${(props) => props.src});
     background-size: cover;
-    filter: blur(8px);
+    background-position: center; // Centers the image
+    filter: blur(15px); // Increased blur effect
     transform: scale(1.1);
   `;
 
