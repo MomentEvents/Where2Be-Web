@@ -103,7 +103,7 @@ const SchduleDetailsContent = ({schduleItem}) => {
                 <div className="breadcrumb__icon">
                   <i className="flaticon-home"></i>
                 </div>
-                <BreadcamMenu title="Schdule details" />
+                <BreadcamMenu title="Event Details" />
               </div>
             </div>
           </div>

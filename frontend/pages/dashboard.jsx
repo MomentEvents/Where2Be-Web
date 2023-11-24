@@ -31,7 +31,7 @@
 import React, { useContext } from "react";
 import Wrapper from "../layout/wrapper";
 import SEO from "../components/seo";
-import SchduleListMain from "../components/schduleList";
+import HostedEventsList from "../components/hostedEventsList";
 import { mustBeLoggedInServer } from "../lib/authorization";
 import { AppContext } from "../context/AppContext";
 
@@ -42,7 +42,7 @@ const index = (props) => {
   return (
     <Wrapper>
       <SEO pageTitle={"Events"} />
-      <SchduleListMain />
+      <HostedEventsList user={props.userData} />
     </Wrapper>
   );
 };

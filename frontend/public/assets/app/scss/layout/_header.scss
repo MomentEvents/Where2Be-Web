@@ -622,11 +622,10 @@
         opacity: 0;
         visibility: hidden;
         @include transition (.5s);
-        @include border-radius(22px);
+        @include border-radius(15px);
     }
     &:hover {
         color: var(--clr-common-white);
-        padding: 0 30px;
         &::before {
             opacity: 1;
             visibility: visible;

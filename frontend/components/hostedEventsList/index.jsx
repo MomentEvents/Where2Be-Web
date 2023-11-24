@@ -1,8 +1,7 @@
 import React from "react";
 import dynamic from "next/dynamic";
-const WrapSchduleContent = dynamic(() => import('./schduleContent'), {
-  ssr: false
-})
+import HostedEvents from "./HostedEvents";
+
 import Sidebar from "../common/sidebar";
 import HeaderOne from "../../layout/headers/header";
 import { useState } from "react";
@@ -11,7 +10,7 @@ import BackToTopCom from "../common/scroll-to-top";
 import { useContext } from "react";
 import { DarkModeContext } from "../darkmode-provider/DarkModeProvider";
 
-const SchduleListMain = () => {
+const HostedEventsList = ({user}) => {
   const [collapse, setCollapse] = useState(false);
   const { dark } = useContext(DarkModeContext);
   const handleClick = () => {
@@ -23,7 +22,7 @@ const SchduleListMain = () => {
         <Sidebar handleClick={handleClick} collapse={collapse} />
         <div className="page__body-wrapper">
           <HeaderOne handleClick={handleClick} />
-          <WrapSchduleContent />
+          <HostedEvents user={user}/>
         </div>
       </div>
       
@@ -32,4 +31,4 @@ const SchduleListMain = () => {
   );
 };
 
-export default SchduleListMain;
+export default HostedEventsList;

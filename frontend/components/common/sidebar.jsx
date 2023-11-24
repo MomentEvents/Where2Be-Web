@@ -41,7 +41,7 @@ const Sidebar = ({ collapse, handleClick }) => {
           <span>
             <Link legacyBehavior href="/dashboard">
               <a>
-                {collapse ? (
+                {collapse && deviceWidth > 991 ? (
                   <Image
                     src={w2bLogo}
                     alt="Where2Be"

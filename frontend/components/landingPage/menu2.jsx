@@ -14,9 +14,12 @@ const Menu2 = () => {
               <li
                 onClick={toggleSideMenu}
                 key={index}
+                style={{
+                  textAlign: "right",
+                }}
               >
                 <Link legacyBehavior href={menuItem.link}>
-                  <a style={{ color: "white"}}>
+                  <a style={{ textDecoration: "none" }}>
                     {menuItem.text}
                   </a>
                 </Link>
