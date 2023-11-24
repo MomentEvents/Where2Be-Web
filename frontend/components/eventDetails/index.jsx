@@ -8,8 +8,35 @@ import { LocationOnOutlined, AccessTimeOutlined } from "@mui/icons-material";
 import Footer from "../landingPage/component/footer";
 import CirclingLightsBackground from "../Styles/CirclingLightsBackground";
 import JoinModal from "./JoinModal";
+import styled from "@emotion/styled";
 
 const EventDetailsMain = ({ event, host }) => {
+  const ImageContainer = styled.div`
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+  `;
+
+  const BlurredBackground = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(${(props) => props.src});
+    background-size: cover;
+    filter: blur(8px);
+    transform: scale(1.1);
+  `;
+
+  const StyledImage = styled.img`
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  `;
+
   const [isModalOpen, setModalOpen] = useState(false);
   const toggleModal = () => {
     setModalOpen(!isModalOpen);
@@ -268,7 +295,6 @@ const EventDetailsMain = ({ event, host }) => {
   };
 
   const MobileView = () => {
-
     function formatDateString(dateString) {
       // Parse the date string into a Date object
       const date = new Date(dateString);
@@ -311,15 +337,10 @@ const EventDetailsMain = ({ event, host }) => {
     return (
       <CirclingLightsBackground>
         <div>
-          <img
-            src={event.image}
-            style={{
-              width: "100%", // Limits the width to the parent container's width
-              height: "400px",
-              objectFit: "cover", // Ensures the entire image is visible
-            }}
-            alt={event.title}
-          />
+          <ImageContainer>
+            <BlurredBackground src={event.image} />
+            <StyledImage src={event.image} alt={event.title} />
+          </ImageContainer>
           <div style={{ paddingLeft: 30, paddingRight: 30, paddingTop: 20 }}>
             {/* <h4
               style={{
@@ -380,6 +401,7 @@ const EventDetailsMain = ({ event, host }) => {
               }}
             >
               <button
+                onClick={toggleModal}
                 style={{
                   backgroundColor: COLORS.purple, // Assuming a black background from the image
                   color: "#FFFFFF", // White text
