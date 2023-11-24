@@ -13,7 +13,7 @@ const EventDetailsMain = ({ event, host }) => {
   return (
     <div>
       <LandingSidemenu />
-      <LandingHeader />
+      <LandingHeader disableLogo={!isDesktop} />
       {isDesktop ? <DesktopView event={event} host={host}/> : <MobileView event={event} host={host} />}
     </div>
   );

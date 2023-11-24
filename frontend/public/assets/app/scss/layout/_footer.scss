@@ -201,7 +201,7 @@
 			font-family: 'Poppins';
 			margin-bottom: 0;
 			color: var(--clr-text-21);
-			letter-spacing: 4px;
+			letter-spacing: 2px;
 			@media #{$xs, $sm}{
 				font-size: 10px;
 			}
@@ -213,7 +213,7 @@
 		}
 		img {
 			@media #{$xs, $sm}{
-				width: 10px;
+				width: 14px;
 			}
 		}
 	}

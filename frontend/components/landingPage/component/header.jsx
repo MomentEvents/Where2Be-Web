@@ -7,7 +7,7 @@ import { AppContext } from "../../../context/AppContext";
 import Menus from "../menus";
 import logo from "../../../public/assets/img/index/logo.png";
 
-const LandingHeader = ({ breadcrumb_shadow }) => {
+const LandingHeader = ({ breadcrumb_shadow, disableLogo }) => {
   const { toggleSideMenu } = useContext(AppContext);
 
   const handleHamburgerClick = (e) => {
@@ -30,20 +30,22 @@ const LandingHeader = ({ breadcrumb_shadow }) => {
                 <div className="mega__menu-wrapper p-relative">
                   <div className="header__navigation d-flex align-items-center justify-content-between">
                     <div className="header__logo">
-                      <Link legacyBehavior href="/">
-                        <a>
-                          <img
-                            className="logo__white"
-                            src={logo.src}
-                            alt="logo not found"
-                          />
-                          <img
-                            className="logo__dark"
-                            src={logo.src}
-                            alt="logo not found"
-                          />
-                        </a>
-                      </Link>
+                      {!disableLogo && (
+                        <Link legacyBehavior href="/">
+                          <a>
+                            <img
+                              className="logo__white"
+                              src={logo.src}
+                              alt="logo not found"
+                            />
+                            <img
+                              className="logo__dark"
+                              src={logo.src}
+                              alt="logo not found"
+                            />
+                          </a>
+                        </Link>
+                      )}
                     </div>
                     <div className="header__right">
                       <div className="header__action-inner">
