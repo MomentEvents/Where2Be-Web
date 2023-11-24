@@ -15,6 +15,7 @@ const HostedEvents = ({ user }) => {
   const loadingRef = useRef(false);
   const hasMoreRef = useRef(true);
   const [isFuture, setIsFuture] = useState(true);
+
   const { ref, inView } = useInView({
     threshold: 0,
   });
@@ -167,7 +168,7 @@ const HostedEvents = ({ user }) => {
                       paddingBottom: 10,
                       borderRadius: 10,
                       border: ".5px solid #3D3D3D",
-                      boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.5)' // Adds shadow
+                      boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.5)", // Adds shadow
                     }}
                   >
                     <h1
@@ -206,7 +207,7 @@ const HostedEvents = ({ user }) => {
                         height: "300px",
                         width: "100%", // Ensures the image covers the entire width of the container
                         objectFit: "cover", // Makes the image cover the entire area without stretching
-                        boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.5)' // Adds shadow
+                        boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.5)", // Adds shadow
                       }}
                     />
                   </div>
@@ -215,7 +216,9 @@ const HostedEvents = ({ user }) => {
             );
           })}
         </div>
-        <div ref={ref} style={{ height: "20px" }}></div>
+        <div ref={ref}>
+          <div style={{ height: "40px" }}></div>
+        </div>
       </div>
     </>
   );
