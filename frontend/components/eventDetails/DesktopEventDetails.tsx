@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { COLORS } from "../../constants/colors";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { LocationOnOutlined, AccessTimeOutlined } from "@mui/icons-material";
 import Footer from "../landingPage/component/footer";
 import CirclingLightsBackground from "../Styles/CirclingLightsBackground";
+import JoinModal from "./JoinModal";
 
 const DesktopEventDetails = ({ event, host }) => {
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const toggleModal = () => {
+    setModalOpen(!isModalOpen);
+  };
+
   function formatDateString(dateString) {
     // Parse the date string into a Date object
     const date = new Date(dateString);
@@ -56,6 +62,7 @@ const DesktopEventDetails = ({ event, host }) => {
 
   return (
     <CirclingLightsBackground>
+      <JoinModal isOpen={isModalOpen} onClose={toggleModal} />
       <div style={{ paddingLeft: 60, paddingRight: 60, paddingTop: 150 }}>
         <div style={{ width: "100%", display: "flex", flexDirection: "row" }}>
           {/* Event information on the left */}
@@ -128,6 +135,7 @@ const DesktopEventDetails = ({ event, host }) => {
               }}
             >
               <button
+                onClick={toggleModal}
                 style={{
                   backgroundColor: COLORS.purple, // Assuming a black background from the image
                   color: "#FFFFFF", // White text
@@ -214,7 +222,7 @@ const DesktopEventDetails = ({ event, host }) => {
           }}
         >
           <a
-          href={"/create-event"}
+            href={"/create-event"}
             style={{
               backgroundColor: "#FFFFFF", // Assuming a black background from the image
               color: "#000000", // White text
