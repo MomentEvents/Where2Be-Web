@@ -167,7 +167,6 @@ const DesktopEventDetails = ({ event, host }) => {
                 maxHeight: "60vh",
                 objectFit: "contain", // Ensures the entire image is visible
                 borderRadius: "10px",
-                minHeight: "500px", // Set minimum height dynamically
                 boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.3)", // Add this line for shadow
               }}
               alt={event.title}
