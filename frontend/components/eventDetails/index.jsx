@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import DesktopView from "./DesktopEventDetails";
-import MobileView from "./MobileEventDetails";
 import LandingSidemenu from "../common/sidemenu-landing/landingSidemenu";
 import LandingHeader from "../landingPage/component/header";
 import { AppContext } from "../../context/AppContext";

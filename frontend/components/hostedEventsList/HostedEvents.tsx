@@ -12,7 +12,6 @@ import { motion } from "framer-motion";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 const HostedEvents = ({ user }) => {
-  const PAGE_COUNT = 10;
   const [events, setEvents] = useState([]);
   const page = useRef(1);
   const [loading, setLoading] = useState(false);
