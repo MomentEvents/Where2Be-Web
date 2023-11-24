@@ -3,10 +3,11 @@ import pageOne from "../../data/schduleContentData/pageOne";
 import SchduleCard from "./schudelCard";
 import BreadcamMenu from "../common/breadcamMenu";
 import React, { useState, useEffect, useRef } from "react";
-import { useInView } from "react-intersection-observer";
+import { InView, useInView } from "react-intersection-observer";
 import showMessage from "../errorMessage/showMessage";
 import index from "../../pages/dashboard";
 import { COLORS } from "../../constants/colors";
+
 
 const HostedEvents = ({ user }) => {
   const [events, setEvents] = useState([]);
@@ -17,7 +18,8 @@ const HostedEvents = ({ user }) => {
   const [isFuture, setIsFuture] = useState(true);
 
   const { ref, inView } = useInView({
-    threshold: 0,
+    fallbackInView: true,
+    threshold: 0
   });
 
   function formatISODateString(isoString) {
@@ -87,10 +89,10 @@ const HostedEvents = ({ user }) => {
   }, [isFuture]);
 
   useEffect(() => {
-    if (hasMoreRef.current && !loadingRef.current) {
+    if (inView && hasMoreRef.current && !loadingRef.current) {
       fetchEvents();
     }
-  }, []);
+  }, [inView]);
 
   return (
     <>
@@ -216,9 +218,9 @@ const HostedEvents = ({ user }) => {
             );
           })}
         </div>
-        {/* <div ref={ref}>
+        <div ref={ref}>
           <div style={{ height: "40px" }}></div>
-        </div> */}
+        </div>
       </div>
     </>
   );
