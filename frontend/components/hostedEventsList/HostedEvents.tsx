@@ -16,9 +16,9 @@ const HostedEvents = ({ user }) => {
   const hasMoreRef = useRef(true);
   const [isFuture, setIsFuture] = useState(true);
 
-  // const { ref, inView } = useInView({
-  //   threshold: 0,
-  // });
+  const { ref, inView } = useInView({
+    threshold: 0,
+  });
 
   function formatISODateString(isoString) {
     const months = [
