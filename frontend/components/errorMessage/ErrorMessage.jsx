@@ -17,17 +17,22 @@ const Message = ({ message, isError, bottomOffset }) => {
 
   const ErrorContainer = styled.div`
     position: fixed;
-    bottom: ${(props) => 40 + props.bottomOffset}px; // added the offset here
+    bottom: ${(props) => 40 + props.bottomOffset}px;
     right: 40px;
-    width: 35%;
+    width: 40%; // Set max width to 40% of the screen size
     padding: 20px 20px 20px 35px;
     background-color: #262626;
     color: white;
     border-radius: 5px;
     animation: ${fadeInOut} 4s forwards;
     z-index: 999;
-  `;
 
+    @media (max-width: 800px) {
+      width: 90%; // When the screen width is 800px or less, set width to 90%
+      right: 5%; // Centering the container
+      left: 5%; // Centering the container
+    }
+  `;
   const ProgressMeter = styled.div`
     position: absolute;
     top: 0;

@@ -1,12 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Close } from "@mui/icons-material";
 import { COLORS } from "../../constants/colors";
 import showMessage from "../errorMessage/showMessage";
 import supabase from "../../lib/supabase";
 
 import PhoneInput from "react-phone-number-input";
+import { AppContext } from "../../context/AppContext";
 
-const JoinModal = ({ isOpen, onClose }) => {
+const JoinModal = ({ isOpen, onClose, isDesktop }) => {
   if (!isOpen) return null;
 
   const inputStyle = {
@@ -33,7 +34,7 @@ const JoinModal = ({ isOpen, onClose }) => {
     console.log(data, error);
     if (error) {
       showMessage("Error sending verification code:" + error, true);
-      console.error(error)
+      console.error(error);
     } else {
       showMessage("Verification code sent!", false);
       setIsVerifying(true);
@@ -82,6 +83,9 @@ const JoinModal = ({ isOpen, onClose }) => {
           borderRadius: 5,
           boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
           position: "relative", // For positioning the close button
+          width: "80%", // Width in percentage
+          maxWidth: "600px", // Maximum width limit
+          margin: "auto", // Center the modal
         }}
         onClick={handleModalClick} // Prevents closing when clicking on the modal
       >
@@ -102,7 +106,7 @@ const JoinModal = ({ isOpen, onClose }) => {
         <h2
           style={{
             marginRight: 70,
-            fontSize: 40,
+            fontSize: isDesktop ? 40 : 30,
             fontWeight: 600,
             color: "#FFF",
           }}
@@ -111,7 +115,7 @@ const JoinModal = ({ isOpen, onClose }) => {
         </h2>
         <h3
           style={{
-            fontSize: 18,
+            fontSize: isDesktop ? 18 : 16,
             fontWeight: 300,
             marginTop: 30,
             marginBottom: 10,
@@ -125,11 +129,11 @@ const JoinModal = ({ isOpen, onClose }) => {
           maxLength={50}
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder="John Smith"
+          placeholder="Jimmy Neutron"
         ></input>
         <h3
           style={{
-            fontSize: 18,
+            fontSize: isDesktop ? 18 : 16,
             fontWeight: 300,
             marginTop: 30,
             marginBottom: 10,
@@ -160,7 +164,7 @@ const JoinModal = ({ isOpen, onClose }) => {
               backgroundColor: COLORS.purple, // Assuming a black background from the image
               color: "#FFFFFF", // White text
               padding: "15px 30px", // Adjust padding to your preference
-              fontSize: "20px", // Adjust font size to your preference
+              fontSize: isDesktop ? 20 : 18, // Adjust font size to your preference
               fontWeight: "600", // Adjust font weight as needed
               border: "none",
               fontFamily: "Poppins",

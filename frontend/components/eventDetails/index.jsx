@@ -11,33 +11,6 @@ import JoinModal from "./JoinModal";
 import styled from "@emotion/styled";
 
 const EventDetailsMain = ({ event, host }) => {
-  const ImageContainer = styled.div`
-    position: relative;
-    width: 100%;
-    height: 400px;
-    overflow: hidden;
-  `;
-
-  const BlurredBackground = styled.div`
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(${(props) => props.src});
-    background-size: cover;
-    background-position: center; // Centers the image
-    filter: blur(15px); // Increased blur effect
-    transform: scale(1.1);
-  `;
-
-  const StyledImage = styled.img`
-    position: relative;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  `;
-
   const [isModalOpen, setModalOpen] = useState(false);
   const toggleModal = () => {
     setModalOpen(!isModalOpen);
@@ -46,6 +19,12 @@ const EventDetailsMain = ({ event, host }) => {
   const { isDesktop } = useContext(AppContext);
 
   const DesktopView = () => {
+    const calculateFontSize = (title) => {
+      if (title.length < 30) return 65; // large font size for short titles
+      if (title.length < 40) return 50; // medium font size for medium-length titles
+      return 40; // smaller font size for long titles
+    };
+
     const toggleModal = () => {
       setModalOpen(!isModalOpen);
     };
@@ -118,7 +97,7 @@ const EventDetailsMain = ({ event, host }) => {
               <h1
                 style={{
                   color: COLORS.mainText,
-                  fontSize: 80,
+                  fontSize: calculateFontSize(event.title),
                   fontWeight: 700,
                   marginBottom: 15,
                 }}
@@ -296,6 +275,33 @@ const EventDetailsMain = ({ event, host }) => {
   };
 
   const MobileView = () => {
+    const ImageContainer = styled.div`
+      position: relative;
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+    `;
+
+    const BlurredBackground = styled.div`
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url(${(props) => props.src});
+      background-size: cover;
+      background-position: center; // Centers the image
+      filter: blur(15px); // Increased blur effect
+      transform: scale(1.1);
+    `;
+
+    const StyledImage = styled.img`
+      position: relative;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    `;
+
     function formatDateString(dateString) {
       // Parse the date string into a Date object
       const date = new Date(dateString);
@@ -497,7 +503,11 @@ const EventDetailsMain = ({ event, host }) => {
     <div>
       <LandingSidemenu />
       <LandingHeader disableLogo={!isDesktop} breadcrumb_shadow={undefined} />
-      <JoinModal isOpen={isModalOpen} onClose={toggleModal} />
+      <JoinModal
+        isOpen={isModalOpen}
+        onClose={toggleModal}
+        isDesktop={isDesktop}
+      />
       {isDesktop ? <DesktopView /> : <MobileView />}
     </div>
   );
