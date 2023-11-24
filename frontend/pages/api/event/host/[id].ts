@@ -10,7 +10,7 @@ export default async function handler(req, res) {
   const page = parseInt(req.query.page) || 1;
   console.log(JSON.stringify(req.query.future))
   const future = req.query.future === "true" || false;
-  const limit = 10;
+  const limit = 5;
   const startIndex = (page - 1) * limit;
   const endIndex = startIndex + limit - 1;
   console.log("start index: " + startIndex);

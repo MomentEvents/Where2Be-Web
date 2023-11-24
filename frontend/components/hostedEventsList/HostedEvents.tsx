@@ -7,20 +7,18 @@ import { InView, useInView } from "react-intersection-observer";
 import showMessage from "../errorMessage/showMessage";
 import index from "../../pages/dashboard";
 import { COLORS } from "../../constants/colors";
-
+import { debounce } from "lodash";
+import { motion } from "framer-motion";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const HostedEvents = ({ user }) => {
+  const PAGE_COUNT = 10;
   const [events, setEvents] = useState([]);
   const page = useRef(1);
   const [loading, setLoading] = useState(false);
   const loadingRef = useRef(false);
   const hasMoreRef = useRef(true);
   const [isFuture, setIsFuture] = useState(true);
-
-  const { ref, inView } = useInView({
-    fallbackInView: true,
-    threshold: 0
-  });
 
   function formatISODateString(isoString) {
     const months = [
@@ -88,11 +86,11 @@ const HostedEvents = ({ user }) => {
     fetchEvents();
   }, [isFuture]);
 
-  useEffect(() => {
-    if (inView && hasMoreRef.current && !loadingRef.current) {
+  const loadNewEvents = () => {
+    if (hasMoreRef.current && !loadingRef.current) {
       fetchEvents();
     }
-  }, [inView]);
+  }
 
   return (
     <>
@@ -153,74 +151,83 @@ const HostedEvents = ({ user }) => {
           </div>
         </div>
 
-        <div className="row">
-          {events.map((event, index) => {
-            const eventUrl = `/event/${event.event_id}`;
-            const signups = 20;
-            return (
-              <div className="col-xxl-4 col-xl-6 col-12">
-                <a href={eventUrl} style={{ textDecoration: "none" }}>
-                  <div
-                    style={{
-                      backgroundColor: "#2D2D2D",
-                      margin: 10,
-                      paddingLeft: 20,
-                      paddingRight: 20,
-                      paddingTop: 10,
-                      paddingBottom: 10,
-                      borderRadius: 10,
-                      border: ".5px solid #3D3D3D",
-                      boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.5)", // Adds shadow
-                    }}
-                  >
-                    <h1
+        <InfiniteScroll
+          dataLength={events.length}
+          next={loadNewEvents}
+          hasMore={hasMoreRef.current}
+          loader={<div/>}
+          endMessage={<div/>}
+          style={{
+            paddingBottom: 50,
+          }}
+        >
+          <div className="row">
+            {events.map((event, index) => {
+              // const recalculatedDelay = index >= PAGE_COUNT * 2 ? (index - PAGE_COUNT * (offset - 1)) / 15 : i / 15
+              const eventUrl = `/event/${event.event_id}`;
+              const signups = 20;
+              return (
+                <div className="col-xxl-4 col-xl-6 col-12">
+                  <a href={eventUrl} style={{ textDecoration: "none" }}>
+                    <div
                       style={{
-                        fontWeight: 600,
-                        fontSize: 30,
-                        color: COLORS.mainText,
-                        marginBottom: 5,
-                      }}
-                    >
-                      {event.title}
-                    </h1>
-                    <h3
-                      style={{
-                        fontWeight: 400,
-                        fontSize: 16,
-                        color: COLORS.secondaryText,
-                      }}
-                    >
-                      {formatISODateString(event.start_date)}
-                    </h3>
-                    <h3
-                      style={{
-                        fontWeight: 400,
-                        fontSize: 16,
-                        color: COLORS.secondaryText,
-                      }}
-                    >
-                      {signups} signups
-                    </h3>
-                    <img
-                      src={event.image}
-                      style={{
-                        marginTop: 15,
+                        backgroundColor: "#2D2D2D",
+                        margin: 10,
+                        paddingLeft: 20,
+                        paddingRight: 20,
+                        paddingTop: 10,
+                        paddingBottom: 10,
                         borderRadius: 10,
-                        height: "300px",
-                        width: "100%", // Ensures the image covers the entire width of the container
-                        objectFit: "cover", // Makes the image cover the entire area without stretching
+                        border: ".5px solid #3D3D3D",
                         boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.5)", // Adds shadow
                       }}
-                    />
-                  </div>
-                </a>
-              </div>
-            );
-          })}
-        </div>
-        <div ref={ref}>
-          <div style={{ height: "40px" }}></div>
-        </div>
+                    >
+                      <h1
+                        style={{
+                          fontWeight: 600,
+                          fontSize: 30,
+                          color: COLORS.mainText,
+                          marginBottom: 5,
+                        }}
+                      >
+                        {event.title}
+                      </h1>
+                      <h3
+                        style={{
+                          fontWeight: 400,
+                          fontSize: 16,
+                          color: COLORS.secondaryText,
+                        }}
+                      >
+                        {formatISODateString(event.start_date)}
+                      </h3>
+                      <h3
+                        style={{
+                          fontWeight: 400,
+                          fontSize: 16,
+                          color: COLORS.secondaryText,
+                        }}
+                      >
+                        {signups} signups
+                      </h3>
+                      <img
+                        src={event.image}
+                        style={{
+                          marginTop: 15,
+                          borderRadius: 10,
+                          height: "300px",
+                          width: "100%", // Ensures the image covers the entire width of the container
+                          objectFit: "cover", // Makes the image cover the entire area without stretching
+                          boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.5)", // Adds shadow
+                        }}
+                      />
+                    </div>
+                  </a>
+                </div>
+              );
+            })}
+          </div>
+        </InfiniteScroll>
       </div>
     </>
   );
