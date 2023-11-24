@@ -21,7 +21,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "components/eventDetails/index.jsx"  ],
   "exclude": [
     "node_modules"
   ]
