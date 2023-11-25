@@ -15,6 +15,20 @@ const Features = () => {
           <div className="features__subtitle">
             Get involved with your campus community. By students. For students.
           </div>
+          <div className="features__left_btn_container">
+            <button
+              className="explore__btn"
+              onClick={() => {
+                showMessage("Coming Soon!", false);
+              }}
+            >
+              Explore Events
+            </button>
+
+            <Link legacyBehavior href="/create-event">
+              <a className="create__btn">Create An Event</a>
+            </Link>
+          </div>
         </div>
         <div className="features__right_container">
           <img
