@@ -1,28 +1,75 @@
 import Head from "next/head";
 
-const SEO = ({ pageTitle, font, pageImage }) => (
-  <>
-    <Head>
-      <title>{pageTitle && `${pageTitle} - Where2Be`}</title>
-      <meta httpEquiv="x-ua-compatible" content="ie=edge" />
-      <meta
-        name="description"
-        content="Host and navigate your school events with ease"
-      />
-      <meta name="robots" content="noindex, follow" />
-      <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1, shrink-to-fit=no"
-      />
-      <meta name="theme-color" content="#000000" />
+const defaultSEOValues = {
+  defaultTitle: "Where2Be",
+  defaultDescription: "Your central school events hub",
+  defaultOGType: "website",
+  defaultOGImageType: "image/png",
+  defaultThemeColor: "#000000",
+};
 
-      {pageImage && <meta property="og:image" content={pageImage} />}
-      {pageImage && <meta name="twitter:image" content="<generated>" />}
+const SEO = ({ pageTitle, font, pageImage, pageDescription }) => {
 
-      {font && <link href={font} rel="stylesheet" />}
-      <link rel="icon" href="/w2b-favicon.png" />
-    </Head>
-  </>
-);
+  return (
+    <>
+      <Head>
+        <title>
+          {pageTitle
+            ? `${pageTitle} - ${defaultSEOValues.defaultTitle}`
+            : defaultSEOValues.defaultTitle}
+        </title>
+        <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+        <meta
+          name="description"
+          content={pageDescription || defaultSEOValues.defaultDescription}
+        />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <meta name="theme-color" content={defaultSEOValues.defaultThemeColor} />
+
+        {/* Open Graph Tags */}
+        <meta
+          property="og:title"
+          content={pageTitle || defaultSEOValues.defaultTitle}
+        />
+        <meta
+          property="og:description"
+          content={pageDescription || defaultSEOValues.defaultDescription}
+        />
+        <meta property="og:type" content={defaultSEOValues.defaultOGType} />
+        <meta
+          property="og:url"
+          content={typeof window !== "undefined" ? window.location.href : ""}
+        />
+        {pageImage && (
+          <>
+            <meta property="og:image" content={pageImage} />
+            <meta
+              property="og:image:type"
+              content={defaultSEOValues.defaultOGImageType}
+            />
+          </>
+        )}
+
+        {/* Twitter Card Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content={pageTitle || defaultSEOValues.defaultTitle}
+        />
+        <meta
+          name="twitter:description"
+          content={pageDescription || defaultSEOValues.defaultDescription}
+        />
+        {pageImage && <meta name="twitter:image:src" content={pageImage} />}
+
+        {font && <link href={font} rel="stylesheet" />}
+        <link rel="icon" href="/w2b-favicon.png" />
+      </Head>
+    </>
+  );
+};
 
 export default SEO;

@@ -34,6 +34,7 @@ import SEO from "../components/seo";
 import HostedEventsList from "../components/hostedEventsList";
 import { mustBeLoggedInServer } from "../lib/authorization";
 import { AppContext } from "../context/AppContext";
+import LINKS from "../constants/links";
 
 const index = (props) => {
   const { setCurrentUser } = useContext(AppContext);
@@ -41,7 +42,7 @@ const index = (props) => {
 
   return (
     <Wrapper>
-      <SEO pageTitle={"Events"} />
+      <SEO pageTitle={"Events"} pageImage={LINKS.PageImage} />
       <HostedEventsList user={props.userData} />
     </Wrapper>
   );

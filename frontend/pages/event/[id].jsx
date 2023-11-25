@@ -12,7 +12,11 @@ const EventDetails = ({ event, host }) => {
 
   return (
     <Wrapper>
-      <SEO pageTitle={event.title} pageImage={event.image} />
+      <SEO
+        pageTitle={event.title}
+        pageImage={event.image}
+        pageDescription={event.description}
+      />
       <EventDetailsMain event={event} host={host} />
     </Wrapper>
   );
