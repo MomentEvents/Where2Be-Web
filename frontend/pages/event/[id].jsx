@@ -53,8 +53,21 @@ export const getServerSideProps = async (context) => {
     if (user) {
       eventResponse.data.is_host =
         eventResponse.data.host_id === user.data.user.id;
+
+      const { data, error } = await supabaseAdmin
+        .from("profile_join_events")
+        .select("*")
+        .eq("user_id", user.data.user.id)
+        .eq("event_id", id);
+
+      if (!error) {
+        eventResponse.data.user_joined = data.length > 0;
+      } else {
+        eventResponse.data.user_joined = false;
+      }
     } else {
       eventResponse.data.is_host = false;
+      eventResponse.data.user_joined = false;
     }
 
     const hostResponse = await supabaseAdmin

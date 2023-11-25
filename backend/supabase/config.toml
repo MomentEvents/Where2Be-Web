@@ -102,7 +102,7 @@ enable_confirmations = true
 
 # Use pre-defined map of phone number to OTP for testing.
 [auth.sms.test_otp]
-19498877545 = "123456"
+19498877545="123456"
 
 # Configure one of the supported SMS providers: `twilio`, `twilio_verify`, `messagebird`, `textlocal`, `vonage`.
 [auth.sms.twilio]

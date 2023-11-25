@@ -18,6 +18,8 @@ const EventDetailsMain = ({ event, host }) => {
 
   const { isDesktop } = useContext(AppContext);
 
+  const [signedUp, setSignedUp] = useState(event.user_joined);
+
   const DesktopView = () => {
     const calculateFontSize = (title) => {
       if (title.length < 30) return 65; // large font size for short titles
@@ -175,7 +177,7 @@ const EventDetailsMain = ({ event, host }) => {
                     transition: "all 0.3s ease", // Smooth transition for hover effects
                   }}
                 >
-                  Signup for Event
+                  {signedUp ? "Already Signed Up!" : "Signup for Event"}
                 </button>
               </div>
             </div>
@@ -508,6 +510,8 @@ const EventDetailsMain = ({ event, host }) => {
         onClose={toggleModal}
         isDesktop={isDesktop}
         eventID={event.event_id}
+        signedUp={signedUp}
+        setSignedUp={setSignedUp}
       />
       {isDesktop ? <DesktopView /> : <MobileView />}
     </div>

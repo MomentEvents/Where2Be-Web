@@ -10,7 +10,14 @@ import DEBUG from "../../constants/debug";
 import { setSupabaseCookies } from "../../lib/cookies";
 import NProgress from "nprogress";
 
-const JoinModal = ({ isOpen, onClose, isDesktop, eventID }) => {
+const JoinModal = ({
+  isOpen,
+  onClose,
+  isDesktop,
+  eventID,
+  signedUp,
+  setSignedUp,
+}) => {
   const inputStyle = {
     width: "100%",
     backgroundColor: "#121212", // Set background color
@@ -61,11 +68,12 @@ const JoinModal = ({ isOpen, onClose, isDesktop, eventID }) => {
 
     // Add user to event
 
-
     NProgress.start();
 
     try {
-      const response = await fetch(`/api/event/join/${eventID}`);
+      const response = await fetch(`/api/event/join/${eventID}`, {
+        method: "PUT",
+      });
       console.log(response + " HAS BEEN RETURNED");
       const responseJSON = await response.json();
       console.log(responseJSON);
@@ -83,6 +91,7 @@ const JoinModal = ({ isOpen, onClose, isDesktop, eventID }) => {
         setVerificationCode("");
         setName("");
         setPhoneNumber("");
+        setSignedUp(true);
         onClose();
       }
     } catch (error) {
@@ -188,11 +197,24 @@ const JoinModal = ({ isOpen, onClose, isDesktop, eventID }) => {
             fontSize: isDesktop ? 40 : 30,
             fontWeight: 600,
             color: "#FFF",
-            marginBottom: 30,
+            marginBottom: signedUp ? 10 : 30,
           }}
         >
           Join Event
         </h2>
+        {signedUp && (
+          <h2
+            style={{
+              fontSize: isDesktop ? 18 : 16,
+              fontWeight: 300,
+              marginBottom: 10,
+              color: COLORS.secondaryText,
+            }}
+          >
+            You already signed up, but you can add another
+            attendee.
+          </h2>
+        )}
         {!isVerifying ? (
           <div>
             <h3
