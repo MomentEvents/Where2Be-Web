@@ -8,7 +8,7 @@ export default async function handler(req, res) {
   // Extract id from the query parameters
   const id = req.query.id;
   const page = parseInt(req.query.page) || 1;
-  console.log(JSON.stringify(req.query.future))
+  console.log(JSON.stringify(req.query.future));
   const future = req.query.future === "true" || false;
   const limit = 10;
   const startIndex = (page - 1) * limit;
@@ -32,8 +32,8 @@ export default async function handler(req, res) {
           .gt("start_date", currentDate)
           .order("start_date", { ascending: true })
           .limit(limit)
-          .range(startIndex, endIndex) :
-          await supabaseAdmin
+          .range(startIndex, endIndex)
+      : await supabaseAdmin
           .from("events")
           .select("*")
           .eq("host_id", id)
@@ -47,7 +47,37 @@ export default async function handler(req, res) {
       throw eventResponse.error;
     }
 
-    return res.status(200).json(eventResponse.data);
+    if (eventResponse.error) {
+      throw eventResponse.error;
+    }
+
+    // Fetch all attendee records for the fetched events in a single query
+    const eventIds = eventResponse.data.map((event) => event.event_id);
+    const attendeeResponse = await supabaseAdmin
+      .from("profile_join_events")
+      .select("event_id")
+      .in("event_id", eventIds);
+
+    if (attendeeResponse.error) {
+      throw attendeeResponse.error;
+    }
+
+    // Count attendees for each event
+    const attendeeCounts = attendeeResponse.data.reduce((acc, curr) => {
+      acc[curr.event_id] = (acc[curr.event_id] || 0) + 1;
+      return acc;
+    }, {});
+
+    // Combine events with attendee counts
+    const eventsWithAttendeeCounts = eventResponse.data.map((event) => {
+      return {
+        ...event,
+        attendee_count: attendeeCounts[event.event_id] || 0,
+      };
+    });
+
+    return res.status(200).json(eventsWithAttendeeCounts);
+
   } catch (error) {
     // Handle any other errors
     return res.status(500).send({ error: error.message });

@@ -22,6 +22,15 @@ export async function mustBeLoggedInServer(context) {
     };
   }
 
+  if(!user.data.user.email){
+    return {
+      redirect: {
+        destination: "/signin",
+        permanent: false,
+      },
+    };
+  }
+
   let response = await supabaseAdmin
     .from("profiles")
     .select("*")
@@ -51,7 +60,7 @@ export async function mustNotBeLoggedInServer(context) {
 
   const user = await getSupabaseUser(accessToken, refreshToken);
 
-  if (user?.data?.user) {
+  if (user?.data?.user && user.data.user.email) {
     console.warn("CASE 2 MUSTNOTBELOGGEDIN");
 
     return {

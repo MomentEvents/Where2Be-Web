@@ -164,7 +164,7 @@ const HostedEvents = ({ user }) => {
             {events.map((event, index) => {
               // const recalculatedDelay = index >= PAGE_COUNT * 2 ? (index - PAGE_COUNT * (offset - 1)) / 15 : i / 15
               const eventUrl = `/event/${event.event_id}`;
-              const signups = 20;
+              const signups = event.attendee_count;
               return (
                 <div className="col-xxl-4 col-xl-6 col-12">
                   <a href={eventUrl} style={{ textDecoration: "none" }}>
@@ -207,7 +207,7 @@ const HostedEvents = ({ user }) => {
                           color: COLORS.secondaryText,
                         }}
                       >
-                        {signups} signups
+                        {signups} signup{signups === 1 ? "" : "s"}
                       </h3>
                       <img
                         src={event.image}
