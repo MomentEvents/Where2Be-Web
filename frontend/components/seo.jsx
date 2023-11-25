@@ -67,7 +67,7 @@ const SEO = ({ pageTitle, font, pageImage, pageDescription }) => {
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:image:src" content={image} />
+      <meta name="twitter:image" content={image} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="theme-color" content={defaultSEOValues.defaultThemeColor} />
       <meta name="keywords" content={defaultSEOValues.defaultKeywords} />
