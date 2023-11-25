@@ -10,6 +10,7 @@ const defaultSEOValues = {
 
 const SEO = ({ pageTitle, font, pageImage, pageDescription }) => {
 
+  console.log(pageTitle, pageImage, pageDescription)
   return (
     <>
       <Head>
@@ -29,20 +30,6 @@ const SEO = ({ pageTitle, font, pageImage, pageDescription }) => {
         />
         <meta name="theme-color" content={defaultSEOValues.defaultThemeColor} />
 
-        {/* Open Graph Tags */}
-        <meta
-          property="og:title"
-          content={pageTitle || defaultSEOValues.defaultTitle}
-        />
-        <meta
-          property="og:description"
-          content={pageDescription || defaultSEOValues.defaultDescription}
-        />
-        <meta property="og:type" content={defaultSEOValues.defaultOGType} />
-        <meta
-          property="og:url"
-          content={typeof window !== "undefined" ? window.location.href : ""}
-        />
         {pageImage && (
           <>
             <meta property="og:image" content={pageImage} />

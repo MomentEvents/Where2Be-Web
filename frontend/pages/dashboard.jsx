@@ -42,7 +42,7 @@ const index = (props) => {
 
   return (
     <Wrapper>
-      <SEO pageTitle={"Events"} pageImage={LINKS.PageImage} />
+      <SEO pageTitle={"Events"} />
       <HostedEventsList user={props.userData} />
     </Wrapper>
   );
