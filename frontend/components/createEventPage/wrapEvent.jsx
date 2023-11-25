@@ -224,6 +224,7 @@ const WrapCreateEvent = () => {
                             type="text"
                             placeholder="My event"
                             value={eventTitle}
+                            maxLength={300}
                             onChange={(e) => setEventTitle(e.target.value)}
                           />
                         </div>
@@ -234,6 +235,7 @@ const WrapCreateEvent = () => {
                           <textarea
                             placeholder="Come join my fun event!"
                             value={eventDetails}
+                            maxLength={10000}
                             onChange={(e) => setEventDetails(e.target.value)}
                           ></textarea>
                         </div>
@@ -317,6 +319,7 @@ const WrapCreateEvent = () => {
                               type="text"
                               placeholder="9500 Gilman Dr, La Jolla, CA 92093"
                               value={location}
+                              maxLength={600}
                               onChange={(e) => setLocation(e.target.value)}
                             />
                           </div>

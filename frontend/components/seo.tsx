@@ -9,7 +9,6 @@ const defaultSEOValues = {
 };
 
 const SEO = ({ pageTitle, font, pageImage, pageDescription }) => {
-
   return (
     <>
       <Head>
@@ -47,7 +46,11 @@ const SEO = ({ pageTitle, font, pageImage, pageDescription }) => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content={pageTitle || defaultSEOValues.defaultTitle}
+          content={
+            pageTitle
+              ? `${pageTitle} - ${defaultSEOValues.defaultTitle}`
+              : defaultSEOValues.defaultTitle
+          }
         />
         <meta
           name="twitter:description"
