@@ -102,13 +102,14 @@ enable_confirmations = true
 
 # Use pre-defined map of phone number to OTP for testing.
 [auth.sms.test_otp]
-# 4152127777 = "123456"
+19498877545 = "123456"
 
 # Configure one of the supported SMS providers: `twilio`, `twilio_verify`, `messagebird`, `textlocal`, `vonage`.
 [auth.sms.twilio]
 enabled = true
-account_sid = "env(SUPABASE_AUTH_TWILIO_ACCOUNT_SID)"
-message_service_sid ="env(SUPABASE_AUTH_TWILIO_MESSAGE_SERVICE_SID)"
+# CHANGE ACCOUNT SID AND SERVICE ID FOR TWILIO
+account_sid = "AC983059f594a907a2976153960df99d7f"
+message_service_sid ="+18334271379"
 # DO NOT commit your Twilio auth token to git. Use environment variable substitution instead:
 auth_token = "env(SUPABASE_AUTH_SMS_TWILIO_AUTH_TOKEN)"
 

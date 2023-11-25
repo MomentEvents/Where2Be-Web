@@ -507,6 +507,7 @@ const EventDetailsMain = ({ event, host }) => {
         isOpen={isModalOpen}
         onClose={toggleModal}
         isDesktop={isDesktop}
+        eventID={event.event_id}
       />
       {isDesktop ? <DesktopView /> : <MobileView />}
     </div>

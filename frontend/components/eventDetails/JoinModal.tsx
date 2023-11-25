@@ -6,10 +6,11 @@ import supabase from "../../lib/supabase";
 
 import PhoneInput from "react-phone-number-input";
 import { AppContext } from "../../context/AppContext";
+import DEBUG from "../../constants/debug";
+import { setSupabaseCookies } from "../../lib/cookies";
+import NProgress from "nprogress";
 
-const JoinModal = ({ isOpen, onClose, isDesktop }) => {
-  if (!isOpen) return null;
-
+const JoinModal = ({ isOpen, onClose, isDesktop, eventID }) => {
   const inputStyle = {
     width: "100%",
     backgroundColor: "#121212", // Set background color
@@ -20,25 +21,101 @@ const JoinModal = ({ isOpen, onClose, isDesktop }) => {
   };
 
   const [name, setName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState<any>();
+  const [phoneNumber, setPhoneNumber] = useState<any>(
+    DEBUG.disableSMS ? "19498877545" : ""
+  );
   const [isVerifying, setIsVerifying] = useState(false);
 
-  async function sendVerificationCode() {
-    const { data, error } = await supabase.auth.signInWithOtp({
+  const [verificationCode, setVerificationCode] = useState("");
+
+  const lockRef = useRef(false);
+
+  const onVerifyCode = async () => {
+    if (verificationCode.length == 0) {
+      showMessage("Please enter a verification code.", true);
+      return;
+    }
+
+    if (lockRef.current) return;
+    lockRef.current = true;
+
+    console.log("VERIFYING CODE");
+
+    const {
+      data: { session },
+      error,
+    } = await supabase.auth.verifyOtp({
       phone: phoneNumber,
-      options: {
-        data: { name: name },
-      },
+      token: verificationCode,
+      type: "sms",
     });
 
-    console.log(data, error);
     if (error) {
-      showMessage("Error sending verification code:" + error, true);
+      showMessage("Error verifying code: " + error, true);
       console.error(error);
-    } else {
-      showMessage("Verification code sent!", false);
-      setIsVerifying(true);
+      lockRef.current = false;
+      return;
     }
+
+    setSupabaseCookies(session.access_token, session.refresh_token);
+
+    // Add user to event
+
+
+    NProgress.start();
+
+    try {
+      const response = await fetch(`/api/event/join/${eventID}`);
+      console.log(response + " HAS BEEN RETURNED");
+      const responseJSON = await response.json();
+      console.log(responseJSON);
+      if (responseJSON.error) {
+        showMessage("Failed to join event. Error: " + responseJSON.error, true);
+        lockRef.current = false;
+        NProgress.done();
+        return;
+      } else {
+        showMessage(responseJSON.message, false);
+        lockRef.current = false;
+        NProgress.done();
+
+        setIsVerifying(false);
+        setVerificationCode("");
+        setName("");
+        setPhoneNumber("");
+        onClose();
+      }
+    } catch (error) {
+      console.error(error);
+      showMessage("Failed to join event. Error: " + error.message, true);
+      lockRef.current = false;
+      NProgress.done();
+    }
+  };
+
+  async function sendVerificationCode() {
+    if (lockRef.current) return;
+    lockRef.current = true;
+
+    if (!DEBUG.disableSMS) {
+      const { data, error } = await supabase.auth.signInWithOtp({
+        phone: phoneNumber,
+        options: {
+          data: { name: name },
+        },
+      });
+
+      console.log(data, error);
+      if (error) {
+        lockRef.current = false;
+        showMessage("Error sending verification code:" + error, true);
+        console.error(error);
+        return;
+      }
+    }
+    lockRef.current = false;
+    showMessage("Verification code sent!", false);
+    setIsVerifying(true);
   }
 
   const onEnterInformation = () => {
@@ -55,6 +132,8 @@ const JoinModal = ({ isOpen, onClose, isDesktop }) => {
   const handleModalClick = (e) => {
     e.stopPropagation();
   };
+
+  if (!isOpen) return null;
 
   return (
     <div
@@ -109,76 +188,152 @@ const JoinModal = ({ isOpen, onClose, isDesktop }) => {
             fontSize: isDesktop ? 40 : 30,
             fontWeight: 600,
             color: "#FFF",
+            marginBottom: 30,
           }}
         >
           Join Event
         </h2>
-        <h3
-          style={{
-            fontSize: isDesktop ? 18 : 16,
-            fontWeight: 300,
-            marginTop: 30,
-            marginBottom: 10,
-            color: COLORS.secondaryText,
-          }}
-        >
-          Name
-        </h3>
-        <input
-          style={inputStyle}
-          maxLength={50}
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Jimmy Neutron"
-        ></input>
-        <h3
-          style={{
-            fontSize: isDesktop ? 18 : 16,
-            fontWeight: 300,
-            marginTop: 30,
-            marginBottom: 10,
-            color: COLORS.secondaryText,
-          }}
-        >
-          Phone Number
-        </h3>
-        <PhoneInput
-          placeholder="(123) 456-7890"
-          country="US"
-          defaultCountry="US"
-          value={phoneNumber}
-          onChange={setPhoneNumber}
-          countries={["US", "CN", "IN", "CA"]}
-        />
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center", // Center horizontally
-            alignItems: "center", // Center vertically (optional, if you want it center vertically in the available space)
-            marginTop: "40px", // Add some space above the button
-          }}
-        >
-          <button
-            onClick={onEnterInformation}
-            style={{
-              backgroundColor: COLORS.purple, // Assuming a black background from the image
-              color: "#FFFFFF", // White text
-              padding: "15px 30px", // Adjust padding to your preference
-              fontSize: isDesktop ? 20 : 18, // Adjust font size to your preference
-              fontWeight: "600", // Adjust font weight as needed
-              border: "none",
-              fontFamily: "Poppins",
-              borderRadius: "10px", // Adjust border radius to match the button in the image
-              cursor: "pointer",
-              outline: "none", // Remove outline on focus for cleaner design
-              boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)", // Subtle shadow for depth
-              letterSpacing: "0.5px", // Adjust letter spacing for aesthetic preference
-              transition: "all 0.3s ease", // Smooth transition for hover effects
-            }}
-          >
-            Continue
-          </button>
-        </div>
+        {!isVerifying ? (
+          <div>
+            <h3
+              style={{
+                fontSize: isDesktop ? 18 : 16,
+                fontWeight: 300,
+                marginBottom: 10,
+                color: COLORS.secondaryText,
+              }}
+            >
+              Name
+            </h3>
+            <input
+              style={inputStyle}
+              maxLength={50}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Jimmy Neutron"
+            ></input>
+            <h3
+              style={{
+                fontSize: isDesktop ? 18 : 16,
+                fontWeight: 300,
+                marginTop: 30,
+                marginBottom: 10,
+                color: COLORS.secondaryText,
+              }}
+            >
+              Phone Number
+            </h3>
+            <PhoneInput
+              placeholder="(123) 456-7890"
+              country="US"
+              defaultCountry="US"
+              value={phoneNumber}
+              onChange={setPhoneNumber}
+              countries={["US", "CN", "IN", "CA"]}
+            />
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center", // Center horizontally
+                alignItems: "center", // Center vertically (optional, if you want it center vertically in the available space)
+                marginTop: "40px", // Add some space above the button
+              }}
+            >
+              <button
+                onClick={onEnterInformation}
+                style={{
+                  backgroundColor: COLORS.purple, // Assuming a black background from the image
+                  color: "#FFFFFF", // White text
+                  padding: "15px 30px", // Adjust padding to your preference
+                  fontSize: isDesktop ? 20 : 18, // Adjust font size to your preference
+                  fontWeight: "600", // Adjust font weight as needed
+                  border: "none",
+                  fontFamily: "Poppins",
+                  borderRadius: "10px", // Adjust border radius to match the button in the image
+                  cursor: "pointer",
+                  outline: "none", // Remove outline on focus for cleaner design
+                  boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)", // Subtle shadow for depth
+                  letterSpacing: "0.5px", // Adjust letter spacing for aesthetic preference
+                  transition: "all 0.3s ease", // Smooth transition for hover effects
+                }}
+              >
+                Continue
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div>
+            <h3
+              style={{
+                fontSize: isDesktop ? 18 : 16,
+                fontWeight: 400,
+                marginBottom: 10,
+                color: COLORS.secondaryText,
+              }}
+            >
+              A verification code has been sent to {phoneNumber}
+            </h3>
+            <input
+              style={inputStyle}
+              maxLength={10}
+              value={verificationCode}
+              onChange={(e) => {
+                setVerificationCode(e.target.value.trim());
+              }}
+              placeholder="Type your code here"
+            ></input>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center", // Center horizontally
+                flexWrap: "wrap", // Enable wrapping
+                gap: "22px", // Space between buttons
+                marginTop: "40px", // Add some space above the buttons
+              }}
+            >
+              <button
+                onClick={sendVerificationCode}
+                style={{
+                  backgroundColor: "#FFF", // Assuming a black background from the image
+                  color: "#000", // White text
+                  padding: "15px 30px", // Adjust padding to your preference
+                  fontSize: isDesktop ? 20 : 18, // Adjust font size to your preference
+                  fontWeight: "600", // Adjust font weight as needed
+                  border: "none",
+                  fontFamily: "Poppins",
+                  borderRadius: "10px", // Adjust border radius to match the button in the image
+                  cursor: "pointer",
+                  outline: "none", // Remove outline on focus for cleaner design
+                  boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)", // Subtle shadow for depth
+                  letterSpacing: "0.5px", // Adjust letter spacing for aesthetic preference
+                  transition: "all 0.3s ease", // Smooth transition for hover effectsß
+                }}
+              >
+                Resend Code
+              </button>
+              <button
+                onClick={onVerifyCode}
+                style={{
+                  backgroundColor: COLORS.purple, // Assuming a black background from the image
+                  color: "#FFFFFF", // White text
+                  padding: "15px 30px", // Adjust padding to your preference
+                  fontSize: isDesktop ? 20 : 18, // Adjust font size to your preference
+                  fontWeight: "600", // Adjust font weight as needed
+                  border: "none",
+                  fontFamily: "Poppins",
+                  borderRadius: "10px", // Adjust border radius to match the button in the image
+                  cursor: "pointer",
+                  outline: "none", // Remove outline on focus for cleaner design
+                  boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)", // Subtle shadow for depth
+                  letterSpacing: "0.5px", // Adjust letter spacing for aesthetic preference
+                  transition: "all 0.3s ease", // Smooth transition for hover effects
+                }}
+              >
+                Join Event
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

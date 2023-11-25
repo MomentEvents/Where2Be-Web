@@ -12,6 +12,8 @@ We use supabase with postgreSQL as the database. To develop locally, follow thes
 
 ### Start local development
 
+Create a `.env` in the same directory and the same format as `.env-example`
+
 `supabase start`
 
 When you see...
@@ -41,6 +43,10 @@ Now, read `storage.md` to set up storage buckets if you haven't already
 `supabase db diff --use-migra -f inital_schema`
 
 `supabase db push`
+
+### Enabling SMS text messages
+
+Go to `supabase/config.toml` and change `account_sid` and `message_service_sid` under `[auth.sms.twilio]` to your account
 
 ### If something goes wrong
 
