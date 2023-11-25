@@ -24,6 +24,10 @@ const SEO = ({ pageTitle, font, pageImage, pageDescription }) => {
           content={pageDescription || defaultSEOValues.defaultDescription}
         />
         <meta
+          name="og:description"
+          content={pageDescription || defaultSEOValues.defaultDescription}
+        />
+        <meta
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
