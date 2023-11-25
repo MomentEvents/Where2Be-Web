@@ -207,7 +207,7 @@ const JoinModal = ({
             style={{
               fontSize: isDesktop ? 18 : 16,
               fontWeight: 300,
-              marginBottom: 10,
+              marginBottom: 20,
               color: COLORS.secondaryText,
             }}
           >
