@@ -427,7 +427,7 @@ const EventDetailsMain = ({ event, host }) => {
                   transition: "all 0.3s ease", // Smooth transition for hover effects
                 }}
               >
-                Signup for Event
+                {signedUp ? "Already Signed Up!" : "Signup for Event"}
               </button>
             </div>
             <hr

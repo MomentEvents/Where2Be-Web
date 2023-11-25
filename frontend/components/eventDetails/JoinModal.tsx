@@ -300,9 +300,14 @@ const JoinModal = ({
               maxLength={10}
               value={verificationCode}
               onChange={(e) => {
-                setVerificationCode(e.target.value.trim());
+                const val = e.target.value;
+                // Allow only numeric input
+                if (/^[0-9]*$/.test(val)) {
+                  setVerificationCode(val.trim());
+                }
               }}
               placeholder="Type your code here"
+              type="tel"
             ></input>
             <div
               style={{
