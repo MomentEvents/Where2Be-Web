@@ -8,7 +8,7 @@ const index = () => {
   return (
     <Wrapper>
       <SEO
-        pageTitle={"Landing Page"}
+        pageTitle={"Landing Page"} pageImage={"https://i.imgur.com/QxtpgIP.png"}
       />
       <LandingPageMain />
     </Wrapper>
