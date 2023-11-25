@@ -5,7 +5,7 @@ import supabase from "./supabase";
 import supabaseAdmin from "./supabaseAdmin";
 import { useRouter } from "next/router";
 import { getCookie } from "cookies-next";
-import { COOKIES, getSupabaseUser } from "./cookies";
+import { COOKIES, deleteSupabaseCookies, getSupabaseUser } from "./cookies";
 
 export async function mustBeLoggedInServer(context) {
   const refreshToken = context.req.cookies[COOKIES.refresh_token];
@@ -22,7 +22,7 @@ export async function mustBeLoggedInServer(context) {
     };
   }
 
-  if(!user.data.user.email){
+  if (!user.data.user.email) {
     return {
       redirect: {
         destination: "/signin",
@@ -39,6 +39,7 @@ export async function mustBeLoggedInServer(context) {
     console.warn(
       "ERROR GETTING USER DATA: user does not exist in profiles table"
     );
+    deleteSupabaseCookies();
     return {
       redirect: {
         destination: "/signin",
@@ -47,7 +48,7 @@ export async function mustBeLoggedInServer(context) {
     };
   }
 
-  const userData = {...response.data[0], email: user.data.user.email}
+  const userData = { ...response.data[0], email: user.data.user.email };
 
   return {
     props: { userData },

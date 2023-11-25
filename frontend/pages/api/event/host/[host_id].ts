@@ -6,7 +6,7 @@ import supabaseAdmin from "../../../../lib/supabaseAdmin";
 
 export default async function handler(req, res) {
   // Extract id from the query parameters
-  const id = req.query.id;
+  const id = req.query.host_id;
   const page = parseInt(req.query.page) || 1;
   console.log(JSON.stringify(req.query.future));
   const future = req.query.future === "true" || false;
