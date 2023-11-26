@@ -5,6 +5,7 @@ import showMessage from "../errorMessage/showMessage";
 import NProgress from "nprogress";
 import { useRouter } from "next/router";
 import imageCompression from "browser-image-compression";
+import { AppContext } from "../../context/AppContext";
 
 const WrapCreateEvent = () => {
   const debug = false; // Debug to prefill fields if needed for easier event creation
@@ -31,6 +32,8 @@ const WrapCreateEvent = () => {
   const fileInputRef = useRef(null);
 
   const isSubmittingRef = useRef(false);
+
+  const { showLoading, hideLoading } = useContext(AppContext);
 
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
@@ -136,6 +139,7 @@ const WrapCreateEvent = () => {
     if (isSubmittingRef.current) {
       return;
     }
+    showLoading();
     isSubmittingRef.current = true;
 
     NProgress.start();
@@ -155,11 +159,13 @@ const WrapCreateEvent = () => {
       if (responseJSON.error) {
         showMessage(responseJSON.error, true);
         isSubmittingRef.current = false;
+        hideLoading();
         NProgress.done();
       } else {
         showMessage("Event created successfully!", false);
         console.log(responseJSON);
         isSubmittingRef.current = false;
+        hideLoading();
         NProgress.done();
         Router.push(`/event/${responseJSON.event_data.event_id}`);
       }
@@ -167,6 +173,7 @@ const WrapCreateEvent = () => {
       console.error(error);
       showMessage("Failed to create event. Error: " + error.message, true);
       isSubmittingRef.current = false;
+      hideLoading();
       NProgress.done();
     }
   };
