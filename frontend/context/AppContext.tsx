@@ -1,6 +1,19 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from "react";
+import { ClipLoader } from "react-spinners"; // Import a spinner from react-spinners
+import styled from "styled-components";
 
-export const AppContext: any = createContext(undefined);
+type AppContextType = {
+  sideMenuOpen: boolean;
+  toggleSideMenu: () => void;
+  isDesktop: boolean;
+  currentUser?: user; // Optional because it's initialized as undefined
+  setCurrentUser: (user: user) => void;
+  showLoading: () => void;
+  hideLoading: () => void;
+  isLoading: boolean;
+};
+
+export const AppContext = createContext<AppContextType | undefined>(undefined);
 
 type user = {
   user_id: string;
@@ -9,7 +22,26 @@ type user = {
   picture: string;
   email: string;
   about_me: string;
-}
+};
+
+// Styled component for the overlay
+const LoadingOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+`;
+
+// You can add more styles to Spinner if needed
+const Spinner = styled(ClipLoader)`
+  // Add any additional styles if necessary
+`;
 
 const AppProvider = ({ children }) => {
   const [sideMenuOpen, seTsideMenuOpen] = useState(false);
@@ -19,8 +51,11 @@ const AppProvider = ({ children }) => {
 
   const [isDesktop, setIsDesktop] = useState(false);
 
-  const [currentUser, setCurrentUser] = useState<user>()
-
+  const [currentUser, setCurrentUser] = useState<user>();
+  // State and functions for global loading
+  const [isLoading, setIsLoading] = useState(false);
+  const showLoading = () => setIsLoading(true);
+  const hideLoading = () => setIsLoading(false);
 
   useEffect(() => {
     // Update the state based on the window width
@@ -42,12 +77,20 @@ const AppProvider = ({ children }) => {
   const value = {
     toggleSideMenu,
     sideMenuOpen,
-    currentUser, 
+    currentUser,
     setCurrentUser,
-    isDesktop
-  }
+    isDesktop,
+    showLoading,
+    hideLoading,
+    isLoading,
+  };
   return (
     <AppContext.Provider value={value}>
+      {isLoading && (
+        <LoadingOverlay>
+          <Spinner color="#FFFFFF" size={100} />
+        </LoadingOverlay>
+      )}
       {children}
     </AppContext.Provider>
   );

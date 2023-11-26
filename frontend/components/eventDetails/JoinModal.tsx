@@ -9,6 +9,7 @@ import { AppContext } from "../../context/AppContext";
 import DEBUG from "../../constants/debug";
 import { setSupabaseCookies } from "../../lib/cookies";
 import NProgress from "nprogress";
+import { last } from "lodash";
 
 const JoinModal = ({
   isOpen,
@@ -31,11 +32,16 @@ const JoinModal = ({
   const [phoneNumber, setPhoneNumber] = useState<any>(
     DEBUG.disableSMS ? "19498877545" : ""
   );
+
+  const { showLoading, hideLoading } = useContext(AppContext);
+
   const [isVerifying, setIsVerifying] = useState(false);
 
   const [verificationCode, setVerificationCode] = useState("");
 
   const lockRef = useRef(false);
+  const lastSentCodeDateRef = useRef<Date>();
+  const resentCodeSecondsLimit = 40;
 
   const onVerifyCode = async () => {
     if (verificationCode.length == 0) {
@@ -44,6 +50,7 @@ const JoinModal = ({
     }
 
     if (lockRef.current) return;
+    showLoading();
     lockRef.current = true;
 
     console.log("VERIFYING CODE");
@@ -60,6 +67,7 @@ const JoinModal = ({
     if (error) {
       showMessage("Error verifying code: " + error, true);
       console.error(error);
+      hideLoading();
       lockRef.current = false;
       return;
     }
@@ -79,11 +87,13 @@ const JoinModal = ({
       console.log(responseJSON);
       if (responseJSON.error) {
         showMessage("Failed to join event. Error: " + responseJSON.error, true);
+        hideLoading();
         lockRef.current = false;
         NProgress.done();
         return;
       } else {
         showMessage(responseJSON.message, false);
+        hideLoading();
         lockRef.current = false;
         NProgress.done();
 
@@ -97,13 +107,34 @@ const JoinModal = ({
     } catch (error) {
       console.error(error);
       showMessage("Failed to join event. Error: " + error.message, true);
+      hideLoading();
       lockRef.current = false;
       NProgress.done();
     }
   };
 
   async function sendVerificationCode() {
+    if (
+      lastSentCodeDateRef.current &&
+      lastSentCodeDateRef.current.getTime() + resentCodeSecondsLimit * 1000 >
+        new Date().getTime()
+    ) {
+      showMessage(
+        "Please wait " +
+          Math.ceil(
+            (lastSentCodeDateRef.current.getTime() +
+              resentCodeSecondsLimit * 1000 -
+              new Date().getTime()) /
+              1000
+          ) +
+          " seconds before sending a code again",
+        true
+      );
+      return;
+    }
+
     if (lockRef.current) return;
+    showLoading();
     lockRef.current = true;
 
     if (!DEBUG.disableSMS) {
@@ -116,14 +147,17 @@ const JoinModal = ({
 
       console.log(data, error);
       if (error) {
+        hideLoading();
         lockRef.current = false;
         showMessage("Error sending verification code:" + error, true);
         console.error(error);
         return;
       }
     }
+    hideLoading();
     lockRef.current = false;
     showMessage("Verification code sent!", false);
+    lastSentCodeDateRef.current = new Date();
     setIsVerifying(true);
   }
 
@@ -202,7 +236,7 @@ const JoinModal = ({
         >
           Join Event
         </h2>
-        {signedUp && (
+        {signedUp && !isVerifying && (
           <h2
             style={{
               fontSize: isDesktop ? 18 : 16,
@@ -211,8 +245,7 @@ const JoinModal = ({
               color: COLORS.secondaryText,
             }}
           >
-            You already signed up, but you can add another
-            attendee.
+            You already signed up, but you can add another attendee.
           </h2>
         )}
         {!isVerifying ? (
@@ -231,7 +264,7 @@ const JoinModal = ({
               style={inputStyle}
               maxLength={50}
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => setName(e.target.value.trim())}
               placeholder="Jimmy Neutron"
             ></input>
             <h3

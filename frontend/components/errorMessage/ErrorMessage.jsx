@@ -25,7 +25,7 @@ const Message = ({ message, isError, bottomOffset }) => {
     color: white;
     border-radius: 5px;
     animation: ${fadeInOut} 4s forwards;
-    z-index: 999;
+    z-index: 1000;
 
     @media (max-width: 800px) {
       width: 90%; // When the screen width is 800px or less, set width to 90%
