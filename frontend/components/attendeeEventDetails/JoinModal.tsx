@@ -141,7 +141,7 @@ const JoinModal = ({
       const { data, error } = await supabase.auth.signInWithOtp({
         phone: phoneNumber,
         options: {
-          data: { name: name },
+          data: { name: name.trim() },
         },
       });
 
@@ -264,7 +264,7 @@ const JoinModal = ({
               style={inputStyle}
               maxLength={50}
               value={name}
-              onChange={(e) => setName(e.target.value.trim())}
+              onChange={(e) => setName(e.target.value)}
               placeholder="Jimmy Neutron"
             ></input>
             <h3
