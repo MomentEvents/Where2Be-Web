@@ -146,7 +146,7 @@ const WrapCreateEvent = () => {
     NProgress.start();
 
     try {
-      const response = await fetch("api/event/create", {
+      const response = await fetch("/api/event/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -154,7 +154,7 @@ const WrapCreateEvent = () => {
         body: JSON.stringify(eventData),
       });
 
-      console.log(response + " HAS BEEN RETURNED");
+      console.log(JSON.stringify(response) + " HAS BEEN RETURNED");
       const responseJSON = await response.json();
       console.log(responseJSON);
       if (responseJSON.error) {
