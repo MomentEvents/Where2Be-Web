@@ -23,7 +23,7 @@ const Profile = () => {
 
       <ul {...getCollapseProps()} aria-expanded={isExpanded}>
   <li>
-    <Link legacyBehavior href="/profile">
+    <Link legacyBehavior href="/dashboard/profile">
       <a>Profile</a>
     </Link>
   </li>

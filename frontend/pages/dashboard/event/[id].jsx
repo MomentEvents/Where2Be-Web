@@ -1,11 +1,11 @@
 import { useRouter } from "next/router";
 import React from "react";
-import Wrapper from "../../layout/wrapper";
-import SEO from "../../components/seo";
-import EventDetailsMian from "../../components/dynamicEventDetails/EventDetailsMian";
-import schedules from "../../data/dashboardData/schduleEvent";
-import { deleteSupabaseCookies } from "../../lib/cookies";
-import supabaseAdmin from "../../lib/supabaseAdmin";
+import Wrapper from "../../../layout/wrapper";
+import SEO from "../../../components/seo";
+import EventDetailsMian from "../../../components/dynamicEventDetails/EventDetailsMian";
+import schedules from "../../../data/dashboardData/schduleEvent";
+import { deleteSupabaseCookies } from "../../../lib/cookies";
+import supabaseAdmin from "../../../lib/supabaseAdmin";
 
 const EventDetails = () => {
   const router = useRouter();
@@ -17,7 +17,7 @@ const EventDetails = () => {
   return (
     <>
       <Wrapper>
-        <SEO pageTitle={"Schdule-Details"} />
+        <SEO pageTitle={"Details"} />
         <EventDetailsMian schduleItem={schduleItem} />
       </Wrapper>
     </>

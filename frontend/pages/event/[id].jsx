@@ -4,7 +4,7 @@ import { COOKIES, getSupabaseUser } from "../../lib/cookies";
 import supabaseAdmin from "../../lib/supabaseAdmin"; // Assuming this is how you import supabaseAdmin
 import Wrapper from "../../layout/wrapper";
 import SEO from "../../components/seo";
-import EventDetailsMain from "../../components/eventDetails";
+import EventDetailsMain from "../../components/attendeeEventDetails";
 
 const EventDetails = ({ event, host }) => {
   const router = useRouter();

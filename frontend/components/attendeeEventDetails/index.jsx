@@ -251,7 +251,7 @@ const EventDetailsMain = ({ event, host }) => {
             }}
           >
             <a
-              href={"/create-event"}
+              href={"/dashboard/create-event"}
               style={{
                 backgroundColor: "#FFFFFF", // Assuming a black background from the image
                 color: "#000000", // White text
@@ -475,7 +475,7 @@ const EventDetailsMain = ({ event, host }) => {
             }}
           >
             <a
-              href={"/create-event"}
+              href={"/dashboard/create-event"}
               style={{
                 backgroundColor: "#FFFFFF", // Assuming a black background from the image
                 color: "#000000", // White text

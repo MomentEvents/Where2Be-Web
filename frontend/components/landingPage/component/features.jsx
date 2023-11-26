@@ -25,7 +25,7 @@ const Features = () => {
               Explore Events
             </button>
 
-            <Link legacyBehavior href="/create-event">
+            <Link legacyBehavior href="/dashboard/create-event">
               <a className="create__btn">Create An Event</a>
             </Link>
           </div>

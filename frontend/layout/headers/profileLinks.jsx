@@ -28,7 +28,7 @@ const ProfileLinks = () => {
   return (
     <>
       <li>
-        <Link legacyBehavior href="/profile">
+        <Link legacyBehavior href="/dashboard/profile">
           <a>
             <ProfileIcon />
             Profile

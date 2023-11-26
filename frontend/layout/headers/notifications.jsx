@@ -9,7 +9,7 @@ const Notifications = () => {
         notifications.map((notify) => (
           <div key={notify.id} className="notification__item">
             <div className="notification__thumb">
-              <Link legacyBehavior href="/profile">
+              <Link legacyBehavior href="/dashboard/profile">
                 <a>
                   <img src={notify.thumbnail.src} alt="Notification img not found" />
                 </a>

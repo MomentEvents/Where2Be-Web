@@ -23,7 +23,7 @@ const UpcommingEvents = () => {
 
       <ul {...getCollapseProps()} aria-expanded={isExpanded}>
         <li>
-          <Link legacyBehavior href="/create-event">
+          <Link legacyBehavior href="/dashboard/create-event">
             <a>Create Event</a>
           </Link>
         </li>

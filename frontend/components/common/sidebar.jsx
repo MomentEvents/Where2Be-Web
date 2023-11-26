@@ -96,7 +96,7 @@ const Sidebar = ({ collapse, handleClick }) => {
                 </Link>
               </li> */}
               <li>
-                <Link legacyBehavior href="/profile">
+                <Link legacyBehavior href="/dashboard/profile">
                   <a>
                     <i className="flaticon-user-1"></i>
                     <span className="nav-text">Profile</span>

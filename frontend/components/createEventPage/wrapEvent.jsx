@@ -6,6 +6,7 @@ import NProgress from "nprogress";
 import { useRouter } from "next/router";
 import imageCompression from "browser-image-compression";
 import { AppContext } from "../../context/AppContext";
+import { useContext } from "react";
 
 const WrapCreateEvent = () => {
   const debug = false; // Debug to prefill fields if needed for easier event creation

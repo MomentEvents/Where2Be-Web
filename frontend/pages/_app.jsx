@@ -10,7 +10,7 @@ import { DarkModeProvider } from "../components/darkmode-provider/DarkModeProvid
 import supabase from "../lib/supabase";
 import { deleteSupabaseCookies, setSupabaseCookies } from "../lib/cookies";
 
-import '../components/eventDetails/PhoneNumber.css'
+import '../components/attendeeEventDetails/PhoneNumber.css'
 
 import NProgress from 'nprogress';
 import Router from 'next/router';
