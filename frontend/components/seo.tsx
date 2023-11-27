@@ -41,7 +41,10 @@ const SEO = ({ pageTitle, font, pageImage, pageDescription }) => {
             />
           </>
         )}
-
+        <meta name="author" content="Where2Be" />
+        <meta name="keywords" content="Where2Be, School, Events" />
+        <link rel="canonical" href="https://where2be.app" />
+        
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta
