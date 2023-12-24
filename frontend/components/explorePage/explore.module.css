@@ -1,0 +1,106 @@
+.explore {
+    margin: 120px 0;
+}
+
+.featuredEvent {
+    padding: 100px 0;
+}
+
+.featuredEvents button {
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+  
+.filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+  
+.filters button {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    left: 30px;
+    background: #111;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    padding: 5px 40px;
+    justify-content: center;
+    align-items: center;
+    @media (max-width: 900px) {
+        padding: 0;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+    }
+}
+
+.filter_icon {
+    width: 15px;
+    margin: 0 8px;
+}
+
+.filter_text {
+    @media (max-width: 900px) {
+        display: none;
+    }
+}
+
+.dropdowns {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}
+
+.dropdown {
+    font-size: 24px;
+    color: #fff;
+    padding: 10px;
+    margin: 0 5px;
+    cursor: pointer;
+    text-decoration: underline;
+    @media (max-width: 900px) {
+        font-size: 20px;
+    }
+} 
+
+.eventCardContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 5px 20px;
+}
+
+.pagination {
+    text-align: center;
+    margin-top: 10px;
+    padding: 8px;
+}
+  
+.dot, .active {
+    height: 15px;
+    width: 15px;
+    margin: 0 6px;
+    background-color: #111;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    display: inline-block;
+    cursor: pointer;
+}
+  
+/* Class for the active dot */
+.active {
+    background-color: #fff;
+}
+  

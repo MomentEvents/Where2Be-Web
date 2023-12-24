@@ -1,0 +1,84 @@
+.cardLink {
+    padding: 10px;
+}
+
+.cardLink:hover {
+    padding: 2px;
+}
+
+.card {
+    position: relative;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.hostPicture {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+}
+
+.cardTextContainer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 2));
+    max-width: 100%;
+    height: 50%;
+}
+  
+.date {
+    display: flex;
+    padding: 0 5px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 20px;
+    width: 20%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+  
+.details {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    color: #ffffff;
+    width: 80%;
+    padding: 0 5px 0 10px;
+    justify-content: center;
+    align-items: flex-start;
+    border-left: 1px solid #ffffff;
+    height: 50px;
+}
+  
+.title, .location {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    display: block;
+}
+
+.location {
+    font-size: 12px;
+    font-weight: 300;
+}
