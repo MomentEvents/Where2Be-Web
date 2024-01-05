@@ -5,11 +5,11 @@ import FeaturedEventCard from "./component/featuredEventCard";
 import styles from './explore.module.css';
 import LandingHeader from "../landingPage/component/header";
 import LandingSidemenu from "../common/sidemenu-landing/landingSidemenu";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFilter } from '@fortawesome/free-solid-svg-icons';
 import styled from "@emotion/styled";
 import CirclingLightsBackground from "../Styles/CirclingLightsBackground";
 import Footer from "../landingPage/component/footer";
+import { COLORS } from "../../constants/colors";
+import Link from "next/link";
 
 const ExplorePageMain = () => {
     const { dark } = useContext(DarkModeContext);
@@ -17,7 +17,7 @@ const ExplorePageMain = () => {
     const events = [
         {
             event_id: '15dbdee8-2d1d-4777-9db4-75e4e0d01f7c',
-            start_date: '2023-12-24 00:00:00+00',
+            start_date: '2024-01-07 00:00:00+00',
             title: "Basic Data Structures Introduction",
             host_picture: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/user-pictures/default/ProfilePic.png",
             location: "Henry Booker Room, Jacobs Hall",
@@ -25,7 +25,7 @@ const ExplorePageMain = () => {
         },
         {
             event_id: '1f7e2ea3-df3a-458d-a6b3-14f0a4b88e0f',
-            start_date: '2023-12-25 00:00:00+00',
+            start_date: '2024-01-08 00:00:00+00',
             title: "Paris Test event really long title to test some things outttt if it gets really long",
             host_picture: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/user-pictures/default/ProfilePic.png",
             location: "30261 Arolla Lane",
@@ -33,7 +33,7 @@ const ExplorePageMain = () => {
         },
         {
             event_id: 'a',
-            start_date: '2023-12-26 00:00:00+00',
+            start_date: '2024-01-09 00:00:00+00',
             title: "Paris Test event really long title to test some things outttt if it gets really long",
             host_picture: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/user-pictures/default/ProfilePic.png",
             location: "Henry Booker Room, Jacobs Hall",
@@ -41,7 +41,7 @@ const ExplorePageMain = () => {
         },
         {
             event_id: 'b',
-            start_date: '2023-12-31 00:00:00+00',
+            start_date: '2024-01-31 00:00:00+00',
             title: "Paris Test event really long title to test some things outttt if it gets really long",
             host_picture: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/user-pictures/default/ProfilePic.png",
             location: "30261 Arolla Lane",
@@ -49,7 +49,7 @@ const ExplorePageMain = () => {
         },
         {
             event_id: 'c',
-            start_date: '2023-12-31 00:00:00+00',
+            start_date: '2024-01-31 00:00:00+00',
             title: "Basic Data Structures Introduction",
             host_picture: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/user-pictures/default/ProfilePic.png",
             location: "Henry Booker Room, Jacobs Hall",
@@ -60,35 +60,35 @@ const ExplorePageMain = () => {
     const featuredEvents = [
         {
             event_id: '15dbdee8-2d1d-4777-9db4-75e4e0d01f7c',
-            start_date: '2023-12-24 00:00:00+00',
+            start_date: '2024-01-24 00:00:00+00',
             title: "Basic Data Structures Introduction",
             location: "Henry Booker Room, Jacobs Hall",
             event_image: "https://i.imgur.com/QxtpgIP.png",
         },
         {
             event_id: '1f7e2ea3-df3a-458d-a6b3-14f0a4b88e0f',
-            start_date: '2023-12-25 00:00:00+00',
+            start_date: '2024-01-24 00:00:00+00',
             title: "Paris Test event really long title to test some things outttt if it gets really long",
             location: "30261 Arolla Lane",
             event_image: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/event-pictures/event-pictures/1700860632843-72809e03-1967-44e0-b57c-d965794cd5e7",
         },
         {
             event_id: 'a',
-            start_date: '2023-12-26 00:00:00+00',
+            start_date: '2024-01-24 00:00:00+00',
             title: "Paris Test event really long title to test some things outttt if it gets really long",
             location: "Henry Booker Room, Jacobs Hall",
             event_image: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/event-pictures/event-pictures/1700860632843-72809e03-1967-44e0-b57c-d965794cd5e7",
         },
         {
             event_id: 'b',
-            start_date: '2023-12-31 00:00:00+00',
+            start_date: '2024-01-24 00:00:00+00',
             title: "Paris Test event really long title to test some things outttt if it gets really long",
             location: "30261 Arolla Lane",
             event_image: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/event-pictures/event-pictures/1700860632843-72809e03-1967-44e0-b57c-d965794cd5e7",
         },
         {
             event_id: 'c',
-            start_date: '2023-12-31 00:00:00+00',
+            start_date: '2024-01-24 00:00:00+00',
             title: "Basic Data Structures Introduction",
             location: "Henry Booker Room, Jacobs Hall",
             event_image: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/event-pictures/event-pictures/1700860632843-72809e03-1967-44e0-b57c-d965794cd5e7",
@@ -100,7 +100,17 @@ const ExplorePageMain = () => {
 
     const handleDotClick = (index) => {
         setActiveIndex(index); // Update the active index
-        // Here you can also add functionality to scroll to the active event card if needed
+    };
+
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [selectedEventFilter, setSelectedEventFilter] = useState('Upcoming Events');
+    const eventFilters = ['Upcoming Events', 'Trending Events', 'Newest Events'];
+
+    const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
+
+    const handleEventFilterClick = (option) => {
+        setSelectedEventFilter(option);
+        setIsDropdownOpen(false);
     };
 
     const ImageContainer = styled.div`
@@ -151,23 +161,35 @@ const ExplorePageMain = () => {
                         event_image={featuredEvents[activeIndex].event_image}
                     />
                 </ImageContainer>
-                <div className={styles.pagination}>
-                    {featuredEvents.map((event, index) => (
-                        <span 
-                            key={index} 
-                            className={index === activeIndex ? styles.active : styles.dot}
-                            onClick={() => handleDotClick(index)}
-                        ></span>
-                    ))}
-                </div>
-                <div className={styles.filters}>
-                    <button><FontAwesomeIcon icon={faFilter} className={styles.filter_icon} /> <span className={styles.filter_text}>FILTER</span></button>
-                    <div className={styles.dropdowns}>
-                        <div className={styles.dropdown}>Trending</div>
-                        <div className={styles.dropdown}>Today</div>
-                        <div> in </div>
-                        <div className={styles.dropdown}>New York City</div>
+                {
+                    featuredEvents.length > 1 && 
+                    <div className={styles.pagination}>
+                        {featuredEvents.map((event, index) => (
+                            <span 
+                                key={index} 
+                                className={index === activeIndex ? styles.active : styles.dot}
+                                onClick={() => handleDotClick(index)}
+                            ></span>
+                        ))}
                     </div>
+                }
+                <div className={styles.filters}>
+                    <div className={styles.dropdown}>
+                        <button className={styles.dropdownToggle} onClick={toggleDropdown}>
+                            <div className={styles.filter_events_text}>{selectedEventFilter}</div>
+                        </button>
+                        {isDropdownOpen && (
+                            <ul className={styles.dropdownMenu}>
+                            {eventFilters.map((option) => (
+                                <li key={option} className={styles.dropdownItem} onClick={() => handleEventFilterClick(option)}>
+                                    {option}
+                                </li>
+                            ))}
+                            </ul>
+                        )}
+                    </div>
+                    <div className={styles.filter_text}> at </div>
+                    <div className={styles.filter_school_text}>UCSD</div>
                 </div>
                 <div className={styles.eventCardContainer}>
                     {events.map((event) => (
@@ -183,6 +205,11 @@ const ExplorePageMain = () => {
                     ))}
                 </div>
             </div>
+            <Link legacyBehavior href="/dashboard/create-event">
+                <a className={styles.create}>
+                    <i className="fa-regular fa-plus"></i>
+                </a>
+            </Link>
             <Footer />
         </CirclingLightsBackground>
     );

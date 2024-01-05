@@ -17,63 +17,47 @@
   
 .filters {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     padding: 10px;
-}
-  
-.filters button {
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    left: 30px;
-    background: #111;
-    color: #fff;
-    border: 1px solid #fff;
-    border-radius: 20px;
-    padding: 10px 20px;
-    cursor: pointer;
-    padding: 5px 40px;
-    justify-content: center;
-    align-items: center;
-    @media (max-width: 900px) {
-        padding: 0;
-        width: 35px;
-        height: 35px;
-        border-radius: 50%;
-    }
+    margin-top: 10px;
 }
 
-.filter_icon {
-    width: 15px;
-    margin: 0 8px;
-}
-
-.filter_text {
-    @media (max-width: 900px) {
-        display: none;
-    }
-}
-
-.dropdowns {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-}
-
-.dropdown {
+.filter_events_text {
     font-size: 24px;
     color: #fff;
-    padding: 10px;
-    margin: 0 5px;
     cursor: pointer;
     text-decoration: underline;
+    font-weight: 600;
     @media (max-width: 900px) {
         font-size: 20px;
     }
-} 
+}
+
+.filter_events_text:hover {
+    color: #ccf; /* Highlight for hover state */
+}
+
+.filter_text {
+    font-size: 14px;
+    color: #fff;
+    margin: 0 15px;
+    cursor: pointer;
+    @media (max-width: 900px) {
+        font-size: 20px;
+    }
+}
+
+.filter_school_text {
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+    @media (max-width: 900px) {
+        font-size: 20px;
+    }
+}
 
 .eventCardContainer {
     display: flex;
@@ -84,8 +68,7 @@
 
 .pagination {
     text-align: center;
-    margin-top: 10px;
-    padding: 8px;
+    margin-top: 20px;
 }
   
 .dot, .active {
@@ -102,5 +85,55 @@
 /* Class for the active dot */
 .active {
     background-color: #fff;
+}
+
+.create {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: blue;
+    color: white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 35px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+  
+.dropdownToggle {
+    cursor: pointer;
+}
+  
+.dropdownMenu {
+    position: absolute;
+    background-color: #333; /* Same as button for a consistent look */
+    color: white;
+    min-width: 160px; /* Adjust as needed */
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+    list-style: none; /* Removes default list styling */
+    padding-left: 0; /* Removes default padding */
+    margin: 0; /* Removes default margin */
+    border-radius: 5px; /* Optional: for rounded corners */
+    overflow: hidden; /* Ensures the border radius applies to children */
+}
+  
+li.dropdownItem {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+}
+  
+li.dropdownItem:hover {
+    background-color: #555; /* Highlight for hover state */
 }
   

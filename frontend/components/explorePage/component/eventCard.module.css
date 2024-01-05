@@ -62,11 +62,11 @@
     padding: 0 5px 0 10px;
     justify-content: center;
     align-items: flex-start;
-    border-left: 1px solid #ffffff;
+    /* border-left: 1px solid #ffffff; */
     height: 50px;
 }
   
-.title, .location {
+.title, .time {
     margin: 0;
     font-size: 15px;
     font-weight: 600;
@@ -78,7 +78,7 @@
     display: block;
 }
 
-.location {
+.time {
     font-size: 12px;
     font-weight: 300;
 }

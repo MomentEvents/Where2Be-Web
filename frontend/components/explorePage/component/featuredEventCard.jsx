@@ -12,74 +12,62 @@ const FeaturedEventCard = ({ event_id, start_date, title, location, event_image 
         return 40; // smaller font size for long titles
     };
 
-    function formatDateString(dateString) {
+    const formatDateString = (dateString) => {
         // Parse the date string into a Date object
         const date = new Date(dateString);
-  
-        // Define arrays for day names and month names
-        const days = [
-          "Sunday",
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-        ];
+      
+        // Define arrays for month names
         const months = [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
-          "August",
-          "September",
-          "October",
-          "November",
-          "December",
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
         ];
-  
+      
+        // Function to get the ordinal suffix for the day
+        const getOrdinalSuffix = (day) => {
+          if (day > 3 && day < 21) return 'th'; // covers 4th to 20th
+          switch (day % 10) {
+            case 1:  return "st";
+            case 2:  return "nd";
+            case 3:  return "rd";
+            default: return "th";
+          }
+        };
+      
         // Get day name, month name, date, hours, and minutes from the Date object
-        const dayName = days[date.getDay()];
         const monthName = months[date.getMonth()];
         const day = date.getDate();
+        const ordinalSuffix = getOrdinalSuffix(day);
         const hours = date.getHours();
         const minutes = date.getMinutes();
-  
+      
         // Convert 24-hour format to 12-hour format and determine the am/pm suffix
         const hour12 = hours % 12 || 12;
-        const ampm = hours < 12 ? "am" : "pm";
-  
+        const ampm = hours < 12 ? "AM" : "PM";
+      
         // Format minutes to always have two digits
-        const formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
-  
+        const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+      
         // Construct the formatted date string
-        return `${dayName}, ${monthName} ${day} @ ${hour12}:${formattedMinutes}${ampm}`;
-    }
-
-
-    const [isModalOpen, setModalOpen] = useState(false);
-
-    const toggleModal = () => {
-        setModalOpen(!isModalOpen);
+        return `${monthName} ${day}${ordinalSuffix} at ${hour12}:${formattedMinutes} ${ampm}`;
     };
 
-    const [signedUp, setSignedUp] = useState(false);
+    const GoToEvent = () => {
+
+    }
 
     return (
-        <>
-        <JoinModal
-            isOpen={isModalOpen}
-            onClose={toggleModal}
-            isDesktop={true}
-            eventID={event_id}
-            signedUp={signedUp}
-            setSignedUp={setSignedUp}
-        />
         <div className={styles.featuredEventCardContainer}>
-            {/* Image on the right */}
+            {/* Image on the left */}
             <div className={styles.eventImageContainer}>
               <img
                 src={event_image}
@@ -87,7 +75,7 @@ const FeaturedEventCard = ({ event_id, start_date, title, location, event_image 
                 alt={title}
               />
             </div>
-            {/* Event information on the left */}
+            {/* Event information on the right */}
             <div className={styles.eventInfoContainer}>
               <h1
                 style={{
@@ -100,40 +88,8 @@ const FeaturedEventCard = ({ event_id, start_date, title, location, event_image 
                 {title}
               </h1>
               <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  flexDirection: "row",
-                  marginTop: 20,
-                }}
-              >
-                <LocationOnOutlined
-                  style={{
-                    color: COLORS.purple,
-                    fontSize: 30,
-                    marginRight: 10,
-                  }}
-                />
-                <h3
-                  style={{
-                    color: COLORS.mainText,
-                    fontSize: 20,
-                    fontWeight: 200,
-                  }}
-                >
-                  {location}
-                </h3>
-              </div>
-              <div
                 style={{ display: "flex", flexDirection: "row", marginTop: 20 }}
               >
-                <AccessTimeOutlined
-                  style={{
-                    color: COLORS.purple,
-                    fontSize: 30,
-                    marginRight: 10,
-                  }}
-                />
                 <h3
                   style={{
                     color: COLORS.mainText,
@@ -153,7 +109,7 @@ const FeaturedEventCard = ({ event_id, start_date, title, location, event_image 
                 }}
               >
                 <button
-                  onClick={toggleModal}
+                  onClick={GoToEvent}
                   style={{
                     backgroundColor: COLORS.purple, // Assuming a black background from the image
                     color: "#FFFFFF", // White text
@@ -170,12 +126,11 @@ const FeaturedEventCard = ({ event_id, start_date, title, location, event_image 
                     transition: "all 0.3s ease", // Smooth transition for hover effects
                   }}
                 >
-                  {signedUp ? "Already Signed Up!" : "Signup for Event"}
+                  {"Check it out!"}
                 </button>
               </div>
             </div>
           </div>
-        </>
     );
 };
   
