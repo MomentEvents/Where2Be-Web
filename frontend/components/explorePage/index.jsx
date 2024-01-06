@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { DarkModeContext } from "../darkmode-provider/DarkModeProvider";
 import EventCard from "./component/eventCard";
 import FeaturedEventCard from "./component/featuredEventCard";
@@ -10,6 +10,7 @@ import CirclingLightsBackground from "../Styles/CirclingLightsBackground";
 import Footer from "../landingPage/component/footer";
 import { COLORS } from "../../constants/colors";
 import Link from "next/link";
+import create from "../../public/assets/img/explore/plus-circle.png";
 
 const ExplorePageMain = () => {
     const { dark } = useContext(DarkModeContext);
@@ -17,17 +18,15 @@ const ExplorePageMain = () => {
     const events = [
         {
             event_id: '15dbdee8-2d1d-4777-9db4-75e4e0d01f7c',
-            start_date: '2024-01-07 00:00:00+00',
+            start_date: '2024-01-06 00:00:00+00',
             title: "Basic Data Structures Introduction",
-            host_picture: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/user-pictures/default/ProfilePic.png",
             location: "Henry Booker Room, Jacobs Hall",
             event_image: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/event-pictures/event-pictures/1700860632843-72809e03-1967-44e0-b57c-d965794cd5e7",
         },
         {
             event_id: '1f7e2ea3-df3a-458d-a6b3-14f0a4b88e0f',
             start_date: '2024-01-08 00:00:00+00',
-            title: "Paris Test event really long title to test some things outttt if it gets really long",
-            host_picture: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/user-pictures/default/ProfilePic.png",
+            title: "Paris Test event really long title to test some things outttt if it gets really long long long long long long long long",
             location: "30261 Arolla Lane",
             event_image: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/event-pictures/event-pictures/1700860632843-72809e03-1967-44e0-b57c-d965794cd5e7",
         },
@@ -35,15 +34,13 @@ const ExplorePageMain = () => {
             event_id: 'a',
             start_date: '2024-01-09 00:00:00+00',
             title: "Paris Test event really long title to test some things outttt if it gets really long",
-            host_picture: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/user-pictures/default/ProfilePic.png",
             location: "Henry Booker Room, Jacobs Hall",
             event_image: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/event-pictures/event-pictures/1700860632843-72809e03-1967-44e0-b57c-d965794cd5e7",
         },
         {
             event_id: 'b',
             start_date: '2024-01-31 00:00:00+00',
-            title: "Paris Test event really long title to test some things outttt if it gets really long",
-            host_picture: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/user-pictures/default/ProfilePic.png",
+            title: "Paris Test event really long title to test some things outttt if it gets really long long long long long long long long",
             location: "30261 Arolla Lane",
             event_image: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/event-pictures/event-pictures/1700860632843-72809e03-1967-44e0-b57c-d965794cd5e7",
         },
@@ -51,50 +48,50 @@ const ExplorePageMain = () => {
             event_id: 'c',
             start_date: '2024-01-31 00:00:00+00',
             title: "Basic Data Structures Introduction",
-            host_picture: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/user-pictures/default/ProfilePic.png",
             location: "Henry Booker Room, Jacobs Hall",
             event_image: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/event-pictures/event-pictures/1700860632843-72809e03-1967-44e0-b57c-d965794cd5e7",
         },
     ];
 
-    const featuredEvents = [
-        {
-            event_id: '15dbdee8-2d1d-4777-9db4-75e4e0d01f7c',
-            start_date: '2024-01-24 00:00:00+00',
-            title: "Basic Data Structures Introduction",
-            location: "Henry Booker Room, Jacobs Hall",
-            event_image: "https://i.imgur.com/QxtpgIP.png",
-        },
-        {
-            event_id: '1f7e2ea3-df3a-458d-a6b3-14f0a4b88e0f',
-            start_date: '2024-01-24 00:00:00+00',
-            title: "Paris Test event really long title to test some things outttt if it gets really long",
-            location: "30261 Arolla Lane",
-            event_image: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/event-pictures/event-pictures/1700860632843-72809e03-1967-44e0-b57c-d965794cd5e7",
-        },
-        {
-            event_id: 'a',
-            start_date: '2024-01-24 00:00:00+00',
-            title: "Paris Test event really long title to test some things outttt if it gets really long",
-            location: "Henry Booker Room, Jacobs Hall",
-            event_image: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/event-pictures/event-pictures/1700860632843-72809e03-1967-44e0-b57c-d965794cd5e7",
-        },
-        {
-            event_id: 'b',
-            start_date: '2024-01-24 00:00:00+00',
-            title: "Paris Test event really long title to test some things outttt if it gets really long",
-            location: "30261 Arolla Lane",
-            event_image: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/event-pictures/event-pictures/1700860632843-72809e03-1967-44e0-b57c-d965794cd5e7",
-        },
-        {
-            event_id: 'c',
-            start_date: '2024-01-24 00:00:00+00',
-            title: "Basic Data Structures Introduction",
-            location: "Henry Booker Room, Jacobs Hall",
-            event_image: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/event-pictures/event-pictures/1700860632843-72809e03-1967-44e0-b57c-d965794cd5e7",
-        },
-    ];
-    // https://i.imgur.com/QxtpgIP.png
+    // const featuredEvents = [
+    //     {
+    //         event_id: '15dbdee8-2d1d-4777-9db4-75e4e0d01f7c',
+    //         start_date: '2024-01-24 00:00:00+00',
+    //         title: "Basic Data Structures Introduction",
+    //         location: "Henry Booker Room, Jacobs Hall",
+    //         event_image: "https://i.imgur.com/QxtpgIP.png",
+    //     },
+    //     {
+    //         event_id: '1f7e2ea3-df3a-458d-a6b3-14f0a4b88e0f',
+    //         start_date: '2024-01-24 00:00:00+00',
+    //         title: "Paris Test event really long title to test some things outttt if it gets really long",
+    //         location: "30261 Arolla Lane",
+    //         event_image: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/event-pictures/event-pictures/1700860632843-72809e03-1967-44e0-b57c-d965794cd5e7",
+    //     },
+    //     {
+    //         event_id: 'a',
+    //         start_date: '2024-01-24 00:00:00+00',
+    //         title: "Paris Test event really long title to test some things outttt if it gets really long",
+    //         location: "Henry Booker Room, Jacobs Hall",
+    //         event_image: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/event-pictures/event-pictures/1700860632843-72809e03-1967-44e0-b57c-d965794cd5e7",
+    //     },
+    //     {
+    //         event_id: 'b',
+    //         start_date: '2024-01-24 00:00:00+00',
+    //         title: "Paris Test event really long title to test some things outttt if it gets really long",
+    //         location: "30261 Arolla Lane",
+    //         event_image: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/event-pictures/event-pictures/1700860632843-72809e03-1967-44e0-b57c-d965794cd5e7",
+    //     },
+    //     {
+    //         event_id: 'c',
+    //         start_date: '2024-01-24 00:00:00+00',
+    //         title: "Basic Data Structures Introduction",
+    //         location: "Henry Booker Room, Jacobs Hall",
+    //         event_image: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/event-pictures/event-pictures/1700860632843-72809e03-1967-44e0-b57c-d965794cd5e7",
+    //     },
+    // ];
+
+    const [featuredEvents, setFeaturedEvents] = useState([])
 
     const [activeIndex, setActiveIndex] = useState(0); // Start with the first event as active
 
@@ -109,9 +106,23 @@ const ExplorePageMain = () => {
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
     const handleEventFilterClick = (option) => {
-        setSelectedEventFilter(option);
         setIsDropdownOpen(false);
+        if (option != selectedEventFilter){
+            setSelectedEventFilter(option);
+            if (option == eventFilters[0]){
+                // query upcoming events
+            } else if (option == eventFilters[1]){
+                // query trending events
+            } else if (option == eventFilters[2]){
+                // query newest events
+            }
+        }
     };
+
+    useEffect(() => {
+        let i = Math.floor(Math.random() * events.length)
+        setFeaturedEvents([events[i]]);
+      }, []);
 
     const ImageContainer = styled.div`
       position: relative;
@@ -150,27 +161,39 @@ const ExplorePageMain = () => {
             <LandingSidemenu />
             <LandingHeader />
             <div className={styles.explore}>
-                <ImageContainer>
-                    <BlurredBackground src={featuredEvents[activeIndex].event_image} />
-                    <FeaturedEventCard
-                        key={featuredEvents[activeIndex].id}
-                        event_id={featuredEvents[activeIndex].event_id}
-                        start_date={featuredEvents[activeIndex].start_date}
-                        title={featuredEvents[activeIndex].title}
-                        location={featuredEvents[activeIndex].location}
-                        event_image={featuredEvents[activeIndex].event_image}
-                    />
-                </ImageContainer>
-                {
-                    featuredEvents.length > 1 && 
-                    <div className={styles.pagination}>
-                        {featuredEvents.map((event, index) => (
-                            <span 
-                                key={index} 
-                                className={index === activeIndex ? styles.active : styles.dot}
-                                onClick={() => handleDotClick(index)}
-                            ></span>
-                        ))}
+                {   featuredEvents.length > 0 &&
+                    <div className={styles.featured_events}>
+                        {/* <ImageContainer>
+                            <BlurredBackground src={featuredEvents[activeIndex].event_image} />
+                            <FeaturedEventCard
+                                key={featuredEvents[activeIndex].id}
+                                event_id={featuredEvents[activeIndex].event_id}
+                                start_date={featuredEvents[activeIndex].start_date}
+                                title={featuredEvents[activeIndex].title}
+                                location={featuredEvents[activeIndex].location}
+                                event_image={featuredEvents[activeIndex].event_image}
+                            />
+                        </ImageContainer> */}
+                        <FeaturedEventCard
+                            key={featuredEvents[activeIndex].id}
+                            event_id={featuredEvents[activeIndex].event_id}
+                            start_date={featuredEvents[activeIndex].start_date}
+                            title={featuredEvents[activeIndex].title}
+                            location={featuredEvents[activeIndex].location}
+                            event_image={featuredEvents[activeIndex].event_image}
+                        />
+                        {
+                            featuredEvents.length > 1 && 
+                            <div className={styles.pagination}>
+                                {featuredEvents.map((event, index) => (
+                                    <span 
+                                        key={index} 
+                                        className={index === activeIndex ? styles.active : styles.dot}
+                                        onClick={() => handleDotClick(index)}
+                                    ></span>
+                                ))}
+                            </div>
+                        }
                     </div>
                 }
                 <div className={styles.filters}>
@@ -206,9 +229,7 @@ const ExplorePageMain = () => {
                 </div>
             </div>
             <Link legacyBehavior href="/dashboard/create-event">
-                <a className={styles.create}>
-                    <i className="fa-regular fa-plus"></i>
-                </a>
+                <img className={styles.create} src={create.src} alt="image not found"/>
             </Link>
             <Footer />
         </CirclingLightsBackground>

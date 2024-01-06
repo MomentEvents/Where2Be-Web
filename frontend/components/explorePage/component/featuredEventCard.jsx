@@ -93,7 +93,7 @@ const FeaturedEventCard = ({ event_id, start_date, title, location, event_image 
                 <h3
                   style={{
                     color: COLORS.mainText,
-                    fontSize: 20,
+                    fontSize: 28,
                     fontWeight: 200,
                   }}
                 >

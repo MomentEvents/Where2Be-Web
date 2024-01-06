@@ -8,7 +8,7 @@ const EventCard = ({ event_id, start_date, title, host_picture, location, event_
     useEffect(() => {
         // Function to update the width
         const updateWidth = () => {
-          const width = window.innerWidth > 1400 ? (window.innerWidth - 40) / 4 : window.innerWidth > 1000 ? (window.innerWidth - 40) / 3 : (window.innerWidth - 40) > 650 ? (window.innerWidth - 40) / 2 : window.innerWidth;
+          const width =window.innerWidth > 1000 ? (window.innerWidth - 40) / 3 : (window.innerWidth - 40) > 892 ? (window.innerWidth - 40) / 2 : window.innerWidth;
           setCardWidth(width);
         };
     
@@ -37,8 +37,7 @@ const EventCard = ({ event_id, start_date, title, host_picture, location, event_
         const eventDayOfWeek = daysOfWeek[eventDate.getDay()];
       
         // Get month and date for eventDate
-        const monthsOfYear = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-        const eventMonth = monthsOfYear[eventDate.getMonth()];
+        const eventMonth = eventDate.getMonth()+1;
         const eventDayOfMonth = eventDate.getDate();
       
         if (dayDifference < 1) {
@@ -46,7 +45,7 @@ const EventCard = ({ event_id, start_date, title, host_picture, location, event_
         } else if (dayDifference < 7) {
             return eventDayOfWeek;
         } else {
-            return `${eventMonth} ${eventDayOfMonth}`;
+            return `${eventMonth}/${eventDayOfMonth}`;
         }
     }
 
@@ -69,9 +68,9 @@ const EventCard = ({ event_id, start_date, title, host_picture, location, event_
     };
 
     const calculateFontSize = (text) => {
-        if (text.length == 3) return 20; // large font size for short titles
+        if (text != "Today") return 28; // large font size for short titles
         // if (title.length < 40) return 15; // medium font size for medium-length titles
-        return 15; // smaller font size for long titles
+        return 26; // smaller font size for long titles
     };
 
     return (

@@ -2,17 +2,10 @@
     margin: 120px 0;
 }
 
-.featuredEvent {
-    padding: 100px 0;
-}
-
-.featuredEvents button {
-    background: #333;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    margin: 0 5px;
-    cursor: pointer;
+.featured_events{
+    @media (max-width: 932px) {
+        display: none;
+    }
 }
   
 .filters {
@@ -20,19 +13,19 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 10px;
-    margin-top: 10px;
+    padding: 20px;
+    margin-top: 20px;
 }
 
 .filter_events_text {
-    font-size: 24px;
+    font-size: 28px;
     color: #fff;
     cursor: pointer;
     text-decoration: underline;
     font-weight: 600;
-    @media (max-width: 900px) {
+    /* @media (max-width: 932px) {
         font-size: 20px;
-    }
+    } */
 }
 
 .filter_events_text:hover {
@@ -40,23 +33,15 @@
 }
 
 .filter_text {
-    font-size: 14px;
+    font-size: 18px;
     color: #fff;
     margin: 0 15px;
-    cursor: pointer;
-    @media (max-width: 900px) {
-        font-size: 20px;
-    }
 }
 
 .filter_school_text {
-    font-size: 24px;
+    font-size: 28px;
     color: #fff;
-    cursor: pointer;
     font-weight: 600;
-    @media (max-width: 900px) {
-        font-size: 20px;
-    }
 }
 
 .eventCardContainer {
@@ -94,12 +79,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: blue;
     color: white;
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    font-size: 35px;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+}
+
+.create:hover {
+    width: 85px;
+    height: 85px;
 }
 
 .dropdown {
@@ -126,14 +115,16 @@
 }
   
 li.dropdownItem {
-    color: white;
+    color: #fff;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
     cursor: pointer;
+    font-size: 18px;
 }
   
 li.dropdownItem:hover {
     background-color: #555; /* Highlight for hover state */
+    color: #ccf;
 }
   
