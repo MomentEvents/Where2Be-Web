@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import styles from './EventCard.module.css';
 
-const EventCard = ({ event_id, start_date, title, host_picture, location, event_image }) => {
+const EventCard = ({ event_id, start_date, title, event_image }) => {
     const [cardWidth, setCardWidth] = useState(0);
 
     useEffect(() => {
@@ -69,14 +69,12 @@ const EventCard = ({ event_id, start_date, title, host_picture, location, event_
 
     const calculateFontSize = (text) => {
         if (text != "Today") return 28; // large font size for short titles
-        // if (title.length < 40) return 15; // medium font size for medium-length titles
         return 26; // smaller font size for long titles
     };
 
     return (
         <Link className={styles.cardLink} style={{ width: `${cardWidth}px`}} href={`/event/${event_id}`} passHref>
             <div className={styles.card} style={{ backgroundImage: `url(${event_image})` }}>
-                {/* <div className={styles.hostPicture} style={{ backgroundImage: `url(${host_picture})` }}></div> */}
                 <div className={styles.cardTextContainer}>
                     <span className={styles.date} style={{ fontSize: calculateFontSize(formatDate(start_date))}}>{formatDate(start_date)}</span>
                     <div className={styles.details}>

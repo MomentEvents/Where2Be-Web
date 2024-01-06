@@ -61,10 +61,6 @@ const FeaturedEventCard = ({ event_id, start_date, title, location, event_image 
         return `${monthName} ${day}${ordinalSuffix} at ${hour12}:${formattedMinutes} ${ampm}`;
     };
 
-    const GoToEvent = () => {
-
-    }
-
     return (
         <div className={styles.featuredEventCardContainer}>
             {/* Image on the left */}
@@ -106,36 +102,37 @@ const FeaturedEventCard = ({ event_id, start_date, title, location, event_image 
                   {formatDateString(start_date)}
                 </h3>
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "flex-start", // Center horizontally
-                  alignItems: "center", // Center vertically (optional, if you want it center vertically in the available space)
-                  marginTop: "30px", // Add some space above the button
-                  marginLeft: "50px",
-                }}
-              >
-                <button
-                  onClick={GoToEvent}
+              <Link href={`/event/${event_id}`} passHref>
+                <div
                   style={{
-                    backgroundColor: COLORS.purple, // Assuming a black background from the image
-                    color: "#FFFFFF", // White text
-                    padding: "15px 30px", // Adjust padding to your preference
-                    fontSize: "20px", // Adjust font size to your preference
-                    fontWeight: "600", // Adjust font weight as needed
-                    border: "none",
-                    fontFamily: "Poppins",
-                    borderRadius: "10px", // Adjust border radius to match the button in the image
-                    cursor: "pointer",
-                    outline: "none", // Remove outline on focus for cleaner design
-                    boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)", // Subtle shadow for depth
-                    letterSpacing: "0.5px", // Adjust letter spacing for aesthetic preference
-                    transition: "all 0.3s ease", // Smooth transition for hover effects
+                    display: "flex",
+                    justifyContent: "flex-start", // Center horizontally
+                    alignItems: "center", // Center vertically (optional, if you want it center vertically in the available space)
+                    marginTop: "30px", // Add some space above the button
+                    marginLeft: "50px",
                   }}
                 >
-                  {"Check it out!"}
-                </button>
-              </div>
+                  <button
+                    style={{
+                      backgroundColor: COLORS.purple, // Assuming a black background from the image
+                      color: "#FFFFFF", // White text
+                      padding: "15px 30px", // Adjust padding to your preference
+                      fontSize: "20px", // Adjust font size to your preference
+                      fontWeight: "600", // Adjust font weight as needed
+                      border: "none",
+                      fontFamily: "Poppins",
+                      borderRadius: "10px", // Adjust border radius to match the button in the image
+                      cursor: "pointer",
+                      outline: "none", // Remove outline on focus for cleaner design
+                      boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)", // Subtle shadow for depth
+                      letterSpacing: "0.5px", // Adjust letter spacing for aesthetic preference
+                      transition: "all 0.3s ease", // Smooth transition for hover effects
+                    }}
+                  >
+                    {"Check it out!"}
+                  </button>
+                </div>
+              </Link>
             </div>
           </div>
     );

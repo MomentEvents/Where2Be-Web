@@ -23,9 +23,6 @@
     cursor: pointer;
     text-decoration: underline;
     font-weight: 600;
-    /* @media (max-width: 932px) {
-        font-size: 20px;
-    } */
 }
 
 .filter_events_text:hover {

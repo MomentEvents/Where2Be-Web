@@ -12,47 +12,10 @@ import { COLORS } from "../../constants/colors";
 import Link from "next/link";
 import create from "../../public/assets/img/explore/plus-circle.png";
 
-const ExplorePageMain = () => {
+const ExplorePageMain = ({upcomingEvents, newestEvents, trendingEvents}) => {
     const { dark } = useContext(DarkModeContext);
 
-    const events = [
-        {
-            event_id: '15dbdee8-2d1d-4777-9db4-75e4e0d01f7c',
-            start_date: '2024-01-06 00:00:00+00',
-            title: "Basic Data Structures Introduction Basic Data Structures Introduction Basic Data Structures Introduction Basic Data Structures Introduction Basic Data Structures Introduction Basic Data Structures Introduction Basic Data Structures Introduction Basic Data Structures Introduction",
-            location: "Henry Booker Room, Jacobs Hall",
-            event_image: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/event-pictures/event-pictures/1700860632843-72809e03-1967-44e0-b57c-d965794cd5e7",
-        },
-        {
-            event_id: '1f7e2ea3-df3a-458d-a6b3-14f0a4b88e0f',
-            start_date: '2024-01-08 00:00:00+00',
-            title: "Paris Test event really long title to test some things outttt if it gets really long long long long long long long long",
-            location: "30261 Arolla Lane",
-            event_image: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/event-pictures/event-pictures/1700860632843-72809e03-1967-44e0-b57c-d965794cd5e7",
-        },
-        {
-            event_id: 'a',
-            start_date: '2024-01-09 00:00:00+00',
-            title: "Paris Test event really long title to test some things outttt if it gets really long",
-            location: "Henry Booker Room, Jacobs Hall",
-            event_image: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/event-pictures/event-pictures/1700860632843-72809e03-1967-44e0-b57c-d965794cd5e7",
-        },
-        {
-            event_id: 'b',
-            start_date: '2024-01-31 00:00:00+00',
-            title: "Paris Test event really long title to test some things outttt if it gets really long long long long long long long long",
-            location: "30261 Arolla Lane",
-            event_image: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/event-pictures/event-pictures/1700860632843-72809e03-1967-44e0-b57c-d965794cd5e7",
-        },
-        {
-            event_id: 'c',
-            start_date: '2024-01-31 00:00:00+00',
-            title: "Basic Data Structures Introduction",
-            location: "Henry Booker Room, Jacobs Hall",
-            event_image: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/event-pictures/event-pictures/1700860632843-72809e03-1967-44e0-b57c-d965794cd5e7",
-        },
-    ];
-
+    const [events, setEvents] = useState(upcomingEvents)
     const [featuredEvents, setFeaturedEvents] = useState([])
 
     const [activeIndex, setActiveIndex] = useState(0); // Start with the first event as active
@@ -72,11 +35,11 @@ const ExplorePageMain = () => {
         if (option != selectedEventFilter){
             setSelectedEventFilter(option);
             if (option == eventFilters[0]){
-                // query upcoming events
+                setEvents(upcomingEvents);
             } else if (option == eventFilters[1]){
-                // query trending events
+                setEvents(trendingEvents);
             } else if (option == eventFilters[2]){
-                // query newest events
+                setEvents(newestEvents);
             }
         }
     };
@@ -99,7 +62,7 @@ const ExplorePageMain = () => {
                             start_date={featuredEvents[activeIndex].start_date}
                             title={featuredEvents[activeIndex].title}
                             location={featuredEvents[activeIndex].location}
-                            event_image={featuredEvents[activeIndex].event_image}
+                            event_image={featuredEvents[activeIndex].image}
                         />
                         {
                             featuredEvents.length > 1 && 
@@ -140,9 +103,7 @@ const ExplorePageMain = () => {
                             event_id={event.event_id}
                             start_date={event.start_date}
                             title={event.title}
-                            host_picture={event.host_picture}
-                            location={event.location}
-                            event_image={event.event_image}
+                            event_image={event.image}
                         />
                     ))}
                 </div>

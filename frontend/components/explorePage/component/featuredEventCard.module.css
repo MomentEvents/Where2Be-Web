@@ -25,7 +25,7 @@
 .eventImage {
     max-width: 100%; /* Limits the width to the parent container's width */
     height: auto; /* Maintains the aspect ratio */
-    /* max-height: 60vh; */
+    max-height: 60vh;
     object-fit: contain; /* Ensures the entire image is visible */
     border-radius: 10px;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); /* Adds shadow */
