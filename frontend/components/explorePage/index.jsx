@@ -19,7 +19,7 @@ const ExplorePageMain = () => {
         {
             event_id: '15dbdee8-2d1d-4777-9db4-75e4e0d01f7c',
             start_date: '2024-01-06 00:00:00+00',
-            title: "Basic Data Structures Introduction",
+            title: "Basic Data Structures Introduction Basic Data Structures Introduction Basic Data Structures Introduction Basic Data Structures Introduction Basic Data Structures Introduction Basic Data Structures Introduction Basic Data Structures Introduction Basic Data Structures Introduction",
             location: "Henry Booker Room, Jacobs Hall",
             event_image: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/event-pictures/event-pictures/1700860632843-72809e03-1967-44e0-b57c-d965794cd5e7",
         },
@@ -52,44 +52,6 @@ const ExplorePageMain = () => {
             event_image: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/event-pictures/event-pictures/1700860632843-72809e03-1967-44e0-b57c-d965794cd5e7",
         },
     ];
-
-    // const featuredEvents = [
-    //     {
-    //         event_id: '15dbdee8-2d1d-4777-9db4-75e4e0d01f7c',
-    //         start_date: '2024-01-24 00:00:00+00',
-    //         title: "Basic Data Structures Introduction",
-    //         location: "Henry Booker Room, Jacobs Hall",
-    //         event_image: "https://i.imgur.com/QxtpgIP.png",
-    //     },
-    //     {
-    //         event_id: '1f7e2ea3-df3a-458d-a6b3-14f0a4b88e0f',
-    //         start_date: '2024-01-24 00:00:00+00',
-    //         title: "Paris Test event really long title to test some things outttt if it gets really long",
-    //         location: "30261 Arolla Lane",
-    //         event_image: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/event-pictures/event-pictures/1700860632843-72809e03-1967-44e0-b57c-d965794cd5e7",
-    //     },
-    //     {
-    //         event_id: 'a',
-    //         start_date: '2024-01-24 00:00:00+00',
-    //         title: "Paris Test event really long title to test some things outttt if it gets really long",
-    //         location: "Henry Booker Room, Jacobs Hall",
-    //         event_image: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/event-pictures/event-pictures/1700860632843-72809e03-1967-44e0-b57c-d965794cd5e7",
-    //     },
-    //     {
-    //         event_id: 'b',
-    //         start_date: '2024-01-24 00:00:00+00',
-    //         title: "Paris Test event really long title to test some things outttt if it gets really long",
-    //         location: "30261 Arolla Lane",
-    //         event_image: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/event-pictures/event-pictures/1700860632843-72809e03-1967-44e0-b57c-d965794cd5e7",
-    //     },
-    //     {
-    //         event_id: 'c',
-    //         start_date: '2024-01-24 00:00:00+00',
-    //         title: "Basic Data Structures Introduction",
-    //         location: "Henry Booker Room, Jacobs Hall",
-    //         event_image: "https://wxpeyxiragxbvfqtqybw.supabase.co/storage/v1/object/public/event-pictures/event-pictures/1700860632843-72809e03-1967-44e0-b57c-d965794cd5e7",
-    //     },
-    // ];
 
     const [featuredEvents, setFeaturedEvents] = useState([])
 
@@ -124,38 +86,6 @@ const ExplorePageMain = () => {
         setFeaturedEvents([events[i]]);
       }, []);
 
-    const ImageContainer = styled.div`
-      position: relative;
-      width: 100%;
-      justifyContent: center;
-      alignItems: center;
-      overflow: hidden;
-    `;
-
-    const BlurredBackground = styled.div`
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url(${(props) => props.src});
-      background-size: cover;
-      background-position: center; // Centers the image
-      filter: blur(15px); // Increased blur effect
-      transform: scale(1.1);
-      &:before { // Pseudo-element for the darker overlay
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.5); // Adjust the alpha for darkness
-        z-index: -1; // Ensure the overlay is on top of the background image but behind content
-    }
-    `;
-
-
     return (
         <CirclingLightsBackground>
             <LandingSidemenu />
@@ -163,17 +93,6 @@ const ExplorePageMain = () => {
             <div className={styles.explore}>
                 {   featuredEvents.length > 0 &&
                     <div className={styles.featured_events}>
-                        {/* <ImageContainer>
-                            <BlurredBackground src={featuredEvents[activeIndex].event_image} />
-                            <FeaturedEventCard
-                                key={featuredEvents[activeIndex].id}
-                                event_id={featuredEvents[activeIndex].event_id}
-                                start_date={featuredEvents[activeIndex].start_date}
-                                title={featuredEvents[activeIndex].title}
-                                location={featuredEvents[activeIndex].location}
-                                event_image={featuredEvents[activeIndex].event_image}
-                            />
-                        </ImageContainer> */}
                         <FeaturedEventCard
                             key={featuredEvents[activeIndex].id}
                             event_id={featuredEvents[activeIndex].event_id}

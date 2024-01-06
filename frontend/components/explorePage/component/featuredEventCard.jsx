@@ -83,6 +83,12 @@ const FeaturedEventCard = ({ event_id, start_date, title, location, event_image 
                   fontSize: calculateFontSize(title),
                   fontWeight: 700,
                   marginBottom: 15,
+                  display: '-webkit-box',
+                  WebkitLineClamp: 4,
+                  WebkitBoxOrient: 'vertical',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  maxHeight: `calc(${calculateFontSize(title)} * 1.2 * 4)`,
                 }}
               >
                 {title}
@@ -103,9 +109,10 @@ const FeaturedEventCard = ({ event_id, start_date, title, location, event_image 
               <div
                 style={{
                   display: "flex",
-                  justifyContent: "center", // Center horizontally
+                  justifyContent: "flex-start", // Center horizontally
                   alignItems: "center", // Center vertically (optional, if you want it center vertically in the available space)
-                  marginTop: "50px", // Add some space above the button
+                  marginTop: "30px", // Add some space above the button
+                  marginLeft: "50px",
                 }}
               >
                 <button
