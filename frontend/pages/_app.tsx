@@ -13,20 +13,32 @@ import "../components/attendeeEventDetails/PhoneNumber.css";
 import { Analytics } from "@vercel/analytics/react";
 
 import NProgress from "nprogress";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 
 import "../public/assets/app/css/globals.css";
 
 // Optional: import nprogress.css and customize it as needed
 import "nprogress/nprogress.css";
-
-NProgress.configure({ showSpinner: false });
-
-Router.events.on("routeChangeStart", () => NProgress.start());
-Router.events.on("routeChangeComplete", () => NProgress.done());
-Router.events.on("routeChangeError", () => NProgress.done());
+import { useEffect } from "react";
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleStart = () => NProgress.start();
+    const handleStop = () => NProgress.done();
+
+    router.events.on("routeChangeStart", handleStart);
+    router.events.on("routeChangeComplete", handleStop);
+    router.events.on("routeChangeError", handleStop);
+
+    return () => {
+      router.events.off("routeChangeStart", handleStart);
+      router.events.off("routeChangeComplete", handleStop);
+      router.events.off("routeChangeError", handleStop);
+    };
+  }, [router]);
+
   supabase.auth.onAuthStateChange((event, session) => {
     if (event === "SIGNED_OUT") {
       console.log("SUPABASE SIGNING OUT");
