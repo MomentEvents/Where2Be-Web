@@ -52,7 +52,6 @@ function MyApp({ Component, pageProps }) {
         <DarkModeProvider>
           <AppProvider>
             <Component {...pageProps} />
-            <SpeedInsights />
             <Analytics />
           </AppProvider>
         </DarkModeProvider>
