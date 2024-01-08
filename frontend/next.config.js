@@ -10,5 +10,7 @@ module.exports = {
   transpilePackages: [
     "input-format",
     "react-phone-number-input",
+    "@vercel/analytics/react",
+    "@vercel/speed-insights/next",
   ],
 };
