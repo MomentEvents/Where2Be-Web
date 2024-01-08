@@ -14,7 +14,6 @@ import create from "../../public/assets/img/explore/plus-circle.png";
 import LINKS from "../../constants/links";
 
 const ExplorePageMain = ({ upcomingEvents, newestEvents, trendingEvents }) => {
-  const { dark } = useContext(DarkModeContext);
 
   const [events, setEvents] = useState(upcomingEvents);
   const [featuredEvents, setFeaturedEvents] = useState([]);

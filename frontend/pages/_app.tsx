@@ -49,21 +49,19 @@ function MyApp({ Component, pageProps }) {
     }
   });
   return (
-    <DarkModeProvider>
-      <AppProvider>
-        <SEO
-          font={
-            "https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-          }
-          pageTitle={undefined}
-          pageImage={undefined}
-          pageDescription={undefined}
-        />
-        <Component {...pageProps} />
-        <Analytics />
-        <SpeedInsights />
-      </AppProvider>
-    </DarkModeProvider>
+    <AppProvider>
+      <SEO
+        font={
+          "https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        }
+        pageTitle={undefined}
+        pageImage={undefined}
+        pageDescription={undefined}
+      />
+      <Component {...pageProps} />
+      <Analytics />
+      <SpeedInsights />
+    </AppProvider>
   );
 }
 

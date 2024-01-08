@@ -14,12 +14,14 @@ import showMessage from "../errorMessage/showMessage";
 import { useRouter } from "next/router";
 import { mustNotBeLoggedInServer } from "../../lib/authorization";
 import { setSupabaseCookies } from "../../lib/cookies";
-import Image from "next/image"
-import Where2BeLogo from "../../public/assets/img/logo/where2be.svg"
+import Image from "next/image";
+import Where2BeLogo from "../../public/assets/img/logo/where2be.svg";
 
 const SingUpMain = () => {
-  const { dark } = useContext(DarkModeContext);
-  const router = useRouter()
+  const dark = true;
+  const setDark = (input) => {};
+
+  const router = useRouter();
 
   const nameRef = useRef("");
   const emailRef = useRef("");
@@ -27,7 +29,7 @@ const SingUpMain = () => {
   const confirmPasswordRef = useRef("");
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     console.log(nameRef.current);
     console.log(emailRef.current);
     console.log(passwordRef.current);
@@ -48,21 +50,24 @@ const SingUpMain = () => {
         password: passwordRef.current,
         options: {
           data: {
-            name: nameRef.current
-          }
-        }
+            name: nameRef.current,
+          },
+        },
       });
 
       if (response.error) {
         showMessage(response.error.message, true);
-        return
+        return;
       }
-      setSupabaseCookies(response.data.session.access_token, response.data.session.refresh_token)
+      setSupabaseCookies(
+        response.data.session.access_token,
+        response.data.session.refresh_token
+      );
 
-      router.replace("/dashboard")
+      router.replace("/dashboard");
     } catch (e) {
-      showMessage("An error occurred when signing up", true)
-      console.warn(e)
+      showMessage("An error occurred when signing up", true);
+      console.warn(e);
     }
   };
 
@@ -93,8 +98,7 @@ const SingUpMain = () => {
               <div className="sign__logo">
                 <Link legacyBehavior href="/">
                   <a>
-                  <Image src={Where2BeLogo} alt="Where2Be" width={170} />
-
+                    <Image src={Where2BeLogo} alt="Where2Be" width={170} />
                   </a>
                 </Link>
               </div>
@@ -102,7 +106,11 @@ const SingUpMain = () => {
                 <Link legacyBehavior className="sign__link-text" href="/signin">
                   <a>Sign in</a>
                 </Link>
-                <Link legacyBehavior className="sign__link-active" href="/signup">
+                <Link
+                  legacyBehavior
+                  className="sign__link-active"
+                  href="/signup"
+                >
                   <a>Sign Up</a>
                 </Link>
               </div>

@@ -17,8 +17,8 @@ import Image from "next/image"
 import Where2BeLogo from "../../public/assets/img/logo/where2be.svg"
 
 const SignInPage = () => {
-  const { dark } = useContext(DarkModeContext);
-  const router = useRouter();
+  const dark = true;
+  const setDark = (input) => {};  const router = useRouter();
   const emailRef = useRef("");
   const passwordRef = useRef("");
   const handleSubmit = async (e) => {

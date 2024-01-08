@@ -10,9 +10,10 @@ import BackToTopCom from "../common/scroll-to-top";
 import { useContext } from "react";
 import { DarkModeContext } from "../darkmode-provider/DarkModeProvider";
 
-const HostedEventsList = ({user}) => {
+const HostedEventsList = ({ user }) => {
   const [collapse, setCollapse] = useState(false);
-  const { dark } = useContext(DarkModeContext);
+  const dark = true;
+  const setDark = (input) => {};
   const handleClick = () => {
     setCollapse(!collapse);
   };
@@ -22,10 +23,10 @@ const HostedEventsList = ({user}) => {
         <Sidebar handleClick={handleClick} collapse={collapse} />
         <div className="page__body-wrapper">
           <HeaderOne handleClick={handleClick} />
-          <HostedEvents user={user}/>
+          <HostedEvents user={user} />
         </div>
       </div>
-      
+
       <BackToTopCom />
     </main>
   );

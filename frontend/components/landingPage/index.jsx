@@ -8,7 +8,6 @@ import { DarkModeContext } from "../darkmode-provider/DarkModeProvider";
 import CirclingLightsBackground from "../Styles/CirclingLightsBackground";
 
 const LandingPageMain = () => {
-  const { dark } = useContext(DarkModeContext);
   return (
     <main
       // className={`body-area ${dark ? "bd-theme-dark" : "bd-theme-light"}`}

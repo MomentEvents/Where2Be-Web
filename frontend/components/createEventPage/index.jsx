@@ -11,8 +11,8 @@ import { useContext } from "react";
 import { DarkModeContext } from "../darkmode-provider/DarkModeProvider";
 const CreateEventMain = () => {
   const [collapse, setCollapse] = useState(false);
-  const { dark } = useContext(DarkModeContext);
-  const handleClick = () => {
+  const dark = true;
+  const setDark = (input) => {};  const handleClick = () => {
     setCollapse(!collapse);
   };
 
