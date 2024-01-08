@@ -1,5 +1,3 @@
-import { Provider } from "react-redux";
-import { store } from "../redux/store";
 if (typeof window !== "undefined") {
   require("bootstrap/dist/js/bootstrap");
 }
@@ -39,23 +37,21 @@ function MyApp({ Component, pageProps }) {
     }
   });
   return (
-    <Provider store={store}>
-      <DarkModeProvider>
-        <AppProvider>
-          <SEO
-            font={
-              "https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-            }
-            pageTitle={undefined}
-            pageImage={undefined}
-            pageDescription={undefined}
-          />
-          <Component {...pageProps} />
-          <Analytics />
-          <SpeedInsights />
-        </AppProvider>
-      </DarkModeProvider>
-    </Provider>
+    <DarkModeProvider>
+      <AppProvider>
+        <SEO
+          font={
+            "https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+          }
+          pageTitle={undefined}
+          pageImage={undefined}
+          pageDescription={undefined}
+        />
+        <Component {...pageProps} />
+        <Analytics />
+        <SpeedInsights />
+      </AppProvider>
+    </DarkModeProvider>
   );
 }
 
