@@ -60,7 +60,7 @@ function MyApp({ Component, pageProps }) {
       />
       <Component {...pageProps} />
       <Analytics />
-      <SpeedInsights />
+      {/* <SpeedInsights /> */}
     </AppProvider>
   );
 }
