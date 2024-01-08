@@ -9,7 +9,7 @@ const index = ({upcomingEvents, newestEvents, trendingEvents}) => {
   return (
     <Wrapper>
       <SEO
-        pageTitle={"Events @ UCSD"} pageImage={"https://i.imgur.com/QxtpgIP.png"}
+        pageTitle={"Events @ UCSD"} pageImage={"https://i.imgur.com/uusaR72.png"}
       />
       <ExplorePageMain upcomingEvents={upcomingEvents} newestEvents={newestEvents} trendingEvents={trendingEvents}/>
     </Wrapper>
@@ -29,7 +29,7 @@ export const getServerSideProps = async (context) => {
 
     return {
       props: {
-        upcomingEvents: upcomingEventsResponse,
+        upcomingEvents: upcomingEventsResponse.data,
         newestEvents: null,
         trendingEvents: null,
       },

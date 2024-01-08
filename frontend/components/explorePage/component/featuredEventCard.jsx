@@ -105,34 +105,10 @@ const FeaturedEventCard = ({
             {formatDateString(start_date)}
           </h3>
         </div>
-        <Link href={`/event/${event_id}`} passHref>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "flex-start", // Center horizontally
-              alignItems: "center", // Center vertically (optional, if you want it center vertically in the available space)
-              marginTop: "30px", // Add some space above the button
-              marginLeft: "50px",
-            }}
-          >
-            <button
-              style={{
-                backgroundColor: COLORS.purple, // Assuming a black background from the image
-                color: "#FFFFFF", // White text
-                padding: "15px 30px", // Adjust padding to your preference
-                fontSize: "20px", // Adjust font size to your preference
-                fontWeight: "600", // Adjust font weight as needed
-                border: "none",
-                fontFamily: "Poppins",
-                borderRadius: "10px", // Adjust border radius to match the button in the image
-                cursor: "pointer",
-                outline: "none", // Remove outline on focus for cleaner design
-                boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)", // Subtle shadow for depth
-                letterSpacing: "0.5px", // Adjust letter spacing for aesthetic preference
-                transition: "all 0.3s ease", // Smooth transition for hover effects
-              }}
-            >
-              {"Check it out!"}
+        <Link href={`/event/${event_id}`}>
+          <div className="flex justify-start items-center mt-8 ml-12">
+            <button className="bg-purple-600 text-white py-3 px-6 text-lg font-semibold border-none rounded-lg cursor-pointer focus:outline-none shadow-md hover:bg-purple-700 transition-all duration-300 ease-in-out tracking-wider">
+              Check it out!
             </button>
           </div>
         </Link>

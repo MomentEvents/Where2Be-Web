@@ -10,12 +10,12 @@ const Features = () => {
     <>
       <section className="features__container">
         <div className="features__left_container">
-          <div className="features__title1">School Vibes,</div>
-          <div className="features__title2">Digitalized</div>
+          <div className="features__title1">Every Event</div>
+          <div className="features__title2">In One Place</div>
           <div className="features__subtitle">
-            Get involved with your campus community. By students. For students.
+            Tired of figuring out what's happening on campus? We compile event data across 100+ school Instagrams and Discord servers.
           </div>
-          <div className="features__left_btn_container">
+          {/* <div className="features__left_btn_container">
             <button
               className="explore__btn"
               onClick={() => {
@@ -28,7 +28,7 @@ const Features = () => {
             <Link legacyBehavior href="/dashboard/create-event">
               <a className="create__btn">Create An Event</a>
             </Link>
-          </div>
+          </div> */}
         </div>
         <div className="features__right_container">
           <img
