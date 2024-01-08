@@ -59,7 +59,8 @@ function MyApp({ Component, pageProps }) {
         pageDescription={undefined}
       />
       <Component {...pageProps} />
-      <Analytics />
+      {/* TODO: FIGURE THIS OUT WHY IS IT NOT WORKING */}
+      {/* <Analytics /> */}
       {/* <SpeedInsights /> */}
     </AppProvider>
   );
