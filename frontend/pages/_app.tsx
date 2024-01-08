@@ -39,24 +39,23 @@ function MyApp({ Component, pageProps }) {
     }
   });
   return (
-    <>
-      <SEO
-        font={
-          "https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        }
-        pageTitle={undefined}
-        pageImage={undefined}
-        pageDescription={undefined}
-      />
-      <Provider store={store}>
-        <DarkModeProvider>
-          <AppProvider>
-            <Component {...pageProps} />
-            <Analytics />
-          </AppProvider>
-        </DarkModeProvider>
-      </Provider>
-    </>
+    <Provider store={store}>
+      <DarkModeProvider>
+        <AppProvider>
+          <SEO
+            font={
+              "https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+            }
+            pageTitle={undefined}
+            pageImage={undefined}
+            pageDescription={undefined}
+          />
+          <Component {...pageProps} />
+          <Analytics />
+          <SpeedInsights />
+        </AppProvider>
+      </DarkModeProvider>
+    </Provider>
   );
 }
 
