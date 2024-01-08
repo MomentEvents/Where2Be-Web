@@ -107,7 +107,7 @@ const FeaturedEventCard = ({
         </div>
         <Link href={`/event/${event_id}`}>
           <div className="flex justify-start items-center mt-8 ml-12">
-            <button className="bg-purple-600 text-white py-3 px-6 text-lg font-semibold border-none rounded-lg cursor-pointer focus:outline-none shadow-md hover:bg-purple-700 transition-all duration-300 ease-in-out tracking-wider">
+            <button className="bg-violet-600 text-white py-3 px-6 text-lg font-semibold border-none rounded-lg cursor-pointer focus:outline-none shadow-md hover:bg-violet-700 transition-all duration-300 ease-in-out tracking-wider">
               Check it out!
             </button>
           </div>

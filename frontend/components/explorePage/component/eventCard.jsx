@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import styles from './EventCard.module.css';
+import styles from './eventCard.module.css';
 
 const EventCard = ({ event_id, start_date, title, event_image }) => {
     const [cardWidth, setCardWidth] = useState(0);
