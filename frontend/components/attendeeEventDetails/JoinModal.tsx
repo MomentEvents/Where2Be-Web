@@ -11,14 +11,14 @@ import { setSupabaseCookies } from "../../lib/cookies";
 import NProgress from "nprogress";
 import { last } from "lodash";
 
-const JoinModal = ({
+export default function JoinModal({
   isOpen,
   onClose,
   isDesktop,
   eventID,
   signedUp,
   setSignedUp,
-}) => {
+}) {
   const inputStyle = {
     width: "100%",
     backgroundColor: "#121212", // Set background color
@@ -398,5 +398,3 @@ const JoinModal = ({
     </div>
   );
 };
-
-export default JoinModal;

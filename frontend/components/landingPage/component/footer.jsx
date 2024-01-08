@@ -16,8 +16,8 @@ const Footer = () => {
     <>
       <footer>
         <div className="footer__container">
-          <div className="footer__text">
-            <p>
+          <div className="footer__text flex flex-row">
+            {/* <p>
               {"Made with "}
               <img
                 src={heart.src}
@@ -25,7 +25,7 @@ const Footer = () => {
                 alt="image not found"
               />
               {" by students"}
-            </p>
+            </p> */}
           </div>
           <div className="footer__social">
             <Link legacyBehavior href={LINKS.Email} target="_blank">
@@ -34,9 +34,9 @@ const Footer = () => {
             <Link legacyBehavior href={LINKS.Instagram} target="_blank">
               <img src={instagram.src} alt="image not found" />
             </Link>
-            <Link legacyBehavior href={LINKS.Discord} target="_blank">
+            {/* <Link legacyBehavior href={LINKS.Discord} target="_blank">
               <img src={discord.src} alt="image not found" />
-            </Link>
+            </Link> */}
           </div>
         </div>
       </footer>

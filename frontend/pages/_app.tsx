@@ -9,8 +9,10 @@ import SEO from "../components/seo";
 import { DarkModeProvider } from "../components/darkmode-provider/DarkModeProvider";
 import supabase from "../lib/supabase";
 import { deleteSupabaseCookies, setSupabaseCookies } from "../lib/cookies";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import '../components/attendeeEventDetails/PhoneNumber.css'
+import { Analytics } from '@vercel/analytics/react';
 
 import NProgress from 'nprogress';
 import Router from 'next/router';
@@ -28,7 +30,7 @@ Router.events.on('routeChangeError', () => NProgress.done());
 
 function MyApp({ Component, pageProps }) {
   supabase.auth.onAuthStateChange((event, session) => {
-    if (event === "SIGNED_OUT" || event === "USER_DELETED") {
+    if (event === "SIGNED_OUT") {
       console.log("SUPABASE SIGNING OUT");
       deleteSupabaseCookies();
     } else if (event === "SIGNED_IN" || event === "TOKEN_REFRESHED") {
@@ -39,10 +41,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <SEO
-        font={
-          "https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        }
-      />
+        font={"https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"} pageTitle={undefined} pageImage={undefined} pageDescription={undefined}      />
       <Provider store={store}>
         <DarkModeProvider>
           <AppProvider>
@@ -50,6 +49,8 @@ function MyApp({ Component, pageProps }) {
           </AppProvider>
         </DarkModeProvider>
       </Provider>
+      <SpeedInsights/>
+      <Analytics/>
     </>
   );
 }

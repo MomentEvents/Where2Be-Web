@@ -151,7 +151,7 @@ const EventDetailsMain = ({ event, host }) => {
                   {formatDateString(event.start_date)}
                 </h3>
               </div>
-              <div
+              {/* <div
                 style={{
                   display: "flex",
                   justifyContent: "center", // Center horizontally
@@ -179,7 +179,7 @@ const EventDetailsMain = ({ event, host }) => {
                 >
                   {signedUp ? "Already Signed Up!" : "Signup for Event"}
                 </button>
-              </div>
+              </div> */}
             </div>
 
             {/* Image on the right */}
@@ -242,7 +242,7 @@ const EventDetailsMain = ({ event, host }) => {
           />
 
           <Footer />
-          <div
+          {/* <div
             style={{
               display: "flex",
               justifyContent: "center",
@@ -270,7 +270,7 @@ const EventDetailsMain = ({ event, host }) => {
             >
               Create an Event
             </a>
-          </div>
+          </div> */}
         </div>
       </CirclingLightsBackground>
     );
@@ -402,14 +402,14 @@ const EventDetailsMain = ({ event, host }) => {
                 {event.location}
               </h3>
             </div>
-            <div
+            {/*<div
               style={{
                 display: "flex",
                 justifyContent: "center",
                 marginTop: 40,
               }}
             >
-              <button
+               <button
                 onClick={toggleModal}
                 style={{
                   backgroundColor: COLORS.purple, // Assuming a black background from the image
@@ -428,8 +428,8 @@ const EventDetailsMain = ({ event, host }) => {
                 }}
               >
                 {signedUp ? "Already Signed Up!" : "Signup for Event"}
-              </button>
-            </div>
+              </button> 
+            </div>*/}
             <hr
               style={{
                 width: "100%",
@@ -466,7 +466,7 @@ const EventDetailsMain = ({ event, host }) => {
             />
           </div>
           <Footer />
-          <div
+          {/* <div
             style={{
               display: "flex",
               justifyContent: "center",
@@ -494,7 +494,7 @@ const EventDetailsMain = ({ event, host }) => {
             >
               Create an Event
             </a>
-          </div>
+          </div> */}
         </div>
       </CirclingLightsBackground>
     );

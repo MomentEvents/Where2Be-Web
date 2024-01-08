@@ -20,13 +20,13 @@
 .filter_events_text {
     font-size: 28px;
     color: #fff;
-    cursor: pointer;
-    text-decoration: underline;
+    /* cursor: pointer; */
+    /* text-decoration: underline; */
     font-weight: 600;
 }
 
 .filter_events_text:hover {
-    color: #ccf; /* Highlight for hover state */
+    /* color: #ccf; Highlight for hover state */
 }
 
 .filter_text {
@@ -61,7 +61,7 @@
     border-radius: 50%;
     border: 1px solid #fff;
     display: inline-block;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
   
 /* Class for the active dot */
@@ -94,7 +94,7 @@
 }
   
 .dropdownToggle {
-    cursor: pointer;
+    /* cursor: pointer; */
 }
   
 .dropdownMenu {
@@ -116,7 +116,7 @@ li.dropdownItem {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-    cursor: pointer;
+    /* cursor: pointer; */
     font-size: 18px;
 }
   

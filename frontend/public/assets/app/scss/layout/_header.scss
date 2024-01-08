@@ -557,7 +557,7 @@
     color: var(--clr-common-white);
     font-weight: 600;
     background: var(--clr-common-button-gray);
-    padding: 0px 20px 0px 40px;
+    padding: 0px 20px 0px 20px;
     @include inline-flex();
     align-items: center;
     height: 55px;
@@ -587,7 +587,6 @@
     }
     &:hover {
         color: var(--clr-common-white);
-        padding: 0 30px;
         &::before {
             opacity: 1;
             visibility: visible;

@@ -69,7 +69,7 @@ const EventCard = ({ event_id, start_date, title, event_image }) => {
 
     const calculateFontSize = (text) => {
         if (text != "Today") return 28; // large font size for short titles
-        return 26; // smaller font size for long titles
+        return 22; // smaller font size for long titles
     };
 
     return (

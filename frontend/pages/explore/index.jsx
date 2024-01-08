@@ -9,7 +9,7 @@ const index = ({upcomingEvents, newestEvents, trendingEvents}) => {
   return (
     <Wrapper>
       <SEO
-        pageTitle={"Explore Page"} pageImage={"https://i.imgur.com/QxtpgIP.png"}
+        pageTitle={"Events @ UCSD"} pageImage={"https://i.imgur.com/QxtpgIP.png"}
       />
       <ExplorePageMain upcomingEvents={upcomingEvents} newestEvents={newestEvents} trendingEvents={trendingEvents}/>
     </Wrapper>
@@ -18,28 +18,20 @@ const index = ({upcomingEvents, newestEvents, trendingEvents}) => {
 
 export const getServerSideProps = async (context) => {
   try {
+    const today = new Date().toISOString();
+
     const upcomingEventsResponse = await supabaseAdmin
-      .from("events")
-      .select("*")
-      .order("start_date", { ascending: true })
-      .limit(100);
-
-    const newestEventsResponse = await supabaseAdmin
-      .from("events")
-      .select("*")
-      .order("created_at", { ascending: false })
-      .limit(100);
-
-    const trendingEventsResponse = await supabaseAdmin
-      .from("events")
-      .select("*")
-      // TODO
+    .from("events")
+    .select("*")
+    .gt("start_date", today)
+    .order("start_date", { ascending: true })
+    .limit(100);
 
     return {
       props: {
-        upcomingEvents: upcomingEventsResponse.data,
-        newestEvents: newestEventsResponse.data,
-        trendingEvents: trendingEventsResponse.data,
+        upcomingEvents: upcomingEventsResponse,
+        newestEvents: null,
+        trendingEvents: null,
       },
     };
   } catch (error) {
