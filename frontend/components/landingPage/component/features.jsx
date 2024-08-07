@@ -1,47 +1,61 @@
-import overlay_img from "../../../public/assets/img/bg/joinbg.jpg";
-import Link from "next/link";
-import TickArrow from "../../../utils/SVG/tickArrow";
-import demo from "../../../public/assets/img/index/demo.png";
-import Image from "next/image";
-import showMessage from "../../errorMessage/showMessage";
+import { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import showMessage from '../../errorMessage/showMessage';
+import LINKS from '../../../constants/links';
+import demo from '../../../public/assets/img/index/demo.png';
+import Modal from '../../modal/Modal'; // import the modal component
 
 const Features = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleShowModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <>
       <section className="features__container">
         <div className="features__left_container">
-          <div className="features__title1">Every Event</div>
+          <div className="features__title1 mt-20">Every Event</div>
           <div className="features__title2">In One Place</div>
           <div className="features__subtitle">
             Tired of figuring out what's happening on campus? We compile event data across 100+ school Instagrams and Discord servers.
           </div>
-          {/* <div className="features__left_btn_container">
+          <div className="features__left_btn_container">
             <button
               className="explore__btn"
-              onClick={() => {
-                showMessage("Coming Soon!", false);
-              }}
+              onClick={handleShowModal}
             >
-              Explore Events
+              View Demo
             </button>
 
-            <Link legacyBehavior href="/dashboard/create-event">
-              <a className="create__btn">Create An Event</a>
+            <Link legacyBehavior href={LINKS.Discord}>
+              <a className="create__btn">Join our Discord</a>
             </Link>
-          </div> */}
+          </div>
         </div>
         <div className="features__right_container">
-          <img
-            src={demo.src}
+          <Image
+            src={demo}
             alt="image not found"
             style={{
               maxHeight: "72vh",
-              width: "auto" /* Maintain aspect ratio */,
-              objectFit: "contain" /* Ensures the image is fully visible */,
+              width: "auto",
+              objectFit: "contain",
             }}
           />
         </div>
       </section>
+      <Modal
+        show={showModal}
+        onClose={handleCloseModal}
+        videoUrl="/demo.mp4"
+      />
     </>
   );
 };

@@ -52,11 +52,11 @@ const LandingHeader = ({ breadcrumb_shadow, disableLogo }) => {
                     <div className="header__right">
                       <div className="header__action-inner">
                         <div className="header__dashboard">
-                          <Link legacyBehavior href={LINKS.Discord}>
+                          {/* <Link legacyBehavior href={LINKS.Discord}>
                             <a className="dashboard__btn">
                               <FaDiscord size={36} />
                             </a>
-                          </Link>
+                          </Link> */}
                         </div>
                         <div className="header__hamburger">
                           {/* <div className="sidebar__toggle">
@@ -70,11 +70,11 @@ const LandingHeader = ({ breadcrumb_shadow, disableLogo }) => {
                               ></i>
                             </a>
                           </div> */}
-                          <Link legacyBehavior href={LINKS.Discord}>
+                          {/* <Link legacyBehavior href={LINKS.Discord}>
                             <a className="dashboard__btn">
                               <FaDiscord size={36} />
                             </a>
-                          </Link>
+                          </Link> */}
                         </div>
                       </div>
                     </div>
